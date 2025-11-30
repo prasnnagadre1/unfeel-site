@@ -2,583 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Unfeel – Heal, Grow, Move On</title>
-  <meta name="description" content="Unfeel is your breakup healing companion. Calm zone, journal, breakup counter and friendly talk support – all in one app." />
-
-  <style>
-    :root {
-      --bg-main: #050509;
-      --bg-elevated: #0f0f15;
-      --bg-soft: #15151f;
-      --accent: #00aaff;
-      --accent-soft: rgba(0, 170, 255, 0.15);
-      --text-main: #ffffff;
-      --text-muted: #a0a0b3;
-      --danger: #ff4a6a;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    body {
-      background: radial-gradient(circle at top left, #27213c 0, #050509 45%);
-      color: var(--text-main);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 20px 18px 60px;
-    }
-
-    /* HEADER */
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-box {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #ff4a6a, #ff9c33);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      letter-spacing: 1px;
-      font-size: 16px;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-title {
-      font-size: 19px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .brand-tagline {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .header-actions a {
-      font-size: 12px;
-      color: var(--text-muted);
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-      gap: 26px;
-      align-items: center;
-      margin-bottom: 42px;
-    }
-
-    @media (max-width: 780px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .hero-title-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      background: rgba(0, 170, 255, 0.12);
-      border: 1px solid rgba(0, 170, 255, 0.4);
-      color: #c4eeff;
-      margin-bottom: 10px;
-    }
-
-    .hero-title-pill span {
-      display: inline-flex;
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #ffffff, #00aaff);
-    }
-
-    .hero h1 {
-      font-size: clamp(26px, 5vw, 32px);
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
-
-    .hero-highlight {
-      color: #7fd3ff;
-    }
-
-    .hero-sub {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 480px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .hero-moods {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .mood-chip {
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
-    }
-
-    .mood-chip span {
-      font-size: 13px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .btn-primary,
-    .btn-secondary,
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 13px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #00aaff, #7fd3ff);
-      color: #02030a;
-      box-shadow: 0 8px 24px rgba(0, 170, 255, 0.35);
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 30px rgba(0, 170, 255, 0.45);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-main);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-muted);
-      padding-left: 0;
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-note span {
-      color: #b9ffb9;
-      font-weight: 500;
-    }
-
-    /* phone mock */
-
-    .mock {
-      background: radial-gradient(circle at top, #2b2d4f, #050509 70%);
-      border-radius: 24px;
-      padding: 18px 16px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.75);
-    }
-
-    .mock-inner {
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 12px;
-      background: #070711;
-    }
-
-    .mock-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .mock-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .mock-logo {
-      width: 26px;
-      height: 26px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #ff4a6a, #ff9c33);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .mock-brand span {
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .mock-chip {
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(0, 170, 255, 0.16);
-      color: #aee7ff;
-      font-size: 10px;
-    }
-
-    .mock-section-title {
-      font-size: 12px;
-      margin-bottom: 6px;
-      color: #d7e7ff;
-      font-weight: 500;
-    }
-
-    .mock-quote {
-      font-size: 11px;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 12px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      margin-bottom: 10px;
-    }
-
-    .mock-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .mock-card {
-      border-radius: 12px;
-      padding: 10px;
-      background: linear-gradient(135deg, #111321, #151724);
-      border: 1px solid rgba(0, 170, 255, 0.25);
-      font-size: 11px;
-    }
-
-    .mock-card span {
-      font-size: 14px;
-      margin-right: 4px;
-    }
-
-    .mock-small-row {
-      display: flex;
-      gap: 8px;
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
-    .mock-small-pill {
-      flex: 1;
-      padding: 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    /* SECTIONS COMMON */
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .section-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 540px;
-      margin-bottom: 18px;
-    }
-
-    .card-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    @media (max-width: 900px) {
-      .card-grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .card-grid-3 {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .feature-card {
-      background: var(--bg-elevated);
-      border-radius: 16px;
-      padding: 14px 14px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
-    }
-
-    .feature-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      margin-bottom: 8px;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .feature-title {
-      font-size: 14px;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .feature-text {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .feature-tag {
-      font-size: 11px;
-      color: #aee7ff;
-      background: rgba(0, 170, 255, 0.16);
-      border-radius: 999px;
-      display: inline-block;
-      padding: 4px 8px;
-    }
-
-    /* CALL SUPPORT / PRICE */
-
-    .support-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 18px;
-    }
-
-    @media (max-width: 780px) {
-      .support-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .support-card,
-    .terms-card {
-      background: var(--bg-elevated);
-      border-radius: 18px;
-      padding: 16px 16px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .support-card h3,
-    .terms-card h3 {
-      color: var(--text-main);
-      font-size: 15px;
-      margin-bottom: 8px;
-    }
-
-    .support-pill {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(0, 170, 255, 0.16);
-      font-size: 11px;
-      color: #aee7ff;
-      margin-bottom: 8px;
-    }
-
-    .price-row {
-      margin: 10px 0 12px;
-      font-size: 13px;
-    }
-
-    .price-main {
-      font-size: 18px;
-      font-weight: 700;
-      color: #b9ffb9;
-    }
-
-    .support-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .support-note {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .contact-line {
-      font-size: 12px;
-      margin-top: 8px;
-    }
-
-    .contact-line span {
-      color: #aee7ff;
-      font-weight: 500;
-    }
-
-    .terms-card ul {
-      padding-left: 16px;
-      margin-top: 8px;
-    }
-
-    .terms-card li {
-      margin-bottom: 4px;
-      font-size: 12px;
-    }
-
-    .checkbox-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .fake-checkbox {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      display: inline-block;
-    }
-
-    /* FAQ */
-
-    .faq-item {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 8px 0;
-    }
-
-    .faq-q {
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .faq-a {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 16px;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: space-between;
-    }
-
-    footer strong {
-      color: var(--text-main);
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-links a {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="page">
-    <!-- HEADER -->
     <header>
       <div class="brand">
         <div class="logo-box">UN</div>
@@ -587,12 +16,14 @@
           <div class="brand-tagline">Heal · Grow · Move On</div>
         </div>
       </div>
-      <div class="header-actions">
-        <a href="#download">Download App</a>
+      <div class="nav-links">
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign up</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
       </div>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
       <div>
         <div class="hero-title-pill">
@@ -608,29 +39,34 @@
           non-judgmental friend in your pocket.
         </p>
 
+        <!-- Moods now clickable -->
         <div class="hero-moods">
-          <div class="mood-chip"><span>😔</span> Low & overthinking</div>
-          <div class="mood-chip"><span>😭</span> Fresh breakup</div>
-          <div class="mood-chip"><span>🧠</span> Stuck in memories</div>
-          <div class="mood-chip"><span>🚶‍♂️</span> Ready to move on</div>
+          <a href="mood.html?m=low" class="mood-chip">
+            <span>😔</span> Low & overthinking
+          </a>
+          <a href="mood.html?m=fresh" class="mood-chip">
+            <span>😭</span> Fresh breakup
+          </a>
+          <a href="mood.html?m=stuck" class="mood-chip">
+            <span>🧠</span> Stuck in memories
+          </a>
+          <a href="mood.html?m=ready" class="mood-chip">
+            <span>🚶‍♂️</span> Ready to move on
+          </a>
         </div>
 
-        <div class="hero-buttons" id="download">
-          <button class="btn-primary">
-            <span>⬇</span> Download APK (coming soon)
-          </button>
-          <button class="btn-secondary">
-            <span>🛒</span> Google Play (planned)
-          </button>
+        <div class="hero-buttons">
+          <a href="login.html" class="btn-primary">Start now (login)</a>
+          <a href="signup.html" class="btn-secondary">Create free account</a>
         </div>
 
         <div class="hero-note">
           First <span>15 min call free</span> on friendly talk support – after
-          that just ₹49 / 15 minutes.
+          that just ₹49 / 15 minutes (planned).
         </div>
       </div>
 
-      <!-- PHONE MOCK -->
+      <!-- Phone mock: reminder hata diya, sirf cards -->
       <div class="mock">
         <div class="mock-inner">
           <div class="mock-header">
@@ -638,52 +74,50 @@
               <div class="mock-logo">UN</div>
               <span>Unfeel</span>
             </div>
-            <div class="mock-chip">Day 27 • No-contact</div>
-          </div>
-
-          <div class="mock-section-title">Today’s reminder</div>
-          <div class="mock-quote">
-            You’re not begging for their love anymore. You’re slowly choosing
-            your self-respect. That’s real healing.
+            <div class="mock-chip">Breakup tools</div>
           </div>
 
           <div class="mock-section-title">Quick actions</div>
           <div class="mock-grid">
-            <div class="mock-card">
+            <a href="calm.html" class="mock-card">
               <span>💨</span>
               Calm Zone<br />
               Rain, ocean & breathing
-            </div>
-            <div class="mock-card">
+            </a>
+            <a href="journal.html" class="mock-card">
               <span>📓</span>
               Journal<br />
               Type what you can’t say
-            </div>
-            <div class="mock-card">
+            </a>
+            <a href="counter.html" class="mock-card">
               <span>📆</span>
               Breakup Counter<br />
               Track your streak
-            </div>
-            <div class="mock-card">
+            </a>
+            <a href="talk.html" class="mock-card">
               <span>📞</span>
               Talk to human<br />
               First 15 min free
-            </div>
-          </div>
-
-          <div class="mock-small-row">
-            <div class="mock-small-pill">
-              7-Day challenge → Delete chats, walk, no stalking, new habits.
-            </div>
-            <div class="mock-small-pill">
-              You are not your breakup. You are your future.
-            </div>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES -->
+    <!-- NEW: Daily motivation section -->
+    <section>
+      <div class="section-label">Today</div>
+      <h2 class="section-title">Today’s motivation</h2>
+      <p class="section-sub">
+        Roz ek chhota reminder ki tu weak nahi, sirf thak chuka hai. Aaj ka
+        quote neeche hai – kal naya milega automatically.
+      </p>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">For you, today:</h3>
+        <p id="dailyQuote" style="font-size:14px;color:#e3e3ff;"></p>
+      </div>
+    </section>
+
     <section>
       <div class="section-label">App Features</div>
       <h2 class="section-title">What you get inside Unfeel</h2>
@@ -694,202 +128,122 @@
       </p>
 
       <div class="card-grid-3">
-        <div class="feature-card">
+        <a href="calm.html" class="feature-card">
           <div class="feature-icon">💨</div>
           <div class="feature-title">Calm Zone</div>
           <div class="feature-text">
             Soft breathing guide, rain & ocean sounds, grounding exercises and
-            light yoga ideas to calm your nervous system when thoughts go out of
-            control.
+            light yoga ideas to calm your nervous system.
           </div>
           <span class="feature-tag">Sound + breathing</span>
-        </div>
+        </a>
 
-        <div class="feature-card">
+        <a href="counter.html" class="feature-card">
           <div class="feature-icon">📆</div>
           <div class="feature-title">Breakup Day Counter</div>
           <div class="feature-text">
             Set the breakup date once and let Unfeel show you how many days you
-            have survived. Every day is proof you’re stronger than before.
+            have survived. Every day is proof you’re stronger.
           </div>
           <span class="feature-tag">No-contact streak</span>
-        </div>
+        </a>
 
-        <div class="feature-card">
+        <a href="journal.html" class="feature-card">
           <div class="feature-icon">📓</div>
           <div class="feature-title">Private Journal</div>
           <div class="feature-text">
-            Write what you can’t send to them. Entries are stored locally on
-            your device; we don’t upload your thoughts to any server.
+            Write what you can’t send to them. Entries are stored in your
+            browser only; we don’t upload your thoughts to any server.
           </div>
           <span class="feature-tag">Local only</span>
-        </div>
+        </a>
 
-        <div class="feature-card">
+        <a href="tips.html" class="feature-card">
           <div class="feature-icon">❤️</div>
           <div class="feature-title">Move-on Journey</div>
           <div class="feature-text">
-            Simple stage-wise breakup roadmap – emergency days, detox, clarity,
-            rebuild and growth. Read one card per day and follow at your pace.
+            Simple stage-wise breakup roadmap – detox, clarity, rebuild and
+            growth. One small step at a time.
           </div>
           <span class="feature-tag">Guided steps</span>
-        </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-icon">📚</div>
-          <div class="feature-title">Masterclass Tips</div>
-          <div class="feature-text">
-            Common mistakes after breakup, self-respect rules and practical
-            strategies to focus on yourself instead of chasing someone.
-          </div>
-          <span class="feature-tag">Short lessons</span>
-        </div>
-
-        <div class="feature-card">
+        <a href="talk.html" class="feature-card">
           <div class="feature-icon">📞</div>
           <div class="feature-title">Friendly Talk Support</div>
           <div class="feature-text">
             Talk to a real human like a supportive friend – for those nights
-            when you can’t handle the pain alone. First 15 minutes free, then
-            budget-friendly calls.
+            when you can’t handle the pain alone.
           </div>
           <span class="feature-tag">Human touch</span>
-        </div>
+        </a>
+
+        <a href="payment.html" class="feature-card">
+          <div class="feature-icon">₹</div>
+          <div class="feature-title">Simple pricing</div>
+          <div class="feature-text">
+            First 15 minutes free on first call. After that only ₹49 per 15
+            minutes (planned future update).
+          </div>
+          <span class="feature-tag">India-first</span>
+        </a>
       </div>
     </section>
 
-    <!-- SUPPORT + TERMS -->
-    <section>
-      <div class="section-label">1:1 Support</div>
-      <h2 class="section-title">Talk to someone who actually listens</h2>
-      <p class="section-sub">
-        When you feel like you will explode texting your ex, you can instead
-        talk to a calm, non-judgmental listener. Not a doctor. Not therapy.
-        Just honest, friendly support.
-      </p>
-
-      <div class="support-layout">
-        <div class="support-card">
-          <div class="support-pill">Friendly Talk – not medical counselling</div>
-          <h3>Call or WhatsApp support</h3>
-          <p>
-            Share what happened, why you’re stuck, what you’re feeling,
-            overthinking and planning to do. We help you think clearly and
-            protect your self-respect.
-          </p>
-
-          <div class="price-row">
-            <span class="price-main">₹0</span> for first 15 minutes on your
-            first call<br />
-            After that <strong>₹49 / 15 minutes</strong> (planned for future
-            updates).
-          </div>
-
-          <div class="support-actions">
-            <a href="tel:+918104155784" class="btn-primary">📞 Call now</a>
-            <a href="https://wa.me/918104155784" class="btn-secondary">
-              💬 WhatsApp chat
-            </a>
-          </div>
-
-          <p class="support-note">
-            This is <strong>not</strong> professional therapy, medical advice or
-            emergency support. It is like talking to a trusted friend who keeps
-            your privacy and does not judge you.
-          </p>
-
-          <p class="contact-line">
-            Contact: <span>+91 8104155784</span><br />
-            Email: <span>support@unfeel.online</span>
-          </p>
-        </div>
-
-        <div class="terms-card">
-          <h3>Short Terms & Safety</h3>
-          <ul>
-            <li>This app is for emotional support only, not a hospital.</li>
-            <li>
-              Not an emergency service – in danger, contact local emergency
-              numbers or doctor immediately.
-            </li>
-            <li>
-              We avoid collecting sensitive data. Your journal text is stored on
-              your device.
-            </li>
-            <li>
-              Age 16+ recommended. Younger users should have parent/guardian
-              support.
-            </li>
-            <li>
-              We may show Google-style ads in future to keep the app free, but
-              we avoid unsafe categories.
-            </li>
-          </ul>
-          <div class="checkbox-row">
-            <div class="fake-checkbox"></div>
-            <div>
-              I understand that Unfeel is a self-help & support app and not a
-              substitute for professional medical, psychological or legal
-              advice.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section>
-      <div class="section-label">FAQ</div>
-      <h2 class="section-title">Questions you might have</h2>
-
-      <div class="faq-item">
-        <div class="faq-q">Is Unfeel a therapy / counselling app?</div>
-        <div class="faq-a">
-          No. Unfeel is a self-help companion with tools for calm, journaling
-          and friendly talk. It does <strong>not</strong> replace a
-          psychologist, psychiatrist, doctor or lawyer.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Is my data private?</div>
-        <div class="faq-a">
-          Currently, journal entries are stored on your device only. We may use
-          basic analytics and crash reports to improve the app, and ad networks
-          for monetisation in future.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">
-          What if I feel like hurting myself or doing something extreme?
-        </div>
-        <div class="faq-a">
-          Please do <strong>not</strong> rely on this app. Contact local
-          emergency services, a trusted friend/family member or a mental health
-          professional immediately. You matter more than any relationship.
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
       <div>
         <strong>Unfeel</strong> – Heal · Grow · Move On<br />
         Founder &amp; Creator: <strong>Prasanna Balu Gadre</strong>
       </div>
       <div class="footer-links">
-        <a href="#download">Get the app (soon)</a>
-        <a href="mailto:support@unfeel.online">support@unfeel.online</a>
-        <span>© <span id="year"></span> Unfeel</span>
+        <a href="login.html">Login</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
       </div>
     </footer>
   </div>
 
+  <!-- Daily quote + year script -->
   <script>
-    // Year in footer
-    document.getElementById("year").textContent =
-      new Date().getFullYear().toString();
+    const quotes = [
+      "Aaj ka dard kal ke strong version ka fuel hai.",
+      "Jo chala gaya, woh tumhari asli kadar karne wala tha hi nahi.",
+      "Self-respect ka level jitna high, dard utna kam hota hai.",
+      "Tum us one text se zyada ke layak ho jo kabhi aata hi nahi.",
+      "Unko proof mat do, khud ko yaad dila kitna value hai tera.",
+      "Breakup ne tujhe todha nahi, tujhe jagaya hai.",
+      "Jisne tujhe ignore kia, usko yaad karke apna time barbaad mat kar.",
+      "Block karna childish nahi, self-respect ka step hai.",
+      "Aaj ro lega, kal thoda halka lagega. Ye bhi healing ka part hai.",
+      "Unke bina bhi tu complete hai, bas yaad nahi aa raha abhi.",
+      "Dil tootne se pehle tu kaun tha, usko wapas yaad kar.",
+      "Kisi ka “online” dekh ke apni mental health offline mat kar.",
+      "Jo insaan confuse hai, usko future ka seat mat de.",
+      "Love achha tha, par self-respect best hai.",
+      "Kabhi kabhi “no reply” bhi reply hota hai.",
+      "Tumhara future partner khush hoga ki ye banda finally chala gaya.",
+      "Pyaar ke naam pe jo guilt diya gaya, woh pyaar tha hi nahi.",
+      "Tumhara kaam kisi ko convince karna nahi, khud ko protect karna hai.",
+      "Jo tumhare pain pe busy raha, woh tumhare heal pe deserve nahi karta.",
+      "Abhi jo lonely feel ho raha, wahi kal ka strongest version banayega.",
+      "Aaj ek chota step lo – phone rakh ke 10 min walk.",
+      "Unke social media se zyada, apni life ka graph important hai.",
+      "Apni energy wapas khud pe lagana sabse bada revenge hai.",
+      "Unhone choice li, ab tum bhi lo – khud ko choose karne ki.",
+      "Tumhara dard valid hai, par tum sirf ye dard nahi ho.",
+      "Jo tumhe lose karke bhi chill hai, uske liye kyun ro raha hai tu?",
+      "Future me ye phase yaad karke bolega – “yaha se life badli thi”.",
+      "Dil todne wale se zyada dangerous wo thoughts hain jo tum khud sochta hai.",
+      "Har din thoda thoda distance, ek din full freedom.",
+      "Aaj ka aim: ex ko nahi, khud ko impress karna."
+    ];
+
+    const qEl = document.getElementById("dailyQuote");
+    if (qEl) {
+      const today = new Date();
+      const index = (today.getDate() - 1) % quotes.length; // 0–29
+      qEl.textContent = quotes[index];
+    }
   </script>
 </body>
 </html>
