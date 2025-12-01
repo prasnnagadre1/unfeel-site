@@ -23,7 +23,7 @@
       overflow-x: hidden;
     }
 
-    /* TOP NAV */
+    /* NAVBAR */
     nav {
       width: 100%;
       display: flex;
@@ -83,14 +83,13 @@
       background: rgba(0,170,255,0.12);
     }
 
-    /* MAIN CONTAINER */
+    /* LAYOUT */
     .main {
       max-width: 900px;
       margin: 0 auto;
       padding: 30px 18px 80px;
     }
 
-    /* VIEWS (screens) */
     .view {
       display: none;
       animation: fadeIn 0.25s ease-out;
@@ -105,7 +104,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* HOME (HERO) */
+    /* HOME */
     .hero {
       text-align: center;
       padding-top: 40px;
@@ -129,7 +128,6 @@
       margin-bottom: 26px;
     }
 
-    /* QUOTE BOX */
     .quote-box {
       width: 90%;
       max-width: 520px;
@@ -154,7 +152,6 @@
       color: #dceaff;
     }
 
-    /* SECTION TITLES */
     .section-title {
       font-size: 22px;
       margin-bottom: 10px;
@@ -167,7 +164,6 @@
       line-height: 1.5;
     }
 
-    /* SIMPLE CARD */
     .card {
       background: var(--card);
       border-radius: 14px;
@@ -177,7 +173,6 @@
       margin-top: 16px;
     }
 
-    /* BUTTONS */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -210,7 +205,6 @@
       border: 1px solid rgba(255,255,255,0.12);
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 20px 10px;
@@ -332,12 +326,12 @@
 
 <body>
 
+  <!-- NAV -->
   <nav>
     <div class="brand">
       <div class="logo">UN</div>
       <div class="brand-title">UNFEEL</div>
     </div>
-
     <div class="menu">
       <a href="#" data-view="home" class="active">Home</a>
       <a href="#" data-view="login">Login</a>
@@ -349,7 +343,7 @@
 
   <div class="main">
 
-    <!-- HOME SCREEN -->
+    <!-- HOME -->
     <div id="view-home" class="view active">
       <div class="hero">
         <h1>Heal · Grow · Move On</h1>
@@ -361,17 +355,16 @@
           <p id="dailyQuote"></p>
         </div>
 
-        <!-- HUMAN TOUCH CARD -->
         <div class="card">
           <h3 style="margin-top:16px;margin-bottom:6px;">Human touch – 1:1 breakup talk</h3>
           <p class="section-text">
             When the pain is too heavy for reels, quotes or AI, sometimes you just need a real human to listen.
-            Unfeel offers a simple 1:1 friendly conversation — no judgment, no formal therapy labels.
+            Unfeel gives you a simple, friendly 1:1 conversation – no judgment, no labels.
           </p>
           <p class="section-text" style="margin-top:8px;">
             <strong>Pricing (India):</strong><br/>
             – First <strong>15 minutes FREE</strong><br/>
-            – After that: <strong>₹49 / 15 minutes</strong> (via UPI / payment link, handled manually)
+            – After that: <strong>₹49 / 15 minutes</strong> (manual UPI / payment link)
           </p>
           <div class="btn-row">
             <a href="tel:+918104155784" class="btn btn-primary">📞 Call now</a>
@@ -379,273 +372,98 @@
           </div>
           <p class="section-text" style="margin-top:8px;font-size:12px;">
             Contact: <strong>+91 8104155784</strong> · Email: <strong>support@unfeel.online</strong><br/>
-            Availability depends on timing — please confirm on WhatsApp before calling.
+            Availability depends on timing – please confirm on WhatsApp.
           </p>
           <p class="section-text" style="margin-top:8px;font-size:11px;color:#ffb3c7;">
-            This is not professional therapy or medical counselling. In emergencies or self-harm thoughts, please
-            contact local emergency services or a licensed mental health professional immediately.
+            This is not professional therapy or medical counselling. In any emergency or self-harm thoughts,
+            please contact local emergency services or a licensed professional immediately.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- LOGIN SCREEN -->
+    <!-- LOGIN -->
     <div id="view-login" class="view">
       <h2 class="section-title">Login (demo)</h2>
-      <p class="section-text">
-        This is a placeholder screen. In the future, the Unfeel app may allow you to log in and access your breakup
-        progress, journal, and tools from here. Currently, there is no real login system active.
-      </p>
       <div class="card">
         <p class="section-text">
-          <strong>Email login (UI example only):</strong><br/><br/>
-          Email: <em>you@example.com</em><br/>
-          Password: <em>••••••••</em><br/><br/>
-          "Continue with Google" and other sign-in options will be added in a future version of the app with proper backend and security.
+          This is a placeholder. In the future, Unfeel app may let you log in here and track your progress,
+          but right now no real login is active.
         </p>
       </div>
     </div>
 
-    <!-- SETTINGS SCREEN -->
+    <!-- SETTINGS -->
     <div id="view-settings" class="view">
       <h2 class="section-title">Settings</h2>
       <div class="card">
         <p class="section-text">
           Dark mode: <strong>ON</strong> 🌙<br/><br/>
-          In the future, this section may allow you to:
+          In the future, you might be able to change:
         </p>
         <ul class="section-text">
-          <li>Change AI tone (formal / "bhai" style)</li>
-          <li>Adjust notification preferences</li>
-          <li>Choose how often you see motivational quotes</li>
+          <li>AI tone (formal / “bhai” style)</li>
+          <li>Notification preferences</li>
+          <li>Quote frequency</li>
         </ul>
       </div>
     </div>
 
-    <!-- TERMS SCREEN -->
+    <!-- TERMS -->
     <div id="view-terms" class="view">
       <h2 class="section-title">Terms &amp; Conditions</h2>
       <div class="card">
         <p class="section-text"><strong>Last Updated:</strong> 1 Dec 2025</p>
         <p class="section-text"><strong>Founder &amp; Creator:</strong> Prasanna Balu Gadre</p>
         <p class="section-text"><strong>Age Requirement:</strong> 18+ users only</p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">1. Introduction</h3>
+        <br/>
         <p class="section-text">
-          Unfeel is an emotional breakup-support platform designed to help adults cope with heartbreak, overthinking,
-          and emotional stress through motivational content, self-help guidance, and a basic AI-style support chat.
-          By accessing or using this website, you agree to these Terms &amp; Conditions. If you do not agree, please
-          stop using the website immediately.
+          Unfeel is an emotional breakup-support concept/brand. It is <strong>not</strong> a medical, clinical,
+          psychological or psychiatric service. All content and conversations are meant as general emotional guidance
+          and support only.
         </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">2. Not a Medical or Clinical Service</h3>
         <p class="section-text">
-          Unfeel is <strong>not</strong> a medical, psychological, psychiatric, or clinical counselling service.
-          The platform does not provide:
+          If you are in crisis, feel like harming yourself or someone else, or are in any life-threatening situation,
+          you must contact local emergency services, a trusted person, or a licensed professional immediately.
         </p>
-        <ul class="section-text">
-          <li>Medical advice</li>
-          <li>Diagnosis or treatment for mental health conditions</li>
-          <li>Emergency support or crisis intervention</li>
-          <li>Professional therapy or counselling</li>
-        </ul>
         <p class="section-text">
-          All content and conversations are for general emotional support and self-help purposes only.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">3. Eligibility</h3>
-        <p class="section-text">
-          This website is intended for adults only:
-        </p>
-        <ul class="section-text">
-          <li>You must be <strong>18 years or older</strong> to use Unfeel.</li>
-          <li>If you are under 18, you are not allowed to use this website.</li>
-        </ul>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">4. Use of AI Chat</h3>
-        <p class="section-text">
-          The AI-style chat is a basic emotional support feature. It:
-        </p>
-        <ul class="section-text">
-          <li>Provides breakup-oriented supportive messages</li>
-          <li>Cannot fully understand complex mental health conditions</li>
-          <li>Should not be treated as professional advice</li>
-        </ul>
-        <p class="section-text">
-          You agree not to misuse the chat, not to share illegal or abusive content, and not to depend on it
-          for medical or life-critical decisions.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">5. Human Support / Call Feature</h3>
-        <p class="section-text">
-          Unfeel may offer a “Human Touch” friendly conversation:
-        </p>
-        <ul class="section-text">
-          <li>First 15 minutes free</li>
-          <li>After that, ₹49 per 15 minutes (India)</li>
-          <li>Payments are voluntary, manual, and generally non-refundable</li>
-        </ul>
-        <p class="section-text">
-          This is an informal conversation, not licensed therapy or clinical counselling. Availability can vary based
-          on the schedule of the founder or support person.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">6. Crisis / Emergency</h3>
-        <p class="section-text">
-          Unfeel is <strong>not</strong> an emergency service. If you feel you might harm yourself or someone else,
-          or you are in any kind of crisis or life-threatening situation:
-        </p>
-        <ul class="section-text">
-          <li>Contact your local emergency number immediately</li>
-          <li>Reach out to a trusted family member or friend</li>
-          <li>Consult a licensed mental health professional or doctor</li>
-        </ul>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">7. User Responsibility</h3>
-        <p class="section-text">
-          When using Unfeel, you agree to:
-        </p>
-        <ul class="section-text">
-          <li>Use the platform respectfully and legally</li>
-          <li>Not abuse, threaten, or harass anyone</li>
-          <li>Not share illegal, obscene, or hateful content</li>
-          <li>Not misuse the contact number, WhatsApp, or any human-support feature</li>
-        </ul>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">8. No Liability</h3>
-        <p class="section-text">
-          Unfeel and its Founder &amp; Creator, <strong>Prasanna Balu Gadre</strong>, will not be responsible for:
-        </p>
-        <ul class="section-text">
-          <li>Any decisions you make based on the content or support</li>
-          <li>Any emotional or practical consequences of using the site</li>
-          <li>Any damage, loss, or harm arising from reliance on responses or guidance</li>
-        </ul>
-        <p class="section-text">
-          You use this website entirely at your own risk.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">9. Changes to the Service</h3>
-        <p class="section-text">
-          The Founder reserves the right to:
-        </p>
-        <ul class="section-text">
-          <li>Add or remove features</li>
-          <li>Change pricing</li>
-          <li>Update content</li>
-          <li>Modify these Terms at any time</li>
-        </ul>
-        <p class="section-text">
-          Continued use of the website after changes means you accept the updated Terms.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">10. Governing Law</h3>
-        <p class="section-text">
-          These Terms &amp; Conditions are governed by the laws of India. Any disputes will be subject to the
-          jurisdiction of courts in India.
+          By using this website, you agree to use it respectfully, not share illegal or abusive content, and accept
+          that all decisions you make are your own responsibility. Unfeel and the founder are not liable for any
+          consequences of your personal decisions.
         </p>
       </div>
     </div>
 
-    <!-- PRIVACY SCREEN -->
+    <!-- PRIVACY -->
     <div id="view-privacy" class="view">
       <h2 class="section-title">Privacy Policy</h2>
       <div class="card">
         <p class="section-text"><strong>Last Updated:</strong> 1 Dec 2025</p>
         <p class="section-text"><strong>Founder &amp; Creator:</strong> Prasanna Balu Gadre</p>
         <p class="section-text"><strong>Age Requirement:</strong> 18+ users only</p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">1. Introduction</h3>
+        <br/>
         <p class="section-text">
-          This Privacy Policy explains how Unfeel handles your information. At the current stage, Unfeel is a static
-          emotional support website and does <strong>not</strong> actively collect or store personal data through
-          forms, accounts, or databases.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">2. Information We Do NOT Collect</h3>
-        <p class="section-text">
-          At this time, Unfeel does not:
-        </p>
-        <ul class="section-text">
-          <li>Store your name, email, or password</li>
-          <li>Store your messages from the website AI chatbox</li>
-          <li>Collect payment information online</li>
-          <li>Track your browsing via analytics tools</li>
-          <li>Use cookies for personalized advertising</li>
-        </ul>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">3. AI Chat Privacy</h3>
-        <p class="section-text">
-          The AI-style chat on this website currently works as a simple front-end feature. Messages typed into the
-          chat are processed in your browser for demo responses and are not stored in any database from our side.
+          Right now, Unfeel works as a static support page. We do not collect or store personal data through this
+          website. There is no active login, no analytics, and no database connected.
         </p>
         <p class="section-text">
-          Still, you should avoid sharing extremely sensitive personal details (like full address, financial details,
-          or passwords) in any chat or message.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">4. Human Support Calls / WhatsApp</h3>
-        <p class="section-text">
-          When you contact the Unfeel human support via phone or WhatsApp, you may share personal details about your
-          breakup, feelings, or life situation. These conversations:
-        </p>
-        <ul class="section-text">
-          <li>Are direct between you and the Founder (or support person)</li>
-          <li>Are not recorded or stored by this website</li>
-          <li>Are not sold or shared with advertisers</li>
-        </ul>
-        <p class="section-text">
-          However, standard call logs or WhatsApp chat logs may be visible on your own device and within the respective
-          apps as per their policies.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">5. Third-Party Services</h3>
-        <p class="section-text">
-          Currently, Unfeel does not use third-party analytics or login providers on the website. In the future,
-          features like Google login, analytics, or backend-based AI may be added. If that happens, this Privacy Policy
-          will be updated with clear details.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">6. Children’s Privacy</h3>
-        <p class="section-text">
-          Unfeel is intended for <strong>18+ users only</strong>. We do not knowingly collect data from anyone under 18.
-          If you are under 18, please do not use this website or contact the service.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">7. Data Security</h3>
-        <p class="section-text">
-          Since Unfeel does not maintain a user database at this stage, there is minimal risk of data leakage from the
-          website itself. However, users are encouraged to:
-        </p>
-        <ul class="section-text">
-          <li>Be careful what they share over phone or WhatsApp</li>
-          <li>Protect their own device with passwords or lock screens</li>
-        </ul>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">8. Changes to This Policy</h3>
-        <p class="section-text">
-          The Founder may update this Privacy Policy as the Unfeel project grows (for example, when an app or login
-          system is introduced). Updates will be reflected on this page.
-        </p>
-
-        <h3 class="section-title" style="font-size:18px;margin-top:16px;">9. Contact</h3>
-        <p class="section-text">
-          For any privacy-related concern, you can contact:
+          The AI-style chat on this page works in your browser and is not saved to a server. Still, please avoid
+          sharing extremely sensitive information (like passwords, financial details, etc.) in any chat.
         </p>
         <p class="section-text">
-          <strong>Founder &amp; Creator:</strong> Prasanna Balu Gadre<br/>
-          📞 +91 8104155784<br/>
-          📧 support@unfeel.online
+          When you call or message on WhatsApp, your conversation is direct between you and the human on the other side.
+          The website itself does not record or store those chats. Your phone and apps may keep logs as per their own policies.
         </p>
       </div>
     </div>
 
     <footer>
-      © 2025 Unfeel · Breakup Support Brand · Founder &amp; Creator: <strong>Prasanna Balu Gadre</strong> · 18+ only
+      © 2025 Unfeel · Breakup Support Brand · Founder &amp; Creator:
+      <strong>Prasanna Balu Gadre</strong> · 18+ only
     </footer>
   </div>
 
-  <!-- FLOATING CHAT BUTTON -->
+  <!-- CHAT BUTTON -->
   <div id="chatButton" class="chat-button">💬</div>
 
   <!-- CHAT BOX -->
@@ -654,17 +472,15 @@
       Unfeel breakup buddy
       <span id="closeChat" class="close-chat">×</span>
     </div>
-
     <div id="chatMessages" class="chat-messages"></div>
-
     <div class="chat-input-area">
-      <input id="chatInput" type="text" placeholder="Bhai, kya hua? Yaha likh…" />
+      <input id="chatInput" type="text" placeholder="Type here…" />
       <button id="sendChat" class="chat-send">➤</button>
     </div>
   </div>
 
   <script>
-    // DAILY QUOTES
+    /* DAILY QUOTES */
     const quotes = [
       "Aaj ka dard kal ki strength hai.",
       "Tumhare bina bhi life chalti hai– aur ache se chalti hai.",
@@ -686,7 +502,7 @@
       quoteEl.textContent = quotes[index];
     })();
 
-    // TAB-LIKE NAVIGATION
+    /* TAB NAV */
     const menuLinks = document.querySelectorAll(".menu a");
     const views = document.querySelectorAll(".view");
 
@@ -700,22 +516,28 @@
         link.classList.add("active");
 
         views.forEach(v => {
-          if (v.id === "view-" + viewName) {
-            v.classList.add("active");
-          } else {
-            v.classList.remove("active");
-          }
+          if (v.id === "view-" + viewName) v.classList.add("active");
+          else v.classList.remove("active");
         });
       });
     });
 
-    // CHAT LOGIC
+    /* CHAT LOGIC */
     const chatButton = document.getElementById("chatButton");
     const chatBox = document.getElementById("chatBox");
     const closeChat = document.getElementById("closeChat");
     const sendChat = document.getElementById("sendChat");
     const chatInput = document.getElementById("chatInput");
     const chatMessages = document.getElementById("chatMessages");
+
+    let userProfile = { name: null, gender: null }; // male / female / other
+    let onboardingStep = 0; // 0: ask name, 1: ask gender, 2: normal chat
+
+    function getAddressWord() {
+      if (userProfile.gender === "male") return "bhai";
+      if (userProfile.gender === "female") return "behen";
+      return "dost";
+    }
 
     function addMessage(text, sender) {
       if (!chatMessages) return;
@@ -729,35 +551,108 @@
 
     function replyAI(userMsg) {
       const m = userMsg.toLowerCase();
+      const who = getAddressWord();
+      const namePart = userProfile.name ? `, ${userProfile.name}` : "";
 
-      if (m.includes("mar") || m.includes("suicide") || m.includes("khatam")) {
-        return "Sun bhai, ye thought bohot serious hai. Main sirf digital dost hu. Turant kisi trusted dost, family ya doctor/helpline ko call kar. Teri life is pain se bohot zyada important hai.";
+      // self-harm / suicide safety
+      if (
+        m.includes("suicide") ||
+        m.includes("mar") ||
+        m.includes("kill myself") ||
+        m.includes("end my life") ||
+        m.includes("khatam")
+      ) {
+        return (
+          `Sun ${who}${namePart}, ye thought bohot serious hai. Main sirf digital support hu, emergency handle nahi kar sakta. ` +
+          `Abhi ke abhi kisi trusted family member, dost, ya doctor/helpline ko call kar. Teri life is breakup se bohot zyada important hai. ` +
+          `Please akela mat reh is moment me.`
+        );
       }
 
-      if (m.includes("breakup") || m.includes("chod") || m.includes("chhod")) {
-        return "Breakup ka dard heavy hota hai, ye normal hai. Ab slow ho – khana, neend, phone ka time thoda stable rakh. Ex ko prove karne se zyada khud ko protect karna important hai.";
+      // breakup keywords
+      if (
+        m.includes("breakup") ||
+        m.includes("chhod") ||
+        m.includes("chod gaya") ||
+        m.includes("chod gayi") ||
+        m.includes("heartbreak") ||
+        m.includes("toot")
+      ) {
+        return (
+          `${who.toUpperCase()}${namePart}, breakup ka dard heavy hota hai, isliye jo tu feel kar raha/rahi hai woh normal hai. ` +
+          `Abhi tujhe perfect answer nahi milega, lekin ek cheez fix rakh – khud ke against mat ho. Thoda khana, thodi neend, phone ka use thoda control. ` +
+          `Ex ko prove karne se important hai khud ko protect karna. Time + distance se clarity aati hai, bas aaj ke din ko handle kar.`
+        );
       }
 
+      // missing / yaad
       if (m.includes("yaad") || m.includes("miss")) {
-        return "Yaad aana galat nahi. Bas itna yaad rakh – dimaag sirf ache moments repeat karta hai, poora sach nahi. Jab bhi yaad aaye, 3 line likh: kya hurt kiya, kya ignore kiya, aur aage tu kya deserve karta hai.";
+        return (
+          `Samajh sakta hu ${who}${namePart}, yaad aana galat nahi. Dimaag hamesha ache moments repeat karta hai, poora sach nahi. ` +
+          `Jab yaad bohot strong ho jaaye, ek simple exercise kar: 3 cheeze likh le – \n` +
+          `1) Unhone kya kiya jo tujhe hurt karta hai\n` +
+          `2) Kaunse red flags tune ignore kiye\n` +
+          `3) Aage tu kis type ka pyaar deserve karta/ti hai.\n` +
+          `Ye list baar baar dekhne se dimaag thoda balanced ho jaata hai.`
+        );
       }
 
-      if (m.includes("guilt") || m.includes("galti") || m.includes("fault")) {
-        return "Poore breakup ka blame ek banda seldom hota. Sabne kuch na kuch galti ki hoti hai. Seekh le, par khud ko punish karte rehna solution nahi hai.";
+      // guilt / galti
+      if (m.includes("galti") || m.includes("guilt") || m.includes("fault") || m.includes("meri hi")) {
+        return (
+          `${who}${namePart}, breakup kabhi bhi 100% ek insaan ki galti nahi hota. ` +
+          `Haan, ho sakta hai tujhse mistakes hui ho, lekin iska matlab ye nahi ki ab tu bas khud ko hi punish karta rahe. ` +
+          `Mistake + lesson = growth. Agar dil se sorry feel hota hai, tu khud ko bhi maaf karne ka right rakhta/ti hai.`
+        );
       }
 
+      // alone / lonely
       if (m.includes("alone") || m.includes("akela") || m.includes("lonely")) {
-        return "Akela feel hona normal hai jab aadat kisi ki pad jaati hai. Par sach me tu akela nahi – dost, family, aur tu khud. Aaj ex ko nahi, kisi safe insaan ko message ya voice note bhej de.";
+        return (
+          `Ye akela pan bohot real hai ${who}${namePart}, especially jab aadat kisi ki pad jaati hai. ` +
+          `Par sach me tu 100% akela nahi hai. Aaj ex ko nahi, kisi safe insaan ko message bhej – dost, cousin, family. ` +
+          `Simple "baat karni thi" likhne me sharm nahi. Human connection hi heavy feeling ko halka karta hai.`
+        );
       }
 
-      return "Samjha bhai. Ye jo bhi tu feel kar raha, light nahi hai. Slow chal, phone thoda kam use kar, basic routine pakad. Aur agar bohot overload ho raha, Human touch call option bhi hai – par sabse pehle, khud ke against mat ho ja.";
+      // pyaar / love confusion
+      if (m.includes("love") || m.includes("pyaar") || m.includes("pyar")) {
+        return (
+          `${who}${namePart}, pyaar galat nahi tha, bas jahan invest hua, insaan ya timing shayad sahi nahi the. ` +
+          `Ab pyaar ke naam pe apni self-respect discount mat kar. Aage chal ke tu kisi aur ko ek healthy version de payega/de payegi, ` +
+          `agar aaj khud ke saath honest rahega/rahegi. Pyaar future me phir mil sakta hai, par tu jaise ho, wo ek hi baar bana hai.`
+        );
+      }
+
+      // overthinking
+      if (m.includes("overthink") || m.includes("over thinking") || m.includes("soch") || m.includes("dimag")) {
+        return (
+          `Overthinking ka kaam har scene ka worst version banana hai ${who}${namePart}. ` +
+          `Ek rule try kar: jab bhi dimaag 10 cheeze soch raha ho, unme se sirf 2 cheeze likh jo real proof ke saath hain. ` +
+          `Baaki 8 imagination hoti hai. Har din 10–15 min ka "overthinking time" rakh, baaki time phone side me rakh ke normal routine me lag ja. ` +
+          `Thoda discipline se dimaag ko bhi aadat pad jaati hai shaant hone ki.`
+        );
+      }
+
+      // default
+      return (
+        `Samajh raha hu ${who}${namePart}, jo tu feel kar raha/rahi hai wo light nahi hai. Main tujhe fake "move on kar de" type line nahi bolunga. ` +
+        `Abhi ke liye sirf 3 chhote step pakad:\n` +
+        `1) Aaj ex ko message ya stalk nahi karna\n` +
+        `2) Khana, paani, neend thoda sa bhi sahi rakhna\n` +
+        `3) Agar bohot zyada heavy lag raha hai, to kisi real insaan se baat karna – dost, family, ya Human touch call.\n` +
+        `Slow progress bhi progress hi hoti hai ${who}.`
+      );
     }
 
     function openChatFirstTime() {
       if (!chatBox) return;
       chatBox.style.display = "flex";
+
       if (chatMessages && chatMessages.children.length === 0) {
-        addMessage("Bhai, jo bhi chal raha hai, yaha likh. Breakup, overthinking, ya kuch bhi.", "ai");
+        addMessage("Hey, I'm Unfeel – your breakup support buddy.", "ai");
+        addMessage("Pehle apna naam bata? (sirf first name bhi chalega)", "ai");
+        onboardingStep = 0;
       }
       if (chatInput) chatInput.focus();
     }
@@ -776,7 +671,46 @@
       if (!chatInput) return;
       const text = chatInput.value.trim();
       if (!text) return;
+
       addMessage(text, "user");
+
+      // onboarding: name
+      if (onboardingStep === 0) {
+        userProfile.name = text.split(" ")[0];
+        onboardingStep = 1;
+        setTimeout(() => {
+          addMessage(
+            `Nice to meet you, ${userProfile.name}. Ab bata, tu kaise identify karta/ti hai? (type: male / female / other)`,
+            "ai"
+          );
+        }, 400);
+        chatInput.value = "";
+        return;
+      }
+
+      // onboarding: gender
+      if (onboardingStep === 1) {
+        const g = text.toLowerCase();
+        if (g.includes("male") || g.includes("m") || g.includes("boy") || g.includes("ladka")) {
+          userProfile.gender = "male";
+        } else if (g.includes("female") || g.includes("f") || g.includes("girl") || g.includes("ladki")) {
+          userProfile.gender = "female";
+        } else {
+          userProfile.gender = "other";
+        }
+        onboardingStep = 2;
+        const who = getAddressWord();
+        setTimeout(() => {
+          addMessage(
+            `Theek hai ${who}, ${userProfile.name}. Ab jo bhi dil me hai, aram se yaha likh.`,
+            "ai"
+          );
+        }, 400);
+        chatInput.value = "";
+        return;
+      }
+
+      // normal chat
       chatInput.value = "";
       setTimeout(() => {
         const reply = replyAI(text);
@@ -797,274 +731,6 @@
       });
     }
   </script>
-  // DAILY QUOTES
-  const quotes = [
-    "Aaj ka dard kal ki strength hai.",
-    "Tumhare bina bhi life chalti hai– aur ache se chalti hai.",
-    "Self-respect > temporary feelings.",
-    "Jisne tumhe ignore kiya, uske liye ro mat.",
-    "Better days always start from bad nights.",
-    "Move on ek din me nahi, decisions se hota hai.",
-    "Jo tumhare liye nahi bana, wo kabhi rukega nahi.",
-    "Dil tootna breakdown nahi, breakthrough hota hai.",
-    "Tum jitna khud ko samjhoge, utna kam kisi aur ka wait karoge.",
-    "Aaj ek chhota win: ex ko text nahi kia."
-  ];
-
-  (function setupQuote() {
-    const quoteEl = document.getElementById("dailyQuote");
-    if (!quoteEl) return;
-    const today = new Date();
-    const index = today.getDate() % quotes.length;
-    quoteEl.textContent = quotes[index];
-  })();
-
-  // TAB-LIKE NAVIGATION
-  const menuLinks = document.querySelectorAll(".menu a");
-  const views = document.querySelectorAll(".view");
-
-  menuLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const viewName = link.getAttribute("data-view");
-      if (!viewName) return;
-
-      menuLinks.forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
-
-      views.forEach(v => {
-        if (v.id === "view-" + viewName) {
-          v.classList.add("active");
-        } else {
-          v.classList.remove("active");
-        }
-      });
-    });
-  });
-
-  // CHAT LOGIC + PROFILE
-  const chatButton = document.getElementById("chatButton");
-  const chatBox = document.getElementById("chatBox");
-  const closeChat = document.getElementById("closeChat");
-  const sendChat = document.getElementById("sendChat");
-  const chatInput = document.getElementById("chatInput");
-  const chatMessages = document.getElementById("chatMessages");
-
-  let userProfile = {
-    name: null,
-    gender: null // "male", "female", "other"
-  };
-  let onboardingStep = 0; 
-  // 0 = ask name, 1 = ask gender, 2 = normal chat
-
-  function getAddressWord() {
-    if (userProfile.gender === "male") return "bhai";
-    if (userProfile.gender === "female") return "behen";
-    return "dost";
-  }
-
-  function addMessage(text, sender) {
-    if (!chatMessages) return;
-    const msg = document.createElement("div");
-    msg.classList.add("chat-msg");
-    msg.classList.add(sender === "user" ? "msg-user" : "msg-ai");
-    msg.textContent = text;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function replyAI(userMsg) {
-    const m = userMsg.toLowerCase();
-    const who = getAddressWord();
-    const namePart = userProfile.name ? `, ${userProfile.name}` : "";
-
-    // Self-harm / suicide safety
-    if (
-      m.includes("suicide") ||
-      m.includes("mar") ||
-      m.includes("maar dunga") ||
-      m.includes("khatam ho") ||
-      m.includes("end my life")
-    ) {
-      return (
-        `Sun ${who}${namePart}, ye jo thought hai na bohot serious hai. Main sirf ek digital dost hu, ` +
-        `main emergency handle nahi kar sakta. Abhi ke abhi kisi trusted family member, dost ya doctor/helpline ko call kar. ` +
-        `Teri life is breakup se BOHOT zyada important hai. Please akela mat reh, kisi real insaan se baat zaroor kar.`
-      );
-    }
-
-    // Fresh breakup / chhod gaya / chhod gayi
-    if (
-      m.includes("breakup") ||
-      m.includes("chod gaya") ||
-      m.includes("chod gayi") ||
-      m.includes("chhod") ||
-      m.includes("toot") ||
-      m.includes("heartbreak")
-    ) {
-      return (
-        `${who.toUpperCase()}${namePart}, breakup ka dard normal se bhi zyada heavy hota hai, ` +
-        `isliye jo tu feel kar raha/rahi hai woh valid hai. Abhi turant perfect solution mat dhoondh, ` +
-        `pehle apne basics pakad: khana, neend, phone ka time thoda control. ` +
-        `Ex ko prove karne se zyada important hai ki tu khud ko protect kare. ` +
-        `Thoda time de, thoda distance de, phir dheere dheere clarity aayegi.`
-      );
-    }
-
-    // Yaad / miss
-    if (m.includes("yaad") || m.includes("miss")) {
-      return (
-        `Samajh sakta hu ${who}${namePart}, yaad aana galat nahi. Dimaag hamesha ache moments repeat karta hai, ` +
-        `poora sach nahi. Jab yaad bohot strong ho jaaye, ek kaam kar: 3 cheeze likh le – \n` +
-        `1) Unhone kya kiya jo tujhe hurt kiya\n` +
-        `2) Kya red flags tune ignore kiye\n` +
-        `3) Aage tu kya deserve karta/ti hai. \n` +
-        `Ye list dekh ke dheere dheere yaad soft ho jaati hai.`
-      );
-    }
-
-    // Guilt / galti / fault
-    if (m.includes("galti") || m.includes("guilt") || m.includes("fault") || m.includes("meri hi")) {
-      return (
-        `${who}${namePart}, pure breakup ka blame ek insaan pe rarely hota hai. ` +
-        `Haan, ho sakta hai tujhse bhi mistakes hui ho, par iska matlab ye nahi ki ab tu lifetime ` +
-        `khud ko punish karta rahe. Jo seekhna hai wo seekh, genuinely sorry feel hota hai to dil se maaf maang le—` +
-        `lekin uske baad baar baar khud ko gaali dena chhod de. Growth = mistake + lesson, not just guilt.`
-      );
-    }
-
-    // Alone / lonely / akela
-    if (m.includes("akela") || m.includes("alone") || m.includes("lonely")) {
-      return (
-        `Ye akela pan bahut heavy lagta hai ${who}${namePart}, specially jab aadat kisi ki pad jaati hai. ` +
-        `Par sach me tu 100% akela nahi hai. Aaj ka ek chhota step le – ex ko nahi, kisi dost, cousin ` +
-        `ya family member ko simple sa message ya voice note bhej. "Bas baat karni thi" likhne me koi shame nahi hai. ` +
-        `Human connection se hi ye heavy feeling dheere dheere halka padti hai.`
-      );
-    }
-
-    // Love / pyaar confusion
-    if (m.includes("love") || m.includes("pyaar") || m.includes("pyar")) {
-      return (
-        `${who}${namePart}, pyaar khud galat nahi tha. Bas jahan invest hua, timing ya insaan shayad sahi nahi tha. ` +
-        `Ab pyaar ke naam pe apni self-respect discount mat kar. Aage chal ke tu kisi aur ko ` +
-        `ek healthy, clear version de payega/de payegi – agar aaj khud ke saath honest rahega. ` +
-        `Pyaar future me phir mil sakta hai, par tu jaise ho na, wo ek hi baar bana hai. Usko lose mat kar.`
-      );
-    }
-
-    // Overthinking / dimaag / soch
-    if (m.includes("overthink") || m.includes("over thinking") || m.includes("soch") || m.includes("dimag")) {
-      return (
-        `Overthinking ka kaam hai har scene ka worst version bana dena. ` +
-        `Ek rule try kar ${who}${namePart}: jab bhi dimaag 10 baatein soch raha ho, unme se sirf ` +
-        `2 cheeze likh jo reality me proof ke saath ho. Baaki 8 imagination hoti hai. ` +
-        `Har din sirf 10–15 min ka "overthinking time" rakh, baaki time phone side me rakh ke normal kaam me lag ja. ` +
-        `Dheere dheere dimaag ko discipline lagta hai.`
-      );
-    }
-
-    // Default generic support
-    return (
-      `Samajh raha hu ${who}${namePart}, jo bhi tu feel kar raha/rahi hai wo light cheez nahi hai. ` +
-      `Main tujhe fake "move on kar de" type dialogue nahi bolunga. ` +
-      `Abhi ke liye bas 3 chhote step pakad:\n` +
-      `1) Aaj ex ko message ya stalk nahi karna\n` +
-      `2) Thoda sa khana, paani, neend ka dhyaan rakhna\n` +
-      `3) Agar bohot zyada heavy lage, to kisi real insaan se (dost/family ya Human touch call) baat karna. \n` +
-      `Slow progress bhi progress hi hoti hai ${who}.`
-    );
-  }
-
-  function openChatFirstTime() {
-    if (!chatBox) return;
-    chatBox.style.display = "flex";
-
-    if (chatMessages && chatMessages.children.length === 0) {
-      addMessage("Hey, I'm Unfeel – your breakup support buddy.", "ai");
-      addMessage("Pehle apna naam bata de? (sirf first name bhi chalega)", "ai");
-      onboardingStep = 0;
-    }
-
-    if (chatInput) chatInput.focus();
-  }
-
-  if (chatButton) {
-    chatButton.addEventListener("click", openChatFirstTime);
-  }
-
-  if (closeChat) {
-    closeChat.addEventListener("click", () => {
-      chatBox.style.display = "none";
-    });
-  }
-
-  function sendCurrentMessage() {
-    if (!chatInput) return;
-    const text = chatInput.value.trim();
-    if (!text) return;
-
-    addMessage(text, "user");
-
-    // Onboarding flow: name + gender
-    if (onboardingStep === 0) {
-      // Treat as name
-      userProfile.name = text.split(" ")[0]; // first word
-      onboardingStep = 1;
-      setTimeout(() => {
-        addMessage(
-          `Nice to meet you, ${userProfile.name}. Ab bata, tu kaise identify karta/ti hai? (type: male / female / other)`,
-          "ai"
-        );
-      }, 400);
-      chatInput.value = "";
-      return;
-    }
-
-    if (onboardingStep === 1) {
-      const g = text.toLowerCase();
-      if (g.includes("male") || g.includes("m") || g.includes("boy") || g.includes("ladka")) {
-        userProfile.gender = "male";
-      } else if (g.includes("female") || g.includes("f") || g.includes("girl") || g.includes("ladki")) {
-        userProfile.gender = "female";
-      } else {
-        userProfile.gender = "other";
-      }
-      onboardingStep = 2;
-
-      const who = getAddressWord();
-      setTimeout(() => {
-        addMessage(
-          `Theek hai ${who}, ${userProfile.name}. Ab se main tujhe ${who} bolunga. Jo bhi dil me hai, aram se likh de.`,
-          "ai"
-        );
-      }, 400);
-      chatInput.value = "";
-      return;
-    }
-
-    // Normal chat mode
-    chatInput.value = "";
-    setTimeout(() => {
-      const reply = replyAI(text);
-      addMessage(reply, "ai");
-    }, 500);
-  }
-
-  if (sendChat) {
-    sendChat.addEventListener("click", sendCurrentMessage);
-  }
-
-  if (chatInput) {
-    chatInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        sendCurrentMessage();
-      }
-    });
-  }
-</script>
-
 
 </body>
 </html>
