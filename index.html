@@ -1065,6 +1065,138 @@ chatButton.onclick = () => {
 };
 
 closeChat.onclick = () => chatBox.style.display = "none";
+    /* -------------------------
+   PART 3 – ADVANCED REPLIES
+   (ye purane genericReply ko overwrite karega)
+-------------------------- */
+
+function genericReply(text) {
+  const m = text.toLowerCase();
+  const w = addressWord();
+
+  // restart flow
+  if (m.includes("restart") || m.includes("fir se") || m.includes("start again")) {
+    startMainFeel();
+    return `Theek hai ${w}, fir se shuru karte hai. Pehle phir se dekhte hai sabse zyada pain kahan se aa raha hai.`;
+  }
+
+  // strong suicide / self-harm / severe danger
+  if (
+    m.includes("suicide") ||
+    m.includes("kill myself") ||
+    m.includes("end my life") ||
+    (m.includes("mar") && m.includes("khud")) ||
+    m.includes("khatam ho jaun") ||
+    m.includes("zinda rehne ka matlab nahi")
+  ) {
+    return (
+      `Sun ${w}, ye bohot serious thought hai.\n\n` +
+      `1) Agar abhi turant khud ko ya kisi aur ko harm karne ka mann ho raha hai,\n` +
+      `   to please apne shehar ke emergency number ya kisi trusted family/friend ko CALL kar.\n` +
+      `2) Online text se jyada zaruri hai ki koi real insaan tere saath ho.\n\n` +
+      `Agar bas dil halka karna hai, aur normal baat karni hai,\n` +
+      `to Unfeel Human Touch par baat kar sakta/sakti hai:\n` +
+      `📞 Call: +91 8104155784 (pehle 15 min FREE)\n\n` +
+      `Teri life iss breakup se bohot zyada important hai.`
+    );
+  }
+
+  // breakup direct mention
+  if (m.includes("breakup") || m.includes("break up") || m.includes("toot gaya") || m.includes("chhod gaya") || m.includes("chod gayi")) {
+    return (
+      `Breakup ka dard normal heartbreak nahi hota ${w}, yeh full body shock jaisa lagta hai.\n\n` +
+      `Abhi tujhe teen cheezon pe dhyaan dena hai:\n` +
+      `1) Damage control – basic khana, pani, neend compromise mat kar.\n` +
+      `2) No-contact – ex ko prove karne se zyada zaruri hai khud ko protect karna.\n` +
+      `3) Slow healing – miracle nahi hoga, lekin har din thoda-thoda better ho sakta hai.\n\n` +
+      `Agar tu chaahe to upar chat ke MCQ flow me “💔 Breakup pain” select karke\n` +
+      `thoda structured tareeke se explore kar sakta/sakti hai.`
+    );
+  }
+
+  // missing / yaad
+  if (m.includes("yaad") || m.includes("miss") || m.includes("remember") || m.includes("memories")) {
+    return (
+      `Yaad aana is not a problem, uske peeche bhaagna problem ban jaata hai ${w}.\n\n` +
+      `Jab yaad bohot heavy ho, ek chhota exercise try kar:\n` +
+      `• 3 good memories likh, phir 3 painful ya unfair moments bhi likh\n` +
+      `• dimaag sirf highlight reel dikhata hai, yeh exercise full movie yaad dilati hai\n\n` +
+      `Agar tu chaahe to mood/feeling ke hisaab se MCQ me “😢 Missing someone” select kar,\n` +
+      `main tere saath step-by-step reason + healing choose karwa sakta hu.`
+    );
+  }
+
+  // alone / lonely
+  if (m.includes("alone") || m.includes("akela") || m.includes("lonely") || m.includes("koi nahi")) {
+    return (
+      `Akelapan breakup ke baad bohot common hai ${w}. Pehle ek insaan roz milta, chat hoti,\n` +
+      `ab gap lag raha hai – yeh natural hai.\n\n` +
+      `Chhota sa plan:\n` +
+      `• Aaj kisi ek safe insan ko 1 line ka message: “Bas baat karni thi, free ho to.”\n` +
+      `• Ghar pe hi sahi, kisi ke saath chai/khana share kar.\n` +
+      `• Agar koi nahi mil raha, to thodi der nature me walk – bina phone, bina songs.\n\n` +
+      `Akelapan ka best antidote ekdum perfect dost nahi, chhote-chhote human touch hote hain.\n` +
+      `Chahe to MCQ me “🥺 Loneliness” select kar ke structured steps choose kar sakta/sakti hai.`
+    );
+  }
+
+  // guilt
+  if (m.includes("galti") || m.includes("guilt") || m.includes("meri hi") || m.includes("fault") || m.includes("blame")) {
+    return (
+      `Guilt ka kaam hai tumhe stuck rakhna ${w}, improve karna nahi.\n\n` +
+      `Agar genuinely tujse kahin galti hui bhi hai, to teen steps soch:\n` +
+      `1) Accept – haan, yeh part galat tha, yeh main better kar sakta/sakti hu.\n` +
+      `2) Learn – agle relation me boundary ya communication kaise change karunga/gi.\n` +
+      `3) Release – khud ko lifetime punishment mat de.\n\n` +
+      `Tu chahe to MCQ flow me “😔 Guilt / Self blame” choose karke\n` +
+      `thoda aur deep reason + action explore kar sakta/sakti hai.`
+    );
+  }
+
+  // overthinking
+  if (m.includes("overthink") || m.includes("over thinking") || m.includes("bahut soch") || m.includes("dimag") || m.includes("soch soch")) {
+    return (
+      `Overthinking ka matlab hai dimaag idle nahi, over-active hai ${w}.\n\n` +
+      `Ek chhota hack:\n` +
+      `• Din me ek “overthinking slot” rakh – jaise sham 8:00–8:15\n` +
+      `• Jab bhi dimaag bhaagne lage, khud ko bol – “ispe 8 baje sochenge”\n` +
+      `• Baaki time sirf body-based kaam – walk, stretching, paani, basic chores\n\n` +
+      `Tu MCQ me “🧠 Overthinking” select karega/karegi to main triggers aur healing options\n` +
+      `zyada structured tareeke se de sakta hu.`
+    );
+  }
+
+  // future / move on / doubt
+  if (
+    m.includes("move on") ||
+    m.includes("future") ||
+    m.includes("aage") ||
+    m.includes("kab tak") ||
+    m.includes("life khatam") ||
+    m.includes("kab theek")
+  ) {
+    return (
+      `“Kab tak aise hi chalega?” ye thought bohot common hai ${w}.\n\n` +
+      `Sach: koi exact date nahi hoti jahan se pain off & happiness on ho jaye.\n` +
+      `Lekin generally –\n` +
+      `• 1st week: shock / heavy pain\n` +
+      `• 2–4 week: mixed ups & downs, ache din–bure din\n` +
+      `• 2–3 months: agar routine + boundaries strong ho, weight kaafi halka padne lagta hai\n\n` +
+      `Move on का matlab ex ko bhool jana nahi, apne aap ko dubara paana hai.\n` +
+      `Ye process slow ho sakta hai, lekin har chhota step count karta hai.`
+    );
+  }
+
+  // random / default
+  return (
+    `Samajh raha hu ${w}, jo tu type kar raha/rahi hai wo halka matter nahi hai.\n\n` +
+    `Do options tere paas abhi bhi hai:\n` +
+    `• Upar diye gaye MCQ wale options se exact feeling choose kar – main guided flow shuru kar dunga.\n` +
+    `• Ya phir bas yaha type karke dil halka karte reh – jitna share karega/karegi, utna weight kam lagega.\n\n` +
+    `Agar kabhi lage text se kaam nahi chal raha, to human se bhi baat kar sakta/sakti hai:\n` +
+    `📞 Unfeel Human Touch: +91 8104155784 (15 min free).`
+  );
+}
   </script>
 
 </body>
