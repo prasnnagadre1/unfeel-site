@@ -797,6 +797,274 @@
       });
     }
   </script>
+  // DAILY QUOTES
+  const quotes = [
+    "Aaj ka dard kal ki strength hai.",
+    "Tumhare bina bhi life chalti hai– aur ache se chalti hai.",
+    "Self-respect > temporary feelings.",
+    "Jisne tumhe ignore kiya, uske liye ro mat.",
+    "Better days always start from bad nights.",
+    "Move on ek din me nahi, decisions se hota hai.",
+    "Jo tumhare liye nahi bana, wo kabhi rukega nahi.",
+    "Dil tootna breakdown nahi, breakthrough hota hai.",
+    "Tum jitna khud ko samjhoge, utna kam kisi aur ka wait karoge.",
+    "Aaj ek chhota win: ex ko text nahi kia."
+  ];
+
+  (function setupQuote() {
+    const quoteEl = document.getElementById("dailyQuote");
+    if (!quoteEl) return;
+    const today = new Date();
+    const index = today.getDate() % quotes.length;
+    quoteEl.textContent = quotes[index];
+  })();
+
+  // TAB-LIKE NAVIGATION
+  const menuLinks = document.querySelectorAll(".menu a");
+  const views = document.querySelectorAll(".view");
+
+  menuLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const viewName = link.getAttribute("data-view");
+      if (!viewName) return;
+
+      menuLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+
+      views.forEach(v => {
+        if (v.id === "view-" + viewName) {
+          v.classList.add("active");
+        } else {
+          v.classList.remove("active");
+        }
+      });
+    });
+  });
+
+  // CHAT LOGIC + PROFILE
+  const chatButton = document.getElementById("chatButton");
+  const chatBox = document.getElementById("chatBox");
+  const closeChat = document.getElementById("closeChat");
+  const sendChat = document.getElementById("sendChat");
+  const chatInput = document.getElementById("chatInput");
+  const chatMessages = document.getElementById("chatMessages");
+
+  let userProfile = {
+    name: null,
+    gender: null // "male", "female", "other"
+  };
+  let onboardingStep = 0; 
+  // 0 = ask name, 1 = ask gender, 2 = normal chat
+
+  function getAddressWord() {
+    if (userProfile.gender === "male") return "bhai";
+    if (userProfile.gender === "female") return "behen";
+    return "dost";
+  }
+
+  function addMessage(text, sender) {
+    if (!chatMessages) return;
+    const msg = document.createElement("div");
+    msg.classList.add("chat-msg");
+    msg.classList.add(sender === "user" ? "msg-user" : "msg-ai");
+    msg.textContent = text;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function replyAI(userMsg) {
+    const m = userMsg.toLowerCase();
+    const who = getAddressWord();
+    const namePart = userProfile.name ? `, ${userProfile.name}` : "";
+
+    // Self-harm / suicide safety
+    if (
+      m.includes("suicide") ||
+      m.includes("mar") ||
+      m.includes("maar dunga") ||
+      m.includes("khatam ho") ||
+      m.includes("end my life")
+    ) {
+      return (
+        `Sun ${who}${namePart}, ye jo thought hai na bohot serious hai. Main sirf ek digital dost hu, ` +
+        `main emergency handle nahi kar sakta. Abhi ke abhi kisi trusted family member, dost ya doctor/helpline ko call kar. ` +
+        `Teri life is breakup se BOHOT zyada important hai. Please akela mat reh, kisi real insaan se baat zaroor kar.`
+      );
+    }
+
+    // Fresh breakup / chhod gaya / chhod gayi
+    if (
+      m.includes("breakup") ||
+      m.includes("chod gaya") ||
+      m.includes("chod gayi") ||
+      m.includes("chhod") ||
+      m.includes("toot") ||
+      m.includes("heartbreak")
+    ) {
+      return (
+        `${who.toUpperCase()}${namePart}, breakup ka dard normal se bhi zyada heavy hota hai, ` +
+        `isliye jo tu feel kar raha/rahi hai woh valid hai. Abhi turant perfect solution mat dhoondh, ` +
+        `pehle apne basics pakad: khana, neend, phone ka time thoda control. ` +
+        `Ex ko prove karne se zyada important hai ki tu khud ko protect kare. ` +
+        `Thoda time de, thoda distance de, phir dheere dheere clarity aayegi.`
+      );
+    }
+
+    // Yaad / miss
+    if (m.includes("yaad") || m.includes("miss")) {
+      return (
+        `Samajh sakta hu ${who}${namePart}, yaad aana galat nahi. Dimaag hamesha ache moments repeat karta hai, ` +
+        `poora sach nahi. Jab yaad bohot strong ho jaaye, ek kaam kar: 3 cheeze likh le – \n` +
+        `1) Unhone kya kiya jo tujhe hurt kiya\n` +
+        `2) Kya red flags tune ignore kiye\n` +
+        `3) Aage tu kya deserve karta/ti hai. \n` +
+        `Ye list dekh ke dheere dheere yaad soft ho jaati hai.`
+      );
+    }
+
+    // Guilt / galti / fault
+    if (m.includes("galti") || m.includes("guilt") || m.includes("fault") || m.includes("meri hi")) {
+      return (
+        `${who}${namePart}, pure breakup ka blame ek insaan pe rarely hota hai. ` +
+        `Haan, ho sakta hai tujhse bhi mistakes hui ho, par iska matlab ye nahi ki ab tu lifetime ` +
+        `khud ko punish karta rahe. Jo seekhna hai wo seekh, genuinely sorry feel hota hai to dil se maaf maang le—` +
+        `lekin uske baad baar baar khud ko gaali dena chhod de. Growth = mistake + lesson, not just guilt.`
+      );
+    }
+
+    // Alone / lonely / akela
+    if (m.includes("akela") || m.includes("alone") || m.includes("lonely")) {
+      return (
+        `Ye akela pan bahut heavy lagta hai ${who}${namePart}, specially jab aadat kisi ki pad jaati hai. ` +
+        `Par sach me tu 100% akela nahi hai. Aaj ka ek chhota step le – ex ko nahi, kisi dost, cousin ` +
+        `ya family member ko simple sa message ya voice note bhej. "Bas baat karni thi" likhne me koi shame nahi hai. ` +
+        `Human connection se hi ye heavy feeling dheere dheere halka padti hai.`
+      );
+    }
+
+    // Love / pyaar confusion
+    if (m.includes("love") || m.includes("pyaar") || m.includes("pyar")) {
+      return (
+        `${who}${namePart}, pyaar khud galat nahi tha. Bas jahan invest hua, timing ya insaan shayad sahi nahi tha. ` +
+        `Ab pyaar ke naam pe apni self-respect discount mat kar. Aage chal ke tu kisi aur ko ` +
+        `ek healthy, clear version de payega/de payegi – agar aaj khud ke saath honest rahega. ` +
+        `Pyaar future me phir mil sakta hai, par tu jaise ho na, wo ek hi baar bana hai. Usko lose mat kar.`
+      );
+    }
+
+    // Overthinking / dimaag / soch
+    if (m.includes("overthink") || m.includes("over thinking") || m.includes("soch") || m.includes("dimag")) {
+      return (
+        `Overthinking ka kaam hai har scene ka worst version bana dena. ` +
+        `Ek rule try kar ${who}${namePart}: jab bhi dimaag 10 baatein soch raha ho, unme se sirf ` +
+        `2 cheeze likh jo reality me proof ke saath ho. Baaki 8 imagination hoti hai. ` +
+        `Har din sirf 10–15 min ka "overthinking time" rakh, baaki time phone side me rakh ke normal kaam me lag ja. ` +
+        `Dheere dheere dimaag ko discipline lagta hai.`
+      );
+    }
+
+    // Default generic support
+    return (
+      `Samajh raha hu ${who}${namePart}, jo bhi tu feel kar raha/rahi hai wo light cheez nahi hai. ` +
+      `Main tujhe fake "move on kar de" type dialogue nahi bolunga. ` +
+      `Abhi ke liye bas 3 chhote step pakad:\n` +
+      `1) Aaj ex ko message ya stalk nahi karna\n` +
+      `2) Thoda sa khana, paani, neend ka dhyaan rakhna\n` +
+      `3) Agar bohot zyada heavy lage, to kisi real insaan se (dost/family ya Human touch call) baat karna. \n` +
+      `Slow progress bhi progress hi hoti hai ${who}.`
+    );
+  }
+
+  function openChatFirstTime() {
+    if (!chatBox) return;
+    chatBox.style.display = "flex";
+
+    if (chatMessages && chatMessages.children.length === 0) {
+      addMessage("Hey, I'm Unfeel – your breakup support buddy.", "ai");
+      addMessage("Pehle apna naam bata de? (sirf first name bhi chalega)", "ai");
+      onboardingStep = 0;
+    }
+
+    if (chatInput) chatInput.focus();
+  }
+
+  if (chatButton) {
+    chatButton.addEventListener("click", openChatFirstTime);
+  }
+
+  if (closeChat) {
+    closeChat.addEventListener("click", () => {
+      chatBox.style.display = "none";
+    });
+  }
+
+  function sendCurrentMessage() {
+    if (!chatInput) return;
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    addMessage(text, "user");
+
+    // Onboarding flow: name + gender
+    if (onboardingStep === 0) {
+      // Treat as name
+      userProfile.name = text.split(" ")[0]; // first word
+      onboardingStep = 1;
+      setTimeout(() => {
+        addMessage(
+          `Nice to meet you, ${userProfile.name}. Ab bata, tu kaise identify karta/ti hai? (type: male / female / other)`,
+          "ai"
+        );
+      }, 400);
+      chatInput.value = "";
+      return;
+    }
+
+    if (onboardingStep === 1) {
+      const g = text.toLowerCase();
+      if (g.includes("male") || g.includes("m") || g.includes("boy") || g.includes("ladka")) {
+        userProfile.gender = "male";
+      } else if (g.includes("female") || g.includes("f") || g.includes("girl") || g.includes("ladki")) {
+        userProfile.gender = "female";
+      } else {
+        userProfile.gender = "other";
+      }
+      onboardingStep = 2;
+
+      const who = getAddressWord();
+      setTimeout(() => {
+        addMessage(
+          `Theek hai ${who}, ${userProfile.name}. Ab se main tujhe ${who} bolunga. Jo bhi dil me hai, aram se likh de.`,
+          "ai"
+        );
+      }, 400);
+      chatInput.value = "";
+      return;
+    }
+
+    // Normal chat mode
+    chatInput.value = "";
+    setTimeout(() => {
+      const reply = replyAI(text);
+      addMessage(reply, "ai");
+    }, 500);
+  }
+
+  if (sendChat) {
+    sendChat.addEventListener("click", sendCurrentMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendCurrentMessage();
+      }
+    });
+  }
+</script>
+
 
 </body>
 </html>
