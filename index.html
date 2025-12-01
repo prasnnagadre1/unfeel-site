@@ -691,13 +691,25 @@
       // onboarding: gender
       if (onboardingStep === 1) {
         const g = text.toLowerCase();
-        if (g.includes("male") || g.includes("m") || g.includes("boy") || g.includes("ladka")) {
-          userProfile.gender = "male";
-        } else if (g.includes("female") || g.includes("f") || g.includes("girl") || g.includes("ladki")) {
-          userProfile.gender = "female";
-        } else {
-          userProfile.gender = "other";
-        }
+        if (
+    g.includes("female") || 
+    g.includes("girl") || 
+    g.includes("ladki") || 
+    g === "f"
+) {
+    userProfile.gender = "female";
+} 
+else if (
+    g.includes("male") || 
+    g.includes("boy") || 
+    g.includes("ladka") || 
+    g === "m"
+) {
+    userProfile.gender = "male";
+}
+else {
+    userProfile.gender = "other";
+}
         onboardingStep = 2;
         const who = getAddressWord();
         setTimeout(() => {
