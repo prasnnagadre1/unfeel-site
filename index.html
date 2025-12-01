@@ -677,7 +677,394 @@
 
   <!-- PART 2 & 3 JAVASCRIPT YAHAN AAYEGA -->
   <script>
-    // Abhi khali hai – next message me Part 2 (JS) paste karega yahi ke andar
+    /* -------------------------
+      DAILY QUOTES
+-------------------------- */
+const quotes = [
+  "Aaj ka dard kal ki strength hai.",
+  "Tumhare bina bhi life chalti hai– aur ache se chalti hai.",
+  "Self-respect > temporary feelings.",
+  "Better days always start from bad nights.",
+  "Move on ek din me nahi, decisions se hota hai.",
+  "Jo tumhare liye nahi bana, wo kabhi rukega nahi.",
+  "Tum jitna khud ko samjhoge, utna kam kisi aur ka wait karoge.",
+  "Aaj ek chhota win: ex ko text nahi kia.",
+  "Breakup tumhe weak nahi, real banata hai.",
+  "Dard temporary, comeback permanent."
+];
+
+(function setupQuote() {
+  const quoteEl = document.getElementById("dailyQuote");
+  if (!quoteEl) return;
+  const today = new Date().getDate();
+  quoteEl.textContent = quotes[today % quotes.length];
+})();
+
+/* -------------------------
+        TAB SWITCH
+-------------------------- */
+const menuLinks = document.querySelectorAll(".menu a");
+const views = document.querySelectorAll(".view");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const viewName = link.getAttribute("data-view");
+
+    menuLinks.forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+
+    views.forEach(v => {
+      if (v.id === "view-" + viewName) v.classList.add("active");
+      else v.classList.remove("active");
+    });
+  });
+});
+
+/* -------------------------
+     TOOLS CARD SWITCH
+-------------------------- */
+const featureCards = document.querySelectorAll(".feature-card");
+const toolPanels = document.querySelectorAll(".tool-panel");
+
+featureCards.forEach(card => {
+  card.addEventListener("click", () => {
+    const tool = card.getAttribute("data-tool");
+    featureCards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+
+    toolPanels.forEach(panel => panel.classList.remove("active"));
+    document.getElementById("tool-" + tool).classList.add("active");
+  });
+});
+
+/* -------------------------
+         CHAT UI
+-------------------------- */
+const chatButton = document.getElementById("chatButton");
+const chatBox = document.getElementById("chatBox");
+const closeChat = document.getElementById("closeChat");
+const sendChat = document.getElementById("sendChat");
+const chatInput = document.getElementById("chatInput");
+const chatMessages = document.getElementById("chatMessages");
+
+let tone = "dost";  
+let flowStage = 0;  
+
+function addressWord() {
+  return tone;
+}
+
+function addMessage(text, sender) {
+  const msg = document.createElement("div");
+  msg.classList.add("chat-msg");
+  msg.classList.add(sender === "user" ? "msg-user" : "msg-ai");
+  msg.textContent = text;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function optionBtn(label, click) {
+  const b = document.createElement("button");
+  b.textContent = label;
+  b.style.cssText = `
+    padding:6px 10px;margin:4px;font-size:11px;
+    border-radius:999px;border:1px solid #00aaff;
+    background:#0f0f15;color:#fff;cursor:pointer;
+  `;
+  b.onclick = click;
+  return b;
+}
+
+function showOptions(list) {
+  const wrap = document.createElement("div");
+  wrap.style.margin = "10px 0";
+
+  list.forEach(o => {
+    wrap.appendChild(optionBtn(o.label, () => {
+      addMessage(o.label, "user");
+      if (o.onPick) o.onPick();
+      wrap.remove();
+    }));
+  });
+
+  chatMessages.appendChild(wrap);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/* -------------------------
+      MCQ – LEVEL 1
+-------------------------- */
+function startTone() {
+  flowStage = 0;
+  addMessage("Tu chahata/chahti hu main tujhe kaise bulaun?", "ai");
+  showOptions([
+    { label: "Bhai 🧑", onPick: () => { tone = "bhai"; addMessage("Theek hai bhai.", "ai"); startMainFeel(); }},
+    { label: "Behen 👩", onPick: () => { tone = "behen"; addMessage("Theek hai behen.", "ai"); startMainFeel(); }},
+    { label: "Dost 🤝", onPick: () => { tone = "dost"; addMessage("Theek hai dost.", "ai"); startMainFeel(); }}
+  ]);
+}
+
+/* -------------------------
+      MCQ – LEVEL 2
+-------------------------- */
+function startMainFeel() {
+  flowStage = 1;
+  const w = addressWord();
+  addMessage(`Ab bata ${w}, abhi sabse zyada kya hit kar raha hai?`, "ai");
+
+  showOptions([
+    { label: "💔 Breakup pain", onPick: breakupPain },
+    { label: "😢 Missing someone", onPick: missingFeel },
+    { label: "😡 Anger / Betrayal", onPick: angerFeel },
+    { label: "😔 Guilt / Self blame", onPick: guiltFeel },
+    { label: "🥺 Loneliness", onPick: lonelyFeel },
+    { label: "🧠 Overthinking", onPick: overthinkingFeel },
+    { label: "🌑 Dark thoughts", onPick: darkThoughts }
+  ]);
+}
+
+/* -------------------------
+  MCQ – LEVEL 3 (Reasons)
+-------------------------- */
+
+function breakupPain() {
+  const w = addressWord();
+  addMessage(`Breakup ka pain real hota hai ${w}.`, "ai");
+  askReasons([
+    "Mujhe chhod diya",
+    "Unexpected breakup",
+    "Constant fights",
+    "Cheating doubt",
+    "Deep attachment"
+  ]);
+}
+
+function missingFeel() {
+  const w = addressWord();
+  addMessage(`Yaad aana normal hai ${w}.`, "ai");
+  askReasons([
+    "Old memories",
+    "Photos",
+    "Chats",
+    "Calls",
+    "Old habits"
+  ]);
+}
+
+function angerFeel() {
+  const w = addressWord();
+  addMessage(`Gussa bhi heartbreak ka part hai ${w}.`, "ai");
+  askReasons([
+    "Betrayal",
+    "Unfair behaviour",
+    "Suddenly moved on",
+    "No closure",
+    "Mixed signals"
+  ]);
+}
+
+function guiltFeel() {
+  const w = addressWord();
+  addMessage(`Guilt bohot heavy hota hai ${w}.`, "ai");
+  askReasons([
+    "Meri galti lagti hai",
+    "Maine hurt kiya",
+    "Maine try nahi kiya",
+    "Expectations zyada thi",
+    "Sab kuch confuse lag raha"
+  ]);
+}
+
+function lonelyFeel() {
+  const w = addressWord();
+  addMessage(`Akelapan sabse dangerous hota hai ${w}.`, "ai");
+  askReasons([
+    "Aadatein yaad aa rahi",
+    "Koi baat karne wala nahi",
+    "Weekend tough lagta",
+    "Raat me dard zyada",
+    "Feeling left behind"
+  ]);
+}
+
+function overthinkingFeel() {
+  const w = addressWord();
+  addMessage(`Overthinking dimaag ka trap hota hai ${w}.`, "ai");
+  askReasons([
+    "Future ka darr",
+    "Wo wapas aayega?",
+    "Kya main enough nahi tha/thi?",
+    "Mere saath hi problem?",
+    "Mixed emotions"
+  ]);
+}
+
+/* -------------------------
+     DANGER MODE (SUICIDE)
+-------------------------- */
+function darkThoughts() {
+  const w = addressWord();
+  addMessage(`Sun ${w}… ye bohot heavy thought hai.`, "ai");
+
+  addMessage(
+    "Agar life–threatening feel ho raha, turant apne shehar ke **emergency helpline**, kisi trusted family/friend ya professional ko call karo.\n\n" +
+    "Agar bas baat karni hai, to tum humare Human Touch ko kabhi bhi call kar sakte ho:\n📞 +91 8104155784 (15 min FREE).",
+    "ai"
+  );
+
+  healingOptions();
+}
+
+/* -------------------------
+      ASK SUB-REASON
+-------------------------- */
+function askReasons(arr) {
+  flowStage = 2;
+  const w = addressWord();
+  addMessage(`Theek hai ${w}. Thoda aur clear karte hai – kis wajah se pain zyada aa raha hai?`, "ai");
+
+  showOptions(
+    arr.map(r => ({
+      label: r,
+      onPick: () => {
+        addMessage(`Samajh gaya ${w}.`, "ai");
+        healingOptions();
+      }
+    }))
+  );
+}
+
+/* -------------------------
+   MCQ – LEVEL 4 HEALING
+-------------------------- */
+function healingOptions() {
+  const w = addressWord();
+  addMessage(`Chal ${w}, ab ek healing step choose kar:`, "ai");
+
+  showOptions([
+    { label: "🧘 Breathing reset", onPick: () => breathingGuide() },
+    { label: "✍️ Venting exercise", onPick: () => ventingGuide() },
+    { label: "💭 Reality check", onPick: () => realityGuide() },
+    { label: "❤️ Self-worth reminder", onPick: () => worthGuide() },
+    { label: "📵 Detox plan", onPick: () => detoxGuide() },
+    { label: "🎧 Music therapy", onPick: () => musicGuide() }
+  ]);
+}
+
+/* -------------------------
+  LEVEL 4 RESPONSES
+-------------------------- */
+function breathingGuide() {
+  addMessage(
+    "Slow… inhale 4 sec, hold 7 sec, exhale 8 sec. 5 cycles.\nYe body ko survival mode se bahar laata hai.",
+    "ai"
+  );
+  miniPlan();
+}
+
+function ventingGuide() {
+  addMessage(
+    "Phone/notes me likh: “Mere dard ka sabse bada reason ____ hai.”\n3 lines likhne se dimaag ka pressure half ho jata.",
+    "ai"
+  );
+  miniPlan();
+}
+
+function realityGuide() {
+  addMessage(
+    "Dimaag highlight reel chalata hai. Reality me issues bhi the.\nEk line likh: “Sach kya tha, fantasy kya thi?”",
+    "ai"
+  );
+  miniPlan();
+}
+
+function worthGuide() {
+  addMessage(
+    "Tu jitna soch raha/rahi hai, utna weak nahi hai.\nBreakup teri value decide nahi karta.",
+    "ai"
+  );
+  miniPlan();
+}
+
+function detoxGuide() {
+  addMessage(
+    "1) Ex chat mute\n2) Stalking limit: 0–1 baar/day\n3) Photos hidden album\n4) Night phone cutoff 11 PM",
+    "ai"
+  );
+  miniPlan();
+}
+
+function musicGuide() {
+  addMessage(
+    "Cry it out: “Channa Mereya, Judaai, Agar tum saath ho”\nComeback vibes: “Ilahi, No lie, Lut put gaya (remix)”",
+    "ai"
+  );
+  miniPlan();
+}
+
+/* -------------------------
+   MCQ – LEVEL 5 MINI PLAN
+-------------------------- */
+function miniPlan() {
+  const w = addressWord();
+  addMessage(`${w}, ab ek chhota step choose kar jo abhi kar sake:`, "ai");
+
+  showOptions([
+    { label: "60 sec breathing", onPick: () => addMessage("Good. Body ko calm rakhna best step.", "ai") },
+    { label: "3 min walk", onPick: () => addMessage("Walk se chemicals reset hote.", "ai") },
+    { label: "Water sip", onPick: () => addMessage("Hydration anxiety kam karta.", "ai") },
+    { label: "Phone side me rakho", onPick: () => addMessage("Triggers kam honge.", "ai") },
+    { label: "1 line journaling", onPick: () => addMessage("Nice. Mind unload hota.", "ai") }
+  ]);
+}
+
+/* -------------------------
+      FALLBACK TEXT REPLY
+-------------------------- */
+function genericReply(text) {
+  const m = text.toLowerCase();
+  const w = addressWord();
+
+  if (
+    m.includes("mar") || m.includes("kill") || m.includes("end") ||
+    m.includes("suicide") || m.includes("khatam")
+  ) {
+    return `Sun ${w}, ye dangerous thought hai.\nAise me emergency helpline ya trusted person ko call karo.\nAgar bas baat karni hai: +91 8104155784 (15 min free).`;
+  }
+
+  return `Samajh raha hu ${w}. Agar clarity chahiye ho to upar wale MCQ se choose kar sakte ho.`;
+}
+
+/* -------------------------
+        SEND TEXT
+-------------------------- */
+function sendMsg() {
+  const t = chatInput.value.trim();
+  if (!t) return;
+  addMessage(t, "user");
+  chatInput.value = "";
+
+  setTimeout(() => {
+    addMessage(genericReply(t), "ai");
+  }, 300);
+}
+
+sendChat.onclick = sendMsg;
+chatInput.onkeydown = e => { if (e.key === "Enter") sendMsg(); };
+
+/* -------------------------
+      OPEN CHAT
+-------------------------- */
+chatButton.onclick = () => {
+  chatBox.style.display = "flex";
+  if (chatMessages.children.length === 0) {
+    addMessage("Hey, I'm Unfeel – your breakup support buddy.", "ai");
+    startTone();
+  }
+};
+
+closeChat.onclick = () => chatBox.style.display = "none";
   </script>
 
 </body>
