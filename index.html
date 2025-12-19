@@ -4,149 +4,184 @@
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UNFEEL – Heal. Grow. Move On. A calm space for motivation, emotional support, and inner strength.">
-<meta name="keywords" content="unfeel, heal, grow, move on, motivation, emotional support">
+<meta name="description" content="UNFEEL – Heal. Grow. Move On. A calm space for emotional support and motivation.">
 <meta name="author" content="Prasanna Gadre">
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0b0b0f;
+  background: radial-gradient(circle at top, #0b1b2a, #050b12);
   color: #ffffff;
+}
+
+/* Top Tabs */
+.top-tabs {
+  position: fixed;
+  top: 14px;
+  right: 18px;
   display: flex;
-  justify-content: center;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.top-tabs button {
+  background: transparent;
+  border: 1px solid #5fd1ff;
+  color: #5fd1ff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(95,209,255,0.35);
 }
 
 .container {
   max-width: 420px;
-  width: 100%;
-  padding: 35px 20px 120px;
+  margin: auto;
+  padding: 90px 20px 130px;
   text-align: center;
 }
 
 .logo {
-  font-size: 38px;
+  font-size: 40px;
   font-weight: bold;
   letter-spacing: 3px;
-  color: #7cf3ff;
-  text-shadow: 0 0 25px rgba(124,243,255,0.7);
+  color: #5fd1ff;
+  text-shadow: 0 0 30px rgba(95,209,255,0.8);
 }
 
 .tagline {
   margin-top: 6px;
   font-size: 14px;
-  color: #aaa;
+  color: #b7d9ff;
 }
 
-.feature-hint {
-  margin-top: 12px;
-  font-size: 13px;
-  color: #888;
-}
-
-.quote-box {
-  margin: 50px 0 25px;
+.section {
+  margin-top: 45px;
   padding: 26px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 30px rgba(124,243,255,0.18);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 0 35px rgba(95,209,255,0.18);
+}
+
+.quote {
   font-size: 18px;
   line-height: 1.6;
 }
 
+.subtext {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #9bbad6;
+}
+
 .download-btn {
   display: block;
-  margin: 14px auto;
-  padding: 14px;
+  margin: 18px auto;
+  padding: 15px;
   width: 100%;
   max-width: 280px;
   border-radius: 30px;
   text-decoration: none;
   font-size: 15px;
   font-weight: bold;
-  color: #000;
-  background: linear-gradient(135deg,#7cf3ff,#4adede);
-  box-shadow: 0 0 25px rgba(124,243,255,0.6);
+  color: #001018;
+  background: linear-gradient(135deg,#5fd1ff,#3bb6ff);
+  box-shadow: 0 0 28px rgba(95,209,255,0.7);
 }
 
 .download-btn.secondary {
   background: transparent;
-  color: #7cf3ff;
-  border: 1px solid #7cf3ff;
-  box-shadow: 0 0 20px rgba(124,243,255,0.3);
+  color: #5fd1ff;
+  border: 1px solid #5fd1ff;
 }
 
-.trust-line {
-  margin-top: 18px;
-  font-size: 13px;
-  color: #aaa;
-}
-
-.support {
-  margin-top: 14px;
-  font-size: 12px;
-  color: #777;
-}
-
-.support a {
-  color: #7cf3ff;
-  text-decoration: none;
+.content-box {
+  display: none;
+  margin-top: 35px;
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 0 25px rgba(95,209,255,0.15);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
 }
 
 .founder {
-  margin-top: 40px;
+  margin-top: 50px;
   font-size: 12px;
-  color: #777;
+  color: #8aa5c2;
 }
 
 .disclaimer {
   margin-top: 18px;
   font-size: 11px;
-  color: #666;
-  line-height: 1.5;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #0b0b0f;
-  padding: 12px 0;
-  font-size: 12px;
-  display: flex;
-  justify-content: space-around;
-  border-top: 1px solid #1f1f1f;
-}
-
-.footer a {
-  color: #7cf3ff;
-  text-decoration: none;
+  color: #6f89a3;
 }
 </style>
 </head>
 
 <body>
 
+<!-- TOP TABS -->
+<div class="top-tabs">
+  <button onclick="showTab('about')">About</button>
+  <button onclick="showTab('terms')">Terms</button>
+  <button onclick="showTab('privacy')">Privacy</button>
+</div>
+
 <div class="container">
 
   <div class="logo">UNFEEL</div>
   <div class="tagline">Heal · Grow · Move On</div>
-  <div class="feature-hint">Chat · Voice · Video · Secure Sessions</div>
 
-  <div class="quote-box" id="quote">
-    Loading today’s motivation...
+  <!-- DAILY QUOTE -->
+  <div class="section">
+    <div class="quote" id="quote">Loading...</div>
+    <div class="subtext">
+      A new reminder every day, just for you.
+    </div>
+  </div>
+
+  <!-- WHY UNFEEL -->
+  <div class="section">
+    <div class="quote">
+      Sometimes you don’t need advice.<br>
+      You just need to feel heard.
+    </div>
+    <div class="subtext">
+      UNFEEL is built for quiet nights, heavy thoughts,<br>
+      and moments when you don’t know who to talk to.
+    </div>
   </div>
 
   <a class="download-btn" href="#">Android App – Coming Soon</a>
   <a class="download-btn secondary" href="#">iPhone App – Coming Soon</a>
 
-  <div class="trust-line">
-    Built for people who feel unheard.
+  <!-- ABOUT -->
+  <div class="content-box" id="about">
+    <h3>About UNFEEL</h3>
+    UNFEEL is a calm digital space created for emotional support and motivation.
+    It exists to remind you that your feelings are valid and you are not alone.
   </div>
 
-  <div class="support">
-    📩 Support: <a href="mailto:support@unfeel.online">support@unfeel.online</a>
+  <!-- TERMS -->
+  <div class="content-box" id="terms">
+    <h3>Terms & Conditions</h3>
+    UNFEEL offers emotional support and listening services only.
+    This platform does not provide medical, psychological, or legal advice.
+    Users are responsible for their own decisions and actions.
+  </div>
+
+  <!-- PRIVACY -->
+  <div class="content-box" id="privacy">
+    <h3>Privacy Policy</h3>
+    We respect your privacy.
+    No personal data is sold or shared.
+    Basic usage data may be collected to improve the experience.
+    Conversations are treated with confidentiality.
   </div>
 
   <div class="founder">
@@ -154,55 +189,29 @@ body {
   </div>
 
   <div class="disclaimer">
-    UNFEEL offers emotional support and listening services only.<br>
-    This platform is not a substitute for professional medical or psychological therapy.
+    UNFEEL is not a substitute for professional therapy or medical treatment.
   </div>
 
 </div>
 
-<div class="footer">
-  <a href="#" onclick="showTerms()">Terms</a>
-  <a href="#" onclick="showPrivacy()">Privacy</a>
-</div>
-
 <script>
-// Motivational quotes (loop-based, daily auto change)
 const quotes = [
   "You survived things you never thought you would.",
-  "Healing is slow, but it is happening.",
+  "Healing takes time, and that’s okay.",
   "Not everything lost is a loss.",
-  "You are allowed to outgrow people.",
-  "Peace feels better than proving a point.",
-  "Some endings protect you.",
-  "Choosing yourself is strength.",
-  "This pain is shaping your power.",
-  "You don’t need closure to move forward.",
-  "Every day you are becoming stronger."
+  "Peace is more powerful than answers.",
+  "You are allowed to choose yourself.",
+  "Slow progress is still progress."
 ];
 
-// Daily quote logic
 const dayIndex = Math.floor(
   (new Date().setHours(0,0,0,0) / 86400000) % quotes.length
 );
 document.getElementById("quote").innerText = quotes[dayIndex];
 
-// Terms & Privacy popups
-function showTerms() {
-  alert(
-    "Terms & Conditions\n\n" +
-    "UNFEEL provides emotional support and listening services only.\n" +
-    "Users are responsible for their own decisions.\n" +
-    "This platform does not provide medical, legal, or psychological treatment."
-  );
-}
-
-function showPrivacy() {
-  alert(
-    "Privacy Policy\n\n" +
-    "We respect your privacy.\n" +
-    "No personal data is sold or shared without consent.\n" +
-    "Basic usage data may be collected to improve the service."
-  );
+function showTab(id) {
+  document.querySelectorAll('.content-box').forEach(el => el.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
 }
 </script>
 
