@@ -4,148 +4,88 @@
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UNFEEL – Heal. Grow. Move On. A calm space for emotional balance.">
+<meta name="description" content="UNFEEL – A calm space for emotional balance. Heal. Grow. Move On.">
 <meta name="author" content="Prasanna Gadre">
 
 <style>
-/* ===== NEON BLUE GLOW ===== */
 :root{
-  --glow-main:#00e5ff;
+  --glow:#00e5ff;
   --glow-soft:rgba(0,229,255,.35);
-  --glow-strong:rgba(0,229,255,.9);
+  --bg1:#031923;
+  --bg2:#00060a;
 }
 
-/* ===== BASE ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:radial-gradient(circle at top,#031923,#00060a);
-  color:#ffffff;
-  animation: pageFade 1.2s ease;
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
+  color:#fff;
+  overflow-x:hidden;
+  animation:fadeIn 1.2s ease;
 }
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ===== ANIMATIONS ===== */
-@keyframes pageFade{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-@keyframes slideUp{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
-}
-@keyframes glowPulse{
-  0%{box-shadow:0 0 18px var(--glow-soft);}
-  50%{box-shadow:0 0 36px var(--glow-strong);}
-  100%{box-shadow:0 0 18px var(--glow-soft);}
-}
-
-/* ===== TOP NAV ===== */
 .nav{
-  position:fixed;
-  top:16px;
-  right:18px;
-  display:flex;
-  gap:14px;
-  z-index:1000;
+  position:fixed;top:16px;right:18px;display:flex;gap:14px;z-index:1000;
 }
 .nav a{
-  text-decoration:none;
-  font-size:13px;
-  color:var(--glow-main);
-  padding:6px 14px;
-  border:1px solid var(--glow-main);
-  border-radius:20px;
-  box-shadow:0 0 14px var(--glow-soft);
+  color:var(--glow);text-decoration:none;font-size:13px;
+  padding:7px 16px;border-radius:22px;border:1px solid var(--glow);
+  box-shadow:0 0 14px var(--glow-soft);transition:.3s;
 }
+.nav a:hover{background:rgba(0,229,255,.12)}
 
-/* ===== LAYOUT ===== */
 .container{
-  max-width:420px;
-  margin:auto;
-  padding:100px 20px 140px;
-  text-align:center;
+  max-width:430px;margin:auto;padding:110px 20px 140px;text-align:center;
 }
 
-/* ===== LOGO ===== */
 .logo{
-  font-size:44px;
-  font-weight:700;
-  letter-spacing:3px;
-  color:var(--glow-main);
-  text-shadow:0 0 40px var(--glow-strong);
-  animation: slideUp 1s ease;
+  font-size:46px;font-weight:700;letter-spacing:3px;
+  color:var(--glow);text-shadow:0 0 40px var(--glow);
+  animation:slideUp .9s ease;
 }
-.tagline{
-  margin-top:6px;
-  font-size:14px;
-  color:#9fefff;
-  animation: slideUp 1.2s ease;
-}
+.tagline{margin-top:8px;font-size:14px;color:#9fefff;animation:slideUp 1.1s ease}
+.hook{margin-top:14px;font-size:13px;color:#bfefff;animation:slideUp 1.3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
-/* ===== CARD ===== */
 .card{
-  margin-top:45px;
-  padding:28px;
-  border-radius:22px;
-  background:rgba(255,255,255,0.04);
-  box-shadow:0 0 40px var(--glow-soft);
-  animation: slideUp 1.4s ease;
+  margin-top:46px;padding:30px;border-radius:24px;
+  background:rgba(255,255,255,.06);backdrop-filter:blur(12px);
+  box-shadow:0 0 38px var(--glow-soft);
 }
-.quote{
-  font-size:18px;
-  line-height:1.6;
-  animation: glowPulse 4s infinite;
-}
-.subtext{
-  margin-top:14px;
-  font-size:13px;
-  color:#8fdff0;
-}
-.features{
-  margin-top:18px;
-  font-size:13px;
-  line-height:1.8;
-  color:#b9eef7;
-}
+.quote{font-size:19px;line-height:1.7}
+.subtext{margin-top:14px;font-size:13px;color:#8fdff0}
+.list{margin-top:16px;font-size:13px;line-height:1.9;color:#c8f3ff}
 
-/* ===== BUTTONS ===== */
 .btn{
-  display:block;
-  margin:22px auto;
-  padding:15px;
-  width:100%;
-  max-width:280px;
-  border-radius:30px;
-  text-decoration:none;
-  font-size:15px;
-  font-weight:700;
-  color:#00181f;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  animation: glowPulse 3s infinite;
+  display:block;margin:26px auto;padding:16px;width:100%;max-width:300px;
+  border-radius:32px;text-decoration:none;font-size:15px;font-weight:700;
+  color:#00181f;background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  box-shadow:0 0 32px var(--glow);transition:.3s;
 }
-.btn.secondary{
-  background:transparent;
-  color:var(--glow-main);
-  border:1px solid var(--glow-main);
-}
+.btn:hover{transform:translateY(-3px)}
+.btn.secondary{background:transparent;color:var(--glow);border:1px solid var(--glow)}
 
-/* ===== FOOTER ===== */
-.footer{
-  margin-top:60px;
-  font-size:12px;
-  color:#9ad9e6;
-}
-.disclaimer{
-  margin-top:14px;
-  font-size:11px;
-  color:#7fbfcc;
+.footer{margin-top:70px;font-size:12px;color:#9ad9e6}
+.disclaimer{margin-top:14px;font-size:11px;color:#7fbfcc}
+
+/* DESKTOP */
+@media(min-width:900px){
+  .container{max-width:1100px;text-align:left;padding:130px 40px 160px}
+  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+  .logo{font-size:64px}
+  .tagline{font-size:16px}
+  .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:70px}
+  .card{margin-top:0}
+  .btn{display:inline-block;margin:26px 16px 0 0}
+  .footer{text-align:center}
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP NAV -->
 <div class="nav">
   <a href="about.html">About</a>
   <a href="terms.html">Terms</a>
@@ -154,42 +94,46 @@ body{
 
 <div class="container">
 
-  <!-- HERO -->
-  <div class="logo">UNFEEL</div>
-  <div class="tagline">Heal · Grow · Move On</div>
+  <div class="hero-grid">
+    <div>
+      <div class="logo">UNFEEL</div>
+      <div class="tagline">Heal · Grow · Move On</div>
+      <div class="hook">For nights when your mind is louder than the world.</div>
 
-  <!-- DAILY QUOTE -->
-  <div class="card">
-    <div class="quote" id="quote">Loading today’s thought…</div>
-    <div class="subtext">A new reminder every day.</div>
-  </div>
+      <a class="btn" href="#">Android App – Coming Soon</a>
+      <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+    </div>
 
-  <!-- ABOUT -->
-  <div class="card">
-    <div class="quote">UNFEEL is a quiet place for heavy thoughts.</div>
-    <div class="subtext">When emotions feel unspoken and overwhelming.</div>
-  </div>
-
-  <!-- FEATURES -->
-  <div class="card">
-    <div class="quote">What UNFEEL offers</div>
-    <div class="features">
-      • Daily motivation<br>
-      • Calm, distraction-free space<br>
-      • Emotional reflection<br>
-      • No pressure. No judgement.
+    <div class="card">
+      <div class="quote" id="quote">Loading today’s thought…</div>
+      <div class="subtext">A gentle reminder every day.</div>
     </div>
   </div>
 
-  <!-- APP CTA -->
-  <a class="btn" href="#">Android App – Coming Soon</a>
-  <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="quote">A calm space for heavy thoughts.</div>
+      <div class="subtext">Slow. Gentle. Human.</div>
+    </div>
+    <div class="card">
+      <div class="quote">What UNFEEL offers</div>
+      <div class="list">
+        • Daily motivation<br>
+        • Distraction-free calm<br>
+        • Emotional clarity<br>
+        • No judgement
+      </div>
+    </div>
+    <div class="card">
+      <div class="quote">Built for quiet healing.</div>
+      <div class="subtext">No pressure. No noise.</div>
+    </div>
+  </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
-      UNFEEL provides emotional support content only.<br>
+      Emotional support content only.<br>
       Not a substitute for professional medical or psychological care.
     </div>
   </div>
@@ -205,10 +149,8 @@ const quotes=[
   "Calm is strength.",
   "Gentle progress still counts."
 ];
-const dayIndex=Math.floor(
-  (new Date().setHours(0,0,0,0)/86400000)%quotes.length
-);
-document.getElementById("quote").innerText=quotes[dayIndex];
+const day=Math.floor((Date.now()/86400000)%quotes.length);
+document.getElementById("quote").innerText=quotes[day];
 </script>
 
 </body>
