@@ -8,18 +8,18 @@
 <meta name="author" content="Prasanna Gadre">
 
 <style>
-/* ===== GOLDEN GLOW VARIABLES ===== */
+/* ===== JAMUN BLUE GLOW ===== */
 :root{
-  --glow-main: #FFD700;
-  --glow-soft: rgba(255,215,0,0.4);
-  --glow-strong: rgba(255,215,0,0.85);
+  --glow-main:#8b6cff; /* jamun blue */
+  --glow-soft:rgba(139,108,255,.35);
+  --glow-strong:rgba(139,108,255,.85);
 }
 
 /* ===== BASE ===== */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:radial-gradient(circle at top,#0b1f33,#000814);
+  background:radial-gradient(circle at top,#120a22,#05020c);
   color:#ffffff;
 }
 
@@ -32,7 +32,6 @@ body{
   gap:14px;
   z-index:1000;
 }
-
 .nav a{
   text-decoration:none;
   font-size:13px;
@@ -57,13 +56,12 @@ body{
   font-weight:700;
   letter-spacing:3px;
   color:var(--glow-main);
-  text-shadow:0 0 35px var(--glow-strong);
+  text-shadow:0 0 36px var(--glow-strong);
 }
-
 .tagline{
   margin-top:6px;
   font-size:14px;
-  color:#d9cfa3;
+  color:#cbbcff;
 }
 
 /* ===== CARD ===== */
@@ -72,18 +70,16 @@ body{
   padding:28px;
   border-radius:22px;
   background:rgba(255,255,255,0.04);
-  box-shadow:0 0 35px var(--glow-soft);
+  box-shadow:0 0 38px var(--glow-soft);
 }
-
 .quote{
   font-size:18px;
   line-height:1.6;
 }
-
 .subtext{
   margin-top:14px;
   font-size:13px;
-  color:#c7b97a;
+  color:#bfb2ff;
 }
 
 /* ===== BUTTONS ===== */
@@ -97,11 +93,10 @@ body{
   text-decoration:none;
   font-size:15px;
   font-weight:700;
-  color:#1a1400;
-  background:linear-gradient(135deg,#FFD700,#FFB703);
+  color:#12001f;
+  background:linear-gradient(135deg,#8b6cff,#5a7cff);
   box-shadow:0 0 28px var(--glow-strong);
 }
-
 .btn.secondary{
   background:transparent;
   color:var(--glow-main);
@@ -113,13 +108,12 @@ body{
 .footer{
   margin-top:60px;
   font-size:12px;
-  color:#cbbf8c;
+  color:#b9adff;
 }
-
 .disclaimer{
   margin-top:14px;
   font-size:11px;
-  color:#a99a63;
+  color:#9a90d6;
 }
 </style>
 </head>
@@ -141,18 +135,17 @@ body{
   <!-- DAILY QUOTE -->
   <div class="card">
     <div class="quote" id="quote">Loading today’s thought…</div>
-    <div class="subtext">A new reminder every day.</div>
+    <div class="subtext">A gentle reminder every day.</div>
   </div>
 
   <!-- MESSAGE -->
   <div class="card">
     <div class="quote">
       Some days don’t need answers.<br>
-      They just need calm.
+      They just need understanding.
     </div>
     <div class="subtext">
-      UNFEEL is built for quiet moments,<br>
-      when emotions feel heavy and words feel light.
+      Built for quiet nights and heavy emotions.
     </div>
   </div>
 
@@ -173,17 +166,14 @@ body{
 
 <script>
 const quotes=[
-  "Healing is not linear.",
-  "Peace is a daily practice.",
-  "You are allowed to slow down.",
+  "You are allowed to heal slowly.",
+  "Peace grows with patience.",
   "Not everything needs closure.",
-  "Calm is a form of strength.",
-  "Gentle progress still counts."
+  "Your feelings are valid.",
+  "Gentle progress still counts.",
+  "Calm is a quiet strength."
 ];
-
-const dayIndex=Math.floor(
-  (new Date().setHours(0,0,0,0)/86400000)%quotes.length
-);
+const dayIndex=Math.floor((new Date().setHours(0,0,0,0)/86400000)%quotes.length);
 document.getElementById("quote").innerText=quotes[dayIndex];
 </script>
 
