@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UNFEEL – Heal. Grow. Move On. A calm space for emotional balance.">
+<meta name="author" content="Prasanna Gadre">
 
 <style>
+/* ===== NEON BLUE GLOW ===== */
 :root{
   --glow-main:#00e5ff;
   --glow-soft:rgba(0,229,255,.35);
@@ -17,39 +20,38 @@ body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
   background:radial-gradient(circle at top,#031923,#00060a);
-  color:#fff;
+  color:#ffffff;
   animation: pageFade 1.2s ease;
 }
 
-/* ===== KEYFRAMES ===== */
+/* ===== ANIMATIONS ===== */
 @keyframes pageFade{
   from{opacity:0;}
   to{opacity:1;}
 }
-
 @keyframes slideUp{
-  from{opacity:0; transform:translateY(30px);}
-  to{opacity:1; transform:translateY(0);}
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
 }
-
 @keyframes glowPulse{
   0%{box-shadow:0 0 18px var(--glow-soft);}
-  50%{box-shadow:0 0 35px var(--glow-strong);}
+  50%{box-shadow:0 0 36px var(--glow-strong);}
   100%{box-shadow:0 0 18px var(--glow-soft);}
 }
 
-/* ===== NAV ===== */
+/* ===== TOP NAV ===== */
 .nav{
   position:fixed;
   top:16px;
   right:18px;
   display:flex;
   gap:14px;
+  z-index:1000;
 }
 .nav a{
-  color:var(--glow-main);
   text-decoration:none;
   font-size:13px;
+  color:var(--glow-main);
   padding:6px 14px;
   border:1px solid var(--glow-main);
   border-radius:20px;
@@ -89,19 +91,16 @@ body{
   box-shadow:0 0 40px var(--glow-soft);
   animation: slideUp 1.4s ease;
 }
-
 .quote{
   font-size:18px;
   line-height:1.6;
   animation: glowPulse 4s infinite;
 }
-
 .subtext{
   margin-top:14px;
   font-size:13px;
   color:#8fdff0;
 }
-
 .features{
   margin-top:18px;
   font-size:13px;
@@ -124,7 +123,6 @@ body{
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
   animation: glowPulse 3s infinite;
 }
-
 .btn.secondary{
   background:transparent;
   color:var(--glow-main);
@@ -147,6 +145,7 @@ body{
 
 <body>
 
+<!-- TOP NAV -->
 <div class="nav">
   <a href="about.html">About</a>
   <a href="terms.html">Terms</a>
@@ -155,19 +154,23 @@ body{
 
 <div class="container">
 
+  <!-- HERO -->
   <div class="logo">UNFEEL</div>
   <div class="tagline">Heal · Grow · Move On</div>
 
+  <!-- DAILY QUOTE -->
   <div class="card">
     <div class="quote" id="quote">Loading today’s thought…</div>
     <div class="subtext">A new reminder every day.</div>
   </div>
 
+  <!-- ABOUT -->
   <div class="card">
     <div class="quote">UNFEEL is a quiet place for heavy thoughts.</div>
-    <div class="subtext">When emotions feel unspoken.</div>
+    <div class="subtext">When emotions feel unspoken and overwhelming.</div>
   </div>
 
+  <!-- FEATURES -->
   <div class="card">
     <div class="quote">What UNFEEL offers</div>
     <div class="features">
@@ -178,12 +181,15 @@ body{
     </div>
   </div>
 
+  <!-- APP CTA -->
   <a class="btn" href="#">Android App – Coming Soon</a>
   <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
 
+  <!-- FOOTER -->
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
+      UNFEEL provides emotional support content only.<br>
       Not a substitute for professional medical or psychological care.
     </div>
   </div>
