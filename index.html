@@ -1,1256 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Unfeel – Heal · Grow · Move On</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<title>UNFEEL – Heal. Grow. Move On.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UNFEEL – Heal. Grow. Move On. A calm space for motivation, emotional support, and inner strength.">
+<meta name="keywords" content="unfeel, heal, grow, move on, motivation, emotional support">
+<meta name="author" content="Prasanna Gadre">
 
-  <style>
-    :root {
-      --bg: #050509;
-      --card: #0f0f15;
-      --highlight: #00aaff;
-      --text: #ffffff;
-      --muted: #a0a0b5;
-      --glow: 0 0 12px #00aaff, 0 0 22px #00aaff;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0b0b0f;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      font-family: system-ui, sans-serif;
-      color: var(--text);
-      overflow-x: hidden;
-    }
+.container {
+  max-width: 420px;
+  width: 100%;
+  padding: 35px 20px 120px;
+  text-align: center;
+}
 
-    /* NAVBAR */
-    nav {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 18px 24px;
-      background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 99;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+.logo {
+  font-size: 38px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #7cf3ff;
+  text-shadow: 0 0 25px rgba(124,243,255,0.7);
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.tagline {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #aaa;
+}
 
-    .logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      background: linear-gradient(135deg,#ff4a6a,#ff9c33);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      color:#000;
-      letter-spacing:1px;
-    }
+.feature-hint {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #888;
+}
 
-    .brand-title {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
+.quote-box {
+  margin: 50px 0 25px;
+  padding: 26px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 30px rgba(124,243,255,0.18);
+  font-size: 18px;
+  line-height: 1.6;
+}
 
-    .menu a {
-      margin-left: 14px;
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: 0.2s;
-      padding: 6px 10px;
-      border-radius: 999px;
-    }
+.download-btn {
+  display: block;
+  margin: 14px auto;
+  padding: 14px;
+  width: 100%;
+  max-width: 280px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  background: linear-gradient(135deg,#7cf3ff,#4adede);
+  box-shadow: 0 0 25px rgba(124,243,255,0.6);
+}
 
-    .menu a:hover {
-      color: var(--highlight);
-      text-shadow: var(--glow);
-    }
+.download-btn.secondary {
+  background: transparent;
+  color: #7cf3ff;
+  border: 1px solid #7cf3ff;
+  box-shadow: 0 0 20px rgba(124,243,255,0.3);
+}
 
-    .menu a.active {
-      color: var(--highlight);
-      box-shadow: var(--glow);
-      background: rgba(0,170,255,0.12);
-    }
+.trust-line {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #aaa;
+}
 
-    /* LAYOUT */
-    .main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 30px 18px 80px;
-    }
+.support {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #777;
+}
 
-    .view {
-      display: none;
-      animation: fadeIn 0.25s ease-out;
-    }
+.support a {
+  color: #7cf3ff;
+  text-decoration: none;
+}
 
-    .view.active {
-      display: block;
-    }
+.founder {
+  margin-top: 40px;
+  font-size: 12px;
+  color: #777;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+.disclaimer {
+  margin-top: 18px;
+  font-size: 11px;
+  color: #666;
+  line-height: 1.5;
+}
 
-    /* HOME */
-    .hero {
-      text-align: center;
-      padding-top: 40px;
-    }
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #0b0b0f;
+  padding: 12px 0;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #1f1f1f;
+}
 
-    .hero h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-      text-shadow: 0 0 8px #0077aa;
-    }
-
-    .tagline {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .age-note {
-      color: #ffb3c7;
-      font-size: 11px;
-      margin-bottom: 18px;
-    }
-
-    .emergency-banner {
-      margin: 0 auto 18px;
-      max-width: 620px;
-      background: #2b0b16;
-      border-radius: 12px;
-      border: 1px solid #ff5c7a;
-      padding: 10px 14px;
-      font-size: 12px;
-      color: #ffd7e0;
-      box-shadow: 0 0 16px rgba(255,92,122,0.4);
-      text-align: left;
-    }
-
-    .emergency-banner strong {
-      color: #ff9bb1;
-    }
-
-    .quote-box {
-      width: 90%;
-      max-width: 520px;
-      margin: 0 auto 14px;
-      padding: 20px;
-      background: var(--card);
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 0 20px rgba(0,170,255,0.18);
-      text-align: center;
-    }
-
-    .quote-box h3 {
-      font-size: 16px;
-      margin-bottom: 12px;
-      color: var(--highlight);
-      text-shadow: var(--glow);
-    }
-
-    #dailyQuote {
-      font-size: 14px;
-      color: #dceaff;
-    }
-
-    .section-title {
-      font-size: 22px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px #0088cc;
-    }
-
-    .section-text {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 16px;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-      margin-top: 16px;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .btn {
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg,#00aaff,#7fd3ff);
-      color: #02030a;
-      box-shadow: 0 6px 20px rgba(0,170,255,0.4);
-      font-weight: 600;
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px 10px;
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    /* FEATURE CARDS (TOOLS) */
-    .tools-section {
-      margin-top: 30px;
-      text-align: left;
-    }
-
-    .feature-grid {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 14px;
-    }
-
-    .feature-card {
-      background: radial-gradient(circle at top, rgba(0,170,255,0.25), #0b0b12);
-      border-radius: 16px;
-      padding: 14px;
-      border: 1px solid rgba(0,170,255,0.4);
-      box-shadow: 0 0 18px rgba(0,170,255,0.35);
-      cursor: pointer;
-      font-size: 13px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .feature-card span.icon {
-      font-size: 18px;
-    }
-
-    .feature-card-title {
-      font-weight: 600;
-    }
-
-    .feature-card-desc {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 24px rgba(0,170,255,0.55);
-      border-color: var(--highlight);
-    }
-
-    .feature-card.active {
-      border-color: #ffffff;
-      box-shadow: 0 0 24px rgba(255,255,255,0.35);
-    }
-
-    .tool-panels {
-      margin-top: 18px;
-    }
-
-    .tool-panel {
-      display: none;
-    }
-
-    .tool-panel.active {
-      display: block;
-    }
-
-    /* CHAT BUTTON & BOX */
-    .chat-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #00aaff;
-      color: #000;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      box-shadow: 0 6px 22px rgba(0,170,255,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      cursor: pointer;
-      z-index: 9999;
-    }
-
-    .chat-box {
-      width: 310px;
-      height: 400px;
-      background: #0f0f15;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-      z-index: 9999;
-    }
-
-    .chat-header {
-      padding: 10px 12px;
-      background: #15151f;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      font-weight: 600;
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .close-chat {
-      cursor: pointer;
-      font-size: 20px;
-    }
-
-    .chat-messages {
-      padding: 10px;
-      overflow-y: auto;
-      flex-grow: 1;
-      font-size: 13px;
-      color: #fff;
-    }
-
-    .chat-msg {
-      margin-bottom: 10px;
-      padding: 7px 10px;
-      border-radius: 10px;
-      max-width: 80%;
-    }
-
-    .msg-user {
-      background: #00aaff;
-      color: #000;
-      margin-left: auto;
-    }
-
-    .msg-ai {
-      background: #181820;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .chat-input-area {
-      padding: 8px;
-      display: flex;
-      gap: 6px;
-    }
-
-    .chat-input-area input {
-      flex-grow: 1;
-      padding: 7px 9px;
-      border-radius: 10px;
-      background: #181820;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 13px;
-    }
-
-    .chat-send {
-      padding: 0 14px;
-      background: #00aaff;
-      border: none;
-      border-radius: 10px;
-      color: #000;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    @media (max-width: 480px) {
-      .chat-box {
-        width: 92%;
-        right: 4%;
-      }
-    }
-  </style>
+.footer a {
+  color: #7cf3ff;
+  text-decoration: none;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="brand">
-      <div class="logo">UN</div>
-      <div class="brand-title">UNFEEL</div>
-    </div>
-    <div class="menu">
-      <a href="#" data-view="home" class="active">Home</a>
-      <a href="#" data-view="login">Login</a>
-      <a href="#" data-view="settings">Settings</a>
-      <a href="#" data-view="terms">Terms</a>
-      <a href="#" data-view="privacy">Privacy</a>
-    </div>
-  </nav>
+<div class="container">
 
-  <div class="main">
+  <div class="logo">UNFEEL</div>
+  <div class="tagline">Heal · Grow · Move On</div>
+  <div class="feature-hint">Chat · Voice · Video · Secure Sessions</div>
 
-    <!-- HOME -->
-    <div id="view-home" class="view active">
-      <div class="hero">
-        <h1>Heal · Grow · Move On</h1>
-        <p class="tagline">Breakup support that feels real — not robotic.</p>
-        <p class="age-note">For 18+ users only · Not a medical or therapy service.</p>
-
-        <!-- EMERGENCY BANNER -->
-        <div class="emergency-banner">
-          <strong>Safety first:</strong> If you feel like you might seriously hurt yourself or someone else,
-          this website cannot handle emergencies. Please contact local emergency numbers, trusted family/friends,
-          or a licensed professional immediately. If you just want a human to talk to, you can also use Unfeel
-          Human Touch for a friendly call.
-        </div>
-
-        <!-- QUOTE -->
-        <div class="quote-box">
-          <h3>Today’s Motivation</h3>
-          <p id="dailyQuote"></p>
-        </div>
-
-        <!-- HUMAN TOUCH – REAL TALK (₹29 per call) -->
-<div class="card">
-  <h3>Human Touch – Real Emotional Call</h3>
-
-  <p class="section-text">
-    Kabhi kabhi bas ek dost ki zarurat hoti hai…  
-    Jo bina judge kiye tumhari baat sune.  
-    Jo tumhari feeling ko samjhe.  
-    Jo kahe — “haan, main hoon na… bol.”
-  </p>
-
-  <p class="section-text">
-    <strong>Session Price:</strong> ₹29 per call  
-    <br>Duration: 15 to 20 minutes  
-    <br>Aap chahe to khul ke ro sakte ho,  
-    dil ka sab dard nikal sakte ho.  
-    Yaha koi robotic feel nahi aayega —  
-    bas ek real dost ki tarah support milega.
-  </p>
-
-  <div class="btn-row">
-    <a 
-      href="https://wa.me/918104155784?text=Hi%2C%20I%20want%20a%20Human%20Touch%20session%20for%2029rs."
-      class="btn btn-primary">
-      ☎ Book Session on WhatsApp
-    </a>
+  <div class="quote-box" id="quote">
+    Loading today’s motivation...
   </div>
 
-  <p class="section-text" style="font-size:12px;color:#777;margin-top:10px;">
-    *Friendly emotional support only. Not professional therapy.*
-  </p>
-</div>
+  <a class="download-btn" href="#">Android App – Coming Soon</a>
+  <a class="download-btn secondary" href="#">iPhone App – Coming Soon</a>
 
-  <p class="section-text" style="font-size:12px;color:#777;margin-top:10px;">
-    *Friendly emotional support only. Not professional therapy.*
-  </p>
-</div>
-
-  <p class="section-text" style="margin-top:8px;font-size:12px;">
-    Contact: <strong>+91 8104155784</strong> · Email: <strong>support@unfeel.online</strong><br/>
-    Availability depends on timing – we will try to match your preference (male/female) as much as possible.
-  </p>
-
-  <p class="section-text" style="margin-top:8px;font-size:11px;color:#ffb3c7;">
-    This is not professional therapy or medical counselling. In any emergency or self-harm thoughts,
-    please contact local emergency services or a licensed professional immediately.
-  </p>
-</div>
-      <!-- WHATSAPP SUPPORT – ₹99/month -->
-<div class="card">
-  <h3>WhatsApp Support – ₹99/month</h3>
-
-  <p class="section-text">
-    Daily emotional chat support on WhatsApp.  
-    Breakup guidance, overthinking control, morning motivation & night support.
-  </p>
-
-  <p class="section-text"><strong>Price:</strong> ₹99/month</p>
-
-  <div class="btn-row">
-    <a 
-      href="https://wa.me/918104155784?text=Hi%2C%20I%20want%20to%20join%20WhatsApp%20Support%20for%2099%2Fmonth."
-      class="btn btn-secondary">💬 Join via WhatsApp</a>
-
-    <a class="btn btn-primary" href="#">
-      🔐 Pay (Coming Soon)
-    </a>
+  <div class="trust-line">
+    Built for people who feel unheard.
   </div>
 
-  <p class="section-text" style="font-size:12px;color:#999;margin-top:10px;">
-    *Friendly emotional support only. Not professional therapy.*
-  </p>
+  <div class="support">
+    📩 Support: <a href="mailto:support@unfeel.online">support@unfeel.online</a>
+  </div>
+
+  <div class="founder">
+    Founded & Created by <strong>Prasanna Gadre</strong>
+  </div>
+
+  <div class="disclaimer">
+    UNFEEL offers emotional support and listening services only.<br>
+    This platform is not a substitute for professional medical or psychological therapy.
+  </div>
+
 </div>
 
+<div class="footer">
+  <a href="#" onclick="showTerms()">Terms</a>
+  <a href="#" onclick="showPrivacy()">Privacy</a>
+</div>
 
-        <!-- NO-CONTACT CARD -->
-        <div class="card">
-          <h3 style="margin-top:0;margin-bottom:6px;">No-contact streak – protect your heart</h3>
-          <p class="section-text">
-            The hardest part after a breakup is <strong>not</strong> texting, calling or stalking your ex.
-            You can track your own “no-contact streak” in your notes app:
-          </p>
-          <p class="section-text" style="font-size:13px;">
-            1) Write: “No-contact streak: Day 0” today.<br/>
-            2) Every night you survive without messaging/stalking – add +1 day.<br/>
-            3) If you break it, don’t abuse yourself. Just start again from Day 0.<br/><br/>
-            Longer streak = more healing. This is not about ego, it’s about protecting your peace.
-          </p>
-        </div>
-
-        <!-- FAQ CARD -->
-        <div class="card">
-          <h3 style="margin-top:0;margin-bottom:6px;">Breakup FAQs – you’re not the only one</h3>
-          <p class="section-text" style="font-size:13px;">
-            <strong>“Will they come back?”</strong><br/>
-            Maybe, maybe not. The real question is: <em>“If they come back, will this be healthy for me?”</em>.
-            Focus on building a life that is okay even if they don’t return.<br/><br/>
-
-            <strong>“Kya usko bhi dard ho raha hoga?”</strong><br/>
-            Har insaan alag tareeke se react karta hai – kuch log bahar se normal dikhenge, andar se nahi.
-            Jo bhi unke saath ho raha ho, tumhari healing fir bhi tumhari responsibility hai.<br/><br/>
-
-            <strong>“Kitna time lagega move on me?”</strong><br/>
-            Fixed timeline nahi hota. Lekin generally – jitna healthy routine, boundaries, no-contact strong hoga,
-            utna process fast ho sakta hai. Months lag sakte hain, aur ye normal hai.<br/><br/>
-
-            <strong>“Usne itni jaldi move on kaise kar liya?”</strong><br/>
-            Fast move-on kabhi kabhi distraction hota hai, healing nahi. Instagram story pe jo dikhta hai,
-            woh poori truth nahi. Tum apni speed pe heal kar sakte ho – slow ≠ weak.
-          </p>
-        </div>
-
-        <!-- TOOLS / CARDS -->
-        <div class="tools-section">
-          <h2 class="section-title" style="font-size:20px;">Unfeel tools</h2>
-          <p class="section-text">
-            Pick what you need right now – calm your mind, check your mood, or just write your heart out.
-          </p>
-
-          <div class="feature-grid">
-            <div class="feature-card active" data-tool="calm">
-              <span class="icon">🧘</span>
-              <span class="feature-card-title">Calm Zone</span>
-              <span class="feature-card-desc">Breathing + grounding steps.</span>
-            </div>
-            <div class="feature-card" data-tool="mood">
-              <span class="icon">🙂</span>
-              <span class="feature-card-title">Mood Check</span>
-              <span class="feature-card-desc">How are you really feeling?</span>
-            </div>
-            <div class="feature-card" data-tool="journal">
-              <span class="icon">📓</span>
-              <span class="feature-card-title">Heart Journal</span>
-              <span class="feature-card-desc">Write and release your story.</span>
-            </div>
-            <div class="feature-card" data-tool="tips">
-              <span class="icon">💔</span>
-              <span class="feature-card-title">Breakup Tips</span>
-              <span class="feature-card-desc">Practical move-on guidance.</span>
-            </div>
-          </div>
-
-          <div class="tool-panels">
-            <div id="tool-calm" class="card tool-panel active">
-              <h3 style="margin-top:0;margin-bottom:6px;">Calm Zone – 60 second reset</h3>
-              <p class="section-text">
-                1) 4–7–8 breath: 4 second inhale · 7 second hold · 8 second exhale – repeat 5 cycles.<br/>
-                2) Look around and name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste.<br/>
-                3) Remind yourself: “Right now I’m safe. Ye sirf feeling hai, fact nahi.”
-              </p>
-            </div>
-
-            <div id="tool-mood" class="card tool-panel">
-              <h3 style="margin-top:0;margin-bottom:6px;">Mood Check – what’s going on?</h3>
-              <p class="section-text">
-                Ask yourself: “Main abhi zyada kya feel kar raha/rahi hu?”<br/>
-                – Hurt 😢 · Angry 😡 · Lonely 🥺 · Guilty 😔 · Numb 😶<br/><br/>
-                Jo emotion dominate kar raha hai, usko naam do. Jab emotion ka naam aata hai na, uski power thodi si kam ho jaati hai.
-              </p>
-            </div>
-
-            <div id="tool-journal" class="card tool-panel">
-              <h3 style="margin-top:0;margin-bottom:6px;">Heart Journal – dump it out</h3>
-              <p class="section-text">
-                Ek simple journaling prompt: <br/>
-                1) “Mujhe sabse zyada kya chub raha hai?”<br/>
-                2) “Maine khud ko kaunse jhoothe promise diye the?”<br/>
-                3) “Aaj ke baad main khud ke saath kya promise karna chahta/chahti hu?”<br/><br/>
-                Ye 3 sawal likhne se dimaag me ghoomti feelings ek jagah aa jaati hain.
-              </p>
-            </div>
-
-            <div id="tool-tips" class="card tool-panel">
-              <h3 style="margin-top:0;margin-bottom:6px;">Breakup Tips – small moves</h3>
-              <p class="section-text">
-                – Ex ke chat ko archive ya mute kar, delete nahi – taaki impulse pe call na lag jaye.<br/>
-                – Social media par unka stalk limit kar: har roz 0 ya max 1 baar, dheere dheere full stop.<br/>
-                – Har din ek chhota “win” note kar: aaj kya kiya jo khud ke favour me tha.<br/><br/>
-                Chhote consistent steps hi real move-on banate hain, overnight miracle nahi.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- LOGIN -->
-    <div id="view-login" class="view">
-      <h2 class="section-title">Login (demo)</h2>
-      <div class="card">
-        <p class="section-text">
-          This is a placeholder. In the future, Unfeel app may let you log in here and track your progress,
-          but right now no real login is active.
-        </p>
-      </div>
-    </div>
-
-    <!-- SETTINGS -->
-    <div id="view-settings" class="view">
-      <h2 class="section-title">Settings</h2>
-      <div class="card">
-        <p class="section-text">
-          Dark mode: <strong>ON</strong> 🌙<br/><br/>
-          In the future, you might be able to change:
-        </p>
-        <ul class="section-text">
-          <li>AI tone (formal / “bhai” style)</li>
-          <li>Notification preferences</li>
-          <li>Quote frequency</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- TERMS -->
-    <div id="view-terms" class="view">
-      <h2 class="section-title">Terms &amp; Conditions</h2>
-      <div class="card">
-        <p class="section-text"><strong>Last Updated:</strong> 1 Dec 2025</p>
-        <p class="section-text"><strong>Founder &amp; Creator:</strong> Prasanna Balu Gadre</p>
-        <p class="section-text"><strong>Age Requirement:</strong> 18+ users only</p>
-        <br/>
-        <p class="section-text">
-          Unfeel is an emotional breakup-support concept/brand. It is <strong>not</strong> a medical, clinical,
-          psychological or psychiatric service. All content and conversations are meant as general emotional guidance
-          and support only.
-        </p>
-        <p class="section-text">
-          If you are in crisis, feel like harming yourself or someone else, or are in any life-threatening situation,
-          you must contact local emergency services, a trusted person, or a licensed professional immediately.
-        </p>
-        <p class="section-text">
-          By using this website, you agree to use it respectfully, not share illegal or abusive content, and accept
-          that all decisions you make are your own responsibility. Unfeel and the founder are not liable for any
-          consequences of your personal decisions.
-        </p>
-      </div>
-    </div>
-
-    <!-- PRIVACY -->
-    <div id="view-privacy" class="view">
-      <h2 class="section-title">Privacy Policy</h2>
-      <div class="card">
-        <p class="section-text"><strong>Last Updated:</strong> 1 Dec 2025</p>
-        <p class="section-text"><strong>Founder &amp; Creator:</strong> Prasanna Balu Gadre</p>
-        <p class="section-text"><strong>Age Requirement:</strong> 18+ users only</p>
-        <br/>
-        <p class="section-text">
-          Right now, Unfeel works as a static support page. We do not collect or store personal data through this
-          website. There is no active login, no analytics, and no database connected.
-        </p>
-        <p class="section-text">
-          The AI-style chat on this page works in your browser and is not saved to a server. Still, please avoid
-          sharing extremely sensitive information (like passwords, financial details, etc.) in any chat.
-        </p>
-        <p class="section-text">
-          When you call or message on WhatsApp, your conversation is direct between you and the human on the other side.
-          The website itself does not record or store those chats. Your phone and apps may keep logs as per their own policies.
-        </p>
-      </div>
-    </div>
-
-    <footer>
-      © 2025 Unfeel · Breakup Support Brand · Founder &amp; Creator:
-      <strong>Prasanna Balu Gadre</strong> · 18+ only
-    </footer>
-  </div>
-
-  <!-- CHAT BUTTON -->
-  <div id="chatButton" class="chat-button">💬</div>
-
-  <!-- CHAT BOX -->
-  <div id="chatBox" class="chat-box">
-    <div class="chat-header">
-      Unfeel breakup buddy
-      <span id="closeChat" class="close-chat">×</span>
-    </div>
-    <div id="chatMessages" class="chat-messages"></div>
-    <div class="chat-input-area">
-      <input id="chatInput" type="text" placeholder="Chahe to yaha bhi likh sakta/sakti hai…" />
-      <button id="sendChat" class="chat-send">➤</button>
-    </div>
-  </div>
-
-  <!-- PART 2 & 3 JAVASCRIPT YAHAN AAYEGA -->
-  <script>
-    /* -------------------------
-      DAILY QUOTES
--------------------------- */
+<script>
+// Motivational quotes (loop-based, daily auto change)
 const quotes = [
-  "Aaj ka dard kal ki strength hai.",
-  "Tumhare bina bhi life chalti hai– aur ache se chalti hai.",
-  "Self-respect > temporary feelings.",
-  "Better days always start from bad nights.",
-  "Move on ek din me nahi, decisions se hota hai.",
-  "Jo tumhare liye nahi bana, wo kabhi rukega nahi.",
-  "Tum jitna khud ko samjhoge, utna kam kisi aur ka wait karoge.",
-  "Aaj ek chhota win: ex ko text nahi kia.",
-  "Breakup tumhe weak nahi, real banata hai.",
-  "Dard temporary, comeback permanent."
+  "You survived things you never thought you would.",
+  "Healing is slow, but it is happening.",
+  "Not everything lost is a loss.",
+  "You are allowed to outgrow people.",
+  "Peace feels better than proving a point.",
+  "Some endings protect you.",
+  "Choosing yourself is strength.",
+  "This pain is shaping your power.",
+  "You don’t need closure to move forward.",
+  "Every day you are becoming stronger."
 ];
 
-(function setupQuote() {
-  const quoteEl = document.getElementById("dailyQuote");
-  if (!quoteEl) return;
-  const today = new Date().getDate();
-  quoteEl.textContent = quotes[today % quotes.length];
-})();
+// Daily quote logic
+const dayIndex = Math.floor(
+  (new Date().setHours(0,0,0,0) / 86400000) % quotes.length
+);
+document.getElementById("quote").innerText = quotes[dayIndex];
 
-/* -------------------------
-        TAB SWITCH
--------------------------- */
-const menuLinks = document.querySelectorAll(".menu a");
-const views = document.querySelectorAll(".view");
-
-menuLinks.forEach(link => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const viewName = link.getAttribute("data-view");
-
-    menuLinks.forEach(l => l.classList.remove("active"));
-    link.classList.add("active");
-
-    views.forEach(v => {
-      if (v.id === "view-" + viewName) v.classList.add("active");
-      else v.classList.remove("active");
-    });
-  });
-});
-
-/* -------------------------
-     TOOLS CARD SWITCH
--------------------------- */
-const featureCards = document.querySelectorAll(".feature-card");
-const toolPanels = document.querySelectorAll(".tool-panel");
-
-featureCards.forEach(card => {
-  card.addEventListener("click", () => {
-    const tool = card.getAttribute("data-tool");
-    featureCards.forEach(c => c.classList.remove("active"));
-    card.classList.add("active");
-
-    toolPanels.forEach(panel => panel.classList.remove("active"));
-    document.getElementById("tool-" + tool).classList.add("active");
-  });
-});
-
-/* -------------------------
-         CHAT UI
--------------------------- */
-const chatButton = document.getElementById("chatButton");
-const chatBox = document.getElementById("chatBox");
-const closeChat = document.getElementById("closeChat");
-const sendChat = document.getElementById("sendChat");
-const chatInput = document.getElementById("chatInput");
-const chatMessages = document.getElementById("chatMessages");
-
-let tone = "dost";  
-let flowStage = 0;  
-
-function addressWord() {
-  return tone;
-}
-
-function addMessage(text, sender) {
-  const msg = document.createElement("div");
-  msg.classList.add("chat-msg");
-  msg.classList.add(sender === "user" ? "msg-user" : "msg-ai");
-  msg.textContent = text;
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function optionBtn(label, click) {
-  const b = document.createElement("button");
-  b.textContent = label;
-  b.style.cssText = `
-    padding:6px 10px;margin:4px;font-size:11px;
-    border-radius:999px;border:1px solid #00aaff;
-    background:#0f0f15;color:#fff;cursor:pointer;
-  `;
-  b.onclick = click;
-  return b;
-}
-
-function showOptions(list) {
-  const wrap = document.createElement("div");
-  wrap.style.margin = "10px 0";
-
-  list.forEach(o => {
-    wrap.appendChild(optionBtn(o.label, () => {
-      addMessage(o.label, "user");
-      if (o.onPick) o.onPick();
-      wrap.remove();
-    }));
-  });
-
-  chatMessages.appendChild(wrap);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-/* -------------------------
-      MCQ – LEVEL 1
--------------------------- */
-function startTone() {
-  flowStage = 0;
-  addMessage("Tu chahata/chahti hu main tujhe kaise bulaun?", "ai");
-  showOptions([
-    { label: "Bhai 🧑", onPick: () => { tone = "bhai"; addMessage("Theek hai bhai.", "ai"); startMainFeel(); }},
-    { label: "Behen 👩", onPick: () => { tone = "behen"; addMessage("Theek hai behen.", "ai"); startMainFeel(); }},
-    { label: "Dost 🤝", onPick: () => { tone = "dost"; addMessage("Theek hai dost.", "ai"); startMainFeel(); }}
-  ]);
-}
-
-/* -------------------------
-      MCQ – LEVEL 2
--------------------------- */
-function startMainFeel() {
-  flowStage = 1;
-  const w = addressWord();
-  addMessage(`Ab bata ${w}, abhi sabse zyada kya hit kar raha hai?`, "ai");
-
-  showOptions([
-    { label: "💔 Breakup pain", onPick: breakupPain },
-    { label: "😢 Missing someone", onPick: missingFeel },
-    { label: "😡 Anger / Betrayal", onPick: angerFeel },
-    { label: "😔 Guilt / Self blame", onPick: guiltFeel },
-    { label: "🥺 Loneliness", onPick: lonelyFeel },
-    { label: "🧠 Overthinking", onPick: overthinkingFeel },
-    { label: "🌑 Dark thoughts", onPick: darkThoughts }
-  ]);
-}
-
-/* -------------------------
-  MCQ – LEVEL 3 (Reasons)
--------------------------- */
-
-function breakupPain() {
-  const w = addressWord();
-  addMessage(`Breakup ka pain real hota hai ${w}.`, "ai");
-  askReasons([
-    "Mujhe chhod diya",
-    "Unexpected breakup",
-    "Constant fights",
-    "Cheating doubt",
-    "Deep attachment"
-  ]);
-}
-
-function missingFeel() {
-  const w = addressWord();
-  addMessage(`Yaad aana normal hai ${w}.`, "ai");
-  askReasons([
-    "Old memories",
-    "Photos",
-    "Chats",
-    "Calls",
-    "Old habits"
-  ]);
-}
-
-function angerFeel() {
-  const w = addressWord();
-  addMessage(`Gussa bhi heartbreak ka part hai ${w}.`, "ai");
-  askReasons([
-    "Betrayal",
-    "Unfair behaviour",
-    "Suddenly moved on",
-    "No closure",
-    "Mixed signals"
-  ]);
-}
-
-function guiltFeel() {
-  const w = addressWord();
-  addMessage(`Guilt bohot heavy hota hai ${w}.`, "ai");
-  askReasons([
-    "Meri galti lagti hai",
-    "Maine hurt kiya",
-    "Maine try nahi kiya",
-    "Expectations zyada thi",
-    "Sab kuch confuse lag raha"
-  ]);
-}
-
-function lonelyFeel() {
-  const w = addressWord();
-  addMessage(`Akelapan sabse dangerous hota hai ${w}.`, "ai");
-  askReasons([
-    "Aadatein yaad aa rahi",
-    "Koi baat karne wala nahi",
-    "Weekend tough lagta",
-    "Raat me dard zyada",
-    "Feeling left behind"
-  ]);
-}
-
-function overthinkingFeel() {
-  const w = addressWord();
-  addMessage(`Overthinking dimaag ka trap hota hai ${w}.`, "ai");
-  askReasons([
-    "Future ka darr",
-    "Wo wapas aayega?",
-    "Kya main enough nahi tha/thi?",
-    "Mere saath hi problem?",
-    "Mixed emotions"
-  ]);
-}
-
-/* -------------------------
-     DANGER MODE (SUICIDE)
--------------------------- */
-function darkThoughts() {
-  const w = addressWord();
-  addMessage(`Sun ${w}… ye bohot heavy thought hai.`, "ai");
-
-  addMessage(
-    "Agar life–threatening feel ho raha, turant apne shehar ke **emergency helpline**, kisi trusted family/friend ya professional ko call karo.\n\n" +
-    "Agar bas baat karni hai, to tum humare Human Touch ko kabhi bhi call kar sakte ho:\n📞 +91 8104155784 (15 min FREE).",
-    "ai"
-  );
-
-  healingOptions();
-}
-
-/* -------------------------
-      ASK SUB-REASON
--------------------------- */
-function askReasons(arr) {
-  flowStage = 2;
-  const w = addressWord();
-  addMessage(`Theek hai ${w}. Thoda aur clear karte hai – kis wajah se pain zyada aa raha hai?`, "ai");
-
-  showOptions(
-    arr.map(r => ({
-      label: r,
-      onPick: () => {
-        addMessage(`Samajh gaya ${w}.`, "ai");
-        healingOptions();
-      }
-    }))
+// Terms & Privacy popups
+function showTerms() {
+  alert(
+    "Terms & Conditions\n\n" +
+    "UNFEEL provides emotional support and listening services only.\n" +
+    "Users are responsible for their own decisions.\n" +
+    "This platform does not provide medical, legal, or psychological treatment."
   );
 }
 
-/* -------------------------
-   MCQ – LEVEL 4 HEALING
--------------------------- */
-function healingOptions() {
-  const w = addressWord();
-  addMessage(`Chal ${w}, ab ek healing step choose kar:`, "ai");
-
-  showOptions([
-    { label: "🧘 Breathing reset", onPick: () => breathingGuide() },
-    { label: "✍️ Venting exercise", onPick: () => ventingGuide() },
-    { label: "💭 Reality check", onPick: () => realityGuide() },
-    { label: "❤️ Self-worth reminder", onPick: () => worthGuide() },
-    { label: "📵 Detox plan", onPick: () => detoxGuide() },
-    { label: "🎧 Music therapy", onPick: () => musicGuide() }
-  ]);
-}
-
-/* -------------------------
-  LEVEL 4 RESPONSES
--------------------------- */
-function breathingGuide() {
-  addMessage(
-    "Slow… inhale 4 sec, hold 7 sec, exhale 8 sec. 5 cycles.\nYe body ko survival mode se bahar laata hai.",
-    "ai"
-  );
-  miniPlan();
-}
-
-function ventingGuide() {
-  addMessage(
-    "Phone/notes me likh: “Mere dard ka sabse bada reason ____ hai.”\n3 lines likhne se dimaag ka pressure half ho jata.",
-    "ai"
-  );
-  miniPlan();
-}
-
-function realityGuide() {
-  addMessage(
-    "Dimaag highlight reel chalata hai. Reality me issues bhi the.\nEk line likh: “Sach kya tha, fantasy kya thi?”",
-    "ai"
-  );
-  miniPlan();
-}
-
-function worthGuide() {
-  addMessage(
-    "Tu jitna soch raha/rahi hai, utna weak nahi hai.\nBreakup teri value decide nahi karta.",
-    "ai"
-  );
-  miniPlan();
-}
-
-function detoxGuide() {
-  addMessage(
-    "1) Ex chat mute\n2) Stalking limit: 0–1 baar/day\n3) Photos hidden album\n4) Night phone cutoff 11 PM",
-    "ai"
-  );
-  miniPlan();
-}
-
-function musicGuide() {
-  addMessage(
-    "Cry it out: “Channa Mereya, Judaai, Agar tum saath ho”\nComeback vibes: “Ilahi, No lie, Lut put gaya (remix)”",
-    "ai"
-  );
-  miniPlan();
-}
-
-/* -------------------------
-   MCQ – LEVEL 5 MINI PLAN
--------------------------- */
-function miniPlan() {
-  const w = addressWord();
-  addMessage(`${w}, ab ek chhota step choose kar jo abhi kar sake:`, "ai");
-
-  showOptions([
-    { label: "60 sec breathing", onPick: () => addMessage("Good. Body ko calm rakhna best step.", "ai") },
-    { label: "3 min walk", onPick: () => addMessage("Walk se chemicals reset hote.", "ai") },
-    { label: "Water sip", onPick: () => addMessage("Hydration anxiety kam karta.", "ai") },
-    { label: "Phone side me rakho", onPick: () => addMessage("Triggers kam honge.", "ai") },
-    { label: "1 line journaling", onPick: () => addMessage("Nice. Mind unload hota.", "ai") }
-  ]);
-}
-
-/* -------------------------
-      FALLBACK TEXT REPLY
--------------------------- */
-function genericReply(text) {
-  const m = text.toLowerCase();
-  const w = addressWord();
-
-  if (
-    m.includes("mar") || m.includes("kill") || m.includes("end") ||
-    m.includes("suicide") || m.includes("khatam")
-  ) {
-    return `Sun ${w}, ye dangerous thought hai.\nAise me emergency helpline ya trusted person ko call karo.\nAgar bas baat karni hai: +91 8104155784 (15 min free).`;
-  }
-
-  return `Samajh raha hu ${w}. Agar clarity chahiye ho to upar wale MCQ se choose kar sakte ho.`;
-}
-
-/* -------------------------
-        SEND TEXT
--------------------------- */
-function sendMsg() {
-  const t = chatInput.value.trim();
-  if (!t) return;
-  addMessage(t, "user");
-  chatInput.value = "";
-
-  setTimeout(() => {
-    addMessage(genericReply(t), "ai");
-  }, 300);
-}
-
-sendChat.onclick = sendMsg;
-chatInput.onkeydown = e => { if (e.key === "Enter") sendMsg(); };
-
-/* -------------------------
-      OPEN CHAT
--------------------------- */
-chatButton.onclick = () => {
-  chatBox.style.display = "flex";
-  if (chatMessages.children.length === 0) {
-    addMessage("Hey, I'm Unfeel – your breakup support buddy.", "ai");
-    startTone();
-  }
-};
-
-closeChat.onclick = () => chatBox.style.display = "none";
-    /* -------------------------
-   PART 3 – ADVANCED REPLIES
-   (ye purane genericReply ko overwrite karega)
--------------------------- */
-
-function genericReply(text) {
-  const m = text.toLowerCase();
-  const w = addressWord();
-
-  // restart flow
-  if (m.includes("restart") || m.includes("fir se") || m.includes("start again")) {
-    startMainFeel();
-    return `Theek hai ${w}, fir se shuru karte hai. Pehle phir se dekhte hai sabse zyada pain kahan se aa raha hai.`;
-  }
-
-  // strong suicide / self-harm / severe danger
-  if (
-    m.includes("suicide") ||
-    m.includes("kill myself") ||
-    m.includes("end my life") ||
-    (m.includes("mar") && m.includes("khud")) ||
-    m.includes("khatam ho jaun") ||
-    m.includes("zinda rehne ka matlab nahi")
-  ) {
-    return (
-      `Sun ${w}, ye bohot serious thought hai.\n\n` +
-      `1) Agar abhi turant khud ko ya kisi aur ko harm karne ka mann ho raha hai,\n` +
-      `   to please apne shehar ke emergency number ya kisi trusted family/friend ko CALL kar.\n` +
-      `2) Online text se jyada zaruri hai ki koi real insaan tere saath ho.\n\n` +
-      `Agar bas dil halka karna hai, aur normal baat karni hai,\n` +
-      `to Unfeel Human Touch par baat kar sakta/sakti hai:\n` +
-      `📞 Call: +91 8104155784 (pehle 15 min FREE)\n\n` +
-      `Teri life iss breakup se bohot zyada important hai.`
-    );
-  }
-
-  // breakup direct mention
-  if (m.includes("breakup") || m.includes("break up") || m.includes("toot gaya") || m.includes("chhod gaya") || m.includes("chod gayi")) {
-    return (
-      `Breakup ka dard normal heartbreak nahi hota ${w}, yeh full body shock jaisa lagta hai.\n\n` +
-      `Abhi tujhe teen cheezon pe dhyaan dena hai:\n` +
-      `1) Damage control – basic khana, pani, neend compromise mat kar.\n` +
-      `2) No-contact – ex ko prove karne se zyada zaruri hai khud ko protect karna.\n` +
-      `3) Slow healing – miracle nahi hoga, lekin har din thoda-thoda better ho sakta hai.\n\n` +
-      `Agar tu chaahe to upar chat ke MCQ flow me “💔 Breakup pain” select karke\n` +
-      `thoda structured tareeke se explore kar sakta/sakti hai.`
-    );
-  }
-
-  // missing / yaad
-  if (m.includes("yaad") || m.includes("miss") || m.includes("remember") || m.includes("memories")) {
-    return (
-      `Yaad aana is not a problem, uske peeche bhaagna problem ban jaata hai ${w}.\n\n` +
-      `Jab yaad bohot heavy ho, ek chhota exercise try kar:\n` +
-      `• 3 good memories likh, phir 3 painful ya unfair moments bhi likh\n` +
-      `• dimaag sirf highlight reel dikhata hai, yeh exercise full movie yaad dilati hai\n\n` +
-      `Agar tu chaahe to mood/feeling ke hisaab se MCQ me “😢 Missing someone” select kar,\n` +
-      `main tere saath step-by-step reason + healing choose karwa sakta hu.`
-    );
-  }
-
-  // alone / lonely
-  if (m.includes("alone") || m.includes("akela") || m.includes("lonely") || m.includes("koi nahi")) {
-    return (
-      `Akelapan breakup ke baad bohot common hai ${w}. Pehle ek insaan roz milta, chat hoti,\n` +
-      `ab gap lag raha hai – yeh natural hai.\n\n` +
-      `Chhota sa plan:\n` +
-      `• Aaj kisi ek safe insan ko 1 line ka message: “Bas baat karni thi, free ho to.”\n` +
-      `• Ghar pe hi sahi, kisi ke saath chai/khana share kar.\n` +
-      `• Agar koi nahi mil raha, to thodi der nature me walk – bina phone, bina songs.\n\n` +
-      `Akelapan ka best antidote ekdum perfect dost nahi, chhote-chhote human touch hote hain.\n` +
-      `Chahe to MCQ me “🥺 Loneliness” select kar ke structured steps choose kar sakta/sakti hai.`
-    );
-  }
-
-  // guilt
-  if (m.includes("galti") || m.includes("guilt") || m.includes("meri hi") || m.includes("fault") || m.includes("blame")) {
-    return (
-      `Guilt ka kaam hai tumhe stuck rakhna ${w}, improve karna nahi.\n\n` +
-      `Agar genuinely tujse kahin galti hui bhi hai, to teen steps soch:\n` +
-      `1) Accept – haan, yeh part galat tha, yeh main better kar sakta/sakti hu.\n` +
-      `2) Learn – agle relation me boundary ya communication kaise change karunga/gi.\n` +
-      `3) Release – khud ko lifetime punishment mat de.\n\n` +
-      `Tu chahe to MCQ flow me “😔 Guilt / Self blame” choose karke\n` +
-      `thoda aur deep reason + action explore kar sakta/sakti hai.`
-    );
-  }
-
-  // overthinking
-  if (m.includes("overthink") || m.includes("over thinking") || m.includes("bahut soch") || m.includes("dimag") || m.includes("soch soch")) {
-    return (
-      `Overthinking ka matlab hai dimaag idle nahi, over-active hai ${w}.\n\n` +
-      `Ek chhota hack:\n` +
-      `• Din me ek “overthinking slot” rakh – jaise sham 8:00–8:15\n` +
-      `• Jab bhi dimaag bhaagne lage, khud ko bol – “ispe 8 baje sochenge”\n` +
-      `• Baaki time sirf body-based kaam – walk, stretching, paani, basic chores\n\n` +
-      `Tu MCQ me “🧠 Overthinking” select karega/karegi to main triggers aur healing options\n` +
-      `zyada structured tareeke se de sakta hu.`
-    );
-  }
-
-  // future / move on / doubt
-  if (
-    m.includes("move on") ||
-    m.includes("future") ||
-    m.includes("aage") ||
-    m.includes("kab tak") ||
-    m.includes("life khatam") ||
-    m.includes("kab theek")
-  ) {
-    return (
-      `“Kab tak aise hi chalega?” ye thought bohot common hai ${w}.\n\n` +
-      `Sach: koi exact date nahi hoti jahan se pain off & happiness on ho jaye.\n` +
-      `Lekin generally –\n` +
-      `• 1st week: shock / heavy pain\n` +
-      `• 2–4 week: mixed ups & downs, ache din–bure din\n` +
-      `• 2–3 months: agar routine + boundaries strong ho, weight kaafi halka padne lagta hai\n\n` +
-      `Move on का matlab ex ko bhool jana nahi, apne aap ko dubara paana hai.\n` +
-      `Ye process slow ho sakta hai, lekin har chhota step count karta hai.`
-    );
-  }
-
-  // random / default
-  return (
-    `Samajh raha hu ${w}, jo tu type kar raha/rahi hai wo halka matter nahi hai.\n\n` +
-    `Do options tere paas abhi bhi hai:\n` +
-    `• Upar diye gaye MCQ wale options se exact feeling choose kar – main guided flow shuru kar dunga.\n` +
-    `• Ya phir bas yaha type karke dil halka karte reh – jitna share karega/karegi, utna weight kam lagega.\n\n` +
-    `Agar kabhi lage text se kaam nahi chal raha, to human se bhi baat kar sakta/sakti hai:\n` +
-    `📞 Unfeel Human Touch: +91 8104155784 (15 min free).`
+function showPrivacy() {
+  alert(
+    "Privacy Policy\n\n" +
+    "We respect your privacy.\n" +
+    "No personal data is sold or shared without consent.\n" +
+    "Basic usage data may be collected to improve the service."
   );
 }
-  </script>
+</script>
 
 </body>
 </html>
