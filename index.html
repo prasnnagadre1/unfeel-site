@@ -4,42 +4,32 @@
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UNFEEL – Heal. Grow. Move On. A calm space for emotional balance.">
-<meta name="author" content="Prasanna Gadre">
 
 <style>
-/* ===== NEON BLUE GLOW ===== */
+/* ================== BRAND VARIABLES ================== */
 :root{
   --glow-main:#00e5ff;
-  --glow-soft:rgba(0,229,255,.35);
-  --glow-strong:rgba(0,229,255,.9);
+  --glow-soft:rgba(0,229,255,0.35);
+  --glow-strong:rgba(0,229,255,0.9);
 }
 
-/* ===== BASE ===== */
+/* ================== BASE ================== */
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:'Segoe UI',sans-serif;
+  font-family:'Segoe UI',system-ui,sans-serif;
   background:radial-gradient(circle at top,#031923,#00060a);
-  color:#ffffff;
-  animation: pageFade 1.2s ease;
+  color:#fff;
+  overflow-x:hidden;
+  animation:fadeIn 1.2s ease;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes pageFade{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-@keyframes slideUp{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
-}
-@keyframes glowPulse{
-  0%{box-shadow:0 0 18px var(--glow-soft);}
-  50%{box-shadow:0 0 36px var(--glow-strong);}
-  100%{box-shadow:0 0 18px var(--glow-soft);}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
 }
 
-/* ===== TOP NAV ===== */
+/* ================== NAV ================== */
 .nav{
   position:fixed;
   top:16px;
@@ -52,76 +42,103 @@ body{
   text-decoration:none;
   font-size:13px;
   color:var(--glow-main);
-  padding:6px 14px;
+  padding:7px 16px;
+  border-radius:22px;
   border:1px solid var(--glow-main);
-  border-radius:20px;
-  box-shadow:0 0 14px var(--glow-soft);
+  box-shadow:0 0 16px var(--glow-soft);
+  transition:all .3s ease;
+}
+.nav a:hover{
+  background:rgba(0,229,255,.12);
+  box-shadow:0 0 28px var(--glow-strong);
 }
 
-/* ===== LAYOUT ===== */
+/* ================== LAYOUT ================== */
 .container{
-  max-width:420px;
+  max-width:430px;
   margin:auto;
-  padding:100px 20px 140px;
+  padding:110px 20px 140px;
   text-align:center;
 }
 
-/* ===== LOGO ===== */
+/* ================== HERO ================== */
 .logo{
-  font-size:44px;
+  font-size:46px;
   font-weight:700;
   letter-spacing:3px;
   color:var(--glow-main);
-  text-shadow:0 0 40px var(--glow-strong);
-  animation: slideUp 1s ease;
+  text-shadow:0 0 45px var(--glow-strong);
 }
 .tagline{
   margin-top:6px;
   font-size:14px;
   color:#9fefff;
-  animation: slideUp 1.2s ease;
+}
+.hook{
+  margin-top:16px;
+  font-size:13px;
+  color:#bfefff;
+  opacity:.85;
 }
 
-/* ===== CARD ===== */
+/* ================== CARD ================== */
 .card{
-  margin-top:45px;
-  padding:28px;
-  border-radius:22px;
-  background:rgba(255,255,255,0.04);
-  box-shadow:0 0 40px var(--glow-soft);
-  animation: slideUp 1.4s ease;
+  margin-top:48px;
+  padding:30px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 40px var(--glow-soft),
+    inset 0 0 20px rgba(255,255,255,.03);
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .9s ease;
 }
+.card.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
 .quote{
-  font-size:18px;
-  line-height:1.6;
-  animation: glowPulse 4s infinite;
+  font-size:19px;
+  line-height:1.7;
+  letter-spacing:.3px;
+  text-shadow:0 0 12px rgba(0,229,255,.35);
 }
 .subtext{
   margin-top:14px;
   font-size:13px;
   color:#8fdff0;
 }
-.features{
+.list{
   margin-top:18px;
   font-size:13px;
-  line-height:1.8;
-  color:#b9eef7;
+  line-height:1.9;
+  color:#c8f3ff;
 }
 
-/* ===== BUTTONS ===== */
+/* ================== BUTTON ================== */
 .btn{
   display:block;
-  margin:22px auto;
-  padding:15px;
+  margin:26px auto;
+  padding:16px;
   width:100%;
-  max-width:280px;
-  border-radius:30px;
+  max-width:290px;
+  border-radius:32px;
   text-decoration:none;
   font-size:15px;
   font-weight:700;
   color:#00181f;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  animation: glowPulse 3s infinite;
+  box-shadow:0 0 34px var(--glow-strong);
+  transition:all .3s ease;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 50px var(--glow-strong);
 }
 .btn.secondary{
   background:transparent;
@@ -129,9 +146,9 @@ body{
   border:1px solid var(--glow-main);
 }
 
-/* ===== FOOTER ===== */
+/* ================== FOOTER ================== */
 .footer{
-  margin-top:60px;
+  margin-top:70px;
   font-size:12px;
   color:#9ad9e6;
 }
@@ -145,7 +162,7 @@ body{
 
 <body>
 
-<!-- TOP NAV -->
+<!-- NAV -->
 <div class="nav">
   <a href="about.html">About</a>
   <a href="terms.html">Terms</a>
@@ -157,31 +174,35 @@ body{
   <!-- HERO -->
   <div class="logo">UNFEEL</div>
   <div class="tagline">Heal · Grow · Move On</div>
+  <div class="hook">For nights when your mind is louder than the world.</div>
 
-  <!-- DAILY QUOTE -->
+  <!-- QUOTE -->
   <div class="card">
     <div class="quote" id="quote">Loading today’s thought…</div>
-    <div class="subtext">A new reminder every day.</div>
+    <div class="subtext">A gentle reminder, every day.</div>
   </div>
 
   <!-- ABOUT -->
   <div class="card">
-    <div class="quote">UNFEEL is a quiet place for heavy thoughts.</div>
-    <div class="subtext">When emotions feel unspoken and overwhelming.</div>
+    <div class="quote">A calm space for heavy thoughts.</div>
+    <div class="subtext">
+      UNFEEL is designed for moments when emotions feel confusing,
+      overwhelming, or unspoken.
+    </div>
   </div>
 
   <!-- FEATURES -->
   <div class="card">
     <div class="quote">What UNFEEL offers</div>
-    <div class="features">
-      • Daily motivation<br>
-      • Calm, distraction-free space<br>
-      • Emotional reflection<br>
-      • No pressure. No judgement.
+    <div class="list">
+      • Daily motivational reminders<br>
+      • Calm, distraction-free experience<br>
+      • Emotional awareness & reflection<br>
+      • No judgement. No pressure.
     </div>
   </div>
 
-  <!-- APP CTA -->
+  <!-- CTA -->
   <a class="btn" href="#">Android App – Coming Soon</a>
   <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
 
@@ -189,7 +210,7 @@ body{
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
-      UNFEEL provides emotional support content only.<br>
+      Emotional support content only.  
       Not a substitute for professional medical or psychological care.
     </div>
   </div>
@@ -197,6 +218,7 @@ body{
 </div>
 
 <script>
+/* DAILY QUOTE */
 const quotes=[
   "You don’t have to rush healing.",
   "Peace is built slowly.",
@@ -205,10 +227,18 @@ const quotes=[
   "Calm is strength.",
   "Gentle progress still counts."
 ];
-const dayIndex=Math.floor(
-  (new Date().setHours(0,0,0,0)/86400000)%quotes.length
-);
-document.getElementById("quote").innerText=quotes[dayIndex];
+const day=Math.floor((Date.now()/86400000)%quotes.length);
+document.getElementById("quote").innerText=quotes[day];
+
+/* SCROLL REVEAL */
+const cards=document.querySelectorAll(".card");
+window.addEventListener("scroll",()=>{
+  cards.forEach(c=>{
+    if(c.getBoundingClientRect().top < window.innerHeight-80){
+      c.classList.add("active");
+    }
+  });
+});
 </script>
 
 </body>
