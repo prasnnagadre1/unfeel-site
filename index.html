@@ -4,166 +4,175 @@
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UNFEEL – Heal. Grow. Move On. Emotional support and motivation platform.">
+<meta name="description" content="UNFEEL – Heal. Grow. Move On. A calm space for motivation and emotional support.">
 <meta name="author" content="Prasanna Gadre">
 
 <style>
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:radial-gradient(circle at top,#1a0f2e,#07010f);
-  color:#fff;
+  background:radial-gradient(circle at top,#0b1f33,#000814);
+  color:#ffffff;
 }
-.top-tabs{
-  position:fixed;top:14px;right:18px;display:flex;gap:12px;z-index:1000;
+
+/* Top navigation */
+.nav{
+  position:fixed;
+  top:16px;
+  right:18px;
+  display:flex;
+  gap:14px;
+  z-index:1000;
 }
-.top-tabs button{
-  background:transparent;border:1px solid #b68cff;color:#e6d8ff;
-  padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;
-  box-shadow:0 0 16px rgba(182,140,255,.4);
+
+.nav a{
+  color:#6fd3ff;
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 14px;
+  border:1px solid #6fd3ff;
+  border-radius:20px;
+  box-shadow:0 0 14px rgba(111,211,255,0.4);
 }
+
+/* Main container */
 .container{
-  max-width:420px;margin:auto;padding:90px 20px 140px;text-align:center;
+  max-width:420px;
+  margin:auto;
+  padding:100px 20px 120px;
+  text-align:center;
 }
+
+/* Logo */
 .logo{
-  font-size:40px;font-weight:700;letter-spacing:3px;color:#e6ccff;
-  text-shadow:0 0 35px rgba(182,140,255,.9);
+  font-size:42px;
+  font-weight:700;
+  letter-spacing:3px;
+  color:#6fd3ff;
+  text-shadow:0 0 30px rgba(111,211,255,0.9);
 }
-.tagline{margin-top:6px;font-size:14px;color:#cbbcf0;}
-.section{
-  margin-top:45px;padding:28px;border-radius:20px;
-  background:rgba(255,255,255,.04);
-  box-shadow:0 0 38px rgba(182,140,255,.2);
+
+.tagline{
+  margin-top:6px;
+  font-size:14px;
+  color:#b8dfff;
 }
-.quote{font-size:18px;line-height:1.6;}
-.subtext{margin-top:14px;font-size:13px;color:#b6a9d8;}
-.download-btn{
-  display:block;margin:20px auto;padding:15px;width:100%;max-width:280px;
-  border-radius:30px;text-decoration:none;font-size:15px;font-weight:700;
-  color:#16001f;background:linear-gradient(135deg,#e6ccff,#9a7bff);
-  box-shadow:0 0 30px rgba(182,140,255,.8);
+
+/* Card */
+.card{
+  margin-top:45px;
+  padding:28px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.04);
+  box-shadow:0 0 35px rgba(111,211,255,0.2);
 }
-.download-btn.secondary{
-  background:transparent;color:#e6ccff;border:1px solid #e6ccff;
+
+.quote{
+  font-size:18px;
+  line-height:1.6;
 }
-.content-box{
-  display:none;margin-top:40px;padding:26px;border-radius:20px;
-  background:rgba(255,255,255,.04);
-  box-shadow:0 0 30px rgba(182,140,255,.2);
-  font-size:14px;line-height:1.7;text-align:left;
+
+.subtext{
+  margin-top:14px;
+  font-size:13px;
+  color:#9ec9e8;
 }
-.founder{margin-top:55px;font-size:12px;color:#a897c8;}
-.disclaimer{margin-top:18px;font-size:11px;color:#8f7fb0;}
+
+/* Buttons */
+.btn{
+  display:block;
+  margin:18px auto;
+  padding:15px;
+  width:100%;
+  max-width:280px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:700;
+  color:#00131f;
+  background:linear-gradient(135deg,#6fd3ff,#3fa9f5);
+  box-shadow:0 0 28px rgba(111,211,255,0.7);
+}
+
+.btn.secondary{
+  background:transparent;
+  color:#6fd3ff;
+  border:1px solid #6fd3ff;
+}
+
+/* Footer */
+.footer{
+  margin-top:60px;
+  font-size:12px;
+  color:#8fb7d4;
+}
+
+.disclaimer{
+  margin-top:14px;
+  font-size:11px;
+  color:#6f93ad;
+}
 </style>
 </head>
 
 <body>
 
-<!-- TOP TABS -->
-<div class="top-tabs">
-  <button onclick="showTab('about')">About</button>
-  <button onclick="showTab('terms')">Terms</button>
-  <button onclick="showTab('privacy')">Privacy</button>
+<!-- TOP NAV -->
+<div class="nav">
+  <a href="about.html">About</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
 </div>
 
 <div class="container">
+
   <div class="logo">UNFEEL</div>
   <div class="tagline">Heal · Grow · Move On</div>
 
   <!-- DAILY QUOTE -->
-  <div class="section">
-    <div class="quote" id="quote">Loading...</div>
-    <div class="subtext">A gentle reminder, every day.</div>
+  <div class="card">
+    <div class="quote" id="quote">Loading today’s thought...</div>
+    <div class="subtext">A new reminder every day.</div>
   </div>
 
   <!-- WHY -->
-  <div class="section">
-    <div class="quote">Not every pain needs fixing.<br>Some pain needs understanding.</div>
-    <div class="subtext">A calm space for heavy moments and quiet nights.</div>
+  <div class="card">
+    <div class="quote">
+      Some days don’t need solutions.<br>
+      They just need understanding.
+    </div>
+    <div class="subtext">
+      UNFEEL is built for quiet nights, heavy emotions,<br>
+      and moments when you don’t know who to talk to.
+    </div>
   </div>
 
-  <a class="download-btn" href="#">Android App – Coming Soon</a>
-  <a class="download-btn secondary" href="#">iPhone App – Coming Soon</a>
+  <!-- APP BUTTONS -->
+  <a class="btn" href="#">Android App – Coming Soon</a>
+  <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
 
-  <!-- ABOUT -->
-  <div class="content-box" id="about">
-    <h3>About UNFEEL</h3>
-    UNFEEL is an India-based emotional well-being and motivation platform.
-    It offers reflective content and listening-focused support to help users
-    feel heard in difficult moments.
-    <br><br>
-    UNFEEL does not replace professional healthcare or therapy.
-    It promotes emotional awareness, self-reflection, and respectful human connection
-    in a non-judgmental environment.
-  </div>
-
-  <!-- TERMS -->
-  <div class="content-box" id="terms">
-    <h3>Terms & Conditions</h3>
-    <strong>Nature of Service:</strong> UNFEEL provides emotional support,
-    motivational content, and listening-based services only. It does not provide
-    medical, psychological, psychiatric, legal, or crisis intervention services.
-    <br><br>
-    <strong>User Responsibility:</strong> All content and services are provided on an
-    “as-is” and “as-available” basis. Users are solely responsible for their actions,
-    decisions, and interpretations arising from the use of the platform.
-    <br><br>
-    <strong>Acceptable Use:</strong> Users must not misuse the platform, including
-    harassment, unlawful activity, or attempts to harm others. UNFEEL reserves the
-    right to suspend or terminate access for violations.
-    <br><br>
-    <strong>Limitation of Liability:</strong> To the maximum extent permitted by law,
-    UNFEEL shall not be liable for any indirect, incidental, or consequential damages.
-    <br><br>
-    <strong>Governing Law:</strong> These terms are governed by the laws of India,
-    including the Information Technology Act, 2000.
-  </div>
-
-  <!-- PRIVACY -->
-  <div class="content-box" id="privacy">
-    <h3>Privacy Policy</h3>
-    <strong>Data Collection:</strong> UNFEEL collects minimal personal information
-    necessary to operate the platform and improve user experience.
-    <br><br>
-    <strong>Data Use:</strong> Personal data is not sold, rented, or traded.
-    Data may be processed to provide services, improve performance,
-    and ensure security.
-    <br><br>
-    <strong>Legal Compliance:</strong> Data handling practices comply with applicable
-    Indian laws, including the Digital Personal Data Protection Act, 2023,
-    and follow globally accepted privacy principles (lawfulness, fairness, transparency).
-    <br><br>
-    <strong>Security:</strong> Reasonable technical and organizational safeguards
-    are implemented to protect personal data.
-    <br><br>
-    <strong>User Consent:</strong> By using UNFEEL, users consent to the collection
-    and processing of data as described in this policy.
-  </div>
-
-  <div class="founder">
+  <!-- FOOTER -->
+  <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
+    <div class="disclaimer">
+      UNFEEL provides emotional support content only.<br>
+      Not a substitute for professional medical or psychological care.
+    </div>
   </div>
 
-  <div class="disclaimer">
-    UNFEEL is not a substitute for professional medical or psychological care.
-  </div>
 </div>
 
 <script>
 const quotes=[
   "You are allowed to heal at your own pace.",
-  "Some days survival is strength.",
+  "Not everything lost is a loss.",
+  "Peace feels better than closure.",
   "Your feelings are valid.",
-  "Peace is a form of self-respect.",
-  "Slow healing is still healing."
+  "Slow progress is still progress.",
+  "You don’t have to be strong every day."
 ];
 const dayIndex=Math.floor((new Date().setHours(0,0,0,0)/86400000)%quotes.length);
 document.getElementById("quote").innerText=quotes[dayIndex];
-
-function showTab(id){
-  document.querySelectorAll('.content-box').forEach(el=>el.style.display='none');
-  document.getElementById(id).style.display='block';
-}
 </script>
 
 </body>
