@@ -8,18 +8,18 @@
 <meta name="author" content="Prasanna Gadre">
 
 <style>
-/* ===== JAMUN BLUE GLOW ===== */
+/* ===== NEON BLUE GLOW ===== */
 :root{
-  --glow-main:#8b6cff; /* jamun blue */
-  --glow-soft:rgba(139,108,255,.35);
-  --glow-strong:rgba(139,108,255,.85);
+  --glow-main:#00e5ff; /* neon blue */
+  --glow-soft:rgba(0,229,255,.35);
+  --glow-strong:rgba(0,229,255,.9);
 }
 
 /* ===== BASE ===== */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:radial-gradient(circle at top,#120a22,#05020c);
+  background:radial-gradient(circle at top,#031923,#00060a);
   color:#ffffff;
 }
 
@@ -39,7 +39,7 @@ body{
   padding:6px 14px;
   border:1px solid var(--glow-main);
   border-radius:20px;
-  box-shadow:0 0 14px var(--glow-soft);
+  box-shadow:0 0 16px var(--glow-soft);
 }
 
 /* ===== CONTAINER ===== */
@@ -56,12 +56,12 @@ body{
   font-weight:700;
   letter-spacing:3px;
   color:var(--glow-main);
-  text-shadow:0 0 36px var(--glow-strong);
+  text-shadow:0 0 40px var(--glow-strong);
 }
 .tagline{
   margin-top:6px;
   font-size:14px;
-  color:#cbbcff;
+  color:#9fefff;
 }
 
 /* ===== CARD ===== */
@@ -70,7 +70,7 @@ body{
   padding:28px;
   border-radius:22px;
   background:rgba(255,255,255,0.04);
-  box-shadow:0 0 38px var(--glow-soft);
+  box-shadow:0 0 40px var(--glow-soft);
 }
 .quote{
   font-size:18px;
@@ -79,7 +79,7 @@ body{
 .subtext{
   margin-top:14px;
   font-size:13px;
-  color:#bfb2ff;
+  color:#8fdff0;
 }
 
 /* ===== BUTTONS ===== */
@@ -93,9 +93,9 @@ body{
   text-decoration:none;
   font-size:15px;
   font-weight:700;
-  color:#12001f;
-  background:linear-gradient(135deg,#8b6cff,#5a7cff);
-  box-shadow:0 0 28px var(--glow-strong);
+  color:#00181f;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  box-shadow:0 0 32px var(--glow-strong);
 }
 .btn.secondary{
   background:transparent;
@@ -108,12 +108,12 @@ body{
 .footer{
   margin-top:60px;
   font-size:12px;
-  color:#b9adff;
+  color:#9ad9e6;
 }
 .disclaimer{
   margin-top:14px;
   font-size:11px;
-  color:#9a90d6;
+  color:#7fbfcc;
 }
 </style>
 </head>
@@ -135,17 +135,17 @@ body{
   <!-- DAILY QUOTE -->
   <div class="card">
     <div class="quote" id="quote">Loading today’s thought…</div>
-    <div class="subtext">A gentle reminder every day.</div>
+    <div class="subtext">A new reminder every day.</div>
   </div>
 
   <!-- MESSAGE -->
   <div class="card">
     <div class="quote">
-      Some days don’t need answers.<br>
-      They just need understanding.
+      Some days don’t need fixing.<br>
+      They just need calm.
     </div>
     <div class="subtext">
-      Built for quiet nights and heavy emotions.
+      Built for quiet nights and heavy thoughts.
     </div>
   </div>
 
@@ -166,14 +166,16 @@ body{
 
 <script>
 const quotes=[
-  "You are allowed to heal slowly.",
-  "Peace grows with patience.",
+  "You don’t have to rush healing.",
+  "Peace is built slowly.",
+  "Your feelings matter.",
   "Not everything needs closure.",
-  "Your feelings are valid.",
-  "Gentle progress still counts.",
-  "Calm is a quiet strength."
+  "Calm is strength.",
+  "Gentle progress still counts."
 ];
-const dayIndex=Math.floor((new Date().setHours(0,0,0,0)/86400000)%quotes.length);
+const dayIndex=Math.floor(
+  (new Date().setHours(0,0,0,0)/86400000)%quotes.length
+);
 document.getElementById("quote").innerText=quotes[dayIndex];
 </script>
 
