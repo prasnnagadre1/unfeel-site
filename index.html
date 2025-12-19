@@ -5,27 +5,27 @@
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#00e5ff">
-
 <style>
+/* ========== BRAND VARIABLES ========== */
 :root{
   --glow-main:#00e5ff;
-  --glow-soft:rgba(0,229,255,.35);
-  --glow-strong:rgba(0,229,255,.9);
+  --glow-soft:rgba(0,229,255,0.35);
+  --glow-strong:rgba(0,229,255,0.9);
 }
 
+/* ========== BASE ========== */
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family:'Segoe UI',system-ui,sans-serif;
   background:radial-gradient(circle at top,#031923,#00060a);
   color:#fff;
+  overflow-x:hidden;
+  animation:fadeIn 1.2s ease;
 }
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* NAV */
+/* ========== NAV ========== */
 .nav{
   position:fixed;
   top:16px;
@@ -42,17 +42,22 @@ body{
   border-radius:22px;
   border:1px solid var(--glow-main);
   box-shadow:0 0 16px var(--glow-soft);
+  transition:.3s;
+}
+.nav a:hover{
+  background:rgba(0,229,255,.12);
+  box-shadow:0 0 30px var(--glow-strong);
 }
 
-/* LAYOUT */
+/* ========== LAYOUT ========== */
 .container{
-  max-width:420px;
+  max-width:430px;
   margin:auto;
-  padding:110px 20px 160px;
+  padding:110px 20px 140px;
   text-align:center;
 }
 
-/* HERO */
+/* ========== HERO ========== */
 .logo{
   font-size:46px;
   font-weight:700;
@@ -71,7 +76,7 @@ body{
   color:#bfefff;
 }
 
-/* CARD */
+/* ========== CARD ========== */
 .card{
   margin-top:48px;
   padding:30px;
@@ -84,6 +89,7 @@ body{
 .quote{
   font-size:19px;
   line-height:1.7;
+  text-shadow:0 0 12px rgba(0,229,255,.35);
 }
 .subtext{
   margin-top:14px;
@@ -97,7 +103,7 @@ body{
   color:#c8f3ff;
 }
 
-/* BUTTON */
+/* ========== BUTTONS ========== */
 .btn{
   display:block;
   margin:26px auto;
@@ -111,6 +117,11 @@ body{
   color:#00181f;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
   box-shadow:0 0 34px var(--glow-strong);
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 50px var(--glow-strong);
 }
 .btn.secondary{
   background:transparent;
@@ -118,7 +129,7 @@ body{
   border:1px solid var(--glow-main);
 }
 
-/* FOOTER */
+/* ========== FOOTER ========== */
 .footer{
   margin-top:70px;
   font-size:12px;
@@ -130,30 +141,41 @@ body{
   color:#7fbfcc;
 }
 
-/* MOBILE STICKY CTA */
-.mobile-cta{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(10px);
-  padding:12px;
-  display:flex;
-  justify-content:center;
-  z-index:2000;
-}
-.mobile-cta a{
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  color:#00181f;
-  padding:14px 26px;
-  border-radius:30px;
-  font-weight:700;
-  text-decoration:none;
-  box-shadow:0 0 25px rgba(0,229,255,.9);
-}
-@media(min-width:900px){
-  .mobile-cta{display:none;}
+/* ========== DESKTOP RESPONSIVE ========== */
+@media (min-width:900px){
+  .container{
+    max-width:1100px;
+    padding:120px 40px 160px;
+    text-align:left;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+
+  .logo{font-size:64px}
+  .tagline{font-size:16px}
+
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+    margin-top:70px;
+  }
+
+  .card{margin-top:0}
+
+  .btn{
+    display:inline-block;
+    margin:24px 16px 0 0;
+  }
+
+  .footer{
+    text-align:center;
+  }
 }
 </style>
 </head>
@@ -169,52 +191,58 @@ body{
 
 <div class="container">
 
-  <div class="logo">UNFEEL</div>
-  <div class="tagline">Heal · Grow · Move On</div>
-  <div class="hook">For nights when your mind is louder than the world.</div>
+  <!-- HERO -->
+  <div class="hero-grid">
+    <div>
+      <div class="logo">UNFEEL</div>
+      <div class="tagline">Heal · Grow · Move On</div>
+      <div class="hook">For nights when your mind is louder than the world.</div>
 
-  <div class="card">
-    <div class="quote" id="quote">Loading today’s thought…</div>
-    <div class="subtext">A gentle reminder every day.</div>
-  </div>
+      <a class="btn" href="#">Android App – Coming Soon</a>
+      <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+    </div>
 
-  <div class="card">
-    <div class="quote">A calm space for heavy thoughts.</div>
-    <div class="subtext">Slow. Gentle. Human.</div>
-  </div>
-
-  <div class="card">
-    <div class="quote">What UNFEEL offers</div>
-    <div class="list">
-      • Daily motivation<br>
-      • Distraction-free calm<br>
-      • Emotional clarity<br>
-      • No judgement
+    <div class="card">
+      <div class="quote" id="quote">Loading today’s thought…</div>
+      <div class="subtext">A gentle reminder, every day.</div>
     </div>
   </div>
 
-  <a class="btn" href="#">Android App – Coming Soon</a>
-  <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+  <!-- CARDS -->
+  <div class="cards-grid">
+    <div class="card">
+      <div class="quote">A calm space for heavy thoughts.</div>
+      <div class="subtext">When emotions feel confusing or unspoken.</div>
+    </div>
 
+    <div class="card">
+      <div class="quote">What UNFEEL offers</div>
+      <div class="list">
+        • Daily motivation<br>
+        • Distraction-free calm<br>
+        • Emotional clarity<br>
+        • No judgement
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="quote">Designed for quiet healing.</div>
+      <div class="subtext">Slow. Gentle. Human.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
-      Emotional support content only.<br>
+      Emotional support content only.  
       Not a substitute for professional medical or psychological care.
     </div>
   </div>
 
 </div>
 
-<!-- Sticky CTA -->
-<div class="mobile-cta">
-  <a href="https://play.google.com/store/apps/details?id=com.unfeel.app" target="_blank">
-    Download UNFEEL App
-  </a>
-</div>
-
 <script>
-/* QUOTE ROTATION */
 const quotes=[
   "You don’t have to rush healing.",
   "Peace is built slowly.",
@@ -225,11 +253,6 @@ const quotes=[
 ];
 const day=Math.floor((Date.now()/86400000)%quotes.length);
 document.getElementById("quote").innerText=quotes[day];
-
-/* SERVICE WORKER */
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("service-worker.js");
-}
 </script>
 
 </body>
