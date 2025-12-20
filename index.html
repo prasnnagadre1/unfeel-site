@@ -53,8 +53,8 @@ body::before{
   }
   50%{
     box-shadow:
-      0 0 28px rgba(0,229,255,.7),
-      0 0 60px rgba(0,229,255,.9);
+      0 0 26px rgba(0,229,255,.6),
+      0 0 56px rgba(0,229,255,.9);
   }
   100%{
     box-shadow:
@@ -91,12 +91,19 @@ body::before{
 }
 
 /* ================= HERO ================= */
+/* LOGO WITH ROUNDED SOFT BOX */
 .logo{
+  display:inline-block;
+  padding:18px 28px;
   font-size:48px;
   font-weight:700;
   letter-spacing:4px;
   color:var(--blue);
-  text-shadow:0 0 40px var(--blue-strong);
+  border-radius:26px;                 /* rounded corners */
+  background:rgba(255,255,255,0.02);  /* soft glass */
+  box-shadow:
+    0 0 18px rgba(0,229,255,.25),
+    0 0 42px rgba(0,229,255,.45);
   animation:neonPulse 6s ease-in-out infinite;
 }
 .tagline{
@@ -185,7 +192,12 @@ body::before{
     gap:70px;
     align-items:center;
   }
-  .logo{font-size:66px}
+  /* LOGO COMPACT ON DESKTOP */
+  .logo{
+    font-size:60px;
+    padding:20px 34px;     /* sirf naam jitna box */
+    border-radius:30px;
+  }
   .cards-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
