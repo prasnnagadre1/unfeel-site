@@ -1,32 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UNFEEL – A calm space for emotional balance. Heal. Grow. Move On.">
+<meta name="author" content="Prasanna Gadre">
 
 <style>
-/* ========== BRAND VARIABLES ========== */
+/* ================= THEME ================= */
 :root{
-  --glow-main:#00e5ff;
-  --glow-soft:rgba(0,229,255,0.35);
-  --glow-strong:rgba(0,229,255,0.9);
+  --blue:#00e5ff;
+  --blue-soft:rgba(0,229,255,.25);
+  --blue-strong:rgba(0,229,255,.9);
+  --bg1:#031923;
+  --bg2:#00060a;
 }
 
-/* ========== BASE ========== */
-*{box-sizing:border-box}
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ================= BODY ================= */
 body{
-  margin:0;
   font-family:'Segoe UI',system-ui,sans-serif;
-  background:radial-gradient(circle at top,#031923,#00060a);
+  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
   color:#fff;
   overflow-x:hidden;
   animation:fadeIn 1.2s ease;
 }
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ========== NAV ========== */
+/* ================= BACKGROUND BREATH ================= */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 20% 20%,rgba(0,229,255,.06),transparent 45%);
+  animation:bgMove 20s ease-in-out infinite alternate;
+  z-index:-1;
+}
+@keyframes bgMove{
+  from{transform:translate(0,0)}
+  to{transform:translate(-60px,40px)}
+}
+
+/* ================= NEON PULSE ================= */
+@keyframes neonPulse{
+  0%{
+    box-shadow:
+      0 0 10px rgba(0,229,255,.2),
+      0 0 22px rgba(0,229,255,.25);
+  }
+  50%{
+    box-shadow:
+      0 0 28px rgba(0,229,255,.7),
+      0 0 60px rgba(0,229,255,.9);
+  }
+  100%{
+    box-shadow:
+      0 0 10px rgba(0,229,255,.2),
+      0 0 22px rgba(0,229,255,.25);
+  }
+}
+
+/* ================= NAV ================= */
 .nav{
   position:fixed;
   top:16px;
@@ -36,61 +73,80 @@ body{
   z-index:1000;
 }
 .nav a{
-  color:var(--glow-main);
+  color:var(--blue);
   text-decoration:none;
   font-size:13px;
   padding:7px 16px;
   border-radius:22px;
-  border:1px solid var(--glow-main);
-  box-shadow:0 0 16px var(--glow-soft);
-  transition:.3s;
-}
-.nav a:hover{
-  background:rgba(0,229,255,.12);
-  box-shadow:0 0 30px var(--glow-strong);
+  border:1px solid var(--blue);
+  animation:neonPulse 5s ease-in-out infinite;
 }
 
-/* ========== LAYOUT ========== */
+/* ================= LAYOUT ================= */
 .container{
   max-width:430px;
   margin:auto;
-  padding:110px 20px 140px;
+  padding:120px 20px 150px;
   text-align:center;
 }
 
-/* ========== HERO ========== */
+/* ================= HERO ================= */
 .logo{
-  font-size:46px;
+  font-size:48px;
   font-weight:700;
-  letter-spacing:3px;
-  color:var(--glow-main);
-  text-shadow:0 0 45px var(--glow-strong);
+  letter-spacing:4px;
+  color:var(--blue);
+  text-shadow:0 0 40px var(--blue-strong);
+  animation:neonPulse 6s ease-in-out infinite;
 }
 .tagline{
-  margin-top:6px;
+  margin-top:10px;
   font-size:14px;
   color:#9fefff;
 }
 .hook{
-  margin-top:14px;
+  margin-top:16px;
   font-size:13px;
-  color:#bfefff;
+  color:#c7f3ff;
+  line-height:1.6;
 }
 
-/* ========== CARD ========== */
+/* ================= BUTTON ================= */
+.btn{
+  display:block;
+  margin:28px auto;
+  padding:16px;
+  width:100%;
+  max-width:300px;
+  border-radius:32px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:700;
+  color:#00181f;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  animation:neonPulse 4s ease-in-out infinite;
+  transition:.3s;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn.secondary{
+  background:transparent;
+  color:var(--blue);
+  border:1px solid var(--blue);
+  animation:none;
+}
+
+/* ================= CARD ================= */
 .card{
-  margin-top:48px;
-  padding:30px;
-  border-radius:24px;
-  background:rgba(255,255,255,0.06);
+  margin-top:50px;
+  padding:32px;
+  border-radius:26px;
+  background:rgba(255,255,255,.06);
   backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 0 40px var(--glow-soft);
+  animation:neonPulse 5.5s ease-in-out infinite;
 }
 .quote{
-  font-size:19px;
+  font-size:20px;
   line-height:1.7;
-  text-shadow:0 0 12px rgba(0,229,255,.35);
 }
 .subtext{
   margin-top:14px;
@@ -98,41 +154,15 @@ body{
   color:#8fdff0;
 }
 .list{
-  margin-top:16px;
+  margin-top:18px;
   font-size:13px;
   line-height:1.9;
   color:#c8f3ff;
 }
 
-/* ========== BUTTONS ========== */
-.btn{
-  display:block;
-  margin:26px auto;
-  padding:16px;
-  width:100%;
-  max-width:290px;
-  border-radius:32px;
-  text-decoration:none;
-  font-size:15px;
-  font-weight:700;
-  color:#00181f;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  box-shadow:0 0 34px var(--glow-strong);
-  transition:.3s;
-}
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 50px var(--glow-strong);
-}
-.btn.secondary{
-  background:transparent;
-  color:var(--glow-main);
-  border:1px solid var(--glow-main);
-}
-
-/* ========== FOOTER ========== */
+/* ================= FOOTER ================= */
 .footer{
-  margin-top:70px;
+  margin-top:80px;
   font-size:12px;
   color:#9ad9e6;
 }
@@ -142,41 +172,29 @@ body{
   color:#7fbfcc;
 }
 
-/* ========== DESKTOP RESPONSIVE ========== */
-@media (min-width:900px){
+/* ================= DESKTOP ================= */
+@media(min-width:900px){
   .container{
-    max-width:1100px;
-    padding:120px 40px 160px;
+    max-width:1200px;
     text-align:left;
+    padding:140px 50px 170px;
   }
-
   .hero-grid{
     display:grid;
     grid-template-columns:1.2fr 1fr;
-    gap:60px;
+    gap:70px;
     align-items:center;
   }
-
-  .logo{font-size:64px}
-  .tagline{font-size:16px}
-
+  .logo{font-size:66px}
   .cards-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:32px;
-    margin-top:70px;
+    gap:36px;
+    margin-top:90px;
   }
-
   .card{margin-top:0}
-
-  .btn{
-    display:inline-block;
-    margin:24px 16px 0 0;
-  }
-
-  .footer{
-    text-align:center;
-  }
+  .btn{display:inline-block;margin:30px 18px 0 0}
+  .footer{text-align:center}
 }
 </style>
 </head>
@@ -197,7 +215,10 @@ body{
     <div>
       <div class="logo">UNFEEL</div>
       <div class="tagline">Heal · Grow · Move On</div>
-      <div class="hook">For nights when your mind is louder than the world.</div>
+      <div class="hook">
+        A quiet place for heavy thoughts.<br>
+        When your mind needs softness, not noise.
+      </div>
 
       <a class="btn" href="#">Android App – Coming Soon</a>
       <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
@@ -205,30 +226,30 @@ body{
 
     <div class="card">
       <div class="quote" id="quote">Loading today’s thought…</div>
-      <div class="subtext">A gentle reminder, every day.</div>
+      <div class="subtext">A new reminder, every day.</div>
     </div>
   </div>
 
   <!-- CARDS -->
   <div class="cards-grid">
     <div class="card">
-      <div class="quote">A calm space for heavy thoughts.</div>
-      <div class="subtext">When emotions feel confusing or unspoken.</div>
+      <div class="quote">A space to breathe.</div>
+      <div class="subtext">No judgement. No rush.</div>
     </div>
 
     <div class="card">
-      <div class="quote">What UNFEEL offers</div>
+      <div class="quote">What UNFEEL gives you</div>
       <div class="list">
         • Daily motivation<br>
-        • Distraction-free calm<br>
         • Emotional clarity<br>
-        • No judgement
+        • Calm digital space<br>
+        • Gentle reminders
       </div>
     </div>
 
     <div class="card">
-      <div class="quote">Designed for quiet healing.</div>
-      <div class="subtext">Slow. Gentle. Human.</div>
+      <div class="quote">Designed for healing.</div>
+      <div class="subtext">Slow progress still counts.</div>
     </div>
   </div>
 
@@ -236,7 +257,7 @@ body{
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
-      Emotional support content only.  
+      Emotional support content only.<br>
       Not a substitute for professional medical or psychological care.
     </div>
   </div>
