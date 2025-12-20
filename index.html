@@ -1,129 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UNFEEL is a calm, minimal space for emotional balance. Heal. Grow. Move On.">
-<meta name="author" content="Prasanna Gadre">
-<link rel="canonical" href="https://unfeel.online">
 
 <style>
-/* ================= THEME ================= */
+/* ========== BRAND VARIABLES ========== */
 :root{
-  --glow:#00e5ff;
-  --glow-soft:rgba(0,229,255,.25);
-  --bg-dark:#00060a;
-  --bg-blue:#031923;
+  --glow-main:#00e5ff;
+  --glow-soft:rgba(0,229,255,0.35);
+  --glow-strong:rgba(0,229,255,0.9);
 }
 
-/* ================= RESET ================= */
-*{margin:0;padding:0;box-sizing:border-box}
-
-/* ================= BODY ================= */
+/* ========== BASE ========== */
+*{box-sizing:border-box}
 body{
+  margin:0;
   font-family:'Segoe UI',system-ui,sans-serif;
-  background:radial-gradient(circle at top,var(--bg-blue),var(--bg-dark));
-  color:#ffffff;
+  background:radial-gradient(circle at top,#031923,#00060a);
+  color:#fff;
   overflow-x:hidden;
   animation:fadeIn 1.2s ease;
 }
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ================= NAV ================= */
+/* ========== NAV ========== */
 .nav{
   position:fixed;
-  top:18px;
-  right:20px;
+  top:16px;
+  right:18px;
   display:flex;
   gap:14px;
   z-index:1000;
 }
 .nav a{
-  color:var(--glow);
+  color:var(--glow-main);
   text-decoration:none;
   font-size:13px;
   padding:7px 16px;
   border-radius:22px;
-  border:1px solid var(--glow);
-  box-shadow:0 0 12px var(--glow-soft);
+  border:1px solid var(--glow-main);
+  box-shadow:0 0 16px var(--glow-soft);
   transition:.3s;
 }
 .nav a:hover{
   background:rgba(0,229,255,.12);
+  box-shadow:0 0 30px var(--glow-strong);
 }
 
-/* ================= LAYOUT ================= */
+/* ========== LAYOUT ========== */
 .container{
-  max-width:440px;
+  max-width:430px;
   margin:auto;
-  padding:120px 22px 150px;
+  padding:110px 20px 140px;
   text-align:center;
 }
 
-/* ================= HERO ================= */
+/* ========== HERO ========== */
 .logo{
-  font-size:48px;
+  font-size:46px;
   font-weight:700;
-  letter-spacing:4px;
-  color:var(--glow);
-  text-shadow:0 0 40px var(--glow);
+  letter-spacing:3px;
+  color:var(--glow-main);
+  text-shadow:0 0 45px var(--glow-strong);
 }
 .tagline{
-  margin-top:10px;
+  margin-top:6px;
   font-size:14px;
   color:#9fefff;
 }
 .hook{
-  margin-top:16px;
+  margin-top:14px;
   font-size:13px;
-  color:#c7f3ff;
-  line-height:1.6;
+  color:#bfefff;
 }
 
-/* ================= BUTTON ================= */
-.btn{
-  display:block;
-  margin:28px auto;
-  padding:16px;
-  width:100%;
-  max-width:300px;
-  border-radius:32px;
-  text-decoration:none;
-  font-size:15px;
-  font-weight:700;
-  color:#00181f;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  box-shadow:0 0 28px var(--glow);
-  transition:.3s;
-}
-.btn:hover{transform:translateY(-3px)}
-.btn.secondary{
-  background:transparent;
-  color:var(--glow);
-  border:1px solid var(--glow);
-  box-shadow:none;
-}
-
-/* ================= CARD ================= */
+/* ========== CARD ========== */
 .card{
-  margin-top:50px;
-  padding:32px;
-  border-radius:26px;
-  background:rgba(255,255,255,.06);
+  margin-top:48px;
+  padding:30px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.06);
   backdrop-filter:blur(14px);
-  box-shadow:0 0 34px var(--glow-soft);
-  opacity:0;
-  transform:translateY(30px);
-  transition:all .9s ease;
-}
-.card.show{
-  opacity:1;
-  transform:translateY(0);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 0 40px var(--glow-soft);
 }
 .quote{
-  font-size:20px;
+  font-size:19px;
   line-height:1.7;
+  text-shadow:0 0 12px rgba(0,229,255,.35);
 }
 .subtext{
   margin-top:14px;
@@ -131,15 +98,41 @@ body{
   color:#8fdff0;
 }
 .list{
-  margin-top:18px;
+  margin-top:16px;
   font-size:13px;
   line-height:1.9;
   color:#c8f3ff;
 }
 
-/* ================= FOOTER ================= */
+/* ========== BUTTONS ========== */
+.btn{
+  display:block;
+  margin:26px auto;
+  padding:16px;
+  width:100%;
+  max-width:290px;
+  border-radius:32px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:700;
+  color:#00181f;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  box-shadow:0 0 34px var(--glow-strong);
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 50px var(--glow-strong);
+}
+.btn.secondary{
+  background:transparent;
+  color:var(--glow-main);
+  border:1px solid var(--glow-main);
+}
+
+/* ========== FOOTER ========== */
 .footer{
-  margin-top:80px;
+  margin-top:70px;
   font-size:12px;
   color:#9ad9e6;
 }
@@ -149,33 +142,41 @@ body{
   color:#7fbfcc;
 }
 
-/* ================= DESKTOP ================= */
-@media(min-width:900px){
+/* ========== DESKTOP RESPONSIVE ========== */
+@media (min-width:900px){
   .container{
-    max-width:1200px;
+    max-width:1100px;
+    padding:120px 40px 160px;
     text-align:left;
-    padding:140px 50px 170px;
   }
+
   .hero-grid{
     display:grid;
     grid-template-columns:1.2fr 1fr;
-    gap:70px;
+    gap:60px;
     align-items:center;
   }
-  .logo{font-size:66px}
+
+  .logo{font-size:64px}
   .tagline{font-size:16px}
+
   .cards-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:36px;
-    margin-top:90px;
+    gap:32px;
+    margin-top:70px;
   }
+
   .card{margin-top:0}
+
   .btn{
     display:inline-block;
-    margin:30px 18px 0 0;
+    margin:24px 16px 0 0;
   }
-  .footer{text-align:center}
+
+  .footer{
+    text-align:center;
+  }
 }
 </style>
 </head>
@@ -196,10 +197,7 @@ body{
     <div>
       <div class="logo">UNFEEL</div>
       <div class="tagline">Heal · Grow · Move On</div>
-      <div class="hook">
-        A quiet place for heavy thoughts.<br>
-        When your mind needs softness, not noise.
-      </div>
+      <div class="hook">For nights when your mind is louder than the world.</div>
 
       <a class="btn" href="#">Android App – Coming Soon</a>
       <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
@@ -207,30 +205,30 @@ body{
 
     <div class="card">
       <div class="quote" id="quote">Loading today’s thought…</div>
-      <div class="subtext">A new reminder, every day.</div>
+      <div class="subtext">A gentle reminder, every day.</div>
     </div>
   </div>
 
   <!-- CARDS -->
   <div class="cards-grid">
     <div class="card">
-      <div class="quote">A space to breathe.</div>
-      <div class="subtext">No judgement. No rush.</div>
+      <div class="quote">A calm space for heavy thoughts.</div>
+      <div class="subtext">When emotions feel confusing or unspoken.</div>
     </div>
 
     <div class="card">
-      <div class="quote">What UNFEEL gives you</div>
+      <div class="quote">What UNFEEL offers</div>
       <div class="list">
         • Daily motivation<br>
+        • Distraction-free calm<br>
         • Emotional clarity<br>
-        • Calm digital space<br>
-        • Gentle reminders
+        • No judgement
       </div>
     </div>
 
     <div class="card">
-      <div class="quote">Designed for healing.</div>
-      <div class="subtext">Slow progress still counts.</div>
+      <div class="quote">Designed for quiet healing.</div>
+      <div class="subtext">Slow. Gentle. Human.</div>
     </div>
   </div>
 
@@ -238,7 +236,7 @@ body{
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
-      Emotional support content only.<br>
+      Emotional support content only.  
       Not a substitute for professional medical or psychological care.
     </div>
   </div>
@@ -246,7 +244,6 @@ body{
 </div>
 
 <script>
-/* DAILY QUOTES */
 const quotes=[
   "You don’t have to rush healing.",
   "Peace is built slowly.",
@@ -257,17 +254,6 @@ const quotes=[
 ];
 const day=Math.floor((Date.now()/86400000)%quotes.length);
 document.getElementById("quote").innerText=quotes[day];
-
-/* SCROLL ANIMATION */
-const cards=document.querySelectorAll(".card");
-const reveal=()=>{
-  cards.forEach(c=>{
-    const top=c.getBoundingClientRect().top;
-    if(top<window.innerHeight-80){c.classList.add("show")}
-  });
-};
-window.addEventListener("scroll",reveal);
-reveal();
 </script>
 
 </body>
