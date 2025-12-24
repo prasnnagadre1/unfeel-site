@@ -6,25 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* ================= BRAND ================= */
 :root{
   --glow-main:#00e5ff;
   --glow-soft:rgba(0,229,255,.35);
   --glow-strong:rgba(0,229,255,.9);
 }
 
-/* ================= ANIMATION ================= */
+/* ===== ANIMATION ===== */
 @keyframes neonPulse{
-  0%{box-shadow:0 0 14px var(--glow-soft);}
-  50%{box-shadow:0 0 46px var(--glow-strong);}
-  100%{box-shadow:0 0 14px var(--glow-soft);}
+  0%{box-shadow:0 0 12px var(--glow-soft);}
+  50%{box-shadow:0 0 42px var(--glow-strong);}
+  100%{box-shadow:0 0 12px var(--glow-soft);}
 }
 @keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
+  from{opacity:0}to{opacity:1}
 }
 
-/* ================= BASE ================= */
+/* ===== BASE ===== */
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -34,7 +32,7 @@ body{
   animation:fadeIn 1.2s ease;
 }
 
-/* ================= NAV ================= */
+/* ===== NAV ===== */
 .nav{
   position:fixed;
   top:16px;
@@ -53,7 +51,7 @@ body{
   box-shadow:0 0 16px var(--glow-soft);
 }
 
-/* ================= LAYOUT ================= */
+/* ===== LAYOUT ===== */
 .container{
   max-width:430px;
   margin:auto;
@@ -61,7 +59,7 @@ body{
   text-align:center;
 }
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .logo{
   display:inline-block;
   font-size:46px;
@@ -70,7 +68,7 @@ body{
   padding:18px 30px;
   border-radius:28px;
   color:var(--glow-main);
-  animation:neonPulse 6s ease-in-out infinite;
+  animation:neonPulse 6s infinite;
 }
 .tagline{
   margin-top:10px;
@@ -84,7 +82,7 @@ body{
   line-height:1.6;
 }
 
-/* ================= BUTTON ================= */
+/* ===== BUTTON ===== */
 .btn{
   display:block;
   margin:28px auto;
@@ -97,7 +95,7 @@ body{
   font-weight:700;
   color:#00181f;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  animation:neonPulse 4s ease-in-out infinite;
+  animation:neonPulse 4s infinite;
 }
 .btn.secondary{
   background:transparent;
@@ -106,14 +104,14 @@ body{
   animation:none;
 }
 
-/* ================= CARD ================= */
+/* ===== CARD ===== */
 .card{
   margin-top:50px;
   padding:32px;
   border-radius:26px;
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(14px);
-  animation:neonPulse 5.5s ease-in-out infinite;
+  animation:neonPulse 5.5s infinite;
 }
 .quote{
   font-size:20px;
@@ -131,12 +129,12 @@ body{
   color:#c8f3ff;
 }
 
-/* ================= MOOD ================= */
+/* ===== MOOD ===== */
 .mood-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:18px;
-  margin-top:30px;
+  margin-top:22px;
 }
 .mood{
   padding:18px;
@@ -151,7 +149,7 @@ body{
   background:rgba(0,229,255,.12);
 }
 
-/* ================= FOOTER ================= */
+/* ===== FOOTER ===== */
 .footer{
   margin-top:80px;
   font-size:12px;
@@ -163,7 +161,7 @@ body{
   color:#7fbfcc;
 }
 
-/* ================= DESKTOP ================= */
+/* ===== DESKTOP ===== */
 @media(min-width:900px){
   .container{
     max-width:1200px;
@@ -179,7 +177,6 @@ body{
   .logo{
     font-size:60px;
     padding:20px 34px;
-    border-radius:30px;
   }
   .cards-grid{
     display:grid;
@@ -204,6 +201,7 @@ body{
 
 <div class="container">
 
+  <!-- HERO -->
   <div class="hero-grid">
     <div>
       <div class="logo">UNFEEL</div>
@@ -223,7 +221,30 @@ body{
     </div>
   </div>
 
-  <!-- MOOD -->
+  <!-- OLD CARDS (UNCHANGED) -->
+  <div class="cards-grid">
+    <div class="card">
+      <div class="quote">A space to breathe.</div>
+      <div class="subtext">No judgement. No rush.</div>
+    </div>
+
+    <div class="card">
+      <div class="quote">What UNFEEL gives you</div>
+      <div class="list">
+        • Daily motivation<br>
+        • Emotional clarity<br>
+        • Calm digital space<br>
+        • Gentle reminders
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="quote">Designed for healing.</div>
+      <div class="subtext">Slow progress still counts.</div>
+    </div>
+  </div>
+
+  <!-- NEW MOOD CARD (ADDED BELOW) -->
   <div class="card">
     <div class="quote">How are you feeling right now?</div>
     <div class="mood-grid">
@@ -237,6 +258,7 @@ body{
     </div>
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
@@ -261,10 +283,10 @@ document.getElementById("quote").innerText =
 
 function setMood(m){
   const text={
-    low:"It’s okay to slow down. Drink water, breathe deeply, and be kind to yourself.",
-    anxious:"Pause. Inhale for 4 seconds, exhale for 6. You are safe right now.",
-    lonely:"You are not invisible. Even silent strength matters.",
-    okay:"Protect this calm. Small routines help it stay."
+    low:"Slow down today. Hydrate, breathe, and don’t push yourself.",
+    anxious:"Pause. Breathe in for 4, out for 6. You’re safe right now.",
+    lonely:"You matter, even when it feels quiet around you.",
+    okay:"Protect this calm. Small routines keep it steady."
   };
   document.getElementById("moodText").innerText=text[m];
 }
