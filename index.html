@@ -29,10 +29,14 @@ body{
   100%{box-shadow:0 0 18px var(--blueSoft)}
 }
 
-/* NAV */
+/* ===== NAV ===== */
 .nav{
-  position:fixed;top:16px;right:18px;
-  display:flex;gap:14px;z-index:1000;
+  position:fixed;
+  top:16px;
+  right:18px;
+  display:flex;
+  gap:14px;
+  z-index:1000;
 }
 .nav a{
   color:var(--blue);
@@ -44,14 +48,14 @@ body{
   animation:neonBreath 6s ease-in-out infinite;
 }
 
-/* LAYOUT */
+/* ===== LAYOUT ===== */
 .container{
   max-width:1200px;
   margin:auto;
   padding:140px 30px 180px;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
   display:grid;
   grid-template-columns:1.2fr 1fr;
@@ -83,7 +87,7 @@ body{
   color:#c7f3ff;
 }
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 .app-buttons{
   margin-top:28px;
   display:flex;
@@ -107,7 +111,7 @@ body{
   animation:none;
 }
 
-/* CARDS */
+/* ===== CARDS ===== */
 .cards{
   margin-top:90px;
   display:grid;
@@ -127,7 +131,7 @@ body{
   color:#c8f3ff;
 }
 
-/* MOOD */
+/* ===== MOOD ===== */
 .mood-section{margin-top:90px}
 .mood-grid{
   display:grid;
@@ -147,7 +151,7 @@ body{
   color:#bff6ff;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 .footer{
   margin-top:110px;
   text-align:center;
@@ -155,7 +159,7 @@ body{
   color:#9ad9e6;
 }
 
-/* AI CHAT */
+/* ===== AI CHAT ===== */
 #aiBtn{
   position:fixed;
   bottom:30px;
@@ -210,7 +214,7 @@ body{
   font-weight:600;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr}
@@ -221,10 +225,11 @@ body{
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
-  <a>About</a>
-  <a>Terms</a>
-  <a>Privacy</a>
+  <a href="about.html">About</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
 </div>
 
 <div class="container">
@@ -270,6 +275,7 @@ body{
 
 </div>
 
+<!-- AI CHAT -->
 <div id="aiBtn" onclick="aiBox.style.display='flex'">💬</div>
 <div id="aiBox">
   <div class="aiHead">UNFEEL AI <span onclick="aiBox.style.display='none'">✕</span></div>
