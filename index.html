@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>UNFEEL – Heal. Grow. Move On.</title>
+<title>UNFEEL – Heal · Grow · Move On</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -20,129 +20,170 @@ body{
   background:radial-gradient(circle at top,var(--bg1),var(--bg2));
   color:#fff;
   overflow-x:hidden;
-  animation:fadeIn 1.2s ease;
+  animation:fadeIn 1s ease;
 }
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+@keyframes neonPulse{
+  0%,100%{box-shadow:0 0 22px var(--blue-soft)}
+  50%{box-shadow:0 0 42px rgba(0,229,255,.6)}
+}
+
+/* ---------- NAV ---------- */
 .nav{
-  position:fixed;top:16px;right:18px;display:flex;gap:14px;z-index:1000;
+  position:fixed;top:16px;right:18px;
+  display:flex;gap:14px;z-index:1000;
 }
 .nav a{
-  color:var(--blue);text-decoration:none;font-size:13px;
-  padding:7px 16px;border-radius:22px;border:1px solid var(--blue);
+  color:var(--blue);
+  text-decoration:none;
+  font-size:13px;
+  padding:7px 16px;
+  border-radius:22px;
+  border:1px solid var(--blue);
   box-shadow:0 0 14px var(--blue-soft);
 }
 
+/* ---------- LAYOUT ---------- */
 .container{
-  max-width:430px;margin:auto;padding:110px 20px 160px;text-align:center;
+  max-width:420px;
+  margin:auto;
+  padding:120px 20px 160px;
+  text-align:center;
 }
 
+/* ---------- LOGO ---------- */
+.logo-wrap{
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:28px;
+  background:rgba(0,229,255,.08);
+  box-shadow:
+    0 0 28px rgba(0,229,255,.35),
+    inset 0 0 18px rgba(0,229,255,.25);
+  animation:neonPulse 6s ease-in-out infinite;
+}
 .logo{
-  font-size:46px;font-weight:700;letter-spacing:3px;
-  color:var(--blue);text-shadow:0 0 45px var(--blue);
+  font-size:46px;
+  font-weight:700;
+  letter-spacing:3px;
+  color:var(--blue);
+  text-shadow:0 0 32px var(--blue);
 }
-.tagline{margin-top:8px;font-size:14px;color:#9fefff}
-.hook{margin-top:14px;font-size:13px;color:#bfefff}
+.tagline{
+  margin-top:10px;
+  font-size:14px;
+  color:#9fefff;
+}
+.hook{
+  margin-top:14px;
+  font-size:13px;
+  color:#c7f3ff;
+}
 
+/* ---------- BUTTONS ---------- */
+.app-buttons{
+  margin-top:28px;
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn{
+  padding:16px 26px;
+  border-radius:32px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:700;
+  color:#00181f;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  animation:neonPulse 4s ease-in-out infinite;
+}
+.btn.secondary{
+  background:transparent;
+  color:var(--blue);
+  border:1px solid var(--blue);
+  animation:none;
+}
+
+/* ---------- CARD ---------- */
 .card{
-  margin-top:50px;
+  margin-top:48px;
   padding:30px;
   border-radius:26px;
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(14px);
-  box-shadow:0 0 38px var(--blue-soft);
+  box-shadow:0 0 30px var(--blue-soft);
 }
-.quote{font-size:19px;line-height:1.7}
-.subtext{margin-top:14px;font-size:13px;color:#8fdff0}
-.list{margin-top:16px;font-size:13px;line-height:1.9;color:#c8f3ff}
+.quote{font-size:18px;line-height:1.7}
+.subtext{margin-top:12px;font-size:13px;color:#8fdff0}
+.list{margin-top:14px;font-size:13px;line-height:1.9;color:#c8f3ff}
 
-.btn{
-  display:block;margin:26px auto;padding:16px;
-  width:100%;max-width:300px;border-radius:32px;
-  text-decoration:none;font-size:15px;font-weight:700;
-  color:#00181f;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  box-shadow:0 0 30px var(--blue);
+/* ---------- MOOD ---------- */
+.mood-wrap{
+  margin-top:60px;
+  padding:28px;
+  border-radius:28px;
+  background:rgba(0,229,255,.06);
+  box-shadow:0 0 32px var(--blue-soft);
 }
-.btn.secondary{
-  background:transparent;color:var(--blue);
-  border:1px solid var(--blue);
+.mood-title{
+  font-size:16px;
+  margin-bottom:18px;
 }
-
-.section-gap{margin-top:90px}
-
-/* ===== MOOD ===== */
-.mood-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:14px;margin-top:18px;
+.moods{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
 .mood{
-  padding:14px;border-radius:18px;
+  padding:14px;
+  border-radius:18px;
   border:1px solid var(--blue);
-  cursor:pointer;font-size:14px;
-  box-shadow:0 0 18px var(--blue-soft);
+  color:#bff6ff;
+  cursor:pointer;
+  transition:.3s;
+}
+.mood:hover{
+  background:rgba(0,229,255,.12);
 }
 
-/* ===== AI CHAT BUTTON ===== */
-#chatBtn{
-  position:fixed;
-  bottom:28px;right:22px;
-  width:76px;height:76px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  box-shadow:0 0 40px var(--blue);
-  font-size:34px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:2000;
-}
-
-/* ===== AI CHAT BOX ===== */
-#chatBox{
-  position:fixed;
-  bottom:120px;right:20px;
-  width:320px;max-height:420px;
-  background:#02131a;
-  border-radius:24px;
-  box-shadow:0 0 40px var(--blue-soft);
-  display:none;flex-direction:column;
-  overflow:hidden;z-index:2000;
-}
-#chatHeader{
-  padding:14px;
-  background:rgba(0,229,255,.15);
-  font-weight:700;text-align:center;
-}
-#chatMsgs{
-  padding:14px;
-  overflow-y:auto;
-  font-size:13px;line-height:1.6;
-  flex:1;
-}
-.msg.ai{color:#bff6ff;margin-bottom:12px}
-.msg.user{color:#fff;text-align:right;margin-bottom:12px}
-#chatInput{
-  display:flex;border-top:1px solid #0af;
-}
-#chatInput input{
-  flex:1;padding:10px;border:none;
-  background:#00161e;color:#fff;
-}
-#chatInput button{
-  padding:10px 14px;border:none;
-  background:#00e5ff;font-weight:700;
-}
-
+/* ---------- FOOTER ---------- */
 .footer{
-  margin-top:90px;font-size:12px;color:#9ad9e6;
+  margin-top:80px;
+  font-size:12px;
+  color:#9ad9e6;
 }
-.disclaimer{margin-top:14px;font-size:11px;color:#7fbfcc}
+.disclaimer{
+  margin-top:14px;
+  font-size:11px;
+  color:#7fbfcc;
+}
 
-/* DESKTOP */
+/* ---------- DESKTOP ---------- */
 @media(min-width:900px){
-  .container{max-width:1100px;text-align:left;padding:130px 40px}
-  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px}
-  .logo{font-size:64px}
-  .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:70px}
+  .container{
+    max-width:1100px;
+    text-align:left;
+    padding:140px 50px 180px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:70px;
+    align-items:center;
+  }
+  .logo{font-size:58px}
+  .logo-wrap{padding:18px 34px;border-radius:32px}
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:36px;
+    margin-top:80px;
+  }
+  .card{margin-top:0}
+  .app-buttons{justify-content:flex-start}
+  .footer{text-align:center}
 }
 </style>
 </head>
@@ -157,126 +198,79 @@ body{
 
 <div class="container">
 
-<div class="hero-grid">
-  <div>
-    <div class="logo">UNFEEL</div>
-    <div class="tagline">Heal · Grow · Move On</div>
-    <div class="hook">For nights when your mind feels heavier than your heart.</div>
-    <a class="btn">Android App – Coming Soon</a>
-    <a class="btn secondary">iPhone App – Coming Soon</a>
-  </div>
+  <div class="hero-grid">
+    <div>
+      <div class="logo-wrap">
+        <div class="logo">UNFEEL</div>
+      </div>
+      <div class="tagline">Heal · Grow · Move On</div>
+      <div class="hook">
+        For nights when your mind feels heavier than your heart.
+      </div>
 
-  <div class="card">
-    <div class="quote" id="quote">Loading today’s thought…</div>
-    <div class="subtext">A gentle reminder every day.</div>
-  </div>
-</div>
+      <div class="app-buttons">
+        <a class="btn">Android App – Coming Soon</a>
+        <a class="btn secondary">iPhone App – Coming Soon</a>
+      </div>
+    </div>
 
-<div class="cards-grid">
-  <div class="card">
-    <div class="quote">A calm space for heavy thoughts.</div>
-    <div class="subtext">No judgement. No pressure.</div>
-  </div>
-
-  <div class="card">
-    <div class="quote">What UNFEEL offers</div>
-    <div class="list">
-      • Daily motivation<br>
-      • Emotional clarity<br>
-      • Calm digital space
+    <div class="card">
+      <div class="quote" id="quote">Loading today’s thought…</div>
+      <div class="subtext">A gentle reminder every day.</div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="quote">Healing takes time.</div>
-    <div class="subtext">And that’s okay.</div>
-  </div>
-</div>
-
-<div class="section-gap">
-  <div class="card">
-    <div class="quote">How are you feeling right now?</div>
-    <div class="mood-grid">
-      <div class="mood" onclick="aiReply('low')">😞 Low</div>
-      <div class="mood" onclick="aiReply('lonely')">🥺 Lonely</div>
-      <div class="mood" onclick="aiReply('anxious')">😰 Anxious</div>
-      <div class="mood" onclick="aiReply('okay')">🙂 Okay</div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="quote">A space to breathe.</div>
+      <div class="subtext">No judgement. No rush.</div>
+    </div>
+    <div class="card">
+      <div class="quote">What UNFEEL offers</div>
+      <div class="list">
+        • Daily motivation<br>
+        • Emotional clarity<br>
+        • Calm digital space<br>
+        • Gentle reminders
+      </div>
+    </div>
+    <div class="card">
+      <div class="quote">Designed for healing.</div>
+      <div class="subtext">Slow progress still counts.</div>
     </div>
   </div>
-</div>
 
-<div class="footer">
-  Founded & Created by <strong>Prasanna Gadre</strong>
-  <div class="disclaimer">
-    Emotional support content only.  
-    Not a substitute for professional care.
-  </div>
-</div>
-
-</div>
-
-<!-- AI CHAT -->
-<div id="chatBtn" onclick="toggleChat()">💬</div>
-
-<div id="chatBox">
-  <div id="chatHeader">UNFEEL – AI Support</div>
-  <div id="chatMsgs">
-    <div class="msg ai">
-      Hi 💙  
-      I’m here to listen.  
-      You can talk, or choose a feeling above.
+  <div class="mood-wrap">
+    <div class="mood-title">How are you feeling right now?</div>
+    <div class="moods">
+      <div class="mood">😞 Low</div>
+      <div class="mood">😰 Anxious</div>
+      <div class="mood">🥺 Lonely</div>
+      <div class="mood">🙂 Okay</div>
     </div>
   </div>
-  <div id="chatInput">
-    <input id="userText" placeholder="Type here…" />
-    <button onclick="sendMsg()">➤</button>
+
+  <div class="footer">
+    Founded & Created by <strong>Prasanna Gadre</strong>
+    <div class="disclaimer">
+      Emotional support content only.<br>
+      Not a substitute for professional medical or psychological care.
+    </div>
   </div>
+
 </div>
 
 <script>
 const quotes=[
-"You don’t have to rush healing.",
-"Peace grows slowly.",
-"Your feelings are valid.",
-"Not everything needs closure.",
-"Calm is strength.",
-"Being gentle with yourself matters."
+  "You don’t have to rush healing.",
+  "Peace is built slowly.",
+  "Your feelings matter.",
+  "Not everything needs closure.",
+  "Calm is strength.",
+  "Gentle progress still counts."
 ];
-document.getElementById("quote").innerText=
-quotes[Math.floor(Date.now()/86400000)%quotes.length];
-
-function toggleChat(){
-  const c=document.getElementById("chatBox");
-  c.style.display=c.style.display==="flex"?"none":"flex";
-}
-
-function addMsg(text,type){
-  const d=document.createElement("div");
-  d.className="msg "+type;
-  d.innerText=text;
-  chatMsgs.appendChild(d);
-  chatMsgs.scrollTop=chatMsgs.scrollHeight;
-}
-
-function sendMsg(){
-  const t=userText.value.trim();
-  if(!t) return;
-  addMsg(t,"user");
-  userText.value="";
-  aiReply(t);
-}
-
-function aiReply(m){
-  let r=
-"Thank you for sharing 💙\n\n" +
-"Breakups and loneliness can make the mind feel noisy.\n" +
-"Right now, focus on 3 basics:\n" +
-"• Eat something light\n" +
-"• Drink water\n" +
-"• Slow breathing\n\n" +
-"If this feels heavy, consider downloading our app and talking to a real human who will listen without judgement.";
-  addMsg(r,"ai");
-}
+const day=Math.floor((Date.now()/86400000)%quotes.length);
+document.getElementById("quote").innerText=quotes[day];
 </script>
 
 </body>
