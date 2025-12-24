@@ -272,6 +272,264 @@ const quotes=[
 const day=Math.floor((Date.now()/86400000)%quotes.length);
 document.getElementById("quote").innerText=quotes[day];
 </script>
+<script>
+function generateReply(msg){
+
+  const m = msg.toLowerCase();
+
+  /* ================== CRISIS DETECTION ================== */
+  if(
+    m.includes("suicide") ||
+    m.includes("kill myself") ||
+    m.includes("end my life") ||
+    m.includes("die")
+  ){
+    return `
+I’m really glad you spoke up.  
+Your life matters more than this moment.
+
+You don’t have to face this alone.
+
+Please reach out **right now**:
+📞 India Suicide Helpline: **9152987821**  
+📞 AASRA: **9820466726**
+
+If calling feels hard, please sit with someone nearby.
+
+And when you’re ready — our app connects you with real human listeners who care deeply.
+`;
+  }
+
+  /* ================== GREETING ================== */
+  if(m==="hi" || m==="hello"){
+    return `
+Hi. I’m here with you.
+
+How are you feeling right now?
+1️⃣ Low  
+2️⃣ Anxious  
+3️⃣ Lonely  
+4️⃣ Confused  
+5️⃣ I don’t know  
+
+(Reply with a number)
+`;
+  }
+
+  /* ================== MOOD SELECTION ================== */
+  if(m==="1"){
+    return `
+Feeling low doesn’t mean you’re weak.
+It means something inside you needs care.
+
+What’s pulling you down today?
+1️⃣ Heartbreak  
+2️⃣ Life stress  
+3️⃣ Self-doubt  
+4️⃣ Just tired  
+
+(Reply with a number)
+`;
+  }
+
+  if(m==="2"){
+    return `
+Anxiety usually means your mind is racing ahead.
+
+What feels strongest right now?
+1️⃣ Overthinking  
+2️⃣ Fear of future  
+3️⃣ Physical restlessness  
+
+(Reply with a number)
+`;
+  }
+
+  if(m==="3"){
+    return `
+Loneliness can exist even when people are around.
+
+What kind of loneliness is this?
+1️⃣ Missing someone  
+2️⃣ Feeling unseen  
+3️⃣ No one to talk to  
+
+(Reply with a number)
+`;
+  }
+
+  if(m==="4"){
+    return `
+Confusion often comes when too many thoughts collide.
+
+What’s confusing you most?
+1️⃣ Relationships  
+2️⃣ Career / money  
+3️⃣ Life direction  
+
+(Reply with a number)
+`;
+  }
+
+  if(m==="5"){
+    return `
+That’s okay.  
+Sometimes we feel something but can’t name it.
+
+Let’s slow down.
+
+Take one breath.
+You don’t need answers immediately.
+
+Tell me — does your body feel:
+1️⃣ Heavy  
+2️⃣ Restless  
+3️⃣ Empty  
+
+(Reply with a number)
+`;
+  }
+
+  /* ================== BREAKUP ================== */
+  if(m==="heartbreak" || m==="breakup" || m==="1 1"){
+    return `
+Heartbreak hurts because you truly cared.
+
+What hurts more right now?
+1️⃣ I miss them  
+2️⃣ I feel rejected  
+3️⃣ I feel empty  
+4️⃣ I’m angry  
+
+(Reply with a number)
+`;
+  }
+
+  if(m==="1"){
+    return `
+Missing someone is painful because your routine still remembers them.
+
+Try this gently tonight:
+• Don’t fight memories — limit them  
+• Write one good memory AND one painful truth  
+• Then shift your body: walk, stretch, shower  
+
+Healing doesn’t mean forgetting.
+It means slowly choosing yourself.
+
+If this feels too heavy alone — our app lets you talk to a real human listener 💙
+`;
+  }
+
+  if(m==="2"){
+    return `
+Rejection often feels like “I wasn’t enough”.
+
+But usually:
+• Needs didn’t match  
+• Timing wasn’t aligned  
+
+Your value didn’t decrease.
+
+Talking this out with a real human helps untangle this pain.
+You can do that inside our app when you’re ready.
+`;
+  }
+
+  if(m==="3"){
+    return `
+Emptiness is the silence left after emotional attachment.
+
+For now, focus on basics:
+• Warm food  
+• Water  
+• Safe quiet space  
+
+Healing starts from the body.
+
+If emptiness feels scary, real human connection matters — available in our app.
+`;
+  }
+
+  if(m==="4"){
+    return `
+Anger often protects hurt.
+
+It’s okay to feel it — just don’t let it turn inward.
+
+Try:
+• Write what you wish you had said  
+• Tear it after  
+
+If you want to express this safely, a real human listener can help inside our app.
+`;
+  }
+
+  /* ================== ANXIETY ================== */
+  if(m==="overthinking" || m==="1 2"){
+    return `
+Overthinking is your brain trying to keep control.
+
+Try this tonight:
+• Give your mind 15 minutes to think  
+• After that, move your body  
+• Say: “I’ll continue tomorrow”  
+
+If anxiety keeps looping, talking to a real human grounds you deeply.
+`;
+  }
+
+  if(m==="physical restlessness"){
+    return `
+Your body is holding stress.
+
+Try:
+• Cold water on face  
+• Slow exhale breathing (6 seconds out)  
+• Gentle stretching  
+
+If anxiety feels overwhelming, human support helps — available in our app.
+`;
+  }
+
+  /* ================== LONELINESS ================== */
+  if(m==="missing someone"){
+    return `
+Missing someone doesn’t mean you made a mistake loving them.
+
+It means you’re human.
+
+Tonight:
+• Sit with the feeling — don’t judge it  
+• Limit contact urges  
+• Do one grounding activity  
+
+If you want someone to talk to, our app connects you with real listeners.
+`;
+  }
+
+  if(m==="no one to talk to"){
+    return `
+Not having someone doesn’t mean you don’t deserve someone.
+
+Sometimes life just hasn’t caught up yet.
+
+You can talk to a real human listener inside our app — no judgement, just presence.
+`;
+  }
+
+  /* ================== DEFAULT ================== */
+  return `
+I’m here with you.
+
+You don’t need perfect words.
+Just type what feels heavy.
+
+And if text isn’t enough,
+our app lets you talk with a real human listener — calmly, safely, honestly.
+`;
+}
+</script>
 
 </body>
 </html>
