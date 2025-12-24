@@ -4,63 +4,34 @@
 <meta charset="UTF-8">
 <title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UNFEEL – A calm space for emotional balance. Heal. Grow. Move On.">
-<meta name="author" content="Prasanna Gadre">
 
 <style>
-/* ================= THEME ================= */
+/* ================= BRAND ================= */
 :root{
-  --blue:#00e5ff;
-  --blue-soft:rgba(0,229,255,.25);
-  --blue-strong:rgba(0,229,255,.9);
-  --bg1:#031923;
-  --bg2:#00060a;
+  --glow-main:#00e5ff;
+  --glow-soft:rgba(0,229,255,.35);
+  --glow-strong:rgba(0,229,255,.9);
 }
 
-/* ================= RESET ================= */
-*{margin:0;padding:0;box-sizing:border-box}
-
-/* ================= BODY ================= */
-body{
-  font-family:'Segoe UI',system-ui,sans-serif;
-  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
-  color:#fff;
-  overflow-x:hidden;
-  animation:fadeIn 1.2s ease;
-}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-/* ================= BACKGROUND BREATH ================= */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at 20% 20%,rgba(0,229,255,.06),transparent 45%);
-  animation:bgMove 20s ease-in-out infinite alternate;
-  z-index:-1;
-}
-@keyframes bgMove{
-  from{transform:translate(0,0)}
-  to{transform:translate(-60px,40px)}
-}
-
-/* ================= NEON PULSE ================= */
+/* ================= ANIMATION ================= */
 @keyframes neonPulse{
-  0%{
-    box-shadow:
-      0 0 10px rgba(0,229,255,.2),
-      0 0 22px rgba(0,229,255,.25);
-  }
-  50%{
-    box-shadow:
-      0 0 26px rgba(0,229,255,.6),
-      0 0 56px rgba(0,229,255,.9);
-  }
-  100%{
-    box-shadow:
-      0 0 10px rgba(0,229,255,.2),
-      0 0 22px rgba(0,229,255,.25);
-  }
+  0%{box-shadow:0 0 14px var(--glow-soft);}
+  50%{box-shadow:0 0 46px var(--glow-strong);}
+  100%{box-shadow:0 0 14px var(--glow-soft);}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* ================= BASE ================= */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:radial-gradient(circle at top,#031923,#00060a);
+  color:#fff;
+  animation:fadeIn 1.2s ease;
 }
 
 /* ================= NAV ================= */
@@ -73,37 +44,32 @@ body::before{
   z-index:1000;
 }
 .nav a{
-  color:var(--blue);
+  color:var(--glow-main);
   text-decoration:none;
   font-size:13px;
   padding:7px 16px;
   border-radius:22px;
-  border:1px solid var(--blue);
-  animation:neonPulse 5s ease-in-out infinite;
+  border:1px solid var(--glow-main);
+  box-shadow:0 0 16px var(--glow-soft);
 }
 
 /* ================= LAYOUT ================= */
 .container{
   max-width:430px;
   margin:auto;
-  padding:120px 20px 150px;
+  padding:110px 20px 140px;
   text-align:center;
 }
 
 /* ================= HERO ================= */
-/* LOGO WITH ROUNDED SOFT BOX */
 .logo{
   display:inline-block;
-  padding:18px 28px;
-  font-size:48px;
+  font-size:46px;
   font-weight:700;
-  letter-spacing:4px;
-  color:var(--blue);
-  border-radius:26px;                 /* rounded corners */
-  background:rgba(255,255,255,0.02);  /* soft glass */
-  box-shadow:
-    0 0 18px rgba(0,229,255,.25),
-    0 0 42px rgba(0,229,255,.45);
+  letter-spacing:3px;
+  padding:18px 30px;
+  border-radius:28px;
+  color:var(--glow-main);
   animation:neonPulse 6s ease-in-out infinite;
 }
 .tagline{
@@ -132,13 +98,11 @@ body::before{
   color:#00181f;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
   animation:neonPulse 4s ease-in-out infinite;
-  transition:.3s;
 }
-.btn:hover{transform:translateY(-3px)}
 .btn.secondary{
   background:transparent;
-  color:var(--blue);
-  border:1px solid var(--blue);
+  color:var(--glow-main);
+  border:1px solid var(--glow-main);
   animation:none;
 }
 
@@ -167,6 +131,26 @@ body::before{
   color:#c8f3ff;
 }
 
+/* ================= MOOD ================= */
+.mood-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:30px;
+}
+.mood{
+  padding:18px;
+  border-radius:22px;
+  border:1px solid var(--glow-main);
+  color:var(--glow-main);
+  font-size:14px;
+  cursor:pointer;
+  animation:neonPulse 6s infinite;
+}
+.mood:hover{
+  background:rgba(0,229,255,.12);
+}
+
 /* ================= FOOTER ================= */
 .footer{
   margin-top:80px;
@@ -192,10 +176,9 @@ body::before{
     gap:70px;
     align-items:center;
   }
-  /* LOGO COMPACT ON DESKTOP */
   .logo{
     font-size:60px;
-    padding:20px 34px;     /* sirf naam jitna box */
+    padding:20px 34px;
     border-radius:30px;
   }
   .cards-grid{
@@ -213,7 +196,6 @@ body::before{
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <a href="about.html">About</a>
   <a href="terms.html">Terms</a>
@@ -222,7 +204,6 @@ body::before{
 
 <div class="container">
 
-  <!-- HERO -->
   <div class="hero-grid">
     <div>
       <div class="logo">UNFEEL</div>
@@ -242,30 +223,20 @@ body::before{
     </div>
   </div>
 
-  <!-- CARDS -->
-  <div class="cards-grid">
-    <div class="card">
-      <div class="quote">A space to breathe.</div>
-      <div class="subtext">No judgement. No rush.</div>
+  <!-- MOOD -->
+  <div class="card">
+    <div class="quote">How are you feeling right now?</div>
+    <div class="mood-grid">
+      <div class="mood" onclick="setMood('low')">😞 Low</div>
+      <div class="mood" onclick="setMood('anxious')">😰 Anxious</div>
+      <div class="mood" onclick="setMood('lonely')">🥺 Lonely</div>
+      <div class="mood" onclick="setMood('okay')">🙂 Okay</div>
     </div>
-
-    <div class="card">
-      <div class="quote">What UNFEEL gives you</div>
-      <div class="list">
-        • Daily motivation<br>
-        • Emotional clarity<br>
-        • Calm digital space<br>
-        • Gentle reminders
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="quote">Designed for healing.</div>
-      <div class="subtext">Slow progress still counts.</div>
+    <div class="subtext" id="moodText">
+      Select a mood to get a gentle suggestion.
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong>
     <div class="disclaimer">
@@ -285,8 +256,18 @@ const quotes=[
   "Calm is strength.",
   "Gentle progress still counts."
 ];
-const day=Math.floor((Date.now()/86400000)%quotes.length);
-document.getElementById("quote").innerText=quotes[day];
+document.getElementById("quote").innerText =
+  quotes[Math.floor(Date.now()/86400000)%quotes.length];
+
+function setMood(m){
+  const text={
+    low:"It’s okay to slow down. Drink water, breathe deeply, and be kind to yourself.",
+    anxious:"Pause. Inhale for 4 seconds, exhale for 6. You are safe right now.",
+    lonely:"You are not invisible. Even silent strength matters.",
+    okay:"Protect this calm. Small routines help it stay."
+  };
+  document.getElementById("moodText").innerText=text[m];
+}
 </script>
 
 </body>
