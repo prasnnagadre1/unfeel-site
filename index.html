@@ -7,19 +7,8 @@
 
 <style>
 :root{
-  --glow-main:#00e5ff;
-  --glow-soft:rgba(0,229,255,.35);
-  --glow-strong:rgba(0,229,255,.9);
-}
-
-/* ===== ANIMATION ===== */
-@keyframes neonPulse{
-  0%{box-shadow:0 0 12px var(--glow-soft);}
-  50%{box-shadow:0 0 42px var(--glow-strong);}
-  100%{box-shadow:0 0 12px var(--glow-soft);}
-}
-@keyframes fadeIn{
-  from{opacity:0}to{opacity:1}
+  --blue:#00e5ff;
+  --blue-soft:rgba(0,229,255,.35);
 }
 
 /* ===== BASE ===== */
@@ -29,8 +18,9 @@ body{
   font-family:'Segoe UI',system-ui,sans-serif;
   background:radial-gradient(circle at top,#031923,#00060a);
   color:#fff;
-  animation:fadeIn 1.2s ease;
+  animation:fade 1s ease;
 }
+@keyframes fade{from{opacity:0}to{opacity:1}}
 
 /* ===== NAV ===== */
 .nav{
@@ -39,23 +29,23 @@ body{
   right:18px;
   display:flex;
   gap:14px;
-  z-index:1000;
+  z-index:999;
 }
 .nav a{
-  color:var(--glow-main);
+  color:var(--blue);
   text-decoration:none;
   font-size:13px;
   padding:7px 16px;
   border-radius:22px;
-  border:1px solid var(--glow-main);
-  box-shadow:0 0 16px var(--glow-soft);
+  border:1px solid var(--blue);
+  box-shadow:0 0 14px var(--blue-soft);
 }
 
 /* ===== LAYOUT ===== */
 .container{
-  max-width:430px;
+  max-width:420px;
   margin:auto;
-  padding:110px 20px 140px;
+  padding:120px 20px 150px;
   text-align:center;
 }
 
@@ -65,13 +55,18 @@ body{
   font-size:46px;
   font-weight:700;
   letter-spacing:3px;
-  padding:18px 30px;
-  border-radius:28px;
-  color:var(--glow-main);
-  animation:neonPulse 6s infinite;
+  padding:18px 34px;
+  border-radius:30px;
+  color:var(--blue);
+  box-shadow:0 0 42px var(--blue-soft);
+  animation:pulse 6s infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 28px var(--blue-soft)}
+  50%{box-shadow:0 0 60px var(--blue)}
 }
 .tagline{
-  margin-top:10px;
+  margin-top:12px;
   font-size:14px;
   color:#9fefff;
 }
@@ -95,23 +90,22 @@ body{
   font-weight:700;
   color:#00181f;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  animation:neonPulse 4s infinite;
+  box-shadow:0 0 34px var(--blue);
 }
 .btn.secondary{
   background:transparent;
-  color:var(--glow-main);
-  border:1px solid var(--glow-main);
-  animation:none;
+  color:var(--blue);
+  border:1px solid var(--blue);
+  box-shadow:none;
 }
 
 /* ===== CARD ===== */
 .card{
-  margin-top:50px;
   padding:32px;
   border-radius:26px;
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(14px);
-  animation:neonPulse 5.5s infinite;
+  box-shadow:0 0 32px var(--blue-soft);
 }
 .quote{
   font-size:20px;
@@ -129,29 +123,29 @@ body{
   color:#c8f3ff;
 }
 
+/* ===== SECTIONS ===== */
+.section{margin-top:90px}
+
 /* ===== MOOD ===== */
 .mood-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:18px;
+  gap:14px;
   margin-top:22px;
 }
 .mood{
-  padding:18px;
-  border-radius:22px;
-  border:1px solid var(--glow-main);
-  color:var(--glow-main);
-  font-size:14px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid var(--blue);
+  color:var(--blue);
   cursor:pointer;
-  animation:neonPulse 6s infinite;
+  box-shadow:0 0 16px var(--blue-soft);
 }
-.mood:hover{
-  background:rgba(0,229,255,.12);
-}
+.mood:hover{background:rgba(0,229,255,.12)}
 
 /* ===== FOOTER ===== */
 .footer{
-  margin-top:80px;
+  margin-top:90px;
   font-size:12px;
   color:#9ad9e6;
 }
@@ -174,17 +168,12 @@ body{
     gap:70px;
     align-items:center;
   }
-  .logo{
-    font-size:60px;
-    padding:20px 34px;
-  }
   .cards-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:36px;
     margin-top:90px;
   }
-  .card{margin-top:0}
   .btn{display:inline-block;margin:30px 18px 0 0}
   .footer{text-align:center}
 }
@@ -217,11 +206,11 @@ body{
 
     <div class="card">
       <div class="quote" id="quote">Loading today’s thought…</div>
-      <div class="subtext">A new reminder, every day.</div>
+      <div class="subtext">A gentle reminder, every day.</div>
     </div>
   </div>
 
-  <!-- OLD CARDS (UNCHANGED) -->
+  <!-- CORE CARDS -->
   <div class="cards-grid">
     <div class="card">
       <div class="quote">A space to breathe.</div>
@@ -244,17 +233,21 @@ body{
     </div>
   </div>
 
-  <!-- NEW MOOD CARD (ADDED BELOW) -->
-  <div class="card">
-    <div class="quote">How are you feeling right now?</div>
-    <div class="mood-grid">
-      <div class="mood" onclick="setMood('low')">😞 Low</div>
-      <div class="mood" onclick="setMood('anxious')">😰 Anxious</div>
-      <div class="mood" onclick="setMood('lonely')">🥺 Lonely</div>
-      <div class="mood" onclick="setMood('okay')">🙂 Okay</div>
-    </div>
-    <div class="subtext" id="moodText">
-      Select a mood to get a gentle suggestion.
+  <!-- MOOD SECTION -->
+  <div class="section">
+    <div class="card">
+      <div class="quote">How are you feeling right now?</div>
+
+      <div class="mood-grid">
+        <div class="mood" onclick="setMood('low')">😞 Low</div>
+        <div class="mood" onclick="setMood('anxious')">😰 Anxious</div>
+        <div class="mood" onclick="setMood('lonely')">🥺 Lonely</div>
+        <div class="mood" onclick="setMood('okay')">🙂 Okay</div>
+      </div>
+
+      <div class="subtext" id="moodText">
+        Select a mood to get a gentle suggestion.
+      </div>
     </div>
   </div>
 
@@ -282,13 +275,13 @@ document.getElementById("quote").innerText =
   quotes[Math.floor(Date.now()/86400000)%quotes.length];
 
 function setMood(m){
-  const text={
-    low:"Slow down today. Hydrate, breathe, and don’t push yourself.",
-    anxious:"Pause. Breathe in for 4, out for 6. You’re safe right now.",
-    lonely:"You matter, even when it feels quiet around you.",
-    okay:"Protect this calm. Small routines keep it steady."
+  const map={
+    low:"It’s okay to slow down today.",
+    anxious:"Take one deep breath. You’re safe right now.",
+    lonely:"You’re not alone — even here.",
+    okay:"Hold onto this balance gently."
   };
-  document.getElementById("moodText").innerText=text[m];
+  document.getElementById("moodText").innerText=map[m];
 }
 </script>
 
