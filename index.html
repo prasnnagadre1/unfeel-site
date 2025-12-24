@@ -2,49 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>UNFEEL – Heal. Grow. Move On.</title>
+<title>UNFEEL – Heal · Grow · Move On</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 :root{
   --blue:#00e5ff;
-  --blueSoft:rgba(0,229,255,.35);
-  --dark:#031923;
+  --blueSoft:rgba(0,229,255,.25);
+  --bg1:#031923;
+  --bg2:#00060a;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
   font-family:'Segoe UI',system-ui,sans-serif;
-  background:radial-gradient(circle at top,#031923,#00060a);
+  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
   color:#fff;
   overflow-x:hidden;
 }
 
 /* NAV */
 .nav{
-  position:fixed;
-  top:18px;
-  right:22px;
-  display:flex;
-  gap:14px;
-  z-index:1000;
+  position:fixed;top:16px;right:18px;
+  display:flex;gap:14px;z-index:1000;
 }
 .nav a{
   color:var(--blue);
   text-decoration:none;
   font-size:13px;
-  padding:8px 18px;
+  padding:7px 16px;
   border-radius:22px;
   border:1px solid var(--blue);
-  box-shadow:0 0 16px var(--blueSoft);
+  box-shadow:0 0 14px var(--blueSoft);
 }
 
 /* LAYOUT */
 .container{
   max-width:1200px;
   margin:auto;
-  padding:140px 30px 160px;
+  padding:140px 30px 180px;
 }
 
 /* HERO */
@@ -55,16 +52,15 @@ body{
   align-items:center;
 }
 
-.logoBox{
+.logo-wrap{
   display:inline-block;
-  padding:22px 34px;
+  padding:18px 32px;
   border-radius:30px;
-  background:rgba(255,255,255,.05);
-  box-shadow:0 0 42px rgba(0,229,255,.45);
-  animation:neonPulse 6s infinite;
+  background:rgba(0,229,255,.08);
+  box-shadow:0 0 30px var(--blueSoft);
 }
 .logo{
-  font-size:60px;
+  font-size:56px;
   font-weight:700;
   letter-spacing:3px;
   color:var(--blue);
@@ -81,17 +77,20 @@ body{
 }
 
 /* BUTTONS */
+.app-buttons{
+  margin-top:28px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
 .btn{
-  display:inline-block;
-  margin:26px 18px 0 0;
-  padding:16px 34px;
+  padding:16px 30px;
   border-radius:32px;
+  text-decoration:none;
   font-size:15px;
   font-weight:700;
-  text-decoration:none;
   color:#00181f;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  box-shadow:0 0 30px rgba(0,229,255,.8);
 }
 .btn.secondary{
   background:transparent;
@@ -110,7 +109,7 @@ body{
   padding:32px;
   border-radius:26px;
   background:rgba(255,255,255,.06);
-  box-shadow:0 0 28px rgba(0,229,255,.25);
+  box-shadow:0 0 26px var(--blueSoft);
 }
 .card h3{
   font-size:18px;
@@ -122,30 +121,35 @@ body{
 }
 
 /* MOOD */
-.mood{
-  margin-top:80px;
+.mood-section{
+  margin-top:90px;
 }
-.mood h3{
+.mood-section h3{
   margin-bottom:18px;
 }
-.moodGrid{
+.mood-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:18px;
+  gap:16px;
 }
-.mood button{
+.mood{
   padding:14px;
-  border-radius:22px;
+  border-radius:20px;
   border:1px solid var(--blue);
   background:transparent;
   color:#fff;
   cursor:pointer;
-  box-shadow:0 0 18px var(--blueSoft);
+}
+.mood-result{
+  margin-top:20px;
+  font-size:14px;
+  line-height:1.6;
+  color:#bff6ff;
 }
 
 /* FOOTER */
 .footer{
-  margin-top:100px;
+  margin-top:110px;
   text-align:center;
   font-size:12px;
   color:#9ad9e6;
@@ -156,30 +160,29 @@ body{
   position:fixed;
   bottom:30px;
   right:30px;
-  width:72px;
-  height:72px;
+  width:68px;
+  height:68px;
   border-radius:50%;
   background:#00e5ff;
   color:#00181f;
-  font-size:32px;
+  font-size:30px;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  box-shadow:0 0 40px rgba(0,229,255,.9);
-  animation:neonPulse 3s infinite;
+  box-shadow:0 0 32px rgba(0,229,255,.8);
   z-index:2000;
 }
 #aiBox{
   position:fixed;
-  bottom:120px;
+  bottom:110px;
   right:30px;
   width:320px;
   background:#031923;
   border-radius:20px;
   display:none;
   flex-direction:column;
-  box-shadow:0 0 50px rgba(0,229,255,.6);
+  box-shadow:0 0 40px rgba(0,229,255,.6);
   z-index:2000;
 }
 .aiHead{
@@ -211,17 +214,11 @@ body{
   cursor:pointer;
 }
 
-@keyframes neonPulse{
-  0%{box-shadow:0 0 20px rgba(0,229,255,.4)}
-  50%{box-shadow:0 0 45px rgba(0,229,255,.9)}
-  100%{box-shadow:0 0 20px rgba(0,229,255,.4)}
-}
-
 /* MOBILE */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr}
-  .moodGrid{grid-template-columns:1fr}
+  .mood-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -236,32 +233,36 @@ body{
 
 <div class="container">
 
+  <!-- HERO -->
   <div class="hero">
     <div>
-      <div class="logoBox">
+      <div class="logo-wrap">
         <div class="logo">UNFEEL</div>
       </div>
       <div class="tagline">Heal · Grow · Move On</div>
-      <div class="hook">For nights when your mind feels heavier than your heart.</div>
+      <div class="hook">For moments when your mind feels heavier than your heart.</div>
 
-      <a class="btn" href="#">Android App – Coming Soon</a>
-      <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+      <div class="app-buttons">
+        <a class="btn">Android App – Coming Soon</a>
+        <a class="btn secondary">iPhone App – Coming Soon</a>
+      </div>
     </div>
 
     <div class="card">
       <h3 id="quote">Calm is strength.</h3>
-      <p>A gentle reminder every day.</p>
+      <p>A gentle reminder for today.</p>
     </div>
   </div>
 
+  <!-- INFO CARDS -->
   <div class="cards">
     <div class="card">
       <h3>A space to breathe</h3>
       <p>No judgement. No pressure.</p>
     </div>
     <div class="card">
-      <h3>What UNFEEL offers</h3>
-      <p>Daily motivation, emotional clarity, calm digital space.</p>
+      <h3>What we offer</h3>
+      <p>Daily motivation, emotional clarity and a calm digital space.</p>
     </div>
     <div class="card">
       <h3>Designed for healing</h3>
@@ -269,24 +270,29 @@ body{
     </div>
   </div>
 
-  <div class="mood">
+  <!-- MOOD -->
+  <div class="mood-section">
     <h3>How are you feeling right now?</h3>
-    <div class="moodGrid">
-      <button onclick="aiReply('Low')">Low</button>
-      <button onclick="aiReply('Anxious')">Anxious</button>
-      <button onclick="aiReply('Lonely')">Lonely</button>
-      <button onclick="aiReply('Okay')">Okay</button>
+    <div class="mood-grid">
+      <div class="mood" onclick="setMood('low')">😞 Low</div>
+      <div class="mood" onclick="setMood('anxious')">😰 Anxious</div>
+      <div class="mood" onclick="setMood('lonely')">🥺 Lonely</div>
+      <div class="mood" onclick="setMood('okay')">🙂 Okay</div>
+    </div>
+    <div class="mood-result" id="moodResult">
+      Select a mood to get a gentle suggestion.
     </div>
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
     Founded & Created by <strong>Prasanna Gadre</strong><br>
-    Emotional support content only.
+    Emotional support content only. Not a substitute for professional care.
   </div>
 
 </div>
 
-<!-- AI -->
+<!-- AI CHAT -->
 <div id="aiBtn" onclick="openAI()">💬</div>
 
 <div id="aiBox">
@@ -295,23 +301,54 @@ body{
     <span onclick="closeAI()">✕</span>
   </div>
   <div class="aiBody" id="aiBody">
-    <div class="aiMsg">Hi. I’m here with you. How are you feeling?</div>
+    <div class="aiMsg">
+      Hi. I’m here to guide you.<br>
+      What’s hurting the most right now?
+    </div>
+    <div class="aiOptions">
+      <button onclick="aiFlow('Breakup')">Breakup</button>
+      <button onclick="aiFlow('Loneliness')">Loneliness</button>
+      <button onclick="aiFlow('Anxiety')">Anxiety</button>
+      <button onclick="aiFlow('Confusion')">Confusion</button>
+    </div>
   </div>
 </div>
 
 <script>
+/* DAILY QUOTE */
+const quotes=[
+  "You don’t have to rush healing.",
+  "Peace is built slowly.",
+  "Your feelings are valid.",
+  "Calm is strength.",
+  "Gentle progress still counts."
+];
+document.getElementById("quote").innerText=
+quotes[Math.floor(Date.now()/86400000)%quotes.length];
+
+/* MOOD INLINE */
+function setMood(mood){
+  const msg={
+    low:"You’re not broken. Today, doing less is enough.",
+    anxious:"Anxiety passes. Slow your breath and stay present.",
+    lonely:"Loneliness doesn’t mean unwanted. It means human.",
+    okay:"Protect this calm. Don’t overpush yourself."
+  };
+  document.getElementById("moodResult").innerText=msg[mood];
+}
+
+/* AI CHAT */
 function openAI(){aiBox.style.display="flex"}
 function closeAI(){aiBox.style.display="none"}
 
-function aiReply(mood){
-  aiBody.innerHTML+=`<div class="aiMsg">You feel ${mood}. I hear you.</div>`;
-  let text={
-    Low:"It’s okay to slow down. You’re not broken.",
-    Anxious:"Anxiety passes. Breathe. Stay here.",
-    Lonely:"Lonely doesn’t mean unwanted. You matter.",
-    Okay:"Protect this calm. It’s precious."
-  };
-  aiBody.innerHTML+=`<div class="aiMsg">${text[mood]}<br><br>Want deeper help? Download UNFEEL app and talk with a real human.</div>`;
+function aiFlow(topic){
+  aiBody.innerHTML+=`<div class="aiMsg">You selected: ${topic}.</div>`;
+  aiBody.innerHTML+=`
+    <div class="aiMsg">
+      Text can help you understand, but humans help you heal.<br><br>
+      👉 Download our app to talk with a real human listener.
+    </div>
+  `;
 }
 </script>
 
