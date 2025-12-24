@@ -9,173 +9,140 @@
 :root{
   --blue:#00e5ff;
   --blue-soft:rgba(0,229,255,.35);
+  --bg1:#031923;
+  --bg2:#00060a;
 }
 
-/* ===== BASE ===== */
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
-  margin:0;
   font-family:'Segoe UI',system-ui,sans-serif;
-  background:radial-gradient(circle at top,#031923,#00060a);
+  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
   color:#fff;
-  animation:fade 1s ease;
+  overflow-x:hidden;
+  animation:fadeIn 1.2s ease;
 }
-@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ===== NAV ===== */
 .nav{
-  position:fixed;
-  top:16px;
-  right:18px;
-  display:flex;
-  gap:14px;
-  z-index:999;
+  position:fixed;top:16px;right:18px;display:flex;gap:14px;z-index:1000;
 }
 .nav a{
-  color:var(--blue);
-  text-decoration:none;
-  font-size:13px;
-  padding:7px 16px;
-  border-radius:22px;
-  border:1px solid var(--blue);
+  color:var(--blue);text-decoration:none;font-size:13px;
+  padding:7px 16px;border-radius:22px;border:1px solid var(--blue);
   box-shadow:0 0 14px var(--blue-soft);
 }
 
-/* ===== LAYOUT ===== */
 .container{
-  max-width:420px;
-  margin:auto;
-  padding:120px 20px 150px;
-  text-align:center;
+  max-width:430px;margin:auto;padding:110px 20px 160px;text-align:center;
 }
 
-/* ===== HERO ===== */
 .logo{
-  display:inline-block;
-  font-size:46px;
-  font-weight:700;
-  letter-spacing:3px;
-  padding:18px 34px;
-  border-radius:30px;
-  color:var(--blue);
-  box-shadow:0 0 42px var(--blue-soft);
-  animation:pulse 6s infinite;
+  font-size:46px;font-weight:700;letter-spacing:3px;
+  color:var(--blue);text-shadow:0 0 45px var(--blue);
 }
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 28px var(--blue-soft)}
-  50%{box-shadow:0 0 60px var(--blue)}
-}
-.tagline{
-  margin-top:12px;
-  font-size:14px;
-  color:#9fefff;
-}
-.hook{
-  margin-top:16px;
-  font-size:13px;
-  color:#c7f3ff;
-  line-height:1.6;
-}
+.tagline{margin-top:8px;font-size:14px;color:#9fefff}
+.hook{margin-top:14px;font-size:13px;color:#bfefff}
 
-/* ===== BUTTON ===== */
-.btn{
-  display:block;
-  margin:28px auto;
-  padding:16px;
-  width:100%;
-  max-width:300px;
-  border-radius:32px;
-  text-decoration:none;
-  font-size:15px;
-  font-weight:700;
-  color:#00181f;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  box-shadow:0 0 34px var(--blue);
-}
-.btn.secondary{
-  background:transparent;
-  color:var(--blue);
-  border:1px solid var(--blue);
-  box-shadow:none;
-}
-
-/* ===== CARD ===== */
 .card{
-  padding:32px;
+  margin-top:50px;
+  padding:30px;
   border-radius:26px;
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(14px);
-  box-shadow:0 0 32px var(--blue-soft);
+  box-shadow:0 0 38px var(--blue-soft);
 }
-.quote{
-  font-size:20px;
-  line-height:1.7;
+.quote{font-size:19px;line-height:1.7}
+.subtext{margin-top:14px;font-size:13px;color:#8fdff0}
+.list{margin-top:16px;font-size:13px;line-height:1.9;color:#c8f3ff}
+
+.btn{
+  display:block;margin:26px auto;padding:16px;
+  width:100%;max-width:300px;border-radius:32px;
+  text-decoration:none;font-size:15px;font-weight:700;
+  color:#00181f;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  box-shadow:0 0 30px var(--blue);
 }
-.subtext{
-  margin-top:14px;
-  font-size:13px;
-  color:#8fdff0;
-}
-.list{
-  margin-top:18px;
-  font-size:13px;
-  line-height:1.9;
-  color:#c8f3ff;
+.btn.secondary{
+  background:transparent;color:var(--blue);
+  border:1px solid var(--blue);
 }
 
-/* ===== SECTIONS ===== */
-.section{margin-top:90px}
+.section-gap{margin-top:90px}
 
 /* ===== MOOD ===== */
 .mood-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-  margin-top:22px;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;margin-top:18px;
 }
 .mood{
-  padding:14px;
-  border-radius:18px;
+  padding:14px;border-radius:18px;
   border:1px solid var(--blue);
-  color:var(--blue);
-  cursor:pointer;
-  box-shadow:0 0 16px var(--blue-soft);
+  cursor:pointer;font-size:14px;
+  box-shadow:0 0 18px var(--blue-soft);
 }
-.mood:hover{background:rgba(0,229,255,.12)}
 
-/* ===== FOOTER ===== */
+/* ===== AI CHAT BUTTON ===== */
+#chatBtn{
+  position:fixed;
+  bottom:28px;right:22px;
+  width:76px;height:76px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  box-shadow:0 0 40px var(--blue);
+  font-size:34px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:2000;
+}
+
+/* ===== AI CHAT BOX ===== */
+#chatBox{
+  position:fixed;
+  bottom:120px;right:20px;
+  width:320px;max-height:420px;
+  background:#02131a;
+  border-radius:24px;
+  box-shadow:0 0 40px var(--blue-soft);
+  display:none;flex-direction:column;
+  overflow:hidden;z-index:2000;
+}
+#chatHeader{
+  padding:14px;
+  background:rgba(0,229,255,.15);
+  font-weight:700;text-align:center;
+}
+#chatMsgs{
+  padding:14px;
+  overflow-y:auto;
+  font-size:13px;line-height:1.6;
+  flex:1;
+}
+.msg.ai{color:#bff6ff;margin-bottom:12px}
+.msg.user{color:#fff;text-align:right;margin-bottom:12px}
+#chatInput{
+  display:flex;border-top:1px solid #0af;
+}
+#chatInput input{
+  flex:1;padding:10px;border:none;
+  background:#00161e;color:#fff;
+}
+#chatInput button{
+  padding:10px 14px;border:none;
+  background:#00e5ff;font-weight:700;
+}
+
 .footer{
-  margin-top:90px;
-  font-size:12px;
-  color:#9ad9e6;
+  margin-top:90px;font-size:12px;color:#9ad9e6;
 }
-.disclaimer{
-  margin-top:14px;
-  font-size:11px;
-  color:#7fbfcc;
-}
+.disclaimer{margin-top:14px;font-size:11px;color:#7fbfcc}
 
-/* ===== DESKTOP ===== */
+/* DESKTOP */
 @media(min-width:900px){
-  .container{
-    max-width:1200px;
-    text-align:left;
-    padding:140px 50px 170px;
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:70px;
-    align-items:center;
-  }
-  .cards-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:36px;
-    margin-top:90px;
-  }
-  .btn{display:inline-block;margin:30px 18px 0 0}
-  .footer{text-align:center}
+  .container{max-width:1100px;text-align:left;padding:130px 40px}
+  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px}
+  .logo{font-size:64px}
+  .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:70px}
 }
 </style>
 </head>
@@ -190,355 +157,125 @@ body{
 
 <div class="container">
 
-  <!-- HERO -->
-  <div class="hero-grid">
-    <div>
-      <div class="logo">UNFEEL</div>
-      <div class="tagline">Heal · Grow · Move On</div>
-      <div class="hook">
-        A quiet place for heavy thoughts.<br>
-        When your mind needs softness, not noise.
-      </div>
+<div class="hero-grid">
+  <div>
+    <div class="logo">UNFEEL</div>
+    <div class="tagline">Heal · Grow · Move On</div>
+    <div class="hook">For nights when your mind feels heavier than your heart.</div>
+    <a class="btn">Android App – Coming Soon</a>
+    <a class="btn secondary">iPhone App – Coming Soon</a>
+  </div>
 
-      <a class="btn" href="#">Android App – Coming Soon</a>
-      <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
-    </div>
+  <div class="card">
+    <div class="quote" id="quote">Loading today’s thought…</div>
+    <div class="subtext">A gentle reminder every day.</div>
+  </div>
+</div>
 
-    <div class="card">
-      <div class="quote" id="quote">Loading today’s thought…</div>
-      <div class="subtext">A gentle reminder, every day.</div>
+<div class="cards-grid">
+  <div class="card">
+    <div class="quote">A calm space for heavy thoughts.</div>
+    <div class="subtext">No judgement. No pressure.</div>
+  </div>
+
+  <div class="card">
+    <div class="quote">What UNFEEL offers</div>
+    <div class="list">
+      • Daily motivation<br>
+      • Emotional clarity<br>
+      • Calm digital space
     </div>
   </div>
 
-  <!-- CORE CARDS -->
-  <div class="cards-grid">
-    <div class="card">
-      <div class="quote">A space to breathe.</div>
-      <div class="subtext">No judgement. No rush.</div>
-    </div>
+  <div class="card">
+    <div class="quote">Healing takes time.</div>
+    <div class="subtext">And that’s okay.</div>
+  </div>
+</div>
 
-    <div class="card">
-      <div class="quote">What UNFEEL gives you</div>
-      <div class="list">
-        • Daily motivation<br>
-        • Emotional clarity<br>
-        • Calm digital space<br>
-        • Gentle reminders
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="quote">Designed for healing.</div>
-      <div class="subtext">Slow progress still counts.</div>
+<div class="section-gap">
+  <div class="card">
+    <div class="quote">How are you feeling right now?</div>
+    <div class="mood-grid">
+      <div class="mood" onclick="aiReply('low')">😞 Low</div>
+      <div class="mood" onclick="aiReply('lonely')">🥺 Lonely</div>
+      <div class="mood" onclick="aiReply('anxious')">😰 Anxious</div>
+      <div class="mood" onclick="aiReply('okay')">🙂 Okay</div>
     </div>
   </div>
+</div>
 
-  <!-- MOOD SECTION -->
-  <div class="section">
-    <div class="card">
-      <div class="quote">How are you feeling right now?</div>
+<div class="footer">
+  Founded & Created by <strong>Prasanna Gadre</strong>
+  <div class="disclaimer">
+    Emotional support content only.  
+    Not a substitute for professional care.
+  </div>
+</div>
 
-      <div class="mood-grid">
-        <div class="mood" onclick="setMood('low')">😞 Low</div>
-        <div class="mood" onclick="setMood('anxious')">😰 Anxious</div>
-        <div class="mood" onclick="setMood('lonely')">🥺 Lonely</div>
-        <div class="mood" onclick="setMood('okay')">🙂 Okay</div>
-      </div>
+</div>
 
-      <div class="subtext" id="moodText">
-        Select a mood to get a gentle suggestion.
-      </div>
+<!-- AI CHAT -->
+<div id="chatBtn" onclick="toggleChat()">💬</div>
+
+<div id="chatBox">
+  <div id="chatHeader">UNFEEL – AI Support</div>
+  <div id="chatMsgs">
+    <div class="msg ai">
+      Hi 💙  
+      I’m here to listen.  
+      You can talk, or choose a feeling above.
     </div>
   </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    Founded & Created by <strong>Prasanna Gadre</strong>
-    <div class="disclaimer">
-      Emotional support content only.<br>
-      Not a substitute for professional medical or psychological care.
-    </div>
+  <div id="chatInput">
+    <input id="userText" placeholder="Type here…" />
+    <button onclick="sendMsg()">➤</button>
   </div>
-
 </div>
 
 <script>
 const quotes=[
-  "You don’t have to rush healing.",
-  "Peace is built slowly.",
-  "Your feelings matter.",
-  "Not everything needs closure.",
-  "Calm is strength.",
-  "Gentle progress still counts."
+"You don’t have to rush healing.",
+"Peace grows slowly.",
+"Your feelings are valid.",
+"Not everything needs closure.",
+"Calm is strength.",
+"Being gentle with yourself matters."
 ];
-document.getElementById("quote").innerText =
-  quotes[Math.floor(Date.now()/86400000)%quotes.length];
+document.getElementById("quote").innerText=
+quotes[Math.floor(Date.now()/86400000)%quotes.length];
 
-function setMood(m){
-  const map={
-    low:"It’s okay to slow down today.",
-    anxious:"Take one deep breath. You’re safe right now.",
-    lonely:"You’re not alone — even here.",
-    okay:"Hold onto this balance gently."
-  };
-  document.getElementById("moodText").innerText=map[m];
+function toggleChat(){
+  const c=document.getElementById("chatBox");
+  c.style.display=c.style.display==="flex"?"none":"flex";
 }
-<script>
-function generateReply(msg){
 
-  const m = msg.toLowerCase();
+function addMsg(text,type){
+  const d=document.createElement("div");
+  d.className="msg "+type;
+  d.innerText=text;
+  chatMsgs.appendChild(d);
+  chatMsgs.scrollTop=chatMsgs.scrollHeight;
+}
 
-  /* ================== CRISIS DETECTION ================== */
-  if(
-    m.includes("suicide") ||
-    m.includes("kill myself") ||
-    m.includes("end my life") ||
-    m.includes("die")
-  ){
-    return `
-I’m really glad you spoke up.  
-Your life matters more than this moment.
+function sendMsg(){
+  const t=userText.value.trim();
+  if(!t) return;
+  addMsg(t,"user");
+  userText.value="";
+  aiReply(t);
+}
 
-You don’t have to face this alone.
-
-Please reach out **right now**:
-📞 India Suicide Helpline: **9152987821**  
-📞 AASRA: **9820466726**
-
-If calling feels hard, please sit with someone nearby.
-
-And when you’re ready — our app connects you with real human listeners who care deeply.
-`;
-  }
-
-  /* ================== GREETING ================== */
-  if(m==="hi" || m==="hello"){
-    return `
-Hi. I’m here with you.
-
-How are you feeling right now?
-1️⃣ Low  
-2️⃣ Anxious  
-3️⃣ Lonely  
-4️⃣ Confused  
-5️⃣ I don’t know  
-
-(Reply with a number)
-`;
-  }
-
-  /* ================== MOOD SELECTION ================== */
-  if(m==="1"){
-    return `
-Feeling low doesn’t mean you’re weak.
-It means something inside you needs care.
-
-What’s pulling you down today?
-1️⃣ Heartbreak  
-2️⃣ Life stress  
-3️⃣ Self-doubt  
-4️⃣ Just tired  
-
-(Reply with a number)
-`;
-  }
-
-  if(m==="2"){
-    return `
-Anxiety usually means your mind is racing ahead.
-
-What feels strongest right now?
-1️⃣ Overthinking  
-2️⃣ Fear of future  
-3️⃣ Physical restlessness  
-
-(Reply with a number)
-`;
-  }
-
-  if(m==="3"){
-    return `
-Loneliness can exist even when people are around.
-
-What kind of loneliness is this?
-1️⃣ Missing someone  
-2️⃣ Feeling unseen  
-3️⃣ No one to talk to  
-
-(Reply with a number)
-`;
-  }
-
-  if(m==="4"){
-    return `
-Confusion often comes when too many thoughts collide.
-
-What’s confusing you most?
-1️⃣ Relationships  
-2️⃣ Career / money  
-3️⃣ Life direction  
-
-(Reply with a number)
-`;
-  }
-
-  if(m==="5"){
-    return `
-That’s okay.  
-Sometimes we feel something but can’t name it.
-
-Let’s slow down.
-
-Take one breath.
-You don’t need answers immediately.
-
-Tell me — does your body feel:
-1️⃣ Heavy  
-2️⃣ Restless  
-3️⃣ Empty  
-
-(Reply with a number)
-`;
-  }
-
-  /* ================== BREAKUP ================== */
-  if(m==="heartbreak" || m==="breakup" || m==="1 1"){
-    return `
-Heartbreak hurts because you truly cared.
-
-What hurts more right now?
-1️⃣ I miss them  
-2️⃣ I feel rejected  
-3️⃣ I feel empty  
-4️⃣ I’m angry  
-
-(Reply with a number)
-`;
-  }
-
-  if(m==="1"){
-    return `
-Missing someone is painful because your routine still remembers them.
-
-Try this gently tonight:
-• Don’t fight memories — limit them  
-• Write one good memory AND one painful truth  
-• Then shift your body: walk, stretch, shower  
-
-Healing doesn’t mean forgetting.
-It means slowly choosing yourself.
-
-If this feels too heavy alone — our app lets you talk to a real human listener 💙
-`;
-  }
-
-  if(m==="2"){
-    return `
-Rejection often feels like “I wasn’t enough”.
-
-But usually:
-• Needs didn’t match  
-• Timing wasn’t aligned  
-
-Your value didn’t decrease.
-
-Talking this out with a real human helps untangle this pain.
-You can do that inside our app when you’re ready.
-`;
-  }
-
-  if(m==="3"){
-    return `
-Emptiness is the silence left after emotional attachment.
-
-For now, focus on basics:
-• Warm food  
-• Water  
-• Safe quiet space  
-
-Healing starts from the body.
-
-If emptiness feels scary, real human connection matters — available in our app.
-`;
-  }
-
-  if(m==="4"){
-    return `
-Anger often protects hurt.
-
-It’s okay to feel it — just don’t let it turn inward.
-
-Try:
-• Write what you wish you had said  
-• Tear it after  
-
-If you want to express this safely, a real human listener can help inside our app.
-`;
-  }
-
-  /* ================== ANXIETY ================== */
-  if(m==="overthinking" || m==="1 2"){
-    return `
-Overthinking is your brain trying to keep control.
-
-Try this tonight:
-• Give your mind 15 minutes to think  
-• After that, move your body  
-• Say: “I’ll continue tomorrow”  
-
-If anxiety keeps looping, talking to a real human grounds you deeply.
-`;
-  }
-
-  if(m==="physical restlessness"){
-    return `
-Your body is holding stress.
-
-Try:
-• Cold water on face  
-• Slow exhale breathing (6 seconds out)  
-• Gentle stretching  
-
-If anxiety feels overwhelming, human support helps — available in our app.
-`;
-  }
-
-  /* ================== LONELINESS ================== */
-  if(m==="missing someone"){
-    return `
-Missing someone doesn’t mean you made a mistake loving them.
-
-It means you’re human.
-
-Tonight:
-• Sit with the feeling — don’t judge it  
-• Limit contact urges  
-• Do one grounding activity  
-
-If you want someone to talk to, our app connects you with real listeners.
-`;
-  }
-
-  if(m==="no one to talk to"){
-    return `
-Not having someone doesn’t mean you don’t deserve someone.
-
-Sometimes life just hasn’t caught up yet.
-
-You can talk to a real human listener inside our app — no judgement, just presence.
-`;
-  }
-
-  /* ================== DEFAULT ================== */
-  return `
-I’m here with you.
-
-You don’t need perfect words.
-Just type what feels heavy.
-
-And if text isn’t enough,
-our app lets you talk with a real human listener — calmly, safely, honestly.
-`;
+function aiReply(m){
+  let r=
+"Thank you for sharing 💙\n\n" +
+"Breakups and loneliness can make the mind feel noisy.\n" +
+"Right now, focus on 3 basics:\n" +
+"• Eat something light\n" +
+"• Drink water\n" +
+"• Slow breathing\n\n" +
+"If this feels heavy, consider downloading our app and talking to a real human who will listen without judgement.";
+  addMsg(r,"ai");
 }
 </script>
 
