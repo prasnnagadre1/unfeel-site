@@ -1,1 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UNFEEL – Heal. Grow. Move On.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+:root{
+  --blue:#00e5ff;
+  --soft:rgba(0,229,255,.25);
+  --bg1:#020c14;
+  --bg2:#000408;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* BODY + BREATHING BACKGROUND */
+body{
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:radial-gradient(circle at center,var(--bg1),var(--bg2));
+  color:#fff;
+  min-height:420vh;
+  animation:bgBreath 12s ease-in-out infinite;
+}
+@keyframes bgBreath{
+  0%{background-position:50% 50%}
+  50%{background-position:52% 48%}
+  100%{background-position:50% 50%}
+}
+
+/* LOGO SCROLL */
+#logo{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:64px;
+  font-weight:900;
+  letter-spacing:4px;
+  color:var(--blue);
+  padding:28px 44px;
+  border-radius:42px;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 0 70px var(--soft);
+  transition:.6s ease;
+  z-index:999;
+}
+body.scrolled #logo{
+  top:18px;
+  left:22px;
+  transform:none;
+  font-size:26px;
+  padding:12px 22px;
+  border-radius:22px;
+  box-shadow:0 0 24px var(--soft);
+}
+
+/* NAV */
+.nav{
+  position:fixed;
+  top:22px;
+  right:22px;
+  display:flex;
+  gap:14px;
+  z-index:998;
+}
+.nav a{
+  text-decoration:none;
+  color:var(--blue);
+  font-size:13px;
+  padding:6px 16px;
+  border:1px solid var(--blue);
+  border-radius:20px;
+  box-shadow:0 0 14px var(--soft);
+}
+
+/* LAYOUT */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:180px 20px 260px;
+}
+.section{
+  margin-top:180px;
+  text-align:center;
+}
+
+/* TEXT */
+.tagline{
+  font-size:16px;
+  color:#9fefff;
+}
+.big{
+  font-size:26px;
+  line-height:1.6;
+}
+.small{
+  margin-top:14px;
+  font-size:13px;
+  color:#9ad9e6;
+}
+
+/* CARD */
+.card{
+  margin:80px auto 0;
+  max-width:620px;
+  padding:40px;
+  border-radius:30px;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 0 46px var(--soft);
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:32px;
+  margin-top:90px;
+}
+
+/* BUTTONS */
+.btns{margin-top:70px}
+.btn{
+  display:inline-block;
+  margin:14px;
+  padding:18px 42px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  color:#00181f;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 0 36px var(--soft);
+}
+.btn.secondary{
+  background:transparent;
+  color:var(--blue);
+  border:1px solid var(--blue);
+}
+
+/* FOOTER */
+.footer{
+  margin-top:260px;
+  text-align:center;
+  font-size:12px;
+  color:#9ad9e6;
+}
+.footer a{
+  color:#9ad9e6;
+  margin:0 10px;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="logo">UNFEEL</div>
+
+<div class="nav">
+  <a href="about.html">About</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
+</div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="section">
+    <div class="tagline">Heal · Grow · Move On</div>
+  </div>
+
+  <!-- WHAT IS UNFEEL -->
+  <div class="section">
+    <div class="card">
+      <div class="big">UNFEEL is a calm digital space.</div>
+      <div class="small">
+        Built for moments when emotions feel too heavy to explain.
+        No judgement. No lectures. Just space.
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section">
+    <div class="grid">
+      <div class="card">
+        <div class="big">Chat Support</div>
+        <div class="small">Text conversations when you don’t want to speak.</div>
+      </div>
+      <div class="card">
+        <div class="big">Voice & Video</div>
+        <div class="small">Talk to real humans, not bots.</div>
+      </div>
+      <div class="card">
+        <div class="big">Daily Calm</div>
+        <div class="small">Gentle thoughts that ground you.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY BETTER -->
+  <div class="section">
+    <div class="card">
+      <div class="big">Why UNFEEL is different</div>
+      <div class="small">
+        We don’t rush healing.<br>
+        We don’t push positivity.<br>
+        We don’t judge your pace.
+      </div>
+    </div>
+  </div>
+
+  <!-- MOOD -->
+  <div class="section">
+    <div class="card">
+      <div class="big">How are you feeling right now?</div>
+      <div class="small">
+        Low • Lonely • Anxious • Overthinking • Numb<br>
+        Every feeling is valid here.
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section btns">
+    <a class="btn" href="#">Android App – Coming Soon</a>
+    <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+    <div class="small" style="margin-top:18px">
+      Follow us on Instagram: <b>@unfeel.app</b>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <a href="about.html">About</a> |
+      <a href="terms.html">Terms</a> |
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <br>
+    Founded & Created by <b>Prasanna Balu Gadre</b><br>
+    Emotional support content only. Not medical advice.
+  </div>
+
+</div>
+
+<script>
+window.addEventListener("scroll",()=>{
+  document.body.classList.toggle("scrolled",window.scrollY>120);
+});
+</script>
+
+</body>
+</html>
