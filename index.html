@@ -1,1 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UNFEEL – Heal. Grow. Move On.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+:root{
+  --blue:#00e5ff;
+  --blue-soft:rgba(0,229,255,.25);
+  --dark1:#020c14;
+  --dark2:#000308;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:radial-gradient(circle at top,var(--dark1),var(--dark2));
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ================= NAV ================= */
+.nav{
+  position:fixed;
+  top:20px;
+  right:26px;
+  display:flex;
+  gap:14px;
+  z-index:1000;
+}
+.nav a{
+  color:var(--blue);
+  text-decoration:none;
+  font-size:14px;
+  padding:8px 18px;
+  border:1px solid var(--blue);
+  border-radius:24px;
+  box-shadow:0 0 16px var(--blue-soft);
+}
+
+/* ================= INSTAGRAM ================= */
+.insta{
+  position:fixed;
+  bottom:26px;
+  right:26px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.06);
+  padding:10px 16px;
+  border-radius:30px;
+  box-shadow:0 0 20px var(--blue-soft);
+}
+.insta img{
+  width:22px;
+}
+.insta a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:140px 8vw;
+}
+
+.hero-wrap{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:80px;
+  width:100%;
+}
+
+/* ================= LOGO ================= */
+.logo-box{
+  display:inline-block;
+  padding:20px 34px;
+  border-radius:28px;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 0 46px var(--blue-soft);
+  animation:glowBreath 6s ease-in-out infinite;
+  transition:.4s;
+}
+.logo{
+  font-size:64px;
+  font-weight:900;
+  letter-spacing:4px;
+  color:var(--blue);
+  text-shadow:0 0 40px var(--blue);
+}
+
+@keyframes glowBreath{
+  0%{box-shadow:0 0 28px var(--blue-soft)}
+  50%{box-shadow:0 0 70px var(--blue-soft)}
+  100%{box-shadow:0 0 28px var(--blue-soft)}
+}
+
+.tagline{
+  margin-top:18px;
+  font-size:18px;
+  color:#9fefff;
+}
+
+.hero-text{
+  margin-top:26px;
+  font-size:15px;
+  color:#c7f3ff;
+  line-height:1.7;
+}
+
+/* ================= BUTTONS ================= */
+.cta{
+  margin-top:40px;
+}
+.btn{
+  display:inline-block;
+  margin-right:16px;
+  padding:16px 36px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  color:#00181f;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 0 34px var(--blue-soft);
+}
+.btn.secondary{
+  background:transparent;
+  color:var(--blue);
+  border:1px solid var(--blue);
+}
+
+/* ================= CARD ================= */
+.card{
+  padding:44px;
+  border-radius:30px;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 0 44px var(--blue-soft);
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+  100%{transform:translateY(0)}
+}
+.card h2{
+  font-size:26px;
+  margin-bottom:14px;
+}
+.card p{
+  font-size:15px;
+  color:#bfefff;
+  line-height:1.7;
+}
+
+/* ================= SECTIONS ================= */
+.section{
+  padding:140px 8vw;
+}
+.section h2{
+  font-size:34px;
+  margin-bottom:30px;
+}
+.section p{
+  max-width:900px;
+  font-size:16px;
+  color:#bfefff;
+  line-height:1.8;
+}
+
+/* ================= GRID ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  padding:120px 40px;
+  text-align:center;
+  font-size:13px;
+  color:#9ad9e6;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .hero-wrap{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+  .logo{font-size:48px}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="about.html">About</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-wrap">
+
+    <div>
+      <div class="logo-box" id="logoBox">
+        <div class="logo">UNFEEL</div>
+      </div>
+
+      <div class="tagline">Heal · Grow · Move On</div>
+
+      <div class="hero-text">
+        A calm digital space for emotional healing.<br>
+        When thoughts feel heavy and silence feels loud.
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="#">Android App – Coming Soon</a>
+        <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Why UNFEEL</h2>
+      <p>
+        No judgement. No rush.<br>
+        Real conversations. Real support.<br>
+        Healing at your own pace.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+  <h2>What UNFEEL offers</h2>
+  <div class="grid">
+    <div class="card"><h2>Human Listening</h2><p>Talk to real people, not bots.</p></div>
+    <div class="card"><h2>Emotional Support</h2><p>For heartbreak, loneliness, stress.</p></div>
+    <div class="card"><h2>Safe Space</h2><p>Your feelings matter here.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Founded & Created by <b>Prasanna Balu Gadre</b><br>
+  Emotional support content only. Not medical advice.<br><br>
+  Instagram: <b>@unfeel.app</b>
+</footer>
+
+<!-- INSTAGRAM FLOAT -->
+<div class="insta">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+  <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
+</div>
+
+<script>
+/* LOGO MOVE ON SCROLL (COCA-COLA STYLE) */
+window.addEventListener("scroll",()=>{
+  const box=document.getElementById("logoBox");
+  if(window.scrollY>120){
+    box.style.transform="scale(.8)";
+  }else{
+    box.style.transform="scale(1)";
+  }
+});
+</script>
+
+</body>
+</html>
