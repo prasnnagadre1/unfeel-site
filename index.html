@@ -22,85 +22,96 @@ body{
   overflow-x:hidden;
 }
 
-/* ================= BRAND LOGO ================= */
-.brand-logo{
-  position:fixed;
-  top:26px;
-  left:26px;
-  font-size:26px;
-  font-weight:900;
-  letter-spacing:3px;
-  color:var(--blue);
-  z-index:2000;
-  text-shadow:0 0 22px rgba(0,229,255,.6);
-  animation:brandGlow 3s ease-in-out infinite;
-}
-@keyframes brandGlow{
-  0%{opacity:.6}
-  50%{opacity:1}
-  100%{opacity:.6}
-}
-
-/* ================= NAV ================= */
+/* NAV */
 .nav{
   position:fixed;
-  top:22px;
-  right:30px;
+  top:20px;
+  right:24px;
   display:flex;
   gap:14px;
-  z-index:1500;
+  z-index:1000;
 }
 .nav a{
   color:var(--blue);
   text-decoration:none;
-  font-size:14px;
-  padding:8px 18px;
+  font-size:13px;
+  padding:7px 16px;
   border:1px solid var(--blue);
-  border-radius:22px;
+  border-radius:20px;
   box-shadow:0 0 14px var(--soft);
 }
 
-/* ================= HERO ================= */
-.hero{
-  min-height:100vh;
+/* INSTAGRAM FLOAT */
+.insta{
+  position:fixed;
+  bottom:22px;
+  right:22px;
   display:flex;
   align-items:center;
-  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  background:rgba(255,255,255,.06);
+  border-radius:28px;
+  box-shadow:0 0 18px var(--soft);
+  z-index:1000;
+}
+.insta img{width:20px}
+.insta a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
   position:relative;
-  padding:120px 8vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+canvas{
+  position:absolute;
+  inset:0;
+  z-index:1;
 }
 
 .hero-content{
-  text-align:center;
-  max-width:800px;
-  z-index:5;
+  position:relative;
+  z-index:2;
+  max-width:720px;
 }
 
 .tagline{
-  margin-top:18px;
-  font-size:18px;
+  font-size:16px;
   color:#9fefff;
+  margin-top:14px;
 }
 .hero-text{
-  margin-top:18px;
-  font-size:15px;
+  margin-top:16px;
+  font-size:14px;
   color:#c7f3ff;
   line-height:1.7;
 }
 
-.btns{
-  margin-top:40px;
+.buttons{
+  margin-top:32px;
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 .btn{
-  display:inline-block;
-  margin:12px;
-  padding:16px 36px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  color:#00181f;
-  text-decoration:none;
+  padding:14px 32px;
+  border-radius:28px;
   font-weight:700;
-  box-shadow:0 0 30px var(--soft);
+  text-decoration:none;
+  color:#00181f;
+  background:linear-gradient(135deg,#00e5ff,#00b4d8);
+  box-shadow:0 0 26px var(--soft);
 }
 .btn.secondary{
   background:transparent;
@@ -108,16 +119,10 @@ body{
   border:1px solid var(--blue);
 }
 
-/* ================= PARTICLE CANVAS ================= */
-canvas{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-
-/* ================= SECTIONS ================= */
+/* STORY SECTIONS */
 .section{
-  padding:160px 10vw;
+  min-height:100vh;
+  padding:140px 10vw;
   opacity:0;
   transform:translateY(60px);
   transition:1s ease;
@@ -129,30 +134,38 @@ canvas{
 
 .section h2{
   font-size:36px;
-  margin-bottom:28px;
+  margin-bottom:26px;
 }
 .section p{
-  max-width:900px;
   font-size:17px;
   color:#bfefff;
+  max-width:900px;
   line-height:1.8;
 }
 
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:40px;
 }
 .card{
-  padding:44px;
-  border-radius:30px;
+  padding:42px;
+  border-radius:28px;
   background:rgba(255,255,255,.06);
-  box-shadow:0 0 44px var(--soft);
+  box-shadow:0 0 42px var(--soft);
+  animation:breath 6s ease-in-out infinite;
 }
-.card h3{font-size:22px;margin-bottom:14px}
+@keyframes breath{
+  0%{box-shadow:0 0 22px var(--soft)}
+  50%{box-shadow:0 0 52px var(--soft)}
+  100%{box-shadow:0 0 22px var(--soft)}
+}
+
+.card h3{font-size:22px;margin-bottom:12px}
 .card p{font-size:15px;color:#bfefff;line-height:1.6}
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 .footer{
   padding:120px 40px;
   text-align:center;
@@ -160,38 +173,17 @@ canvas{
   color:#9ad9e6;
 }
 
-/* ================= INSTAGRAM ================= */
-.insta{
-  position:fixed;
-  bottom:26px;
-  right:26px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:rgba(255,255,255,.06);
-  padding:10px 16px;
-  border-radius:30px;
-  box-shadow:0 0 20px var(--soft);
-}
-.insta img{width:22px}
-.insta a{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-}
-
-/* ================= MOBILE ================= */
+/* MOBILE */
 @media(max-width:900px){
   .grid{grid-template-columns:1fr}
-  .section{padding:120px 7vw}
+  .section h2{font-size:28px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="brand-logo">UNFEEL</div>
-
+<!-- NAV -->
 <div class="nav">
   <a href="about.html">About</a>
   <a href="terms.html">Terms</a>
@@ -210,14 +202,14 @@ canvas{
       UNFEEL gives you space to breathe.
     </div>
 
-    <div class="btns">
+    <div class="buttons">
       <a class="btn" href="#">Android App – Coming Soon</a>
       <a class="btn secondary" href="#">iOS App – Coming Soon</a>
     </div>
   </div>
 </section>
 
-<!-- STORY -->
+<!-- PAGE 2 -->
 <section class="section">
   <h2>Why UNFEEL exists</h2>
   <p>
@@ -227,15 +219,17 @@ canvas{
   </p>
 </section>
 
+<!-- PAGE 3 -->
 <section class="section">
   <h2>What UNFEEL offers</h2>
   <div class="grid">
-    <div class="card"><h3>Human Listening</h3><p>Real people. Real conversations.</p></div>
+    <div class="card"><h3>Human Listening</h3><p>Real people. No AI.</p></div>
     <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
-    <div class="card"><h3>Safe Space</h3><p>No rush. No pressure.</p></div>
+    <div class="card"><h3>Safe Space</h3><p>No pressure. No judgement.</p></div>
   </div>
 </section>
 
+<!-- PAGE 4 -->
 <section class="section">
   <h2>Healing is not instant</h2>
   <p>
@@ -245,71 +239,90 @@ canvas{
   </p>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
   Emotional support content only. Not medical advice.<br><br>
   Instagram: <b>@unfeel.app</b>
 </footer>
 
+<!-- INSTA -->
 <div class="insta">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
   <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
 </div>
 
+<!-- PARTICLE SCRIPT -->
 <script>
-/* ================= PARTICLE UNFEEL ================= */
 const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
-let w,h,particles=[],phase="float";
-canvas.width=w=innerWidth;
-canvas.height=h=innerHeight;
-
+let W,H,particles=[],formed=true;
 const text="UNFEEL";
-ctx.font="bold 160px Segoe UI";
-const t=ctx.measureText(text);
-const startX=w/2-t.width/2;
-const startY=h/2;
 
-for(let i=0;i<1500;i++){
-  particles.push({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    tx:startX+(i%text.length)*120+Math.random()*20,
-    ty:startY+Math.random()*20,
-    vx:(Math.random()-.5)*2,
-    vy:(Math.random()-.5)*2
-  });
+function resize(){
+  W=canvas.width=window.innerWidth;
+  H=canvas.height=window.innerHeight;
+  createParticles();
 }
+window.addEventListener("resize",resize);
 
-setTimeout(()=>phase="form",4000);
+function createParticles(){
+  particles=[];
+  ctx.clearRect(0,0,W,H);
+  let size=Math.min(W*0.35,240);
+  ctx.font=`900 ${size}px Segoe UI`;
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+  ctx.fillText(text,W/2,H/2);
 
-function draw(){
-  ctx.clearRect(0,0,w,h);
+  let data=ctx.getImageData(0,0,W,H).data;
+  for(let y=0;y<H;y+=4){
+    for(let x=0;x<W;x+=4){
+      let i=(y*W+x)*4;
+      if(data[i+3]>150){
+        particles.push({
+          x:Math.random()*W,
+          y:Math.random()*H,
+          ox:x,oy:y,
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-0.5)*6
+        });
+      }
+    }
+  }
+}
+resize();
+
+function animate(){
+  ctx.clearRect(0,0,W,H);
   ctx.fillStyle="#00e5ff";
   particles.forEach(p=>{
-    if(phase==="form"){
-      p.x+=(p.tx-p.x)*0.06;
-      p.y+=(p.ty-p.y)*0.06;
-    }else if(phase==="scatter"){
-      p.x+=p.vx*6;
-      p.y+=p.vy*6;
+    if(formed){
+      p.x+=(p.ox-p.x)*0.05;
+      p.y+=(p.oy-p.y)*0.05;
+    }else{
+      p.x+=p.vx;
+      p.y+=p.vy;
     }
     ctx.fillRect(p.x,p.y,2,2);
   });
-  requestAnimationFrame(draw);
+  requestAnimationFrame(animate);
 }
-draw();
+animate();
 
+let lastScroll=0;
 window.addEventListener("scroll",()=>{
-  if(scrollY>200) phase="scatter";
+  let s=window.scrollY;
+  formed = s < 120;
+  lastScroll=s;
 });
 
-/* ================= SCROLL SECTIONS ================= */
-const sections=document.querySelectorAll(".section");
-addEventListener("scroll",()=>{
-  sections.forEach(s=>{
-    if(s.getBoundingClientRect().top<innerHeight-120){
-      s.classList.add("show");
+/* SECTION FADE */
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight-120){
+      sec.classList.add('show');
     }
   });
 });
