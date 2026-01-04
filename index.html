@@ -24,8 +24,12 @@ body{
 
 /* NAV */
 .nav{
-  position:fixed;top:20px;right:24px;
-  display:flex;gap:14px;z-index:1000;
+  position:fixed;
+  top:20px;
+  right:24px;
+  display:flex;
+  gap:14px;
+  z-index:1000;
 }
 .nav a{
   color:var(--blue);
@@ -37,54 +41,60 @@ body{
   box-shadow:0 0 14px var(--soft);
 }
 
+/* INSTAGRAM */
+.insta{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  background:rgba(255,255,255,.06);
+  border-radius:28px;
+  box-shadow:0 0 18px var(--soft);
+  z-index:1000;
+}
+.insta img{width:20px}
+.insta a{color:#fff;text-decoration:none;font-size:13px}
+
 /* HERO */
 .hero{
   height:100vh;
   position:relative;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:0 20px;
 }
 
-/* PARTICLE CANVAS – DESKTOP ONLY */
 canvas{
   position:absolute;
   inset:0;
   z-index:1;
 }
 
-/* HERO CONTENT */
 .hero-content{
   position:relative;
   z-index:2;
   max-width:720px;
-}
-
-.logo-text{
-  font-size:64px;
-  font-weight:900;
-  letter-spacing:4px;
-  color:var(--blue);
-  text-shadow:0 0 40px var(--soft);
+  padding-top:120px;
 }
 
 .tagline{
-  margin-top:14px;
   font-size:16px;
   color:#9fefff;
+  margin-top:12px;
 }
-
 .hero-text{
-  margin-top:16px;
+  margin-top:14px;
   font-size:14px;
   color:#c7f3ff;
   line-height:1.7;
 }
 
 .buttons{
-  margin-top:32px;
+  margin-top:28px;
   display:flex;
   gap:18px;
   justify-content:center;
@@ -126,6 +136,21 @@ canvas{
   line-height:1.8;
 }
 
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+.card{
+  padding:42px;
+  border-radius:28px;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 0 42px var(--soft);
+}
+.card h3{font-size:22px;margin-bottom:12px}
+.card p{font-size:15px;color:#bfefff}
+
 /* FOOTER */
 .footer{
   padding:120px 40px;
@@ -134,10 +159,12 @@ canvas{
   color:#9ad9e6;
 }
 
-/* ================= MOBILE FIX ================= */
-@media(max-width:768px){
-  canvas{display:none;}          /* 🔴 particle OFF */
-  .logo-text{font-size:42px;}    /* simple text */
+/* MOBILE FIX */
+@media(max-width:900px){
+  canvas{display:none;}
+  .hero-content{padding-top:60px}
+  .grid{grid-template-columns:1fr}
+  .section h2{font-size:28px}
 }
 </style>
 </head>
@@ -151,14 +178,10 @@ canvas{
 </div>
 
 <section class="hero">
-  <!-- DESKTOP PARTICLE -->
   <canvas id="particleCanvas"></canvas>
 
-  <!-- HERO CONTENT -->
   <div class="hero-content">
-    <div class="logo-text">UNFEEL</div>
     <div class="tagline">Heal · Grow · Move On</div>
-
     <div class="hero-text">
       When emotions feel heavy.<br>
       When silence feels loud.<br>
@@ -174,86 +197,108 @@ canvas{
 
 <section class="section">
   <h2>Why UNFEEL exists</h2>
-  <p>Not to fix you. Not to judge you. But to sit with you while you heal.</p>
+  <p>
+    Not to fix you.<br>
+    Not to judge you.<br>
+    But to sit with you while you heal.
+  </p>
 </section>
 
 <section class="section">
-  <h2>Healing takes time</h2>
-  <p>Slow progress still counts.</p>
+  <h2>What UNFEEL offers</h2>
+  <div class="grid">
+    <div class="card"><h3>Human Listening</h3><p>Real people. No AI.</p></div>
+    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
+    <div class="card"><h3>Safe Space</h3><p>No pressure. No judgement.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Healing is not instant</h2>
+  <p>
+    It’s slow.<br>
+    It’s uneven.<br>
+    And that’s okay.
+  </p>
 </section>
 
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support content only. Not medical advice.
+  Emotional support content only. Not medical advice.<br><br>
+  Instagram: <b>@unfeel.app</b>
 </footer>
 
+<div class="insta">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+  <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
+</div>
+
 <script>
-/* ========== PARTICLE (DESKTOP ONLY) ========== */
-if(window.innerWidth > 768){
-  const canvas=document.getElementById("particleCanvas");
-  const ctx=canvas.getContext("2d");
-  let W,H,particles=[],formed=true;
-  const text="UNFEEL";
+/* PARTICLE LOGO – DESKTOP ONLY */
+const canvas=document.getElementById("particleCanvas");
+const ctx=canvas.getContext("2d");
+let W,H,particles=[],formed=true;
+const text="UNFEEL";
 
-  function resize(){
-    W=canvas.width=window.innerWidth;
-    H=canvas.height=window.innerHeight;
-    createParticles();
-  }
-  window.addEventListener("resize",resize);
+function resize(){
+  W=canvas.width=window.innerWidth;
+  H=canvas.height=window.innerHeight;
+  createParticles();
+}
+window.addEventListener("resize",resize);
 
-  function createParticles(){
-    particles=[];
-    ctx.clearRect(0,0,W,H);
-    let size=Math.min(W*0.35,220);
-    ctx.font=`900 ${size}px Segoe UI`;
-    ctx.textAlign="center";
-    ctx.textBaseline="middle";
-    ctx.fillText(text,W/2,H/2 - 40);
+function createParticles(){
+  particles=[];
+  ctx.clearRect(0,0,W,H);
+  let size=Math.min(W*0.28,220);
+  ctx.font=`900 ${size}px Segoe UI`;
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+  ctx.fillText(text,W/2,H/2 - 120);   /* 🔥 ONLY CHANGE */
 
-    let data=ctx.getImageData(0,0,W,H).data;
-    for(let y=0;y<H;y+=4){
-      for(let x=0;x<W;x+=4){
-        let i=(y*W+x)*4;
-        if(data[i+3]>150){
-          particles.push({
-            x:Math.random()*W,
-            y:Math.random()*H,
-            ox:x,oy:y,
-            vx:(Math.random()-0.5)*6,
-            vy:(Math.random()-0.5)*6
-          });
-        }
+  let data=ctx.getImageData(0,0,W,H).data;
+  for(let y=0;y<H;y+=4){
+    for(let x=0;x<W;x+=4){
+      let i=(y*W+x)*4;
+      if(data[i+3]>150){
+        particles.push({
+          x:Math.random()*W,
+          y:Math.random()*H,
+          ox:x,oy:y,
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-0.5)*6
+        });
       }
     }
   }
-  resize();
-
-  function animate(){
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle="#00e5ff";
-    particles.forEach(p=>{
-      if(formed){
-        p.x+=(p.ox-p.x)*0.05;
-        p.y+=(p.oy-p.y)*0.05;
-      }else{
-        p.x+=p.vx;
-        p.y+=p.vy;
-      }
-      ctx.fillRect(p.x,p.y,2,2);
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  window.addEventListener("scroll",()=>{
-    formed = window.scrollY < 120;
-  });
 }
+resize();
+
+function animate(){
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle="#00e5ff";
+  particles.forEach(p=>{
+    if(formed){
+      p.x+=(p.ox-p.x)*0.05;
+      p.y+=(p.oy-p.y)*0.05;
+    }else{
+      p.x+=p.vx;
+      p.y+=p.vy;
+    }
+    ctx.fillRect(p.x,p.y,2,2);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener("scroll",()=>{
+  formed = window.scrollY < 120;
+});
 
 /* SECTION FADE */
-document.querySelectorAll('.section').forEach(sec=>{
-  window.addEventListener('scroll',()=>{
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(sec=>{
     if(sec.getBoundingClientRect().top < window.innerHeight-120){
       sec.classList.add('show');
     }
