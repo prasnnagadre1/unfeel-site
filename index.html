@@ -12,7 +12,6 @@
   --dark1:#020c14;
   --dark2:#000308;
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
@@ -26,100 +25,91 @@ body{
 .nav{
   position:fixed;
   top:18px;
-  right:22px;
+  right:18px;
   display:flex;
-  gap:14px;
+  gap:12px;
   z-index:1000;
 }
 .nav a{
   color:var(--blue);
   text-decoration:none;
   font-size:13px;
-  padding:8px 18px;
+  padding:7px 16px;
   border:1px solid var(--blue);
-  border-radius:24px;
+  border-radius:20px;
   box-shadow:0 0 14px var(--soft);
 }
 
-/* FIXED LOGO */
+/* FIXED BRAND */
 .brand{
   position:fixed;
   top:18px;
-  left:22px;
+  left:18px;
   font-weight:800;
   letter-spacing:2px;
   color:var(--blue);
   z-index:1000;
 }
 
-/* INSTAGRAM FLOAT */
+/* INSTAGRAM */
 .insta{
   position:fixed;
-  bottom:22px;
-  right:22px;
+  bottom:18px;
+  right:18px;
   display:flex;
   align-items:center;
   gap:8px;
-  padding:10px 14px;
+  padding:9px 14px;
   background:rgba(255,255,255,.06);
-  border-radius:28px;
+  border-radius:26px;
   box-shadow:0 0 18px var(--soft);
   z-index:1000;
 }
-.insta img{width:20px}
-.insta a{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-}
+.insta img{width:18px}
+.insta a{color:#fff;text-decoration:none;font-size:13px}
 
 /* HERO */
 .hero{
   height:100vh;
   position:relative;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:0 6vw;
 }
-
 canvas{
   position:absolute;
   inset:0;
   z-index:1;
-  pointer-events:none;
 }
-
 .hero-content{
   position:relative;
   z-index:2;
   max-width:720px;
+  padding:0 18px;
 }
 
 .tagline{
   font-size:16px;
   color:#9fefff;
-  margin-top:14px;
+  margin-bottom:14px;
 }
 .hero-text{
-  margin-top:16px;
   font-size:14px;
   color:#c7f3ff;
   line-height:1.7;
 }
 
 .buttons{
-  margin-top:32px;
+  margin-top:30px;
   display:flex;
-  gap:18px;
+  gap:16px;
   justify-content:center;
   flex-wrap:wrap;
 }
 .btn{
-  padding:14px 34px;
-  border-radius:30px;
+  padding:14px 30px;
+  border-radius:28px;
   font-weight:700;
   text-decoration:none;
   color:#00181f;
@@ -144,10 +134,9 @@ canvas{
   opacity:1;
   transform:translateY(0);
 }
-
 .section h2{
-  font-size:36px;
-  margin-bottom:26px;
+  font-size:34px;
+  margin-bottom:24px;
 }
 .section p{
   font-size:17px;
@@ -160,11 +149,11 @@ canvas{
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:40px;
+  gap:36px;
 }
 .card{
-  padding:42px;
-  border-radius:28px;
+  padding:40px;
+  border-radius:26px;
   background:rgba(255,255,255,.06);
   box-shadow:0 0 42px var(--soft);
   animation:breath 6s ease-in-out infinite;
@@ -175,10 +164,6 @@ canvas{
   100%{box-shadow:0 0 22px var(--soft)}
 }
 
-.card h3{font-size:22px;margin-bottom:12px}
-.card p{font-size:15px;color:#bfefff;line-height:1.6}
-
-/* FOOTER */
 .footer{
   padding:120px 40px;
   text-align:center;
@@ -186,7 +171,7 @@ canvas{
   color:#9ad9e6;
 }
 
-/* MOBILE */
+/* MOBILE FIX */
 @media(max-width:900px){
   .grid{grid-template-columns:1fr}
   .section h2{font-size:28px}
@@ -224,34 +209,27 @@ canvas{
 
 <section class="section">
   <h2>Why UNFEEL exists</h2>
-  <p>
-    Not to fix you.<br>
-    Not to judge you.<br>
-    But to sit with you while you heal.
-  </p>
+  <p>Not to fix you. Not to judge you. But to sit with you while you heal.</p>
 </section>
 
 <section class="section">
   <h2>What UNFEEL offers</h2>
   <div class="grid">
-    <div class="card"><h3>Human Listening</h3><p>Real people. No AI.</p></div>
-    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
+    <div class="card"><h3>Human Listening</h3><p>No AI. Only people.</p></div>
+    <div class="card"><h3>Emotional Support</h3><p>Loneliness. Breakups.</p></div>
     <div class="card"><h3>Safe Space</h3><p>No pressure. No judgement.</p></div>
   </div>
 </section>
 
 <section class="section">
-  <h2>Healing is not instant</h2>
-  <p>
-    It’s slow.<br>
-    It’s uneven.<br>
-    And that’s okay.
-  </p>
+  <h2>Healing takes time</h2>
+  <p>Slow progress still counts.</p>
 </section>
 
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support content only. Not medical advice.
+  Emotional support content only. Not medical advice.<br><br>
+  Instagram: <b>@unfeel.app</b>
 </footer>
 
 <div class="insta">
@@ -276,13 +254,14 @@ function createParticles(){
   particles=[];
   ctx.clearRect(0,0,W,H);
 
-  let size = W < 768 ? W * 0.55 : Math.min(W * 0.32, 260);
-  let yPos = W < 768 ? H * 0.40 : H * 0.35;
+  let size = W < 768 
+    ? Math.min(W * 0.28, 150)   // mobile safe
+    : Math.min(W * 0.26, 200); // desktop safe
 
   ctx.font=`900 ${size}px Segoe UI`;
   ctx.textAlign="center";
   ctx.textBaseline="middle";
-  ctx.fillText(text,W/2,yPos);
+  ctx.fillText(text,W/2,H/2);
 
   let data=ctx.getImageData(0,0,W,H).data;
   for(let y=0;y<H;y+=4){
@@ -293,8 +272,8 @@ function createParticles(){
           x:Math.random()*W,
           y:Math.random()*H,
           ox:x,oy:y,
-          vx:(Math.random()-0.5)*4,
-          vy:(Math.random()-0.5)*4
+          vx:(Math.random()-0.5)*5,
+          vy:(Math.random()-0.5)*5
         });
       }
     }
@@ -307,8 +286,8 @@ function animate(){
   ctx.fillStyle="#00e5ff";
   particles.forEach(p=>{
     if(formed){
-      p.x+=(p.ox-p.x)*0.06;
-      p.y+=(p.oy-p.y)*0.06;
+      p.x+=(p.ox-p.x)*0.025; // ~8 sec cinematic
+      p.y+=(p.oy-p.y)*0.025;
     }else{
       p.x+=p.vx;
       p.y+=p.vy;
@@ -321,11 +300,7 @@ animate();
 
 window.addEventListener("scroll",()=>{
   formed = window.scrollY < 120;
-});
-
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-  sections.forEach(sec=>{
+  document.querySelectorAll('.section').forEach(sec=>{
     if(sec.getBoundingClientRect().top < window.innerHeight-120){
       sec.classList.add('show');
     }
