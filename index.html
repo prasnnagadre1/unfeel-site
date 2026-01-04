@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>UNFEEL – Heal · Grow · Move On</title>
+<title>UNFEEL – Heal. Grow. Move On.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -34,7 +34,7 @@ body{
 .nav a{
   color:var(--blue);
   text-decoration:none;
-  font-size:13px;
+  font-size:14px;
   padding:8px 18px;
   border:1px solid var(--blue);
   border-radius:22px;
@@ -49,37 +49,47 @@ body{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:160px 20px 120px;
+  overflow:hidden;
 }
-#canvas{
+
+#particleCanvas{
   position:absolute;
   inset:0;
   z-index:0;
 }
+
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:900px;
 }
-.slogan{
-  margin-top:24px;
+
+.logo{
+  font-size:72px;
+  font-weight:900;
+  letter-spacing:5px;
+  color:var(--blue);
+  text-shadow:0 0 60px var(--soft);
+}
+
+.tagline{
+  margin-top:14px;
   font-size:18px;
   color:#9fefff;
 }
-.hero-text{
-  margin-top:22px;
+
+.hook{
+  margin-top:20px;
   font-size:15px;
   color:#c7f3ff;
   line-height:1.7;
 }
-.buttons{
-  margin-top:40px;
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
+
+.btns{
+  margin-top:42px;
 }
 .btn{
+  display:inline-block;
+  margin:12px 14px;
   padding:16px 36px;
   border-radius:30px;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
@@ -105,6 +115,7 @@ body{
   opacity:1;
   transform:translateY(0);
 }
+
 .section h2{
   font-size:36px;
   margin-bottom:28px;
@@ -138,30 +149,9 @@ body{
   line-height:1.6;
 }
 
-/* INSTAGRAM FLOAT */
-.insta{
-  position:fixed;
-  bottom:26px;
-  right:26px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:rgba(255,255,255,.06);
-  padding:10px 16px;
-  border-radius:30px;
-  box-shadow:0 0 20px var(--soft);
-  z-index:1000;
-}
-.insta img{width:22px}
-.insta a{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-}
-
 /* FOOTER */
 .footer{
-  padding:120px 40px;
+  padding:140px 40px;
   text-align:center;
   font-size:13px;
   color:#9ad9e6;
@@ -169,9 +159,8 @@ body{
 
 /* MOBILE */
 @media(max-width:900px){
+  .logo{font-size:52px}
   .grid{grid-template-columns:1fr}
-  .section{padding:120px 6vw}
-  .slogan{font-size:16px}
 }
 </style>
 </head>
@@ -180,28 +169,27 @@ body{
 
 <!-- NAV -->
 <div class="nav">
-  <a href="index.html">Home</a>
   <a href="about.html">About</a>
-  <a href="services.html">Services</a>
   <a href="terms.html">Terms</a>
   <a href="privacy.html">Privacy</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <canvas id="canvas"></canvas>
+  <canvas id="particleCanvas"></canvas>
 
   <div class="hero-content">
-    <div class="slogan">Heal · Grow · Move On</div>
-    <div class="hero-text">
+    <div class="logo">UNFEEL</div>
+    <div class="tagline">Heal · Grow · Move On</div>
+    <div class="hook">
       When emotions feel heavy.<br>
       When silence feels loud.<br>
       UNFEEL gives you space to breathe.
     </div>
 
-    <div class="buttons">
+    <div class="btns">
       <a class="btn" href="#">Android App – Coming Soon</a>
-      <a class="btn secondary" href="#">iOS App – Coming Soon</a>
+      <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
     </div>
   </div>
 </section>
@@ -219,18 +207,9 @@ body{
 <section class="section">
   <h2>What UNFEEL offers</h2>
   <div class="grid">
-    <div class="card">
-      <h3>Human Listening</h3>
-      <p>Real people. No AI. No scripts.</p>
-    </div>
-    <div class="card">
-      <h3>Emotional Support</h3>
-      <p>Heartbreak, loneliness, stress.</p>
-    </div>
-    <div class="card">
-      <h3>Safe Space</h3>
-      <p>No rush. No judgement.</p>
-    </div>
+    <div class="card"><h3>Human Listening</h3><p>Real people. Real conversations.</p></div>
+    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
+    <div class="card"><h3>Safe Space</h3><p>No rush. No pressure.</p></div>
   </div>
 </section>
 
@@ -243,84 +222,109 @@ body{
   </p>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support content only. Not medical advice.
+  Emotional support content only. Not medical advice.<br><br>
+  Instagram: <b>@unfeel.app</b>
 </footer>
 
-<!-- INSTAGRAM -->
-<div class="insta">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-  <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
-</div>
-
-<!-- SCROLL ANIMATION -->
 <script>
+/* ===== STORY SCROLL ===== */
 const sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
   sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top < window.innerHeight-120){
+    if(sec.getBoundingClientRect().top < innerHeight-120){
       sec.classList.add('show');
     }
   });
 });
-</script>
 
-<!-- CINEMATIC PARTICLE UNFEEL -->
-<script>
-const canvas=document.getElementById("canvas");
+/* ===== PARTICLE CINEMATIC ENGINE ===== */
+const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
+
 function resize(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
 }
 resize();
-window.addEventListener("resize",resize);
+addEventListener("resize",resize);
 
-let particles=[],phase="drift",t=0;
+let particles=[];
+let phase="drift";
+let dissolve=false;
+let lastScroll=0;
 
-function buildText(){
+const mouse={x:-9999,y:-9999};
+addEventListener("mousemove",e=>{
+  mouse.x=e.clientX;
+  mouse.y=e.clientY;
+});
+
+function createText(){
+  particles=[];
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.font="900 180px Segoe UI";
+  ctx.font="900 200px Segoe UI";
   ctx.textAlign="center";
   ctx.fillText("UNFEEL",canvas.width/2,canvas.height/2);
-  const d=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+
+  const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
   for(let y=0;y<canvas.height;y+=7){
     for(let x=0;x<canvas.width;x+=7){
-      if(d[(y*canvas.width+x)*4+3]>150){
+      if(data[(y*canvas.width+x)*4+3]>150){
         particles.push({
           x:Math.random()*canvas.width,
           y:Math.random()*canvas.height,
-          tx:x,ty:y,
-          vx:(Math.random()-0.5)*0.2,
-          vy:(Math.random()-0.5)*0.2
+          tx:x,
+          ty:y,
+          vx:(Math.random()-0.5)*0.4,
+          vy:(Math.random()-0.5)*0.4
         });
       }
     }
   }
 }
-buildText();
-setTimeout(()=>phase="form",14000);
+createText();
+setTimeout(()=>phase="form",9000);
+
+addEventListener("scroll",()=>{
+  const cur=scrollY;
+  if(cur>lastScroll && cur>120){dissolve=true;}
+  if(cur<200){dissolve=false;phase="form";}
+  lastScroll=cur;
+});
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  t+=0.01;
+
   particles.forEach(p=>{
     if(phase==="drift"){
       p.x+=p.vx;
       p.y+=p.vy;
+    }else if(!dissolve){
+      p.x+=(p.tx-p.x)*0.025;
+      p.y+=(p.ty-p.y)*0.025;
     }else{
-      p.x+=(p.tx-p.x)*0.02;
-      p.y+=(p.ty-p.y+Math.sin(t)*2)*0.02;
+      p.x+=p.vx*3;
+      p.y+=p.vy*3;
     }
+
+    const dx=mouse.x-p.x;
+    const dy=mouse.y-p.y;
+    const dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<140){
+      p.x+=dx*0.015;
+      p.y+=dy*0.015;
+    }
+
     ctx.beginPath();
     ctx.fillStyle="rgba(0,229,255,.35)";
-    ctx.shadowBlur=30;
+    ctx.shadowBlur=24;
     ctx.shadowColor="#00e5ff";
     ctx.arc(p.x,p.y,2,0,Math.PI*2);
     ctx.fill();
   });
+
   requestAnimationFrame(animate);
 }
 animate();
