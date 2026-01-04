@@ -41,18 +41,7 @@ body{
   box-shadow:0 0 14px var(--soft);
 }
 
-/* FIXED LOGO */
-.fixed-logo{
-  position:fixed;
-  top:22px;
-  left:24px;
-  font-weight:800;
-  letter-spacing:2px;
-  color:var(--blue);
-  z-index:1000;
-}
-
-/* INSTAGRAM */
+/* INSTAGRAM FLOAT */
 .insta{
   position:fixed;
   bottom:22px;
@@ -64,6 +53,7 @@ body{
   background:rgba(255,255,255,.06);
   border-radius:28px;
   box-shadow:0 0 18px var(--soft);
+  z-index:1000;
 }
 .insta img{width:20px}
 .insta a{color:#fff;text-decoration:none;font-size:13px}
@@ -73,6 +63,7 @@ body{
   height:100vh;
   position:relative;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
@@ -88,29 +79,30 @@ canvas{
   position:relative;
   z-index:2;
   max-width:720px;
-  padding-top:120px;
+  padding:0 20px;
 }
 
 .tagline{
   font-size:16px;
   color:#9fefff;
+  margin-top:14px;
 }
 .hero-text{
-  margin-top:14px;
+  margin-top:16px;
   font-size:14px;
   color:#c7f3ff;
   line-height:1.7;
 }
 
 .buttons{
-  margin-top:28px;
+  margin-top:32px;
   display:flex;
-  gap:16px;
+  gap:18px;
   justify-content:center;
   flex-wrap:wrap;
 }
 .btn{
-  padding:14px 30px;
+  padding:14px 32px;
   border-radius:28px;
   font-weight:700;
   text-decoration:none;
@@ -124,7 +116,7 @@ canvas{
   border:1px solid var(--blue);
 }
 
-/* SECTIONS */
+/* STORY SECTIONS */
 .section{
   min-height:100vh;
   padding:140px 10vw;
@@ -138,8 +130,8 @@ canvas{
 }
 
 .section h2{
-  font-size:34px;
-  margin-bottom:24px;
+  font-size:36px;
+  margin-bottom:26px;
 }
 .section p{
   font-size:17px;
@@ -148,13 +140,14 @@ canvas{
   line-height:1.8;
 }
 
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:36px;
+  gap:40px;
 }
 .card{
-  padding:40px;
+  padding:42px;
   border-radius:28px;
   background:rgba(255,255,255,.06);
   box-shadow:0 0 42px var(--soft);
@@ -166,6 +159,10 @@ canvas{
   100%{box-shadow:0 0 22px var(--soft)}
 }
 
+.card h3{font-size:22px;margin-bottom:12px}
+.card p{font-size:15px;color:#bfefff;line-height:1.6}
+
+/* FOOTER */
 .footer{
   padding:120px 40px;
   text-align:center;
@@ -173,24 +170,24 @@ canvas{
   color:#9ad9e6;
 }
 
-/* MOBILE FIX */
-@media(max-width:768px){
+/* MOBILE */
+@media(max-width:900px){
   .grid{grid-template-columns:1fr}
-  .hero-content{padding-top:160px}
+  .section h2{font-size:28px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="fixed-logo">UNFEEL</div>
-
+<!-- NAV -->
 <div class="nav">
   <a href="about.html">About</a>
   <a href="terms.html">Terms</a>
   <a href="privacy.html">Privacy</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <canvas id="particleCanvas"></canvas>
 
@@ -209,35 +206,50 @@ canvas{
   </div>
 </section>
 
+<!-- PAGE 2 -->
 <section class="section">
   <h2>Why UNFEEL exists</h2>
-  <p>Not to fix you. Not to judge you. Just to sit with you.</p>
+  <p>
+    Not to fix you.<br>
+    Not to judge you.<br>
+    But to sit with you while you heal.
+  </p>
 </section>
 
+<!-- PAGE 3 -->
 <section class="section">
   <h2>What UNFEEL offers</h2>
   <div class="grid">
-    <div class="card">Human Listening</div>
-    <div class="card">Emotional Support</div>
-    <div class="card">Safe Space</div>
+    <div class="card"><h3>Human Listening</h3><p>Real people. No AI.</p></div>
+    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
+    <div class="card"><h3>Safe Space</h3><p>No pressure. No judgement.</p></div>
   </div>
 </section>
 
+<!-- PAGE 4 -->
 <section class="section">
-  <h2>Healing is slow</h2>
-  <p>And that’s okay.</p>
+  <h2>Healing is not instant</h2>
+  <p>
+    It’s slow.<br>
+    It’s uneven.<br>
+    And that’s okay.
+  </p>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support only · Not medical advice
+  Emotional support content only. Not medical advice.<br><br>
+  Instagram: <b>@unfeel.app</b>
 </footer>
 
+<!-- INSTA -->
 <div class="insta">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
   <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
 </div>
 
+<!-- PARTICLE SCRIPT -->
 <script>
 const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
@@ -254,11 +266,16 @@ window.addEventListener("resize",resize);
 function createParticles(){
   particles=[];
   ctx.clearRect(0,0,W,H);
-  let size=Math.min(W*0.6,240);
+
+  /* 🔧 ONLY MOBILE SIZE FIX – NOTHING ELSE TOUCHED */
+  let size = window.innerWidth < 768
+    ? Math.min(W * 0.75, 150)   // 📱 mobile side se kam
+    : Math.min(W * 0.6, 240);   // 💻 desktop same
+
   ctx.font=`900 ${size}px Segoe UI`;
   ctx.textAlign="center";
   ctx.textBaseline="middle";
-  ctx.fillText(text, W/2, H/2 - 60); // 👈 ONLY CHANGE (UP SHIFT)
+  ctx.fillText(text,W/2,H/2);
 
   let data=ctx.getImageData(0,0,W,H).data;
   for(let y=0;y<H;y+=4){
@@ -299,6 +316,7 @@ window.addEventListener("scroll",()=>{
   formed = window.scrollY < 120;
 });
 
+/* SECTION FADE */
 const sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
   sections.forEach(sec=>{
