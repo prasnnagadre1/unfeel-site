@@ -21,38 +21,37 @@ body{
   overflow-x:hidden;
 }
 
-/* FIXED BRAND */
-.fixed-brand{
-  position:fixed;
-  top:22px;
-  left:26px;
-  font-weight:900;
-  letter-spacing:3px;
-  color:var(--blue);
-  text-shadow:0 0 18px rgba(0,229,255,.7);
-  z-index:2000;
-}
-
 /* NAV */
 .nav{
   position:fixed;
-  top:20px;
-  right:24px;
+  top:18px;
+  right:22px;
   display:flex;
-  gap:14px;
-  z-index:2000;
+  gap:12px;
+  z-index:1000;
 }
 .nav a{
   color:var(--blue);
   text-decoration:none;
   font-size:13px;
-  padding:7px 16px;
+  padding:7px 15px;
   border:1px solid var(--blue);
   border-radius:20px;
-  box-shadow:0 0 14px var(--soft);
+  box-shadow:0 0 12px var(--soft);
 }
 
-/* INSTAGRAM FLOAT */
+/* FIXED LOGO */
+.fixed-logo{
+  position:fixed;
+  top:20px;
+  left:22px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:var(--blue);
+  z-index:1000;
+}
+
+/* INSTAGRAM */
 .insta{
   position:fixed;
   bottom:22px;
@@ -64,7 +63,7 @@ body{
   background:rgba(255,255,255,.06);
   border-radius:28px;
   box-shadow:0 0 18px var(--soft);
-  z-index:2000;
+  z-index:1000;
 }
 .insta img{width:20px}
 .insta a{color:#fff;text-decoration:none;font-size:13px}
@@ -81,27 +80,26 @@ body{
 canvas{
   position:absolute;
   inset:0;
+  z-index:1;
 }
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:760px;
+  margin-top:160px;
 }
 .tagline{
-  font-size:18px;
+  font-size:16px;
   color:#9fefff;
-  margin-top:16px;
+  margin-top:10px;
 }
 .hero-text{
-  margin-top:18px;
-  font-size:15px;
+  margin-top:14px;
+  font-size:14px;
   color:#c7f3ff;
   line-height:1.7;
 }
-
-/* BUTTONS */
 .buttons{
-  margin-top:34px;
+  margin-top:30px;
   display:flex;
   gap:18px;
   justify-content:center;
@@ -122,10 +120,10 @@ canvas{
   border:1px solid var(--blue);
 }
 
-/* SECTIONS */
+/* STORY */
 .section{
   min-height:100vh;
-  padding:160px 10vw;
+  padding:140px 10vw;
   opacity:0;
   transform:translateY(60px);
   transition:1s ease;
@@ -134,10 +132,7 @@ canvas{
   opacity:1;
   transform:translateY(0);
 }
-.section h2{
-  font-size:36px;
-  margin-bottom:28px;
-}
+.section h2{font-size:36px;margin-bottom:26px}
 .section p{
   font-size:17px;
   color:#bfefff;
@@ -145,17 +140,17 @@ canvas{
   line-height:1.8;
 }
 
-/* GRID / CARDS */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:42px;
+  gap:40px;
 }
 .card{
-  padding:44px;
-  border-radius:30px;
+  padding:42px;
+  border-radius:28px;
   background:rgba(255,255,255,.06);
-  box-shadow:0 0 28px var(--soft);
+  box-shadow:0 0 42px var(--soft);
   animation:breath 6s ease-in-out infinite;
 }
 @keyframes breath{
@@ -163,7 +158,7 @@ canvas{
   50%{box-shadow:0 0 52px var(--soft)}
   100%{box-shadow:0 0 22px var(--soft)}
 }
-.card h3{font-size:22px;margin-bottom:14px}
+.card h3{font-size:22px;margin-bottom:12px}
 .card p{font-size:15px;color:#bfefff;line-height:1.6}
 
 /* FOOTER */
@@ -174,7 +169,6 @@ canvas{
   color:#9ad9e6;
 }
 
-/* MOBILE */
 @media(max-width:900px){
   .grid{grid-template-columns:1fr}
   .section h2{font-size:28px}
@@ -184,7 +178,7 @@ canvas{
 
 <body>
 
-<div class="fixed-brand">UNFEEL</div>
+<div class="fixed-logo">UNFEEL</div>
 
 <div class="nav">
   <a href="about.html">About</a>
@@ -194,6 +188,7 @@ canvas{
 
 <section class="hero">
   <canvas id="particleCanvas"></canvas>
+
   <div class="hero-content">
     <div class="tagline">Heal · Grow · Move On</div>
     <div class="hero-text">
@@ -210,30 +205,26 @@ canvas{
 
 <section class="section">
   <h2>Why UNFEEL exists</h2>
-  <p>
-    Not to fix you.<br>
-    Not to judge you.<br>
-    But to sit with you while you heal.
-  </p>
+  <p>Not to fix you. Not to judge you. But to sit with you while you heal.</p>
 </section>
 
 <section class="section">
   <h2>What UNFEEL offers</h2>
   <div class="grid">
-    <div class="card"><h3>Human Listening</h3><p>Real people. No AI.</p></div>
-    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
-    <div class="card"><h3>Safe Space</h3><p>No pressure. No judgement.</p></div>
+    <div class="card"><h3>Human Listening</h3><p>No AI. Only real people.</p></div>
+    <div class="card"><h3>Emotional Support</h3><p>Heartbreak · Loneliness · Stress</p></div>
+    <div class="card"><h3>Safe Space</h3><p>No judgement. No pressure.</p></div>
   </div>
 </section>
 
 <section class="section">
-  <h2>Healing is not instant</h2>
-  <p>It’s slow. It’s uneven. And that’s okay.</p>
+  <h2>Healing takes time</h2>
+  <p>Slow progress still counts. And that’s okay.</p>
 </section>
 
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support content only. Not medical advice.
+  Emotional support only · Not medical advice
 </footer>
 
 <div class="insta">
@@ -244,7 +235,7 @@ canvas{
 <script>
 const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
-let W,H,particles=[],formed=true,buildProgress=0;
+let W,H,particles=[],formed=true;
 const text="UNFEEL";
 
 function resize(){
@@ -257,11 +248,12 @@ window.addEventListener("resize",resize);
 function createParticles(){
   particles=[];
   ctx.clearRect(0,0,W,H);
-  let size=Math.min(W*0.38,260);
+  let size=Math.min(W*0.45,320);
   ctx.font=`900 ${size}px Segoe UI`;
   ctx.textAlign="center";
   ctx.textBaseline="middle";
-  ctx.fillText(text,W/2,H/2);
+  ctx.fillText(text,W/2,H*0.42);
+
   let data=ctx.getImageData(0,0,W,H).data;
   for(let y=0;y<H;y+=4){
     for(let x=0;x<W;x+=4){
@@ -271,8 +263,8 @@ function createParticles(){
           x:Math.random()*W,
           y:Math.random()*H,
           ox:x,oy:y,
-          vx:(Math.random()-0.5)*6,
-          vy:(Math.random()-0.5)*6
+          vx:(Math.random()-0.5)*3,
+          vy:(Math.random()-0.5)*3
         });
       }
     }
@@ -285,33 +277,26 @@ function animate(){
   ctx.fillStyle="#00e5ff";
   particles.forEach(p=>{
     if(formed){
-      buildProgress=Math.min(buildProgress+0.002,1);
-      let ease=buildProgress*buildProgress;
-      p.x+=(p.ox-p.x)*0.04*ease;
-      p.y+=(p.oy-p.y)*0.04*ease;
+      p.x+=(p.ox-p.x)*0.02;
+      p.y+=(p.oy-p.y)*0.02;
     }else{
       p.x+=p.vx;
       p.y+=p.vy;
     }
-    ctx.fillRect(p.x,p.y,2.5,2.5);
+    ctx.fillRect(p.x,p.y,2,2);
   });
   requestAnimationFrame(animate);
 }
 animate();
 
 window.addEventListener("scroll",()=>{
-  if(window.scrollY<120){
-    formed=true;
-    buildProgress=0;
-  }else{
-    formed=false;
-  }
+  formed = window.scrollY < 120;
 });
 
-/* SECTION REVEAL */
-document.querySelectorAll('.section').forEach(sec=>{
-  window.addEventListener('scroll',()=>{
-    if(sec.getBoundingClientRect().top<window.innerHeight-120){
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight-120){
       sec.classList.add('show');
     }
   });
