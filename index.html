@@ -303,8 +303,8 @@ function animate(){
   particles.forEach(p=>{
     if(formed){
       /* SLOWED MOTION HERE */
-      p.x += (p.ox - p.x) * 0.025;
-      p.y += (p.oy - p.y) * 0.025;
+      p.x += (p.ox - p.x) * 0.02;
+      p.y += (p.oy - p.y) * 0.02;
     }else{
       p.x += p.vx;
       p.y += p.vy;
