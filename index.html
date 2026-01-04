@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>UNFEEL – Heal. Grow. Move On.</title>
+<title>UNFEEL – Heal · Grow · Move On</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -22,14 +22,33 @@ body{
   overflow-x:hidden;
 }
 
-/* NAV */
+/* ================= BRAND LOGO ================= */
+.brand-logo{
+  position:fixed;
+  top:26px;
+  left:26px;
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:var(--blue);
+  z-index:2000;
+  text-shadow:0 0 22px rgba(0,229,255,.6);
+  animation:brandGlow 3s ease-in-out infinite;
+}
+@keyframes brandGlow{
+  0%{opacity:.6}
+  50%{opacity:1}
+  100%{opacity:.6}
+}
+
+/* ================= NAV ================= */
 .nav{
   position:fixed;
   top:22px;
   right:30px;
   display:flex;
   gap:14px;
-  z-index:1000;
+  z-index:1500;
 }
 .nav a{
   color:var(--blue);
@@ -41,55 +60,40 @@ body{
   box-shadow:0 0 14px var(--soft);
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
-  position:relative;
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  overflow:hidden;
-}
-
-#particleCanvas{
-  position:absolute;
-  inset:0;
-  z-index:0;
+  position:relative;
+  padding:120px 8vw;
 }
 
 .hero-content{
-  position:relative;
-  z-index:2;
-}
-
-.logo{
-  font-size:72px;
-  font-weight:900;
-  letter-spacing:5px;
-  color:var(--blue);
-  text-shadow:0 0 60px var(--soft);
+  text-align:center;
+  max-width:800px;
+  z-index:5;
 }
 
 .tagline{
-  margin-top:14px;
+  margin-top:18px;
   font-size:18px;
   color:#9fefff;
 }
-
-.hook{
-  margin-top:20px;
+.hero-text{
+  margin-top:18px;
   font-size:15px;
   color:#c7f3ff;
   line-height:1.7;
 }
 
 .btns{
-  margin-top:42px;
+  margin-top:40px;
 }
 .btn{
   display:inline-block;
-  margin:12px 14px;
+  margin:12px;
   padding:16px 36px;
   border-radius:30px;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
@@ -104,7 +108,14 @@ body{
   border:1px solid var(--blue);
 }
 
-/* STORY SECTIONS */
+/* ================= PARTICLE CANVAS ================= */
+canvas{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+
+/* ================= SECTIONS ================= */
 .section{
   padding:160px 10vw;
   opacity:0;
@@ -127,7 +138,6 @@ body{
   line-height:1.8;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -139,35 +149,49 @@ body{
   background:rgba(255,255,255,.06);
   box-shadow:0 0 44px var(--soft);
 }
-.card h3{
-  font-size:22px;
-  margin-bottom:14px;
-}
-.card p{
-  font-size:15px;
-  color:#bfefff;
-  line-height:1.6;
-}
+.card h3{font-size:22px;margin-bottom:14px}
+.card p{font-size:15px;color:#bfefff;line-height:1.6}
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 .footer{
-  padding:140px 40px;
+  padding:120px 40px;
   text-align:center;
   font-size:13px;
   color:#9ad9e6;
 }
 
-/* MOBILE */
+/* ================= INSTAGRAM ================= */
+.insta{
+  position:fixed;
+  bottom:26px;
+  right:26px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.06);
+  padding:10px 16px;
+  border-radius:30px;
+  box-shadow:0 0 20px var(--soft);
+}
+.insta img{width:22px}
+.insta a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* ================= MOBILE ================= */
 @media(max-width:900px){
-  .logo{font-size:52px}
   .grid{grid-template-columns:1fr}
+  .section{padding:120px 7vw}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<div class="brand-logo">UNFEEL</div>
+
 <div class="nav">
   <a href="about.html">About</a>
   <a href="terms.html">Terms</a>
@@ -179,9 +203,8 @@ body{
   <canvas id="particleCanvas"></canvas>
 
   <div class="hero-content">
-    <div class="logo">UNFEEL</div>
     <div class="tagline">Heal · Grow · Move On</div>
-    <div class="hook">
+    <div class="hero-text">
       When emotions feel heavy.<br>
       When silence feels loud.<br>
       UNFEEL gives you space to breathe.
@@ -189,7 +212,7 @@ body{
 
     <div class="btns">
       <a class="btn" href="#">Android App – Coming Soon</a>
-      <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+      <a class="btn secondary" href="#">iOS App – Coming Soon</a>
     </div>
   </div>
 </section>
@@ -228,106 +251,68 @@ body{
   Instagram: <b>@unfeel.app</b>
 </footer>
 
-<script>
-/* ===== STORY SCROLL ===== */
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top < innerHeight-120){
-      sec.classList.add('show');
-    }
-  });
-});
+<div class="insta">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+  <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
+</div>
 
-/* ===== PARTICLE CINEMATIC ENGINE ===== */
+<script>
+/* ================= PARTICLE UNFEEL ================= */
 const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
+let w,h,particles=[],phase="float";
+canvas.width=w=innerWidth;
+canvas.height=h=innerHeight;
 
-function resize(){
-  canvas.width=innerWidth;
-  canvas.height=innerHeight;
-}
-resize();
-addEventListener("resize",resize);
+const text="UNFEEL";
+ctx.font="bold 160px Segoe UI";
+const t=ctx.measureText(text);
+const startX=w/2-t.width/2;
+const startY=h/2;
 
-let particles=[];
-let phase="drift";
-let dissolve=false;
-let lastScroll=0;
-
-const mouse={x:-9999,y:-9999};
-addEventListener("mousemove",e=>{
-  mouse.x=e.clientX;
-  mouse.y=e.clientY;
-});
-
-function createText(){
-  particles=[];
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.font="900 200px Segoe UI";
-  ctx.textAlign="center";
-  ctx.fillText("UNFEEL",canvas.width/2,canvas.height/2);
-
-  const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
-  for(let y=0;y<canvas.height;y+=7){
-    for(let x=0;x<canvas.width;x+=7){
-      if(data[(y*canvas.width+x)*4+3]>150){
-        particles.push({
-          x:Math.random()*canvas.width,
-          y:Math.random()*canvas.height,
-          tx:x,
-          ty:y,
-          vx:(Math.random()-0.5)*0.4,
-          vy:(Math.random()-0.5)*0.4
-        });
-      }
-    }
-  }
-}
-createText();
-setTimeout(()=>phase="form",9000);
-
-addEventListener("scroll",()=>{
-  const cur=scrollY;
-  if(cur>lastScroll && cur>120){dissolve=true;}
-  if(cur<200){dissolve=false;phase="form";}
-  lastScroll=cur;
-});
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  particles.forEach(p=>{
-    if(phase==="drift"){
-      p.x+=p.vx;
-      p.y+=p.vy;
-    }else if(!dissolve){
-      p.x+=(p.tx-p.x)*0.025;
-      p.y+=(p.ty-p.y)*0.025;
-    }else{
-      p.x+=p.vx*3;
-      p.y+=p.vy*3;
-    }
-
-    const dx=mouse.x-p.x;
-    const dy=mouse.y-p.y;
-    const dist=Math.sqrt(dx*dx+dy*dy);
-    if(dist<140){
-      p.x+=dx*0.015;
-      p.y+=dy*0.015;
-    }
-
-    ctx.beginPath();
-    ctx.fillStyle="rgba(0,229,255,.35)";
-    ctx.shadowBlur=24;
-    ctx.shadowColor="#00e5ff";
-    ctx.arc(p.x,p.y,2,0,Math.PI*2);
-    ctx.fill();
+for(let i=0;i<1500;i++){
+  particles.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    tx:startX+(i%text.length)*120+Math.random()*20,
+    ty:startY+Math.random()*20,
+    vx:(Math.random()-.5)*2,
+    vy:(Math.random()-.5)*2
   });
-
-  requestAnimationFrame(animate);
 }
-animate();
+
+setTimeout(()=>phase="form",4000);
+
+function draw(){
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle="#00e5ff";
+  particles.forEach(p=>{
+    if(phase==="form"){
+      p.x+=(p.tx-p.x)*0.06;
+      p.y+=(p.ty-p.y)*0.06;
+    }else if(phase==="scatter"){
+      p.x+=p.vx*6;
+      p.y+=p.vy*6;
+    }
+    ctx.fillRect(p.x,p.y,2,2);
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+window.addEventListener("scroll",()=>{
+  if(scrollY>200) phase="scatter";
+});
+
+/* ================= SCROLL SECTIONS ================= */
+const sections=document.querySelectorAll(".section");
+addEventListener("scroll",()=>{
+  sections.forEach(s=>{
+    if(s.getBoundingClientRect().top<innerHeight-120){
+      s.classList.add("show");
+    }
+  });
+});
 </script>
 
 </body>
