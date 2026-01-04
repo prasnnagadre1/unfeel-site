@@ -25,10 +25,10 @@ body{
 /* NAV */
 .nav{
   position:fixed;
-  top:18px;
-  right:22px;
+  top:20px;
+  right:24px;
   display:flex;
-  gap:12px;
+  gap:14px;
   z-index:1000;
 }
 .nav a{
@@ -41,18 +41,7 @@ body{
   box-shadow:0 0 14px var(--soft);
 }
 
-/* FIXED BRAND */
-.brand{
-  position:fixed;
-  top:18px;
-  left:22px;
-  font-weight:800;
-  letter-spacing:2px;
-  color:var(--blue);
-  z-index:1000;
-}
-
-/* INSTAGRAM */
+/* INSTAGRAM FLOAT */
 .insta{
   position:fixed;
   bottom:22px;
@@ -67,7 +56,11 @@ body{
   z-index:1000;
 }
 .insta img{width:20px}
-.insta a{color:#fff;text-decoration:none;font-size:13px}
+.insta a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+}
 
 /* HERO */
 .hero{
@@ -80,10 +73,13 @@ body{
   text-align:center;
 }
 
+/* ✅ MOBILE CROP FIX */
 canvas{
   position:absolute;
   inset:0;
   z-index:1;
+  max-width:100vw;
+  max-height:100vh;
 }
 
 .hero-content{
@@ -126,7 +122,7 @@ canvas{
   border:1px solid var(--blue);
 }
 
-/* SECTIONS */
+/* STORY SECTIONS */
 .section{
   min-height:100vh;
   padding:140px 10vw;
@@ -138,6 +134,7 @@ canvas{
   opacity:1;
   transform:translateY(0);
 }
+
 .section h2{
   font-size:36px;
   margin-bottom:26px;
@@ -160,12 +157,6 @@ canvas{
   border-radius:28px;
   background:rgba(255,255,255,.06);
   box-shadow:0 0 42px var(--soft);
-  animation:breath 6s ease-in-out infinite;
-}
-@keyframes breath{
-  0%{box-shadow:0 0 22px var(--soft)}
-  50%{box-shadow:0 0 52px var(--soft)}
-  100%{box-shadow:0 0 22px var(--soft)}
 }
 .card h3{font-size:22px;margin-bottom:12px}
 .card p{font-size:15px;color:#bfefff;line-height:1.6}
@@ -187,8 +178,6 @@ canvas{
 </head>
 
 <body>
-
-<div class="brand">UNFEEL</div>
 
 <div class="nav">
   <a href="about.html">About</a>
@@ -268,11 +257,17 @@ window.addEventListener("resize",resize);
 function createParticles(){
   particles=[];
   ctx.clearRect(0,0,W,H);
-  let size=Math.min(W*0.32,260);   // ✅ FIXED SIZE
+
+  /* ✅ MOBILE SAFE SIZE */
+  let size = W < 768 ? W * 0.78 : Math.min(W * 0.32, 260);
+
   ctx.font=`900 ${size}px Segoe UI`;
   ctx.textAlign="center";
   ctx.textBaseline="middle";
-  ctx.fillText(text,W/2,H*0.35);  // ✅ FIXED POSITION
+
+  /* ✅ MOBILE SAFE Y POSITION */
+  let yPos = W < 768 ? H * 0.28 : H * 0.35;
+  ctx.fillText(text, W/2, yPos);
 
   let data=ctx.getImageData(0,0,W,H).data;
   for(let y=0;y<H;y+=4){
@@ -283,8 +278,8 @@ function createParticles(){
           x:Math.random()*W,
           y:Math.random()*H,
           ox:x,oy:y,
-          vx:(Math.random()-0.5)*5,
-          vy:(Math.random()-0.5)*5
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-0.5)*6
         });
       }
     }
@@ -297,13 +292,13 @@ function animate(){
   ctx.fillStyle="#00e5ff";
   particles.forEach(p=>{
     if(formed){
-      p.x+=(p.ox-p.x)*0.06;
-      p.y+=(p.oy-p.y)*0.06;
+      p.x+=(p.ox-p.x)*0.05;
+      p.y+=(p.oy-p.y)*0.05;
     }else{
       p.x+=p.vx;
       p.y+=p.vy;
     }
-    ctx.fillRect(p.x,p.y,1.6,1.6);
+    ctx.fillRect(p.x,p.y,2,2);
   });
   requestAnimationFrame(animate);
 }
@@ -313,7 +308,6 @@ window.addEventListener("scroll",()=>{
   formed = window.scrollY < 120;
 });
 
-/* SECTION FADE */
 const sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
   sections.forEach(sec=>{
