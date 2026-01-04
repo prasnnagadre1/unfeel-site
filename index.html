@@ -22,7 +22,7 @@ body{
   overflow-x:hidden;
 }
 
-/* FIXED LOGO DESKTOP */
+/* ===== FIXED LOGO DESKTOP ===== */
 .fixed-logo{
   position:fixed;
   top:22px;
@@ -180,7 +180,7 @@ canvas{
   color:#9ad9e6;
 }
 
-/* MOBILE */
+/* ===== MOBILE FIX ===== */
 @media(max-width:900px){
   canvas{display:none;}
   .fixed-logo{display:none;}
@@ -224,7 +224,11 @@ canvas{
 
 <section class="section">
   <h2>Why UNFEEL exists</h2>
-  <p>Not to fix you. Not to judge you. But to sit with you while you heal.</p>
+  <p>
+    Not to fix you.<br>
+    Not to judge you.<br>
+    But to sit with you while you heal.
+  </p>
 </section>
 
 <section class="section">
@@ -252,11 +256,11 @@ canvas{
 </div>
 
 <script>
-/* ===== PARTICLE UNFEEL (DESKTOP ONLY) ===== */
+/* ===== PARTICLE UNFEEL (DESKTOP ONLY, SLOWED) ===== */
 if(window.innerWidth > 900){
 const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
-let W,H,particles=[],formed=false;
+let W,H,particles=[],formed=true;
 const text="UNFEEL";
 
 function resize(){
@@ -269,23 +273,23 @@ window.addEventListener("resize",resize);
 function createParticles(){
   particles=[];
   ctx.clearRect(0,0,W,H);
-  let size=Math.min(W*0.25,200);
+  let size=Math.min(W*0.28,220);
   ctx.font=`900 ${size}px Segoe UI`;
   ctx.textAlign="center";
   ctx.textBaseline="middle";
   ctx.fillText(text,W/2,H/2 - 80);
 
   let data=ctx.getImageData(0,0,W,H).data;
-  for(let y=0;y<H;y+=5){
-    for(let x=0;x<W;x+=5){
+  for(let y=0;y<H;y+=4){
+    for(let x=0;x<W;x+=4){
       let i=(y*W+x)*4;
       if(data[i+3]>150){
         particles.push({
           x:Math.random()*W,
           y:Math.random()*H,
           ox:x,oy:y,
-          vx:(Math.random()-0.5)*1.2,
-          vy:(Math.random()-0.5)*1.2
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-0.5)*6
         });
       }
     }
@@ -293,21 +297,17 @@ function createParticles(){
 }
 resize();
 
-/* ASSEMBLE ON LOAD */
-window.addEventListener("load",()=>{
-  setTimeout(()=>formed=true,300);
-});
-
 function animate(){
   ctx.clearRect(0,0,W,H);
   ctx.fillStyle="#00e5ff";
   particles.forEach(p=>{
     if(formed){
-      p.x+=(p.ox-p.x)*0.03;
-      p.y+=(p.oy-p.y)*0.03;
+      /* SLOWED MOTION HERE */
+      p.x += (p.ox - p.x) * 0.02;
+      p.y += (p.oy - p.y) * 0.02;
     }else{
-      p.x+=p.vx;
-      p.y+=p.vy;
+      p.x += p.vx;
+      p.y += p.vy;
     }
     ctx.fillRect(p.x,p.y,2,2);
   });
@@ -315,9 +315,8 @@ function animate(){
 }
 animate();
 
-/* BREAK / REBUILD ON SCROLL */
 window.addEventListener("scroll",()=>{
-  formed = window.scrollY < 140;
+  formed = window.scrollY < 120;
 });
 }
 
