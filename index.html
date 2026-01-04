@@ -12,6 +12,7 @@
   --dark1:#020c14;
   --dark2:#000308;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
@@ -34,18 +35,18 @@ body{
   color:var(--blue);
   text-decoration:none;
   font-size:13px;
-  padding:7px 15px;
+  padding:7px 16px;
   border:1px solid var(--blue);
   border-radius:20px;
-  box-shadow:0 0 12px var(--soft);
+  box-shadow:0 0 14px var(--soft);
 }
 
-/* FIXED LOGO */
-.fixed-logo{
+/* FIXED BRAND */
+.brand{
   position:fixed;
-  top:20px;
+  top:18px;
   left:22px;
-  font-weight:900;
+  font-weight:800;
   letter-spacing:2px;
   color:var(--blue);
   z-index:1000;
@@ -73,33 +74,38 @@ body{
   height:100vh;
   position:relative;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
 }
+
 canvas{
   position:absolute;
   inset:0;
   z-index:1;
 }
+
 .hero-content{
   position:relative;
   z-index:2;
-  margin-top:160px;
+  max-width:720px;
 }
+
 .tagline{
   font-size:16px;
   color:#9fefff;
-  margin-top:10px;
+  margin-top:14px;
 }
 .hero-text{
-  margin-top:14px;
+  margin-top:16px;
   font-size:14px;
   color:#c7f3ff;
   line-height:1.7;
 }
+
 .buttons{
-  margin-top:30px;
+  margin-top:32px;
   display:flex;
   gap:18px;
   justify-content:center;
@@ -120,7 +126,7 @@ canvas{
   border:1px solid var(--blue);
 }
 
-/* STORY */
+/* SECTIONS */
 .section{
   min-height:100vh;
   padding:140px 10vw;
@@ -132,7 +138,10 @@ canvas{
   opacity:1;
   transform:translateY(0);
 }
-.section h2{font-size:36px;margin-bottom:26px}
+.section h2{
+  font-size:36px;
+  margin-bottom:26px;
+}
 .section p{
   font-size:17px;
   color:#bfefff;
@@ -169,6 +178,7 @@ canvas{
   color:#9ad9e6;
 }
 
+/* MOBILE */
 @media(max-width:900px){
   .grid{grid-template-columns:1fr}
   .section h2{font-size:28px}
@@ -178,7 +188,7 @@ canvas{
 
 <body>
 
-<div class="fixed-logo">UNFEEL</div>
+<div class="brand">UNFEEL</div>
 
 <div class="nav">
   <a href="about.html">About</a>
@@ -196,6 +206,7 @@ canvas{
       When silence feels loud.<br>
       UNFEEL gives you space to breathe.
     </div>
+
     <div class="buttons">
       <a class="btn" href="#">Android App – Coming Soon</a>
       <a class="btn secondary" href="#">iOS App – Coming Soon</a>
@@ -205,26 +216,35 @@ canvas{
 
 <section class="section">
   <h2>Why UNFEEL exists</h2>
-  <p>Not to fix you. Not to judge you. But to sit with you while you heal.</p>
+  <p>
+    Not to fix you.<br>
+    Not to judge you.<br>
+    But to sit with you while you heal.
+  </p>
 </section>
 
 <section class="section">
   <h2>What UNFEEL offers</h2>
   <div class="grid">
-    <div class="card"><h3>Human Listening</h3><p>No AI. Only real people.</p></div>
-    <div class="card"><h3>Emotional Support</h3><p>Heartbreak · Loneliness · Stress</p></div>
-    <div class="card"><h3>Safe Space</h3><p>No judgement. No pressure.</p></div>
+    <div class="card"><h3>Human Listening</h3><p>Real people. No AI.</p></div>
+    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
+    <div class="card"><h3>Safe Space</h3><p>No pressure. No judgement.</p></div>
   </div>
 </section>
 
 <section class="section">
-  <h2>Healing takes time</h2>
-  <p>Slow progress still counts. And that’s okay.</p>
+  <h2>Healing is not instant</h2>
+  <p>
+    It’s slow.<br>
+    It’s uneven.<br>
+    And that’s okay.
+  </p>
 </section>
 
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support only · Not medical advice
+  Emotional support content only. Not medical advice.<br><br>
+  Instagram: <b>@unfeel.app</b>
 </footer>
 
 <div class="insta">
@@ -248,11 +268,11 @@ window.addEventListener("resize",resize);
 function createParticles(){
   particles=[];
   ctx.clearRect(0,0,W,H);
-  let size=Math.min(W*0.45,320);
+  let size=Math.min(W*0.32,260);   // ✅ FIXED SIZE
   ctx.font=`900 ${size}px Segoe UI`;
   ctx.textAlign="center";
   ctx.textBaseline="middle";
-  ctx.fillText(text,W/2,H*0.42);
+  ctx.fillText(text,W/2,H*0.35);  // ✅ FIXED POSITION
 
   let data=ctx.getImageData(0,0,W,H).data;
   for(let y=0;y<H;y+=4){
@@ -263,8 +283,8 @@ function createParticles(){
           x:Math.random()*W,
           y:Math.random()*H,
           ox:x,oy:y,
-          vx:(Math.random()-0.5)*3,
-          vy:(Math.random()-0.5)*3
+          vx:(Math.random()-0.5)*5,
+          vy:(Math.random()-0.5)*5
         });
       }
     }
@@ -277,13 +297,13 @@ function animate(){
   ctx.fillStyle="#00e5ff";
   particles.forEach(p=>{
     if(formed){
-      p.x+=(p.ox-p.x)*0.02;
-      p.y+=(p.oy-p.y)*0.02;
+      p.x+=(p.ox-p.x)*0.06;
+      p.y+=(p.oy-p.y)*0.06;
     }else{
       p.x+=p.vx;
       p.y+=p.vy;
     }
-    ctx.fillRect(p.x,p.y,2,2);
+    ctx.fillRect(p.x,p.y,1.6,1.6);
   });
   requestAnimationFrame(animate);
 }
@@ -293,6 +313,7 @@ window.addEventListener("scroll",()=>{
   formed = window.scrollY < 120;
 });
 
+/* SECTION FADE */
 const sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
   sections.forEach(sec=>{
