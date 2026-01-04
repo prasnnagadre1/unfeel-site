@@ -194,7 +194,6 @@ canvas{
 
 <body>
 
-<!-- FIXED DESKTOP LOGO -->
 <div class="fixed-logo">UNFEEL</div>
 
 <div class="nav">
@@ -207,7 +206,6 @@ canvas{
   <canvas id="particleCanvas"></canvas>
 
   <div class="hero-content">
-    <!-- MOBILE ONLY -->
     <div class="mobile-logo">UNFEEL</div>
 
     <div class="tagline">Heal · Grow · Move On</div>
@@ -258,7 +256,7 @@ canvas{
 </div>
 
 <script>
-/* ===== PARTICLE UNFEEL (DESKTOP ONLY) ===== */
+/* ===== PARTICLE UNFEEL (DESKTOP ONLY, SLOWED) ===== */
 if(window.innerWidth > 900){
 const canvas=document.getElementById("particleCanvas");
 const ctx=canvas.getContext("2d");
@@ -304,11 +302,12 @@ function animate(){
   ctx.fillStyle="#00e5ff";
   particles.forEach(p=>{
     if(formed){
-      p.x+=(p.ox-p.x)*0.05;
-      p.y+=(p.oy-p.y)*0.05;
+      /* SLOWED MOTION HERE */
+      p.x += (p.ox - p.x) * 0.025;
+      p.y += (p.oy - p.y) * 0.025;
     }else{
-      p.x+=p.vx;
-      p.y+=p.vy;
+      p.x += p.vx;
+      p.y += p.vy;
     }
     ctx.fillRect(p.x,p.y,2,2);
   });
