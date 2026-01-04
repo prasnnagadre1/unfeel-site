@@ -6,219 +6,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
-  --blue:#00e5ff;
-  --soft:rgba(0,229,255,.25);
-  --dark1:#020c14;
-  --dark2:#000308;
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  background:#050b14;
+  overflow:hidden;
+  font-family:'Segoe UI',sans-serif;
 }
-
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:'Segoe UI',system-ui,sans-serif;
-  background:radial-gradient(circle at top,var(--dark1),var(--dark2));
-  color:#fff;
-  overflow-x:hidden;
+canvas{
+  display:block;
 }
-
-/* NAV */
-.nav{
-  position:fixed;top:22px;right:30px;
-  display:flex;gap:14px;z-index:1000;
-}
-.nav a{
-  color:var(--blue);
-  text-decoration:none;
-  font-size:14px;
-  padding:8px 18px;
-  border:1px solid var(--blue);
-  border-radius:22px;
-  box-shadow:0 0 14px var(--soft);
-}
-
-/* INSTAGRAM */
-.insta{
-  position:fixed;bottom:26px;right:26px;
-  display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.06);
-  padding:10px 16px;border-radius:30px;
-  box-shadow:0 0 20px var(--soft);
-}
-.insta img{width:22px}
-.insta a{color:#fff;text-decoration:none;font-size:13px}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:80px;
-  padding:140px 8vw;
-  align-items:center;
-}
-
-.logo-box{
-  display:inline-block;
-  padding:22px 36px;
-  border-radius:28px;
-  background:rgba(255,255,255,.06);
-  box-shadow:0 0 50px var(--soft);
-  animation:glow 6s ease-in-out infinite;
-}
-@keyframes glow{
-  0%{box-shadow:0 0 28px var(--soft)}
-  50%{box-shadow:0 0 70px var(--soft)}
-  100%{box-shadow:0 0 28px var(--soft)}
-}
-.logo{
-  font-size:64px;font-weight:900;
-  letter-spacing:4px;color:var(--blue);
-}
-
-.tagline{margin-top:16px;font-size:18px;color:#9fefff}
-.hero-text{margin-top:24px;font-size:15px;color:#c7f3ff;line-height:1.7}
-
-.btn{
-  display:inline-block;margin:40px 16px 0 0;
-  padding:16px 36px;border-radius:30px;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  color:#00181f;text-decoration:none;font-weight:700;
-  box-shadow:0 0 30px var(--soft);
-}
-.btn.secondary{
-  background:transparent;color:var(--blue);
-  border:1px solid var(--blue);
-}
-
-/* STORY SECTIONS */
-.section{
-  padding:160px 10vw;
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s ease;
-}
-.section.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.section h2{
-  font-size:36px;margin-bottom:28px;
-}
-.section p{
-  max-width:900px;
-  font-size:17px;
-  color:#bfefff;
-  line-height:1.8;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:40px;
-}
-.card{
-  padding:44px;
-  border-radius:30px;
-  background:rgba(255,255,255,.06);
-  box-shadow:0 0 44px var(--soft);
-}
-.card h3{font-size:22px;margin-bottom:14px}
-.card p{font-size:15px;color:#bfefff;line-height:1.6}
-
-/* FOOTER */
-.footer{
-  padding:120px 40px;
+.overlay{
+  position:absolute;
+  bottom:40px;
+  width:100%;
   text-align:center;
-  font-size:13px;color:#9ad9e6;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:50px}
-  .logo{font-size:48px}
-  .grid{grid-template-columns:1fr}
+  color:#9fefff;
+  letter-spacing:2px;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="nav">
-  <a href="about.html">About</a>
-  <a href="terms.html">Terms</a>
-  <a href="privacy.html">Privacy</a>
-</div>
-
-<section class="hero">
-  <div>
-    <div class="logo-box"><div class="logo">UNFEEL</div></div>
-    <div class="tagline">Heal · Grow · Move On</div>
-    <div class="hero-text">
-      When emotions feel heavy.<br>
-      When silence feels loud.<br>
-      UNFEEL gives you space to breathe.
-    </div>
-    <a class="btn" href="#">Android App – Coming Soon</a>
-    <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
-  </div>
-
-  <div class="card">
-    <h3>This is not therapy.</h3>
-    <p>This is human connection. Slow. Honest. Real.</p>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Why UNFEEL exists</h2>
-  <p>
-    Not to fix you.<br>
-    Not to judge you.<br>
-    But to sit with you while you heal.
-  </p>
-</section>
-
-<section class="section">
-  <h2>What UNFEEL offers</h2>
-  <div class="grid">
-    <div class="card"><h3>Human Listening</h3><p>Real people. Real conversations.</p></div>
-    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
-    <div class="card"><h3>Safe Space</h3><p>No rush. No pressure.</p></div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Healing is not instant</h2>
-  <p>
-    It’s slow.<br>
-    It’s uneven.<br>
-    And that’s okay.
-  </p>
-</section>
-
-<footer class="footer">
-  Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support content only. Not medical advice.<br><br>
-  Instagram: <b>@unfeel.app</b>
-</footer>
-
-<div class="insta">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-  <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
-</div>
+<canvas id="canvas"></canvas>
+<div class="overlay">Heal · Grow · Move On</div>
 
 <script>
-/* SCROLL STORYTELLING */
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-  sections.forEach(sec=>{
-    const top=sec.getBoundingClientRect().top;
-    if(top<window.innerHeight-120){
-      sec.classList.add('show');
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+let mouse = {x:null,y:null};
+
+window.addEventListener("mousemove",e=>{
+  mouse.x=e.x;
+  mouse.y=e.y;
+});
+
+function createTextParticles(){
+  particles=[];
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle="#fff";
+  ctx.font="bold 120px Segoe UI";
+  ctx.textAlign="center";
+  ctx.fillText("UNFEEL",canvas.width/2,canvas.height/2);
+
+  const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+
+  for(let y=0;y<canvas.height;y+=6){
+    for(let x=0;x<canvas.width;x+=6){
+      const index=(y*canvas.width+x)*4;
+      if(data[index+3]>150){
+        particles.push({
+          x:Math.random()*canvas.width,
+          y:Math.random()*canvas.height,
+          tx:x,
+          ty:y,
+          size:2,
+          glow:Math.random()*20
+        });
+      }
     }
+  }
+}
+createTextParticles();
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=(p.tx-p.x)*0.05;
+    p.y+=(p.ty-p.y)*0.05;
+
+    if(mouse.x){
+      let dx=p.x-mouse.x;
+      let dy=p.y-mouse.y;
+      let dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<80){
+        p.x+=dx/10;
+        p.y+=dy/10;
+      }
+    }
+
+    p.glow+=0.05;
+    ctx.beginPath();
+    ctx.fillStyle=`rgba(0,229,255,${0.5+Math.sin(p.glow)*0.3})`;
+    ctx.shadowBlur=20;
+    ctx.shadowColor="#00e5ff";
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fill();
   });
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener("resize",()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  createTextParticles();
 });
 </script>
 
