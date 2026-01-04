@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>UNFEEL – Heal. Grow. Move On.</title>
+<title>UNFEEL – Heal · Grow · Move On</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -12,9 +12,7 @@
   --dark1:#020c14;
   --dark2:#000308;
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
   font-family:'Segoe UI',system-ui,sans-serif;
   background:radial-gradient(circle at top,var(--dark1),var(--dark2));
@@ -24,51 +22,53 @@ body{
 
 /* NAV */
 .nav{
-  position:fixed;top:22px;right:30px;
-  display:flex;gap:14px;z-index:1000;
+  position:fixed;top:20px;right:24px;
+  display:flex;gap:12px;z-index:1000;
 }
 .nav a{
   color:var(--blue);
   text-decoration:none;
-  font-size:14px;
-  padding:8px 18px;
+  font-size:13px;
+  padding:8px 16px;
   border:1px solid var(--blue);
-  border-radius:22px;
-  box-shadow:0 0 14px var(--soft);
+  border-radius:20px;
+  box-shadow:0 0 12px var(--soft);
 }
 
 /* HERO */
 .hero{
   min-height:100vh;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:80px;
-  padding:140px 8vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
   align-items:center;
+  gap:26px;
+  padding:120px 6vw 80px;
+  text-align:center;
+}
+#particleWrap{
+  width:100%;
+  max-width:800px;
+  height:220px;
+  border-radius:40px;
+  background:rgba(255,255,255,.04);
+  box-shadow:0 0 60px var(--soft);
   position:relative;
+  overflow:hidden;
 }
+canvas{position:absolute;inset:0}
 
-/* PARTICLE CANVAS */
-#particleCanvas{
-  position:absolute;
-  inset:0;
-  z-index:0;
-}
+.hero h1{font-size:20px;color:#9fefff}
+.hero p{font-size:15px;color:#c7f3ff;line-height:1.6;max-width:520px}
 
-/* HERO CONTENT */
-.hero-content{
-  position:relative;
-  z-index:2;
-}
-
-.tagline{margin-top:20px;font-size:18px;color:#9fefff}
-.hero-text{margin-top:26px;font-size:15px;color:#c7f3ff;line-height:1.7}
-
+.btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 .btn{
-  display:inline-block;margin:40px 16px 0 0;
-  padding:16px 36px;border-radius:30px;
+  padding:14px 34px;
+  border-radius:28px;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  color:#00181f;text-decoration:none;font-weight:700;
+  color:#00181f;
+  text-decoration:none;
+  font-weight:700;
   box-shadow:0 0 30px var(--soft);
 }
 .btn.secondary{
@@ -76,35 +76,16 @@ body{
   border:1px solid var(--blue);
 }
 
-/* CARD */
-.card{
-  padding:44px;
-  border-radius:30px;
-  background:rgba(255,255,255,.06);
-  box-shadow:0 0 44px var(--soft);
-  position:relative;
-  z-index:2;
-}
-
 /* STORY */
 .section{
-  padding:160px 10vw;
+  padding:140px 8vw;
   opacity:0;
   transform:translateY(60px);
   transition:1s ease;
 }
 .section.show{opacity:1;transform:translateY(0)}
-.section h2{font-size:36px;margin-bottom:28px}
+.section h2{font-size:36px;margin-bottom:26px}
 .section p{max-width:900px;font-size:17px;color:#bfefff;line-height:1.8}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:40px;
-}
-.card h3{font-size:22px;margin-bottom:14px}
-.card p{font-size:15px;color:#bfefff;line-height:1.6}
 
 /* FOOTER */
 .footer{
@@ -115,9 +96,8 @@ body{
 
 /* MOBILE */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:60px}
-  #particleCanvas{opacity:.6}
-  .grid{grid-template-columns:1fr}
+  #particleWrap{height:170px}
+  .section h2{font-size:28px}
 }
 </style>
 </head>
@@ -125,112 +105,105 @@ body{
 <body>
 
 <div class="nav">
+  <a href="index.html">Home</a>
   <a href="about.html">About</a>
+  <a href="services.html">Services</a>
   <a href="terms.html">Terms</a>
   <a href="privacy.html">Privacy</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
-  <canvas id="particleCanvas"></canvas>
+  <h1>Heal · Grow · Move On</h1>
 
-  <div class="hero-content">
-    <div class="tagline">Heal · Grow · Move On</div>
-    <div class="hero-text">
-      When emotions feel heavy.<br>
-      When silence feels loud.<br>
-      UNFEEL gives you space to breathe.
-    </div>
-    <a class="btn" href="#">Android App – Coming Soon</a>
-    <a class="btn secondary" href="#">iPhone App – Coming Soon</a>
+  <div id="particleWrap">
+    <canvas id="canvas"></canvas>
   </div>
 
-  <div class="card">
-    <h3>This is not therapy.</h3>
-    <p>This is human connection. Slow. Honest. Real.</p>
+  <p>
+    When emotions feel heavy.<br>
+    When silence feels loud.<br>
+    UNFEEL gives you space to breathe.
+  </p>
+
+  <div class="btns">
+    <a class="btn" href="#">Android App – Coming Soon</a>
+    <a class="btn secondary" href="#">iOS App – Coming Soon</a>
   </div>
 </section>
 
 <section class="section">
   <h2>Why UNFEEL exists</h2>
-  <p>Not to fix you. Not to judge you. But to sit with you while you heal.</p>
+  <p>
+    Not to fix you.  
+    Not to judge you.  
+    But to sit with you while you heal.
+  </p>
 </section>
 
 <section class="section">
-  <h2>What UNFEEL offers</h2>
-  <div class="grid">
-    <div class="card"><h3>Human Listening</h3><p>Real people. Real conversations.</p></div>
-    <div class="card"><h3>Emotional Support</h3><p>Heartbreak, loneliness, stress.</p></div>
-    <div class="card"><h3>Safe Space</h3><p>No rush. No pressure.</p></div>
-  </div>
+  <h2>Healing takes time</h2>
+  <p>
+    Progress is slow.  
+    Growth is uneven.  
+    And that’s okay.
+  </p>
 </section>
 
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support content only.
+  Instagram: <b>@unfeel.app</b>
 </footer>
 
 <script>
-/* PARTICLE UNFEEL */
-const canvas=document.getElementById("particleCanvas");
-const ctx=canvas.getContext("2d");
+/* Scroll animation */
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(s=>{
+    if(s.getBoundingClientRect().top < window.innerHeight-120){
+      s.classList.add('show');
+    }
+  });
+});
+
+/* Particle UNFEEL */
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
 function resize(){
-  canvas.width=window.innerWidth;
-  canvas.height=document.querySelector('.hero').offsetHeight;
+  canvas.width=canvas.parentElement.offsetWidth;
+  canvas.height=canvas.parentElement.offsetHeight;
 }
 resize();window.addEventListener('resize',resize);
 
 let particles=[];
-function createText(){
+function createParticles(){
   particles=[];
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.font="bold 130px Segoe UI";
-  ctx.fillStyle="#fff";
+  ctx.font="bold 110px Arial";
   ctx.textAlign="center";
   ctx.fillText("UNFEEL",canvas.width/2,canvas.height/2);
   const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
-
   for(let y=0;y<canvas.height;y+=6){
     for(let x=0;x<canvas.width;x+=6){
       const i=(y*canvas.width+x)*4;
       if(data[i+3]>150){
-        particles.push({
-          x:Math.random()*canvas.width,
-          y:Math.random()*canvas.height,
-          tx:x,ty:y,life:Math.random()*100
-        });
+        particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,tx:x,ty:y});
       }
     }
   }
 }
-createText();
+createParticles();
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   particles.forEach(p=>{
     p.x+=(p.tx-p.x)*0.05;
     p.y+=(p.ty-p.y)*0.05;
-    p.life+=0.03;
-    ctx.beginPath();
-    ctx.fillStyle=`rgba(0,229,255,${0.4+Math.sin(p.life)*0.3})`;
-    ctx.shadowBlur=20;
-    ctx.shadowColor="#00e5ff";
-    ctx.arc(p.x,p.y,2,0,Math.PI*2);
-    ctx.fill();
+    ctx.fillStyle="#00e5ff";
+    ctx.fillRect(p.x,p.y,2,2);
   });
   requestAnimationFrame(animate);
 }
 animate();
-
-/* SCROLL FADE */
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-  sections.forEach(s=>{
-    if(s.getBoundingClientRect().top<window.innerHeight-120){
-      s.classList.add('show');
-    }
-  });
-});
 </script>
 
 </body>
