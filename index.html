@@ -1,126 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>UNFEEL – Heal · Grow · Move On</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
-  --blue:#00e5ff;
-  --bg1:#020c14;
-  --bg2:#000308;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:system-ui,Segoe UI,sans-serif;
-  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
+html,body{
+  margin:0;
+  padding:0;
+  background:#000814;
   color:#fff;
   overflow-x:hidden;
+  font-family:'Segoe UI',system-ui,sans-serif;
 }
 
-/* NAV */
-.nav{
-  position:fixed;top:20px;right:24px;z-index:1000;
-  display:flex;gap:12px;
-}
-.nav a{
-  color:var(--blue);
-  text-decoration:none;
-  padding:8px 16px;
-  border:1px solid var(--blue);
-  border-radius:20px;
-  font-size:13px;
-}
-
-/* FIXED LOGO TOP LEFT */
+/* FIXED BRAND */
 .brand{
-  position:fixed;top:22px;left:24px;
-  font-weight:800;letter-spacing:2px;
-  color:var(--blue);
+  position:fixed;
+  top:24px;
+  left:28px;
+  z-index:1000;
+  font-weight:800;
+  letter-spacing:2px;
+  color:#00e5ff;
+  text-shadow:0 0 20px rgba(0,229,255,.6);
 }
 
 /* HERO */
 .hero{
   height:100vh;
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
 }
 canvas{
   position:absolute;
   inset:0;
-  z-index:0;
 }
-.hero-content{
-  position:relative;
-  z-index:2;
-  margin-top:160px;
-}
+
+/* TAGLINE */
 .tagline{
-  margin-top:20px;
-  font-size:14px;
+  position:absolute;
+  bottom:22%;
+  width:100%;
+  text-align:center;
+  font-size:18px;
   color:#9fefff;
-}
-.desc{
-  margin-top:10px;
-  font-size:13px;
-  color:#c7f3ff;
-  line-height:1.6;
-}
-.btns{
-  margin-top:26px;
-}
-.btn{
-  display:inline-block;
-  margin:10px;
-  padding:14px 28px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#00e5ff,#00b4d8);
-  color:#00181f;
-  text-decoration:none;
-  font-weight:700;
-}
-.btn.secondary{
-  background:transparent;
-  border:1px solid var(--blue);
-  color:var(--blue);
+  z-index:5;
 }
 
 /* SECTIONS */
 .section{
-  padding:140px 10vw;
-}
-.section h2{
-  font-size:34px;margin-bottom:20px;
-}
-.section p{
-  max-width:900px;
-  font-size:16px;
-  color:#bfefff;
+  padding:160px 12vw;
+  font-size:18px;
   line-height:1.8;
+  color:#c7f3ff;
 }
 
 /* FOOTER */
 .footer{
-  padding:100px 40px;
+  padding:120px 40px;
   text-align:center;
   font-size:13px;
-  color:#9ad9e6;
-}
-.insta{
-  position:fixed;bottom:22px;right:22px;
-  display:flex;gap:8px;align-items:center;
-}
-.insta img{width:22px}
-.insta a{color:#fff;text-decoration:none;font-size:13px}
-
-@media(max-width:900px){
-  .hero-content{margin-top:120px}
+  color:#8fdff0;
 }
 </style>
 </head>
@@ -129,124 +70,110 @@ canvas{
 
 <div class="brand">UNFEEL</div>
 
-<div class="nav">
-  <a href="about.html">About</a>
-  <a href="terms.html">Terms</a>
-  <a href="privacy.html">Privacy</a>
-</div>
-
 <section class="hero">
   <canvas id="particleCanvas"></canvas>
-
-  <div class="hero-content">
-    <div class="tagline">Heal · Grow · Move On</div>
-    <div class="desc">
-      When emotions feel heavy.<br>
-      When silence feels loud.<br>
-      UNFEEL gives you space to breathe.
-    </div>
-    <div class="btns">
-      <a class="btn" href="#">Android App – Coming Soon</a>
-      <a class="btn secondary" href="#">iOS App – Coming Soon</a>
-    </div>
-  </div>
+  <div class="tagline">Heal · Grow · Move On</div>
 </section>
 
 <section class="section">
-  <h2>Why UNFEEL exists</h2>
-  <p>
-    Not to fix you.<br>
-    Not to judge you.<br>
-    But to sit with you while you heal.
-  </p>
+  UNFEEL is a quiet space for heavy emotions.  
+  Not to fix you — but to sit with you while you heal.
 </section>
 
 <section class="section">
-  <h2>This is not therapy</h2>
-  <p>
-    This is human connection.<br>
-    Slow. Honest. Real.
-  </p>
+  Real people. Real conversations.  
+  No AI. No judgement. Only human touch.
+</section>
+
+<section class="section">
+  Healing is slow.  
+  And that’s okay.
 </section>
 
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support only. Not medical advice.
+  Instagram: <b>@unfeel.app</b>
 </footer>
 
-<div class="insta">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-  <a href="https://instagram.com/unfeel.app" target="_blank">@unfeel.app</a>
-</div>
-
 <script>
-/* ================= REAL PARTICLE ENGINE ================= */
+/* ================= PARTICLE TEXT ================= */
 
 const canvas = document.getElementById("particleCanvas");
 const ctx = canvas.getContext("2d");
-let particles = [];
-let textPixels = [];
-let dissolve = 0;
+let w,h;
+let particles=[];
+let mouse={y:0};
 
 function resize(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  generateText();
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
 }
-window.addEventListener("resize", resize);
+window.addEventListener("resize",resize);
+resize();
 
-function generateText(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "#00e5ff";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.font = `bold ${Math.min(canvas.width*0.22,220)}px Arial`;
-  ctx.fillText("UNFEEL", canvas.width/2, canvas.height/2 - 40);
+class Particle{
+  constructor(x,y){
+    this.tx=x;
+    this.ty=y;
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=0;
+    this.vy=0;
+  }
+  update(force){
+    let dx=this.tx-this.x;
+    let dy=this.ty-this.y;
+    this.vx+=dx*0.01*force;
+    this.vy+=dy*0.01*force;
+    this.vx*=0.88;
+    this.vy*=0.88;
+    this.x+=this.vx;
+    this.y+=this.vy;
+  }
+  draw(){
+    ctx.fillStyle="rgba(0,229,255,.85)";
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,1.6,0,Math.PI*2);
+    ctx.fill();
+  }
+}
 
-  const data = ctx.getImageData(0,0,canvas.width,canvas.height).data;
-  textPixels = [];
-  for(let y=0;y<canvas.height;y+=6){
-    for(let x=0;x<canvas.width;x+=6){
-      const i = (y*canvas.width + x)*4;
-      if(data[i+3] > 150){
-        textPixels.push({x,y});
+function createText(){
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle="#fff";
+  ctx.textAlign="center";
+  ctx.font=`bold ${Math.min(w/5,180)}px Arial`;
+  ctx.fillText("UNFEEL",w/2,h/2);
+  const data=ctx.getImageData(0,0,w,h).data;
+  particles=[];
+  for(let y=0;y<h;y+=6){
+    for(let x=0;x<w;x+=6){
+      const i=(y*w+x)*4;
+      if(data[i+3]>150){
+        particles.push(new Particle(x,y));
       }
     }
   }
-
-  particles = textPixels.map(p=>({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    tx:p.x,
-    ty:p.y,
-    vx:0,vy:0
-  }));
 }
+createText();
+
+window.addEventListener("scroll",()=>{
+  mouse.y=window.scrollY;
+});
 
 function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0,0,w,h);
+  let force = mouse.y>50 ? 0.05 : 1;
   particles.forEach(p=>{
-    const dx = (p.tx + (Math.random()-0.5)*dissolve) - p.x;
-    const dy = (p.ty + (Math.random()-0.5)*dissolve) - p.y;
-    p.vx += dx*0.02;
-    p.vy += dy*0.02;
-    p.vx *= 0.85;
-    p.vy *= 0.85;
-    p.x += p.vx;
-    p.y += p.vy;
-
-    ctx.fillStyle = "#00e5ff";
-    ctx.fillRect(p.x,p.y,2,2);
+    if(mouse.y>50){
+      p.tx+=Math.sin(p.y*0.01)*4;
+      p.ty+=Math.cos(p.x*0.01)*4;
+    }
+    p.update(force);
+    p.draw();
   });
   requestAnimationFrame(animate);
 }
-
-window.addEventListener("scroll",()=>{
-  const sc = Math.min(window.scrollY/300,1);
-  dissolve = sc * 120; // dissolve on scroll
-});
-
-resize();
 animate();
 </script>
 
