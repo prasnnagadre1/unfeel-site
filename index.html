@@ -42,26 +42,41 @@ body{
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  gap:26px;
+  gap:28px;
   padding:120px 6vw 80px;
   text-align:center;
-}
-#particleWrap{
-  width:100%;
-  max-width:800px;
-  height:220px;
-  border-radius:40px;
-  background:rgba(255,255,255,.04);
-  box-shadow:0 0 60px var(--soft);
   position:relative;
-  overflow:hidden;
 }
-canvas{position:absolute;inset:0}
 
-.hero h1{font-size:20px;color:#9fefff}
-.hero p{font-size:15px;color:#c7f3ff;line-height:1.6;max-width:520px}
+/* PARTICLE CANVAS – NO CARD */
+#canvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
 
-.btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+/* HERO CONTENT */
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+.hero h1{
+  font-size:20px;
+  color:#9fefff;
+}
+.hero p{
+  font-size:15px;
+  color:#c7f3ff;
+  line-height:1.6;
+  max-width:520px;
+}
+
+.btns{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 .btn{
   padding:14px 34px;
   border-radius:28px;
@@ -96,7 +111,7 @@ canvas{position:absolute;inset:0}
 
 /* MOBILE */
 @media(max-width:900px){
-  #particleWrap{height:170px}
+  .hero{padding-top:140px}
   .section h2{font-size:28px}
 }
 </style>
@@ -112,22 +127,23 @@ canvas{position:absolute;inset:0}
   <a href="privacy.html">Privacy</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>Heal · Grow · Move On</h1>
+  <canvas id="canvas"></canvas>
 
-  <div id="particleWrap">
-    <canvas id="canvas"></canvas>
-  </div>
+  <div class="hero-content">
+    <h1>Heal · Grow · Move On</h1>
 
-  <p>
-    When emotions feel heavy.<br>
-    When silence feels loud.<br>
-    UNFEEL gives you space to breathe.
-  </p>
+    <p>
+      When emotions feel heavy.<br>
+      When silence feels loud.<br>
+      UNFEEL gives you space to breathe.
+    </p>
 
-  <div class="btns">
-    <a class="btn" href="#">Android App – Coming Soon</a>
-    <a class="btn secondary" href="#">iOS App – Coming Soon</a>
+    <div class="btns">
+      <a class="btn" href="#">Android App – Coming Soon</a>
+      <a class="btn secondary" href="#">iOS App – Coming Soon</a>
+    </div>
   </div>
 </section>
 
@@ -155,7 +171,7 @@ canvas{position:absolute;inset:0}
 </footer>
 
 <script>
-/* Scroll animation */
+/* SCROLL FADE */
 const sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
   sections.forEach(s=>{
@@ -165,28 +181,36 @@ window.addEventListener('scroll',()=>{
   });
 });
 
-/* Particle UNFEEL */
+/* PARTICLE UNFEEL – SLOW & BREATHING */
 const canvas=document.getElementById('canvas');
 const ctx=canvas.getContext('2d');
 function resize(){
-  canvas.width=canvas.parentElement.offsetWidth;
-  canvas.height=canvas.parentElement.offsetHeight;
+  canvas.width=window.innerWidth;
+  canvas.height=document.querySelector('.hero').offsetHeight;
 }
 resize();window.addEventListener('resize',resize);
 
 let particles=[];
+let time=0;
+
 function createParticles(){
   particles=[];
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.font="bold 110px Arial";
+  ctx.font="bold 160px Segoe UI";
   ctx.textAlign="center";
   ctx.fillText("UNFEEL",canvas.width/2,canvas.height/2);
   const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
-  for(let y=0;y<canvas.height;y+=6){
-    for(let x=0;x<canvas.width;x+=6){
+
+  for(let y=0;y<canvas.height;y+=7){
+    for(let x=0;x<canvas.width;x+=7){
       const i=(y*canvas.width+x)*4;
       if(data[i+3]>150){
-        particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,tx:x,ty:y});
+        particles.push({
+          x:Math.random()*canvas.width,
+          y:Math.random()*canvas.height,
+          tx:x,ty:y,
+          ox:x,oy:y
+        });
       }
     }
   }
@@ -195,12 +219,21 @@ createParticles();
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
+  time+=0.01;
+
   particles.forEach(p=>{
-    p.x+=(p.tx-p.x)*0.05;
-    p.y+=(p.ty-p.y)*0.05;
-    ctx.fillStyle="#00e5ff";
-    ctx.fillRect(p.x,p.y,2,2);
+    const breathe=Math.sin(time)*2;
+    p.x+=(p.tx-p.x)*0.02;
+    p.y+=(p.ty + breathe - p.y)*0.02;
+
+    ctx.beginPath();
+    ctx.fillStyle=`rgba(0,229,255,${0.35 + Math.sin(time)*0.15})`;
+    ctx.shadowBlur=25;
+    ctx.shadowColor="#00e5ff";
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fill();
   });
+
   requestAnimationFrame(animate);
 }
 animate();
