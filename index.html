@@ -1,210 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>UNFEEL – Heal · Grow · Move On</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <style>
 :root{
   --blue:#00e5ff;
-  --soft:rgba(0,229,255,.25);
-  --dark1:#020c14;
-  --dark2:#000308;
+  --bg1:#020c14;
+  --bg2:#000308;
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:'Segoe UI',system-ui,sans-serif;
-  background:radial-gradient(circle at top,var(--dark1),var(--dark2));
+  font-family:system-ui,Segoe UI,sans-serif;
+  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
   color:#fff;
   overflow-x:hidden;
 }
 
-/* FIXED BRAND (TOP LEFT) */
-.brand-fixed{
-  position:fixed;
-  top:22px;
-  left:26px;
-  font-size:16px;
-  font-weight:700;
-  letter-spacing:2px;
-  color:var(--blue);
-  text-shadow:0 0 14px rgba(0,229,255,.6);
-  z-index:1000;
-}
-
 /* NAV */
 .nav{
-  position:fixed;
-  top:18px;
-  right:24px;
-  display:flex;
-  gap:12px;
-  z-index:1000;
+  position:fixed;top:20px;right:24px;z-index:1000;
+  display:flex;gap:12px;
 }
 .nav a{
   color:var(--blue);
   text-decoration:none;
-  font-size:13px;
-  padding:7px 16px;
+  padding:8px 16px;
   border:1px solid var(--blue);
-  border-radius:22px;
-  box-shadow:0 0 12px var(--soft);
+  border-radius:20px;
+  font-size:13px;
+}
+
+/* FIXED LOGO TOP LEFT */
+.brand{
+  position:fixed;top:22px;left:24px;
+  font-weight:800;letter-spacing:2px;
+  color:var(--blue);
 }
 
 /* HERO */
 .hero{
   height:100vh;
+  position:relative;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  flex-direction:column;
   text-align:center;
-  padding-top:80px;
 }
-
-/* PARTICLE STYLE LOGO */
-.logo-particle{
-  font-size:96px;
-  font-weight:900;
-  letter-spacing:8px;
-  color:transparent;
-  background:
-    radial-gradient(circle,var(--blue) 2px,transparent 2px);
-  background-size:10px 10px;
-  -webkit-background-clip:text;
-  background-clip:text;
-  filter:drop-shadow(0 0 22px rgba(0,229,255,.6));
-  animation:particleGlow 8s ease-in-out infinite;
+canvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
 }
-
-@keyframes particleGlow{
-  0%{filter:drop-shadow(0 0 18px rgba(0,229,255,.4))}
-  50%{filter:drop-shadow(0 0 38px rgba(0,229,255,.8))}
-  100%{filter:drop-shadow(0 0 18px rgba(0,229,255,.4))}
+.hero-content{
+  position:relative;
+  z-index:2;
+  margin-top:160px;
 }
-
 .tagline{
-  margin-top:14px;
-  font-size:18px;
+  margin-top:20px;
+  font-size:14px;
   color:#9fefff;
 }
-
-.hero-text{
-  margin-top:22px;
-  font-size:15px;
+.desc{
+  margin-top:10px;
+  font-size:13px;
   color:#c7f3ff;
-  line-height:1.7;
-  max-width:520px;
+  line-height:1.6;
 }
-
-/* BUTTONS */
-.buttons{
-  margin-top:40px;
+.btns{
+  margin-top:26px;
 }
 .btn{
   display:inline-block;
   margin:10px;
-  padding:14px 34px;
+  padding:14px 28px;
   border-radius:30px;
   background:linear-gradient(135deg,#00e5ff,#00b4d8);
   color:#00181f;
   text-decoration:none;
   font-weight:700;
-  box-shadow:0 0 26px var(--soft);
 }
 .btn.secondary{
   background:transparent;
-  color:var(--blue);
   border:1px solid var(--blue);
+  color:var(--blue);
 }
 
 /* SECTIONS */
 .section{
   padding:140px 10vw;
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s ease;
 }
-.section.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
 .section h2{
-  font-size:36px;
-  margin-bottom:26px;
+  font-size:34px;margin-bottom:20px;
 }
 .section p{
   max-width:900px;
-  font-size:17px;
+  font-size:16px;
   color:#bfefff;
   line-height:1.8;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:36px;
-}
-.card{
-  padding:40px;
-  border-radius:28px;
-  background:rgba(255,255,255,.06);
-  box-shadow:0 0 40px var(--soft);
-}
-.card h3{
-  font-size:22px;
-  margin-bottom:12px;
-}
-.card p{
-  font-size:15px;
-  color:#bfefff;
-  line-height:1.6;
-}
-
 /* FOOTER */
 .footer{
-  padding:120px 40px;
+  padding:100px 40px;
   text-align:center;
   font-size:13px;
   color:#9ad9e6;
 }
-
-/* INSTAGRAM FLOAT */
 .insta{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:rgba(255,255,255,.06);
-  padding:8px 14px;
-  border-radius:30px;
-  box-shadow:0 0 18px var(--soft);
+  position:fixed;bottom:22px;right:22px;
+  display:flex;gap:8px;align-items:center;
 }
-.insta img{width:18px}
-.insta a{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-}
+.insta img{width:22px}
+.insta a{color:#fff;text-decoration:none;font-size:13px}
 
-/* MOBILE */
 @media(max-width:900px){
-  .logo-particle{font-size:64px}
-  .grid{grid-template-columns:1fr}
+  .hero-content{margin-top:120px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="brand-fixed">UNFEEL</div>
+<div class="brand">UNFEEL</div>
 
 <div class="nav">
   <a href="about.html">About</a>
@@ -213,17 +136,19 @@ body{
 </div>
 
 <section class="hero">
-  <div class="logo-particle">UNFEEL</div>
-  <div class="tagline">Heal · Grow · Move On</div>
-  <div class="hero-text">
-    When emotions feel heavy.<br>
-    When silence feels loud.<br>
-    UNFEEL gives you space to breathe.
-  </div>
+  <canvas id="particleCanvas"></canvas>
 
-  <div class="buttons">
-    <a class="btn" href="#">Android App – Coming Soon</a>
-    <a class="btn secondary" href="#">iOS App – Coming Soon</a>
+  <div class="hero-content">
+    <div class="tagline">Heal · Grow · Move On</div>
+    <div class="desc">
+      When emotions feel heavy.<br>
+      When silence feels loud.<br>
+      UNFEEL gives you space to breathe.
+    </div>
+    <div class="btns">
+      <a class="btn" href="#">Android App – Coming Soon</a>
+      <a class="btn secondary" href="#">iOS App – Coming Soon</a>
+    </div>
   </div>
 </section>
 
@@ -237,36 +162,16 @@ body{
 </section>
 
 <section class="section">
-  <h2>What UNFEEL offers</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Human Listening</h3>
-      <p>Real people. Real conversations.</p>
-    </div>
-    <div class="card">
-      <h3>Emotional Support</h3>
-      <p>Heartbreak, loneliness, stress.</p>
-    </div>
-    <div class="card">
-      <h3>Safe Space</h3>
-      <p>No rush. No pressure.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Healing is not instant</h2>
+  <h2>This is not therapy</h2>
   <p>
-    It’s slow.<br>
-    It’s uneven.<br>
-    And that’s okay.
+    This is human connection.<br>
+    Slow. Honest. Real.
   </p>
 </section>
 
 <footer class="footer">
   Founded & Created by <b>Prasanna Balu Gadre</b><br>
-  Emotional support content only. Not medical advice.<br><br>
-  Instagram: <b>@unfeel.app</b>
+  Emotional support only. Not medical advice.
 </footer>
 
 <div class="insta">
@@ -275,14 +180,74 @@ body{
 </div>
 
 <script>
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top < window.innerHeight-120){
-      sec.classList.add('show');
+/* ================= REAL PARTICLE ENGINE ================= */
+
+const canvas = document.getElementById("particleCanvas");
+const ctx = canvas.getContext("2d");
+let particles = [];
+let textPixels = [];
+let dissolve = 0;
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  generateText();
+}
+window.addEventListener("resize", resize);
+
+function generateText(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#00e5ff";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = `bold ${Math.min(canvas.width*0.22,220)}px Arial`;
+  ctx.fillText("UNFEEL", canvas.width/2, canvas.height/2 - 40);
+
+  const data = ctx.getImageData(0,0,canvas.width,canvas.height).data;
+  textPixels = [];
+  for(let y=0;y<canvas.height;y+=6){
+    for(let x=0;x<canvas.width;x+=6){
+      const i = (y*canvas.width + x)*4;
+      if(data[i+3] > 150){
+        textPixels.push({x,y});
+      }
     }
+  }
+
+  particles = textPixels.map(p=>({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    tx:p.x,
+    ty:p.y,
+    vx:0,vy:0
+  }));
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    const dx = (p.tx + (Math.random()-0.5)*dissolve) - p.x;
+    const dy = (p.ty + (Math.random()-0.5)*dissolve) - p.y;
+    p.vx += dx*0.02;
+    p.vy += dy*0.02;
+    p.vx *= 0.85;
+    p.vy *= 0.85;
+    p.x += p.vx;
+    p.y += p.vy;
+
+    ctx.fillStyle = "#00e5ff";
+    ctx.fillRect(p.x,p.y,2,2);
   });
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener("scroll",()=>{
+  const sc = Math.min(window.scrollY/300,1);
+  dissolve = sc * 120; // dissolve on scroll
 });
+
+resize();
+animate();
 </script>
 
 </body>
