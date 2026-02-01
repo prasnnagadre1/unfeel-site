@@ -310,8 +310,8 @@ function resize(){
           x:Math.random()*W,
           y:Math.random()*H,
           ox:x,oy:y,
-          vx:(Math.random()-.5)*4,
-          vy:(Math.random()-.5)*4
+          vx:(Math.random()-.5)*2,
+          vy:(Math.random()-.5)*2
         });
       }
     }
@@ -323,8 +323,8 @@ function animate(){
   ctx.clearRect(0,0,W,H);
   particles.forEach(p=>{
     if(collect){
-      p.x+=(p.ox-p.x)*.05;
-      p.y+=(p.oy-p.y)*.05;
+      p.x+=(p.ox-p.x)*.02;
+      p.y+=(p.oy-p.y)*.02;
     }else{
       p.x+=p.vx;
       p.y+=p.vy;
