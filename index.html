@@ -26,9 +26,10 @@ body{
   position:fixed;
   top:0;left:0;
   width:100%;
-  padding:18px 30px;
+  padding:18px 26px;
   display:flex;
   justify-content:space-between;
+  align-items:center;
   z-index:1000;
   background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);
 }
@@ -92,6 +93,7 @@ body{
 .section{
   min-height:120vh;
   padding:180px 8vw;
+  overflow:hidden;
 }
 
 /* TEXT SWIPE */
@@ -146,20 +148,40 @@ body{
   color:#d9f6ff;
 }
 
-/* ================= MOBILE (ONLY FIX) ================= */
+/* ================= MOBILE FIX (ONLY MOBILE) ================= */
 @media(max-width:900px){
-  #particleCanvas{display:none;}   /* mobile no particle */
+
+  /* Particle OFF on mobile */
+  #particleCanvas{display:none;}
+
+  /* HERO FIX */
   .hero{
     height:auto;
-    min-height:100vh;
+    min-height:calc(100vh - 72px);
+    padding-top:140px;
+    align-items:center;
   }
+
   .hero-content{
-    padding-bottom:60px;
+    padding-bottom:40px;
   }
-  .big{font-size:44px}
-  .hero-content p{font-size:18px}
-  .cards{grid-template-columns:1fr}
-  .section{padding:120px 7vw}
+
+  .hero-content p{
+    font-size:18px;
+  }
+
+  .big{
+    font-size:44px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    min-height:auto;
+    padding:120px 7vw;
+  }
 }
 </style>
 </head>
@@ -240,7 +262,6 @@ body{
   </div>
 </section>
 
-<!-- FOUNDER -->
 <section class="section">
   <div class="big left">Founded & Built by</div>
   <div class="big right neon">A Human</div>
@@ -250,8 +271,7 @@ body{
       <h3>Founder</h3>
       <p>
         <b>Prasanna Balu Gadre</b><br><br>
-        UNFEEL was not born from a business plan.<br>
-        It was born from silence, loneliness,
+        UNFEEL was born from silence, loneliness,
         and the need for someone who simply listens.
       </p>
     </div>
@@ -266,7 +286,7 @@ body{
 </footer>
 
 <script>
-/* ================= PARTICLE (DESKTOP ONLY) ================= */
+/* ===== PARTICLE (DESKTOP ONLY) ===== */
 if(innerWidth>900){
 const c=document.getElementById("particleCanvas");
 const ctx=c.getContext("2d");
@@ -310,7 +330,7 @@ function animate(){
       p.x+=p.vx;
       p.y+=p.vy;
     }
-    ctx.fillStyle="rgba(0,229,255,1)";
+    ctx.fillStyle="#00e5ff";
     ctx.fillRect(p.x,p.y,2,2);
   });
   requestAnimationFrame(animate);
@@ -322,7 +342,7 @@ addEventListener("scroll",()=>{
 });
 }
 
-/* ================= OBSERVERS ================= */
+/* ===== OBSERVERS ===== */
 const obs=new IntersectionObserver(e=>{
   e.forEach(x=>{
     if(x.isIntersecting)x.target.classList.add("show");
