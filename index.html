@@ -92,7 +92,6 @@ body{
 .section{
   min-height:120vh;
   padding:180px 8vw;
-  overflow:hidden; /* 🔥 SWIPE LOCK FIX */
 }
 
 /* TEXT SWIPE */
@@ -147,16 +146,21 @@ body{
   color:#d9f6ff;
 }
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE (ONLY FIX) ================= */
 @media(max-width:900px){
-  #particleCanvas{display:none;}
+  #particleCanvas{display:none;}   /* mobile no particle */
+  .hero{
+    height:auto;
+    min-height:100vh;
+  }
+  .hero-content{
+    padding-bottom:60px;
+  }
   .big{font-size:44px}
   .hero-content p{font-size:18px}
   .cards{grid-template-columns:1fr}
   .section{padding:120px 7vw}
-  
 }
-
 </style>
 </head>
 
@@ -232,7 +236,7 @@ body{
     <div class="card"><h3>No Fake Profiles</h3><p>Every conversation is with a real human.</p></div>
     <div class="card"><h3>Instant Connection</h3><p>No swiping. No matching. Just talk.</p></div>
     <div class="card"><h3>Privacy First</h3><p>No history. No screenshots. No pressure.</p></div>
-    <div class="card"><h3>Made in INDIA</h3><p>Built for real emotions, real moments.</p></div>
+    <div class="card"><h3>Made in India</h3><p>Built for real emotions, real moments.</p></div>
   </div>
 </section>
 
@@ -245,7 +249,7 @@ body{
     <div class="card">
       <h3>Founder</h3>
       <p>
-        <b>Prasanna Gadre</b><br><br>
+        <b>Prasanna Balu Gadre</b><br><br>
         UNFEEL was not born from a business plan.<br>
         It was born from silence, loneliness,
         and the need for someone who simply listens.
