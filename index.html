@@ -15,13 +15,13 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  font-family:system-ui,Segoe UI,Roboto;
   background:#000;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* FIXED TOP BAR */
+/* ================= TOP BAR ================= */
 .top{
   position:fixed;
   top:0;left:0;
@@ -30,7 +30,7 @@ body{
   display:flex;
   justify-content:space-between;
   z-index:1000;
-  background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent);
+  background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);
 }
 .top span{
   color:var(--neon);
@@ -44,7 +44,7 @@ body{
   font-size:13px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
   height:100vh;
   position:relative;
@@ -88,31 +88,26 @@ body{
   border:2px solid var(--neon);
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
 .section{
   min-height:120vh;
   padding:180px 8vw;
 }
 
-/* STORY TEXT ANIMATIONS */
-.left, .right{
+/* TEXT SWIPE */
+.left,.right{
   opacity:0;
   transition:1.2s cubic-bezier(.16,1,.3,1);
 }
 .left{transform:translateX(-260px)}
 .right{transform:translateX(260px)}
-
-.show{
-  opacity:1;
-  transform:none;
-}
+.show{opacity:1;transform:none}
 
 .big{
   font-size:96px;
   font-weight:900;
 }
 .neon{color:var(--neon)}
-
 .small{
   margin-top:26px;
   font-size:22px;
@@ -120,7 +115,7 @@ body{
   color:#c4f2ff;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
 .cards{
   margin-top:90px;
   display:grid;
@@ -133,7 +128,7 @@ body{
   border-radius:34px;
   box-shadow:0 0 60px var(--glow);
   opacity:0;
-  transform:translateY(120px);
+  transform:translateY(140px);
   transition:1s cubic-bezier(.16,1,.3,1);
 }
 .card.show{
@@ -151,7 +146,7 @@ body{
   color:#d9f6ff;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media(max-width:900px){
   .big{font-size:44px}
   .hero-content p{font-size:18px}
@@ -162,6 +157,7 @@ body{
 
 <body>
 
+<!-- TOP -->
 <div class="top">
   <span>UNFEEL</span>
   <div>
@@ -174,10 +170,11 @@ body{
 <!-- HERO -->
 <section class="hero">
   <canvas id="particleCanvas"></canvas>
-
   <div class="hero-content">
-    <p>Talk to real people.<br>No bots. No scripts. No judgement.</p>
-
+    <p>
+      Talk to real people.<br>
+      No bots. No scripts. No judgement.
+    </p>
     <div class="buttons">
       <a class="btn">Get App (Play Store)</a>
       <a class="btn out">Get App (App Store)</a>
@@ -191,7 +188,9 @@ body{
   <div class="big left">UNFEEL is</div>
   <div class="big right neon">NOT</div>
   <p class="small left">
-    a dating app · therapy · AI chat.<br>
+    a dating app.<br>
+    not therapy.<br>
+    not AI chat.<br><br>
     It’s a place where humans talk to humans.
   </p>
 </section>
@@ -203,11 +202,19 @@ body{
   <div class="cards">
     <div class="card">
       <h3>For Users</h3>
-      <p>Voice · Video · Chat<br>No history saved.</p>
+      <p>
+        Voice · Video · Chat<br>
+        Speak freely without judgement.<br>
+        No chat history stored.
+      </p>
     </div>
     <div class="card">
       <h3>For Listeners</h3>
-      <p>Work from home.<br>Earn by listening.</p>
+      <p>
+        Work from home.<br>
+        Earn by listening.<br>
+        Flexible hours.
+      </p>
     </div>
   </div>
 </section>
@@ -217,15 +224,16 @@ body{
   <div class="big right neon">Choose UNFEEL</div>
 
   <div class="cards">
-    <div class="card"><h3>No Fake Profiles</h3><p>Only real humans.</p></div>
-    <div class="card"><h3>Instant Talk</h3><p>No matching. No waiting.</p></div>
-    <div class="card"><h3>Privacy First</h3><p>No chat history.</p></div>
-    <div class="card"><h3>India-first</h3><p>Built for real emotions.</p></div>
+    <div class="card"><h3>No Fake Profiles</h3><p>Every conversation is with a real human.</p></div>
+    <div class="card"><h3>Instant Connection</h3><p>No swiping. No matching. Just talk.</p></div>
+    <div class="card"><h3>Privacy First</h3><p>No history. No screenshots. No pressure.</p></div>
+    <div class="card"><h3>India-first</h3><p>Built for real emotions, real moments.</p></div>
   </div>
 </section>
 
+<!-- FOUNDER -->
 <section class="section">
-  <div class="big left">Built by</div>
+  <div class="big left">Founded & Built by</div>
   <div class="big right neon">A Human</div>
 
   <div class="cards">
@@ -233,6 +241,9 @@ body{
       <h3>Founder</h3>
       <p>
         <b>Prasanna Balu Gadre</b><br><br>
+        UNFEEL was not born from a business plan.<br>
+        It was born from silence, loneliness,
+        and the need for someone who simply listens.<br><br>
         “Sometimes people don’t need solutions.<br>
         They just need to be heard.”
       </p>
@@ -240,31 +251,32 @@ body{
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="section" style="min-height:auto;padding-bottom:80px">
   <p class="small">
-    UNFEEL is not therapy or medical service.<br>
-    It provides friendly conversations with real humans.
+    UNFEEL is not a medical, therapy, or counseling service.<br>
+    It provides friendly conversations with real humans.<br>
+    Users are responsible for their own actions.
   </p>
 </footer>
 
+<!-- ================= JS ================= -->
 <script>
-/* PARTICLE UNFEEL + DISSOLVE */
+/* PARTICLE UNFEEL (COLLECT ↔ DISSOLVE) */
 const c=document.getElementById("particleCanvas");
 const ctx=c.getContext("2d");
-let W,H,particles=[],dissolve=false;
+let W,H,particles=[],collect=true;
 
 function resize(){
   W=c.width=innerWidth;
   H=c.height=innerHeight;
   particles=[];
   ctx.clearRect(0,0,W,H);
-
-  let size=Math.min(W*0.38,340);
+  let size=Math.min(W*.38,340);
   ctx.font=`900 ${size}px Segoe UI`;
   ctx.textAlign="center";
   ctx.textBaseline="middle";
-  ctx.fillText("UNFEEL",W/2,H*0.42);
-
+  ctx.fillText("UNFEEL",W/2,H*.42);
   let data=ctx.getImageData(0,0,W,H).data;
   for(let y=0;y<H;y+=4){
     for(let x=0;x<W;x+=4){
@@ -274,29 +286,26 @@ function resize(){
           x:Math.random()*W,
           y:Math.random()*H,
           ox:x,oy:y,
-          vx:(Math.random()-.5)*6,
-          vy:(Math.random()-.5)*6,
-          a:1
+          vx:(Math.random()-.5)*4,
+          vy:(Math.random()-.5)*4
         });
       }
     }
   }
 }
-resize();
-window.onresize=resize;
+resize();window.onresize=resize;
 
 function animate(){
   ctx.clearRect(0,0,W,H);
   particles.forEach(p=>{
-    if(!dissolve){
+    if(collect){
       p.x+=(p.ox-p.x)*.05;
       p.y+=(p.oy-p.y)*.05;
     }else{
       p.x+=p.vx;
       p.y+=p.vy;
-      p.a-=.015;
     }
-    ctx.fillStyle=`rgba(0,229,255,${p.a})`;
+    ctx.fillStyle="rgba(0,229,255,1)";
     ctx.fillRect(p.x,p.y,2,2);
   });
   requestAnimationFrame(animate);
@@ -304,17 +313,32 @@ function animate(){
 animate();
 
 window.addEventListener("scroll",()=>{
-  dissolve = scrollY > innerHeight*0.3;
+  collect = scrollY < innerHeight*0.35;
 });
 
-/* SCROLL REVEAL (100% RELIABLE) */
-const observer=new IntersectionObserver(entries=>{
+/* TEXT + CARD OBSERVERS (STABLE) */
+const textObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting)e.target.classList.add("show");
+    else e.target.classList.remove("show");
   });
-},{threshold:0.2});
+},{threshold:.25});
 
-document.querySelectorAll(".left,.right,.card").forEach(el=>observer.observe(el));
+document.querySelectorAll(".left,.right").forEach(el=>textObs.observe(el));
+
+const cardObs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      e.target.style.transitionDelay=`${i*0.12}s`;
+      e.target.classList.add("show");
+    }else{
+      e.target.style.transitionDelay="0s";
+      e.target.classList.remove("show");
+    }
+  });
+},{threshold:.2});
+
+document.querySelectorAll(".card").forEach(el=>cardObs.observe(el));
 </script>
 
 </body>
