@@ -168,6 +168,29 @@ body{
   color:#d9f6ff;
 }
 
+/* ================= SCREENSHOTS ================= */
+
+.screens{
+  margin-top:100px;
+  display:flex;
+  gap:40px;
+  overflow-x:auto;
+  padding-bottom:20px;
+  scroll-snap-type:x mandatory;
+}
+
+.screens img{
+  height:520px;
+  border-radius:28px;
+  box-shadow:0 0 25px rgba(0,229,255,.2);
+  scroll-snap-align:center;
+  transition:.4s;
+}
+
+.screens img:hover{
+  transform:scale(1.05);
+}
+
 /* ================= MOBILE ================= */
 @media(max-width:900px){
   #particleCanvas{display:none;}
@@ -182,7 +205,6 @@ body{
 
 <body>
 
-<!-- TOP -->
 <div class="top">
   <span>UNFEEL</span>
   <div>
@@ -192,11 +214,9 @@ body{
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <canvas id="particleCanvas"></canvas>
 
-  <!-- MOBILE FIXED UNFEEL -->
   <div class="mobile-logo">UNFEEL</div>
 
   <div class="hero-content">
@@ -212,7 +232,6 @@ body{
   </div>
 </section>
 
-<!-- STORY -->
 <section class="section">
   <div class="big left">UNFEEL is</div>
   <div class="big right neon">NOT</div>
@@ -222,6 +241,20 @@ body{
     not AI chat.<br><br>
     It’s a place where humans talk to humans.
   </p>
+</section>
+
+<!-- ✅ ADDED SCREENSHOTS SECTION -->
+
+<section class="section">
+  <div class="big left">Inside</div>
+  <div class="big right neon">UNFEEL</div>
+
+  <div class="screens">
+    <img src="images/ss1.jpg">
+    <img src="images/ss2.jpg">
+    <img src="images/ss3.jpg">
+    <img src="images/ss4.jpg">
+  </div>
 </section>
 
 <section class="section">
@@ -285,7 +318,6 @@ body{
 </footer>
 
 <script>
-/* ================= PARTICLE (DESKTOP ONLY) ================= */
 if(innerWidth>900){
 const c=document.getElementById("particleCanvas");
 const ctx=c.getContext("2d");
@@ -341,7 +373,6 @@ addEventListener("scroll",()=>{
 });
 }
 
-/* ================= OBSERVERS ================= */
 const obs=new IntersectionObserver(e=>{
   e.forEach(x=>{
     if(x.isIntersecting)x.target.classList.add("show");
