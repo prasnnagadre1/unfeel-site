@@ -168,30 +168,60 @@ body{
   color:#d9f6ff;
 }
 
-/* ================= SCREENSHOTS ================= */
+/* ================= SCREENSHOTS (UPDATED ONLY) ================= */
 
-.screens{
+.screens.animated{
   margin-top:100px;
-  display:flex;
-  gap:40px;
-  overflow-x:auto;
-  padding-bottom:20px;
-  scroll-snap-type:x mandatory;
 }
 
-/* ✅ ONLY CHANGE DONE HERE (NO CUT ISSUE FIXED) */
-.screens img{
-  width:260px;
-  height:auto;
-  object-fit:contain;
-  border-radius:28px;
-  box-shadow:0 0 25px rgba(0,229,255,.2);
-  scroll-snap-align:center;
-  transition:.4s;
+/* DESKTOP */
+@media(min-width:901px){
+
+  .screens.animated{
+    position:relative;
+    height:80vh;
+    overflow:hidden;
+    display:block;
+  }
+
+  .screens.animated img{
+    position:absolute;
+    width:260px;
+    border-radius:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+    transition:1s cubic-bezier(.22,1,.36,1);
+  }
+
+  .screens.animated img{
+    left:40%;
+    top:200px;
+  }
+
+  .screens.animated.show img:nth-child(1){left:10%; top:0;}
+  .screens.animated.show img:nth-child(2){left:30%; top:40px;}
+  .screens.animated.show img:nth-child(3){left:50%; top:80px;}
+  .screens.animated.show img:nth-child(4){left:70%; top:120px;}
 }
 
-.screens img:hover{
-  transform:scale(1.05);
+/* MOBILE = OLD SCROLL SAME */
+@media(max-width:900px){
+
+  .screens.animated{
+    display:flex;
+    gap:40px;
+    overflow-x:auto;
+    padding-bottom:20px;
+    scroll-snap-type:x mandatory;
+  }
+
+  .screens.animated img{
+    position:relative;
+    width:260px;
+    object-fit:contain;
+    border-radius:28px;
+    box-shadow:0 0 25px rgba(0,229,255,.2);
+    scroll-snap-align:center;
+  }
 }
 
 /* ================= MOBILE ================= */
@@ -246,12 +276,12 @@ body{
   </p>
 </section>
 
-<!-- SCREENSHOTS -->
+<!-- 🔥 ONLY CHANGE HERE -->
 <section class="section">
   <div class="big left">Inside</div>
   <div class="big right neon">UNFEEL</div>
 
-  <div class="screens">
+  <div class="screens animated">
     <img src="images/ss1.jpg">
     <img src="images/ss2.jpg">
     <img src="images/ss3.jpg">
@@ -373,6 +403,17 @@ animate();
 addEventListener("scroll",()=>{
   collect = scrollY < innerHeight*0.35;
 });
+}
+
+/* ADD ONLY */
+const ssBox = document.querySelector(".screens.animated");
+if(ssBox){
+  const observer2 = new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      ssBox.classList.add("show");
+    }
+  },{threshold:0.3});
+  observer2.observe(ssBox);
 }
 
 const obs=new IntersectionObserver(e=>{
